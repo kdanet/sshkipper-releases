@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SSHKipper — SSH-менеджер для macOS</title>
+<meta name="description" content="Нативный SSH-менеджер для macOS: цепочки бастионов с 2FA, зашифрованный документ с подключениями, Docker, Nginx, базы данных, автоматизации бэкапов и AI-агент в ваших сессиях.">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="alternate" hreflang="en" href="en/">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="./"><img src="assets/icon.png" alt="">SSHKipper</a>
+    <nav>
+      <a href="#features">Возможности</a>
+      <a href="#install">Установка</a>
+      <a href="https://github.com/kdanet/SSHkipper/releases">Релизы</a>
+      <a class="lang" href="en/">English</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <img class="icon" src="assets/icon.png" alt="Значок SSHKipper">
+    <h1>SSH-менеджер для тех,<br>кто держит много серверов</h1>
+    <p class="lead">Нативное приложение для macOS: бастионы и 2FA без ручного ввода, все подключения в одном зашифрованном документе, службы серверов, базы данных, бэкапы по расписанию и AI-агент, который работает в ваших сессиях под вашим контролем.</p>
+    <a class="cta" href="https://github.com/kdanet/SSHkipper/releases/latest/download/SSHKipper.dmg">Скачать для macOS</a>
+    <div class="meta">macOS 26 и новее · Apple Silicon · обновляется само</div>
+  </div>
+
+  <div class="shot"><img src="assets/shots/term.jpg" alt="Окно SSHKipper: подключение через два бастиона с кодами 2FA"></div>
+
+  <section id="features">
+    <h2>Возможности</h2>
+    <p class="sub">Сделано вместо Royal TSX для ежедневной работы администратора: никаких WebView и Electron, только родные контролы macOS.</p>
+    <div class="grid">
+      <div class="card"><div class="ico">🔐</div><h3>Бастионы и 2FA</h3><p>Цепочки через несколько бастионов с ключами, паролями и TOTP-кодами: SSHKipper входит сам, коды подставляет из документа.</p></div>
+      <div class="card"><div class="ico">🗄️</div><h3>Зашифрованный документ</h3><p>Подключения, пароли, ключи и секреты 2FA в одном файле: Argon2id и XChaCha20-Poly1305, разблокировка паролем или Touch ID.</p></div>
+      <div class="card"><div class="ico">🧭</div><h3>Профили сервера</h3><p>Один сервер — несколько путей: Tailscale, домашняя сеть, через бастион. Найденные хосты Tailscale и локальной сети появляются сами.</p></div>
+      <div class="card"><div class="ico">🐳</div><h3>Службы и дашборды</h3><p>Docker, Nginx с метриками из логов, Cron, Supervisor и дашборды сервера — прямо в дереве подключений.</p></div>
+      <div class="card"><div class="ico">📁</div><h3>Файлы и хранилища</h3><p>SFTP рядом с терминалом, двухпанельный менеджер, S3 и WebDAV, копирование напрямую между серверами.</p></div>
+      <div class="card"><div class="ico">🧮</div><h3>Базы данных</h3><p>MySQL, Redis и ClickHouse через SSH-туннель: таблицы, правка, запросы и AI-фильтры.</p></div>
+      <div class="card"><div class="ico">⚙️</div><h3>Автоматизации</h3><p>Бэкапы баз из готовых блоков — mysqldump, mydumper, XtraBackup, сжатие, шифрование age, в S3 — по расписанию и без вас.</p></div>
+      <div class="card"><div class="ico">✦</div><h3>AI-агент в сессиях</h3><p>Claude Code или Codex работают в ваших сессиях: режимы от «Строгого» до свободного, подтверждения, секреты маскируются.</p></div>
+      <div class="card"><div class="ico">🛶</div><h3>Туннели и строка меню</h3><p>Туннели и автоматизации работают в фоне: значок в строке меню показывает, что идёт, и включает туннели одним щелчком.</p></div>
+    </div>
+  </section>
+
+  <section id="screens">
+    <h2>Как это выглядит</h2>
+    <div class="gallery">
+      <figure><img src="assets/shots/ai.jpg" alt="AI-агент в сессии"><figcaption>AI-агент смотрит сервер и спрашивает разрешения на всё, что меняет.</figcaption></figure>
+      <figure><img src="assets/shots/dash.jpg" alt="Дашборд сервера"><figcaption>Дашборд сервера: нагрузка, память, диски, контейнеры и ошибки nginx.</figcaption></figure>
+      <figure><img src="assets/shots/nginx.jpg" alt="Nginx"><figcaption>Nginx: сайты, запросы, ошибки и время ответа — из access-логов.</figcaption></figure>
+      <figure><img src="assets/shots/steps.jpg" alt="Автоматизация бэкапа"><figcaption>Бэкап базы: дамп, сжатие, хранилище и ротация — по шагам.</figcaption></figure>
+    </div>
+  </section>
+
+  <section id="install" class="install">
+    <h2>Установка</h2>
+    <p class="sub">Приложение подписано, но пока не нотаризовано Apple, поэтому при первом запуске macOS попросит подтверждение.</p>
+    <ol>
+      <li>Скачайте <a href="https://github.com/kdanet/SSHkipper/releases/latest/download/SSHKipper.dmg">SSHKipper.dmg</a>, откройте его и перетащите SSHKipper в «Программы».</li>
+      <li>Запустите SSHKipper. Если macOS не откроет его: Системные настройки → Конфиденциальность и безопасность → «Всё равно открыть». Или в Терминале:
+        <pre>xattr -dr com.apple.quarantine /Applications/SSHKipper.app</pre></li>
+      <li>Создайте документ и задайте пароль. Свои хосты можно перенести: Файл → «Импорт из ~/.ssh/config…».</li>
+      <li>Дальше SSHKipper обновляется сам — новые версии приходят через встроенный механизм обновлений (Sparkle), подписанные ключом разработчика.</li>
+    </ol>
+  </section>
+
+  <footer>
+    SSHKipper · <a href="https://github.com/kdanet/SSHkipper/releases">Все релизы и что нового</a> · <a href="en/">English</a>
+  </footer>
+</div>
+</body>
+</html>
