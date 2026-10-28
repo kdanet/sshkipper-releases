@@ -210,6 +210,14 @@
         $$(app, '.js-card, .js-wait').forEach(function (x) { x.classList.remove('in'); });
         reveal($$(app, '.js-card, .js-wait'), tl, 0, 1100);
         tl.at(1400, function () { cam.ringOn(true); });
+      },
+      function (app, tl, cam) { tl.at(1150, function () { cam.ringOn(true); }); },
+      // the second model's verdict arrives in the card a moment after it
+      function (app, tl, cam) {
+        var rv = app.querySelector('.js-rv');
+        app.classList.add('play'); rv.classList.remove('in');
+        tl.at(1200, function () { rv.classList.add('in'); });
+        tl.at(1700, function () { cam.ringOn(true); });
       }
     ],
     services: [
@@ -282,8 +290,8 @@
   // With reduced motion each step shows its final state.
   var FINAL = {
     bastions: function (app, i) { app.classList.toggle('done', i === 2); app.classList.toggle('play', i === 0); lines(app).forEach(function (l) { l.classList.add('in'); }); },
-    agent: function (app) { app.classList.remove('play'); },
-    services: function (app, i) { seg(app, i === 1); },
+    agent: function (app) { app.classList.remove('play'); $$(app, '.js-rv').forEach(function (x) { x.classList.add('in'); }); },
+    services: function (app, i) { if (!app.classList.contains('frag')) seg(app, i === 1); },
     databases: function (app) { app.classList.remove('play'); },
     automations: function (app) { app.classList.remove('play'); }
   };
@@ -303,6 +311,7 @@
       cam.i = i;
       if (REDUCE) { (FINAL[id] || function () {})(cam.app, i); cam.place(false); cam.ringOn(true); return; }
       if (scenes[i]) scenes[i](cam.app, tl, cam, story);
+      else tl.at(1150, function () { cam.ringOn(true); });   // a still screen: only the ring
       cam.place(true);
       if (!auto) return;
       var b = btns[i]; b.style.setProperty('--dur', DUR[i] + 'ms'); void b.offsetWidth; b.classList.add('run');
