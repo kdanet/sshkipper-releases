@@ -1,0 +1,8 @@
+Fonts in assets/fonts/ (copied from Google Fonts, subset as served there):
+
+Inter — Copyright 2020 The Inter Project Authors (https://github.com/rsms/inter).
+JetBrains Mono — Copyright 2020 The JetBrains Mono Project Authors (https://github.com/JetBrains/JetBrainsMono).
+  Both are licensed under the SIL Open Font License, Version 1.1: https://openfontlicense.org
+
+Material Symbols — Copyright Google LLC (https://github.com/google/material-design-icons).
+  Licensed under the Apache License, Version 2.0: https://www.apache.org/licenses/LICENSE-2.0

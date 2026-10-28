@@ -84,7 +84,8 @@
   Cam.prototype.place = function (animate) {
     var st = this.steps[this.i], el = this.el, phone = PHONE.matches;
     if (!st || !el.clientWidth) return;
-    var R = rect(this.app, this.focus || st.focus) || { x: 0, y: 0, w: this.W, h: this.H };
+    // mfocus — what a phone frames instead, when the whole focus is too tall for its short screen
+    var R = rect(this.app, this.focus || (phone && st.mfocus) || st.focus) || { x: 0, y: 0, w: this.W, h: this.H };
     var cw = el.clientWidth, zoom, auto = false;
     if (phone && st.mzoom) zoom = st.mzoom;
     else if (st.zoom) zoom = st.zoom;
