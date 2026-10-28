@@ -463,7 +463,7 @@ h2.big { font-family: var(--sans); font-weight: 700; font-size: clamp(30px, 3.8v
 .app .ms { font-size: 16px; }
 .app .ms.sm { font-size: 14px; }
 .t-teal { color: var(--teal); } .t-orange { color: var(--orange); } .t-blue { color: var(--blue); } .t-ink2 { color: var(--ink2); }
-.t-purple { color: var(--purple); } .t-green { color: var(--green); }
+.t-purple { color: var(--purple); } .t-indigo { color: #6e6ad8; } .t-green { color: var(--green); }
 .a-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; flex: none; background: var(--ink3); }
 .a-dot.g { background: var(--green); } .a-dot.o { background: var(--orange); } .a-dot.r { background: var(--red); } .a-dot.gray { background: var(--ink3); width: 6px; height: 6px; }
 .a-lights { display: inline-flex; gap: 8px; flex: none; }
@@ -518,7 +518,7 @@ h2.big { font-family: var(--sans); font-weight: 700; font-size: clamp(30px, 3.8v
 .w-status { height: 31px; flex: none; background: var(--status); border-bottom: 1px solid var(--sep2); display: flex; align-items: center; gap: 7px; padding: 0 10px 0 12px; font-size: 12.5px; white-space: nowrap; }
 .w-status b { font-weight: 600; }
 .w-status b.o { color: var(--orange); }
-.w-status .chain { margin-left: 10px; color: var(--ink2); display: flex; align-items: center; gap: 5px; }
+.w-status .chain { margin-left: 10px; color: var(--ink2); display: flex; flex-direction: row; align-items: center; justify-content: flex-start; padding: 0; gap: 5px; white-space: nowrap; }
 .w-status .chain i { font-style: normal; opacity: .7; }
 .w-status .chain b { color: var(--ink); }
 .st-wait, .st-ok { display: inline-flex; align-items: center; gap: 7px; }
@@ -1089,3 +1089,37 @@ a.ba-row:hover .ba-now::after { opacity: 1; }
 .x-ok .ms { font-size: 18px; color: var(--green); }
 html[lang="en"] .srv .f-head, html[lang="en"] .srv .f-row { grid-template-columns: minmax(0, 1fr) 46px 110px 60px 86px; }
 html[lang="en"] .s3 .f-head, html[lang="en"] .s3 .f-row { grid-template-columns: minmax(0, 1fr) 54px 118px; }
+
+/* Files in three tiles: a close-up of one real part each */
+.ftiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; width: 100%; }
+.ftile { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.ftile h3 { margin: 0; font-size: 19px; line-height: 1.25; }
+.ftile p { margin: 0 0 10px; color: var(--ink2); font-size: 15px; line-height: 1.5; min-height: 3em; }
+.ftile .fit { width: 100%; }
+.app.frag { display: flex; flex-direction: column; background: var(--term); }
+.frag .w-status { flex: none; white-space: nowrap; overflow: hidden; }
+.frag .pill-on { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; border-radius: 6px; background: color-mix(in srgb, var(--blue) 18%, transparent); color: var(--blue); font-weight: 600; }
+.frag .pill-on .ms { font-size: 14px; }
+.t-split { flex: 1; min-height: 0; display: grid; grid-template-columns: 38% 62%; }
+.t-split .w-term { border-right: 1px solid var(--sep); padding-top: 8px; overflow: hidden; }
+.t-split .w-term .tl { white-space: pre; }
+.t-split.st { grid-template-columns: 42% 58%; }
+.t-split.st .w-side { border-right: 1px solid var(--sep); padding-top: 6px; }
+.frag .f-pane { display: flex; flex-direction: column; min-width: 0; min-height: 0; }
+.frag .f-pane .f-list { flex: 1; }
+.frag .f-bar .dim { color: var(--ink3); }
+.frag .f-bar .f-filter { width: 92px; }
+.frag .f-head, .frag .f-row { grid-template-columns: minmax(0, 1fr) 54px; }
+.frag .side .f-head, .frag .side .f-row { grid-template-columns: minmax(0, 1fr) 58px 92px; }
+html[lang="en"] .frag .side .f-head, html[lang="en"] .frag .side .f-row { grid-template-columns: minmax(0, 1fr) 50px 66px; }
+.frag .f-panes { flex: 1; min-height: 0; }
+.frag .f-pane.srv2 { border-right: 1px solid var(--sep); }
+.frag .f-row.f-sel { background: color-mix(in srgb, var(--blue) 22%, transparent); }
+.app.play.frag .f-new:not(.in) { display: none; }
+.x-panel.mini { height: 86px; }
+.x-panel.mini .x-row { padding: 7px 10px 5px; }
+@media (max-width: 1100px) {
+  .ftiles { grid-template-columns: minmax(0, 1fr); gap: 34px; max-width: 560px; margin: 0 auto; }
+  .ftile p { min-height: 0; }
+}
+
