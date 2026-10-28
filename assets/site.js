@@ -82,7 +82,9 @@
     fits.forEach(function (f) {
       var w = +f.dataset.w, h = +f.dataset.h;
       f.style.setProperty('--w', w); f.style.setProperty('--h', h);
-      var cw = f.clientWidth, s = Math.min(1, cw / w), x = 0;
+      // In a wide scene a big replica may grow a little past its design size (it is drawn, not a bitmap).
+      var big = f.closest('.scene.L2, .scene.L3');
+      var cw = f.clientWidth, s = Math.min(big ? 1.14 : 1, cw / w), x = 0;
       // A wide screen on a phone: keep it readable and show its focus part (data-fx) instead of shrinking it all.
       if (f.dataset.fx && s < 0.5) { s = 0.5; x = -Math.round((w * s - cw) * +f.dataset.fx); }
       f.style.setProperty('--s', s.toFixed(4));
@@ -107,7 +109,7 @@
       app.classList.remove('done'); app.classList.add('play');
       lines.forEach(function (l) { l.classList.remove('in'); });
       var t = 300;
-      lines.forEach(function (l, i) { tl.at(t, function () { l.classList.add('in'); }); t += i < 3 ? 1100 : 70; });
+      lines.forEach(function (l, i) { tl.at(t, function () { l.classList.add('in'); }); t += i < 4 ? 1000 : 70; });
       tl.at(t + 200, function () { app.classList.add('done'); });
       tl.at(t + 7000, loop);
     },
@@ -233,15 +235,57 @@
     if (pill && d) { pill.style.left = d.offsetLeft + 'px'; pill.style.width = d.offsetWidth + 'px'; }
   });
   if (REDUCE || !('IntersectionObserver' in window)) return;   // final states only (already in the markup)
-  $$(document, '.fit .app[data-kind]').forEach(function (app) {
-    var play = players[app.dataset.kind];
-    if (!play) return;
-    var tl = new Timeline(), running = false;
-    function loop() { tl.stop(); if (running) play(app, tl, loop); }
-    new IntersectionObserver(function (es) {
-      var vis = es[0].isIntersecting;
-      if (vis && !running) { running = true; loop(); }
-      else if (!vis && running) { running = false; tl.stop(); }
-    }, { threshold: 0.25 }).observe(app.parentNode);
+
+  /* ---------- Scenes: pain → path → solution, played once when they come into view ---------- */
+  // Each act starts when the previous one has finished AND the act itself is on screen (on a phone the acts sit
+  // one under another, so each plays when you reach it). The scene ends on its final state; «Play again» replays.
+  var NOTL = { at: function () {} }, noop = function () {};
+  $$(document, '.scene').forEach(function (fig) {
+    var acts = $$(fig, '.act'), app = fig.querySelector('.fit .app'), play = app && players[app.dataset.kind];
+    var steps = $$(fig, '.act-v [data-at]'), changers = $$(fig, '.act-v [data-cls]'), typed = $$(fig, '.act-v [data-type]');
+    var btn = fig.querySelector('.replay');
+    var tl = new Timeline(), vis = acts.map(function () { return false; }), pending = -1, started = false;
+    typed.forEach(function (x) { x.dataset.full = x.textContent; });
+    function ops(x) { return x.dataset.cls.split(/\s+/).map(function (o) { var p = o.split(':'); return { t: +p[0], c: p[1] }; }); }
+    function reset() {
+      tl.stop(); pending = -1;
+      fig.classList.add('play');
+      acts.forEach(function (a) { a.classList.remove('on', 'cur'); });
+      steps.forEach(function (x) { x.classList.remove('in'); });
+      changers.forEach(function (x) { ops(x).forEach(function (o) { x.classList.remove(o.c.replace(/^-/, '')); }); });
+      typed.forEach(function (x) { x.textContent = ''; });
+      if (play) play(app, NOTL, noop);      // the replica's own starting state
+    }
+    function start(i) {
+      var a = acts[i];
+      acts.forEach(function (b) { b.classList.remove('cur'); });
+      a.classList.add('on', 'cur');
+      if (a.classList.contains('fix')) { if (play) play(app, tl, noop); if (btn) btn.hidden = false; return; }
+      $$(a, '.act-v [data-at]').forEach(function (x) { tl.at(+x.dataset.at, function () { x.classList.add('in'); }); });
+      $$(a, '.act-v [data-cls]').forEach(function (x) {
+        ops(x).forEach(function (o) {
+          tl.at(o.t, function () { if (o.c.charAt(0) === '-') x.classList.remove(o.c.slice(1)); else x.classList.add(o.c); });
+        });
+      });
+      $$(a, '.act-v [data-type]').forEach(function (x) {
+        var host = x.closest('[data-at]'), t0 = (host ? +host.dataset.at : 0) + 150, full = x.dataset.full;
+        for (var k = 1; k <= full.length; k++) (function (k) { tl.at(t0 + k * 28, function () { x.textContent = full.slice(0, k); }); })(k);
+      });
+      tl.at(+a.dataset.dur || 1000, function () { next(i + 1); });
+    }
+    function next(i) { if (i >= acts.length) return; if (vis[i]) start(i); else pending = i; }
+    reset();
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) {
+        var i = acts.indexOf(en.target);
+        // a tall act counts as seen once it fills a good part of the window
+        vis[i] = en.isIntersecting && (en.intersectionRatio >= 0.35 || en.intersectionRect.height >= window.innerHeight * 0.45);
+        if (!vis[i]) return;
+        if (!started && i === 0) { started = true; start(0); }
+        else if (pending === i) { pending = -1; start(i); }
+      });
+    }, { threshold: [0, 0.1, 0.2, 0.35, 0.5] });
+    acts.forEach(function (a) { io.observe(a); });
+    if (btn) btn.addEventListener('click', function () { btn.hidden = true; reset(); start(0); });
   });
 })();

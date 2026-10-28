@@ -26,7 +26,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700;800&amp;display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..24,400..600,0..1,0&amp;icon_names=account_tree,add,apps,archive,arrow_forward,arrow_upward,auto_awesome,autorenew,check,check_circle,chevron_right,close,cloud_upload,code,content_copy,database,delete,deployed_code,dns,edit_square,expand_more,fit_screen,flag,folder,folder_open,grid_view,history,hub,info,inventory_2,key,keyboard_return,lan,language,laptop_mac,lock,lock_open,menu_book,more_horiz,open_in_full,person,play_arrow,refresh,sailing,schedule,search,sensors,settings,shield,speed,splitscreen_bottom,splitscreen_right,stop,swap_horiz,table,terminal,travel_explore,unfold_more,verified_user,view_sidebar,zoom_in,zoom_out&amp;display=block">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..24,400..600,0..1,0&amp;icon_names=account_tree,add,apps,archive,arrow_forward,arrow_upward,auto_awesome,autorenew,check,check_circle,chevron_right,close,cloud_upload,code,content_copy,database,delete,deployed_code,description,dns,edit_square,expand_more,fit_screen,flag,folder,folder_open,grid_view,history,hub,info,inventory_2,key,keyboard_return,lan,language,laptop_mac,lock,lock_open,menu_book,more_horiz,open_in_full,person,play_arrow,refresh,sailing,schedule,search,sensors,settings,shield,speed,splitscreen_bottom,splitscreen_right,stop,swap_horiz,table,terminal,travel_explore,unfold_more,verified_user,view_sidebar,zoom_in,zoom_out&amp;display=block">
 <link rel="stylesheet" href="assets/site.css">
 <script src="assets/site.js" defer></script>
 </head>
@@ -70,19 +70,26 @@
     <li><a href="#sc-route"><span>09</span>Маршрут, профили, Tailscale</a></li>
     <li><a href="#sc-security"><span>10</span>Документ и безопасность</a></li>
   </ol></nav>
-  <section id="sc-bastions" class="sc full" aria-labelledby="sc-bastions-h">
+  <section id="sc-bastions" class="sc" aria-labelledby="sc-bastions-h">
     <div class="sc-text">
       <p class="eyebrow"><span>01</span>Бастионы и 2FA</p>
       <h2 id="sc-bastions-h">Двойной щелчок — и вы на сервере за двумя бастионами</h2>
-      <p class="sc-lead">SSHKipper сам проходит всю цепочку и подставляет коды 2FA: ключ, ключ с кодом, пароль с кодом. Никаких окон и телефона в руке — строка вкладки показывает, через какие серверы вы прошли.</p>
-      <ul class="proofs">
-        <li><b>Цепочка любой длины</b><span>Бастион может идти через другой бастион, первый — через SOCKS5 или HTTP-прокси.</span></li>
-        <li><b>Коды без телефона</b><span>Секрет TOTP — из base32, otpauth://, экспорта Google Authenticator или QR-кода. Повторный вход ждёт свежий код.</span></li>
-        <li><b>Один вход на сервер</b><span>Вкладки, сплиты, файлы, Docker и базы одного сервера идут через одно соединение — без второй 2FA.</span></li>
-      </ul>
+      <p class="sc-lead">SSHKipper сам проходит всю цепочку и отвечает на каждом сервере сам: ключ, пароль и код 2FA для каждого звена. Никаких окон и телефона в руке — строка вкладки показывает, через какие серверы вы прошли.</p>
     </div>
-    <figure class="sc-vis">
-      <div class="fit" data-w="1180" data-h="600" data-fx="0" aria-hidden="true"><div class="app win done" data-kind="bastions" style="width:1180px;height:600px">
+    <figure class="scene L3" data-scene="bastions">
+      <div class="act pain" data-dur="12200">
+        <p class="act-l"><i>1</i>Без SSHKipper</p>
+        <div class="act-v" aria-hidden="true"><div class="pain-row"><div class="mt big"><div class="mt-bar"><span class="mt-dots"><i></i><i></i><i></i></span><span class="mt-title">you — ssh — 112×30</span></div><div class="mt-body"><div class="ml" data-at="0"><span class="mpr">you@MacBook-Pro ~ % </span><span data-type>ssh -J ops@bastion-msk,ops@jump-prod deploy@web-01</span></div><div class="ml" data-at="2300">(ops@bastion-msk) Verification code: </div><div class="ml" data-at="4300">(ops@jump-prod) Verification code: </div><div class="ml" data-at="6600">(ops@jump-prod) Verification code: <span class="nt-s r" data-at="6800">ошиблись цифрой — ещё раз</span></div><div class="ml" data-at="8400">(deploy@web-01) Password: </div><div class="ml" data-at="9400">(deploy@web-01) Verification code: </div><div class="ml" data-at="11000">Linux web-01 6.12.48+deb13-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.12.48-1 x86_64</div><div class="ml" data-at="11050">Last login: Wed Oct 28 09:12:44 2026 from 10.20.0.5</div><div class="ml" data-at="11100"><span class="mpr">deploy@web-01:~$ </span><i class="mcur"></i></div></div></div><div class="phone"><div class="ph-notch"></div><div class="ph-h">Authenticator</div><div class="ph-r" data-cls="2300:hot 4100:-hot"><div class="ph-t"><span>bastion-msk</span><em>ops</em></div><div class="ph-c"><b class="was" data-cls="6400:gone">481 927</b><b class="now">093 615</b><svg class="ring" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8"/><circle class="rf" cx="10" cy="10" r="8"/></svg></div></div><div class="ph-r" data-cls="4300:hot 8200:-hot"><div class="ph-t"><span>jump-prod</span><em>ops</em></div><div class="ph-c"><b class="was" data-cls="6400:gone">305 118</b><b class="now">772 640</b><svg class="ring" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8"/><circle class="rf" cx="10" cy="10" r="8"/></svg></div></div><div class="ph-r" data-cls="9400:hot 10900:-hot"><div class="ph-t"><span>web-01</span><em>deploy</em></div><div class="ph-c"><b class="was" data-cls="6400:gone">916 204</b><b class="now">258 731</b><svg class="ring" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8"/><circle class="rf" cx="10" cy="10" r="8"/></svg></div></div></div></div></div>
+        <p class="act-c">Каждый вход — три кода с телефона и пароль. Код живёт 30 секунд: ошиблись цифрой — ждите и вводите снова.</p>
+      </div>
+      <div class="act path" data-dur="5000">
+        <p class="act-l"><i>2</i>Путь до web-01: у каждого сервера — своя 2FA</p>
+        <div class="act-v" aria-hidden="true"><div class="chain"><div class="dn mac" data-at="0"><span>Этот Mac</span><i></i></div><i class="dl grey" data-at="500"></i><div class="hopw"><div class="dn hop" data-at="900"><span class="dn-i"><span class="ms">dns</span></span><div class="dn-t"><b>bastion-msk</b><code>ops@bastion.northwind.corp</code><div class=dchips><span class="dchip "><span class="ms f">key</span>ключ</span><span class="dchip "><span class="ms f">verified_user</span>код 2FA — сам</span></div><span class="dn-f">из «ops-2fa»</span></div></div><span class="dbadge" data-at="1400"><span class="ms f">check</span>код подставлен</span></div><i class="dl" data-at="1900"></i><div class="hopw"><div class="dn hop" data-at="2300"><span class="dn-i"><span class="ms">dns</span></span><div class="dn-t"><b>jump-prod</b><code>ops@jump-prod</code><div class=dchips><span class="dchip "><span class="ms f">key</span>ключ</span><span class="dchip "><span class="ms f">verified_user</span>код 2FA — сам</span></div><span class="dn-f">из «ops-2fa»</span></div></div><span class="dbadge" data-at="2800"><span class="ms f">check</span>код подставлен</span></div><i class="dl" data-at="3300"></i><div class="hopw"><div class="dn hop" data-at="3700"><span class="dn-i"><span class="ms">dns</span></span><div class="dn-t"><b>web-01</b><code>deploy@web-01</code><div class=dchips><span class="dchip y"><span class="ms f">key</span>пароль</span><span class="dchip "><span class="ms f">verified_user</span>код 2FA — сам</span></div><span class="dn-f">из «deploy»</span></div></div><span class="dbadge" data-at="4200"><span class="ms f">check</span>пароль и код подставлены</span></div></div></div>
+        <p class="act-c">Ключи, пароль и секреты TOTP лежат в документе. SSHKipper отвечает на каждый запрос цепочки сам.</p>
+      </div>
+      <div class="act fix" style="--fw:1180">
+        <p class="act-l"><i>3</i>В SSHKipper</p>
+        <div class="fit" data-w="1180" data-h="600" data-fx="0" aria-hidden="true"><div class="app win done" data-kind="bastions" style="width:1180px;height:600px">
 <div class="w-side">
   <div class="w-tl"><span class="a-lights"><i></i><i></i><i></i></span><span class="a-rb"><span class="ms">view_sidebar</span></span><span class="a-rb w2"><span class="ms">add</span><span class="ms sm">expand_more</span></span></div>
   <div class="w-search"><span class="ms">search</span>Поиск подключений</div>
@@ -99,24 +106,39 @@
     <span class="chain">bastion-msk<i>›</i>jump-prod<i>›</i><b>deploy@web-01</b></span>
     <span class="st-r"><span><span class="ms">auto_awesome</span>AI выкл</span><span><span class="ms">folder</span>Файлы</span><i class="vs"></i><span class="ms">splitscreen_right</span><span class="ms">splitscreen_bottom</span><span class="ms">more_horiz</span></span>
   </div>
-  <div class="w-term js-lines"><div class="tl dim">Подключение к web-01…</div><div class="tl dim">✓ Код 2FA для ops@jump-prod (jump-prod) подставлен автоматически из «ops-2fa»</div><div class="tl dim">✓ Код 2FA для deploy@web-01 (web-01) подставлен автоматически из «deploy»</div><div class="tl ">Linux web-01 6.12.48+deb13-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.12.48-1 x86_64</div><div class="tl ">&nbsp;</div><div class="tl ">The programs included with the Debian GNU/Linux system are free software;</div><div class="tl ">the exact distribution terms for each program are described in the</div><div class="tl ">individual files in /usr/share/doc/*/copyright.</div><div class="tl ">&nbsp;</div><div class="tl ">Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent</div><div class="tl ">permitted by applicable law.</div><div class="tl ">Last login: Wed Oct 28 09:12:44 2026 from 10.20.0.5</div><div class="tl"><b class="pg">deploy@web-01</b>:<b class="pb">~</b>$ <i class="a-cur"></i></div></div>
+  <div class="w-term js-lines"><div class="tl dim">Подключение к web-01…</div><div class="tl dim">✓ Код 2FA для ops@bastion-msk (bastion-msk) подставлен автоматически из «ops-2fa»</div><div class="tl dim">✓ Код 2FA для ops@jump-prod (jump-prod) подставлен автоматически из «ops-2fa»</div><div class="tl dim">✓ Код 2FA для deploy@web-01 (web-01) подставлен автоматически из «deploy»</div><div class="tl ">Linux web-01 6.12.48+deb13-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.12.48-1 x86_64</div><div class="tl ">&nbsp;</div><div class="tl ">The programs included with the Debian GNU/Linux system are free software;</div><div class="tl ">the exact distribution terms for each program are described in the</div><div class="tl ">individual files in /usr/share/doc/*/copyright.</div><div class="tl ">&nbsp;</div><div class="tl ">Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent</div><div class="tl ">permitted by applicable law.</div><div class="tl ">Last login: Wed Oct 28 09:12:44 2026 from 10.20.0.5</div><div class="tl"><b class="pg">deploy@web-01</b>:<b class="pb">~</b>$ <i class="a-cur"></i></div></div>
 </div></div></div>
+        <p class="act-c">Двойной щелчок по web-01 — коды всех трёх серверов подставлены, строка вкладки показывает пройденную цепочку.</p>
+      </div>
       <figcaption class="visually-hidden">Копия экрана SSHKipper: Окно SSHKipper: дерево подключений, вкладка web-01 подключается через bastion-msk и jump-prod, в терминале — строки о кодах 2FA, подставленных автоматически.</figcaption>
+      <button class="replay" type="button" hidden><span class="ms">refresh</span><span>Показать ещё раз</span></button>
     </figure>
+    <ul class="proofs">
+      <li><b>Цепочка любой длины</b><span>Бастион может идти через другой бастион, первый — через SOCKS5 или HTTP-прокси.</span></li>
+      <li><b>Коды без телефона</b><span>Секрет TOTP — из base32, otpauth://, экспорта Google Authenticator или QR-кода. Повторный вход ждёт свежий код.</span></li>
+      <li><b>Один вход на сервер</b><span>Вкладки, сплиты, файлы, Docker и базы одного сервера идут через одно соединение — без второй 2FA.</span></li>
+    </ul>
   </section>
-  <section id="sc-agent" class="sc full" aria-labelledby="sc-agent-h">
+  <section id="sc-agent" class="sc" aria-labelledby="sc-agent-h">
     <div class="sc-text">
       <p class="eyebrow"><span>02</span>AI-агент в ваших сессиях</p>
       <h2 id="sc-agent-h">Агент разбирается в сервере сам — и спрашивает, прежде чем что-то менять</h2>
       <p class="sc-lead">Логи, нагрузку и контейнеры он смотрит без вас, но паролей, ключей и адресов не получает. Команду, которая меняет сервер, показывает карточкой: что, зачем и чем рискованно.</p>
-      <ul class="proofs">
-        <li><b>Четыре режима доступа</b><span>Строгий, Только чтение, Безопасная запись, Без ограничений — на сервер или папку. Production спрашивает всегда.</span></li>
-        <li><b>Каждая команда на виду</b><span>Под терминалом — команды агента с причиной, выводом и кодом выхода. Ваша оболочка не меняется.</span></li>
-        <li><b>Ваши модели и агенты</b><span>Claude Code, Codex, Cursor, ACP-агенты или API, включая Ollama. Внешним агентам — MCP с теми же правилами.</span></li>
-      </ul>
     </div>
-    <figure class="sc-vis">
-      <div class="fit" data-w="1180" data-h="700" data-fx="1" aria-hidden="true"><div class="app aiwin" data-kind="agent" style="width:1180px;height:700px">
+    <figure class="scene L2" data-scene="agent">
+      <div class="act pain" data-dur="8400">
+        <p class="act-l"><i>1</i>Без SSHKipper</p>
+        <div class="act-v" aria-hidden="true"><div class="pain-stack"><div class="mt big"><div class="mt-bar"><span class="mt-dots"><i></i><i></i><i></i></span><span class="mt-title">deploy — ssh — 104×22</span></div><div class="mt-body"><div class="ml"><span class="clock">03:12</span></div><div class="ml" data-at="0"><span class="mpr">deploy@web-01:~$ </span><span data-type>uptime</span></div><div class="ml" data-at="700"> 03:12:07 up 41 days, 23:49,  1 user,  load average: 7.84, 6.91, 5.02</div><div class="ml" data-at="1100"><span class="mpr">deploy@web-01:~$ </span><span data-type>docker stats --no-stream</span></div><div class="ml clip tbl" data-at="2000">CONTAINER ID   NAME           CPU %     MEM USAGE / LIMIT   MEM %</div><div class="ml clip tbl" data-at="2050">3f1c9a2e7b10   queue-worker   184.20%   3.1GiB / 4GiB       77.50%</div><div class="ml clip tbl" data-at="2100">a8d24f6c0e93   web            4.10%     410MiB / 2GiB       20.02%</div><div class="ml" data-at="2500"><span class="mpr">deploy@web-01:~$ </span><span data-type>journalctl -u docker --since &quot;-30min&quot; | tail -1</span></div><div class="ml clip" data-at="4000">Oct 28 03:09:41 web-01 dockerd[812]: level=warning msg=&quot;Health check for container 3f1c9a2e7b10 error: context deadline exceeded&quot;</div><div class="ml" data-at="4400"><span class="mpr">deploy@web-01:~$ </span><span data-type>docker logs --since 30m queue-worker | tail -1</span></div><div class="ml clip" data-at="5800">[03:11:58] ERROR Retry 4/5: mysql://app:<mark>Xk7#pQ2v9Lm</mark>@db-01:3306/northwind — Lock wait timeout exceeded</div><div class="ml" data-at="5900"><span class="mpr">deploy@web-01:~$ </span><i class="mcur"></i></div></div></div><div class="chat" data-at="6600"><div class="chat-h">Чат с AI в браузере</div><div class="chat-m">Почему тормозит? Вот логи:<code>Retry 4/5: mysql://app:<mark>Xk7#pQ2v9Lm</mark>@db-01…</code></div><span class="nt-s r" data-at="7400">пароль базы — уже в чате</span></div></div></div>
+        <p class="act-c">Три часа ночи: команда за командой, потом логи — в чат. Вместе с паролем из строки подключения.</p>
+      </div>
+      <div class="act path" data-dur="3800">
+        <p class="act-l"><i>2</i>Агент ходит на сервер через SSHKipper</p>
+        <div class="act-v" aria-hidden="true"><div class="seq"><div class="seq-h"><span><span class="ms">auto_awesome</span>Агент</span><span class="mid"><span class="ms">shield</span>SSHKipper</span><span><span class="ms">dns</span>web-01</span></div><div class="seq-r" data-at="0"><i class="sa r2"></i><code>uptime · docker stats · docker logs</code><em>чтение — можно сразу</em></div><div class="seq-r back" data-at="1200"><i class="sa l2"></i><code>mysql://app:<b>[REDACTED: password]</b>@db-01…</code><em>вывод — после маскировки</em></div><div class="seq-r stop" data-at="2600"><i class="sa r1"></i><code>docker restart queue-worker</code><em>меняет сервер — ждёт вашего решения</em></div></div></div>
+        <p class="act-c">Чтение — по режиму доступа, вывод — без секретов, изменения — только с вашего согласия.</p>
+      </div>
+      <div class="act fix" style="--fw:1180">
+        <p class="act-l"><i>3</i>В SSHKipper</p>
+        <div class="fit" data-w="1180" data-h="700" data-fx="1" aria-hidden="true"><div class="app aiwin" data-kind="agent" style="width:1180px;height:700px">
 <div class="w-bar full"><span class="a-lights"><i></i><i></i><i></i></span><span class="a-rb"><span class="ms">view_sidebar</span></span><span class="a-rb w2"><span class="ms">add</span><span class="ms sm">expand_more</span></span>
   <span class="w-title">web-01</span><span class="sp"></span><span class="a-rb on"><span class="ms">auto_awesome</span></span></div>
 <div class="ai-body">
@@ -128,9 +150,9 @@
   <div class="w-term sm"><div class="tl">Last login: Wed Oct 28 09:12:44 2026 from 10.20.0.5</div><div class="tl"><b class="pg">deploy@web-01</b>:<b class="pb">~</b>$ <i class="a-cur"></i></div></div>
   <div class="cmds">
     <div class="cmds-h"><span class="ms t-purple">auto_awesome</span><b>Команды агента</b><span class="n">2</span><span class="note">отдельный канал — ваша оболочка не меняется</span><span class="ms">delete</span><span class="ms">expand_more</span><span class="ms">close</span></div>
-    <div class="cmd js-cmd" data-at="3"><i class="a-dot g"></i><code>uptime</code><span class="who">Claude API</span><span class="tm">0,1 с</span><span class="ok">код 0</span><span class="ms">expand_more</span></div>
-    <div class="cmd-x js-cmd" data-at="3"><span>Смотрю нагрузку</span><pre> 09:24:51 up 41 days,  6:02,  1 user,  load average: 0.82, 0.79, 0.77</pre></div>
-    <div class="cmd js-cmd" data-at="4"><i class="a-dot g"></i><code>free -h</code><span class="who">Claude API</span><span class="tm">0,1 с</span><span class="ok">код 0</span><span class="ms">chevron_right</span></div>
+    <div class="cmd js-cmd" data-at="3"><i class="a-dot g"></i><code>uptime</code><span class="who">Claude API</span><span class="tm">0,1 с</span><span class="ok">код 0</span><span class="ms">chevron_right</span></div>
+    <div class="cmd js-cmd" data-at="5"><i class="a-dot g"></i><code>docker logs --since 30m queue-worker | tail -50</code><span class="who">Claude API</span><span class="tm">0,9 с</span><span class="ok">код 0</span><span class="ms">expand_more</span></div>
+    <div class="cmd-x js-cmd" data-at="5"><span>Ищу ошибки воркера</span><pre>[03:11:58] ERROR Retry 4/5: mysql://app:[REDACTED: password]@db-01:3306/northwind — Lock wait timeout exceeded</pre></div>
   </div>
  </div>
  <div class="ai-panel">
@@ -139,7 +161,7 @@
   <div class="ai-feed">
     <div class="ai-q">Почему сервер тормозит? Проверь нагрузку и память</div>
     <div class="ai-who"><svg class="a-claude" viewBox="0 0 16 16"><rect width="16" height="16" rx="3.5" fill="#d97757"/><g stroke="#fff" stroke-width="1.6" stroke-linecap="round"><path d="M8 3.2v9.6M3.2 8h9.6M4.6 4.6l6.8 6.8M11.4 4.6l-6.8 6.8"/></g></svg><b>Claude API</b><span class="o js-wait">ждёт решения</span></div>
-    <div class="ai-steps"><div class="ai-st first"><i class="a-dot gray"></i><span>Смотрю нагрузку и процессы.</span></div><div class="ai-st js-step"><i class="a-dot g"></i><span class="k">Сессии</span><code>web-01</code><span class="tm">0,1 с</span><span class="ms">chevron_right</span></div><div class="ai-st js-step"><i class="a-dot g"></i><span class="k">Контейнеры</span><code>web-01</code><span class="tm">0,6 с</span><span class="ms">chevron_right</span></div><div class="ai-st js-step"><i class="a-dot g"></i><span class="k">Команда</span><code>uptime</code><span class="tm">0,4 с</span><span class="ms">chevron_right</span></div><div class="ai-st js-step"><i class="a-dot g"></i><span class="k">Команда</span><code>free -h</code><span class="tm">0,3 с</span><span class="ms">chevron_right</span></div><div class="ai-st js-step"><i class="a-dot g"></i><span class="k">Контейнеры</span><code>docker stats --no-stream</code><span class="tm">2,1 с</span><span class="ms">chevron_right</span></div>
+    <div class="ai-steps"><div class="ai-st first"><i class="a-dot gray"></i><span>Смотрю нагрузку и процессы.</span></div><div class="ai-st js-step"><i class="a-dot g"></i><span class="k">Сессии</span><code>web-01</code><span class="tm">0,1 с</span><span class="ms">chevron_right</span></div><div class="ai-st js-step"><i class="a-dot g"></i><span class="k">Контейнеры</span><code>web-01</code><span class="tm">0,6 с</span><span class="ms">chevron_right</span></div><div class="ai-st js-step"><i class="a-dot g"></i><span class="k">Команда</span><code>uptime</code><span class="tm">0,4 с</span><span class="ms">chevron_right</span></div><div class="ai-st js-step"><i class="a-dot g"></i><span class="k">Контейнеры</span><code>docker stats --no-stream</code><span class="tm">2,1 с</span><span class="ms">chevron_right</span></div><div class="ai-st js-step"><i class="a-dot g"></i><span class="k">Команда</span><code>docker logs --since 30m queue-worker | tail -50</code><span class="tm">0,9 с</span><span class="ms">chevron_right</span></div>
       <div class="ai-card js-card"><i class="a-dot r"></i>
         <div class="c-h"><b>Перезапустить queue-worker?</b><span class="bad">опасно</span></div>
         <div class="c-s">Claude API · web-01</div>
@@ -155,22 +177,37 @@
     <div class="ai-m"><svg class="a-claude" viewBox="0 0 16 16"><rect width="16" height="16" rx="3.5" fill="#d97757"/><g stroke="#fff" stroke-width="1.6" stroke-linecap="round"><path d="M8 3.2v9.6M3.2 8h9.6M4.6 4.6l6.8 6.8M11.4 4.6l-6.8 6.8"/></g></svg><span>Claude Opus 5.5</span><span class="g">· средняя</span><span class="ms sm">expand_more</span><span class="sp"></span><span class="ai-stop"><span class="ms f">stop</span></span></div></div>
  </div>
 </div></div></div>
+        <p class="act-c">Каждая команда агента видна под терминалом, секрет в выводе замаскирован, перезапуск ждёт кнопки.</p>
+      </div>
       <figcaption class="visually-hidden">Копия экрана SSHKipper: Терминал web-01 с блоком «Команды агента» и AI-панель: агент проверил нагрузку и просит разрешения перезапустить контейнер — карточка помечена «опасно».</figcaption>
+      <button class="replay" type="button" hidden><span class="ms">refresh</span><span>Показать ещё раз</span></button>
     </figure>
+    <ul class="proofs">
+      <li><b>Четыре режима доступа</b><span>Строгий, Только чтение, Безопасная запись, Без ограничений — на сервер или папку. Production спрашивает всегда.</span></li>
+      <li><b>Каждая команда на виду</b><span>Под терминалом — команды агента с причиной, выводом и кодом выхода. Ваша оболочка не меняется.</span></li>
+      <li><b>Ваши модели и агенты</b><span>Claude Code, Codex, Cursor, ACP-агенты или API, включая Ollama. Внешним агентам — MCP с теми же правилами.</span></li>
+    </ul>
   </section>
-  <section id="sc-services" class="sc full" aria-labelledby="sc-services-h">
+  <section id="sc-services" class="sc" aria-labelledby="sc-services-h">
     <div class="sc-text">
       <p class="eyebrow"><span>03</span>Службы и дашборд</p>
       <h2 id="sc-services-h">Сервер раскрывается в свои службы</h2>
       <p class="sc-lead">Дашборд, Docker, Nginx, Caddy, Cron, Supervisor и Firewall — на одной вкладке сервера, по тому же SSH и через те же бастионы. Проблемы видны одной строкой сверху.</p>
-      <ul class="proofs">
-        <li><b>Nginx без root</b><span>Запросы в минуту, 2xx/4xx/5xx, p95, медленные маршруты и ошибки — прямо из логов.</span></li>
-        <li><b>Свои виджеты</b><span>Метрика, свой скрипт с порогами или виджет по описанию словами для AI.</span></li>
-        <li><b>Действия с подтверждением</b><span>Перезапуск в Docker и Supervisor, reload nginx после проверки конфигурации, логи потоком.</span></li>
-      </ul>
     </div>
-    <figure class="sc-vis">
-      <div class="fit" data-w="1180" data-h="690" data-fx="0" aria-hidden="true"><div class="app page" data-kind="services" style="width:1180px;height:690px">
+    <figure class="scene L2" data-scene="services">
+      <div class="act pain" data-dur="6800">
+        <p class="act-l"><i>1</i>Без SSHKipper</p>
+        <div class="act-v" aria-hidden="true"><div class="grid4"><div class="mt sm"><div class="mt-bar"><span class="mt-dots"><i></i><i></i><i></i></span><span class="mt-title">deploy — ssh — docker</span></div><div class="mt-body"><div class="ml" data-at="0"><span class="mpr">deploy@web-01:~$ </span><span data-type>docker ps --format &#x27;table {{.Names}}\t{{.Status}}&#x27;</span></div><div class="ml" data-at="1300">NAMES          STATUS</div><div class="ml" data-at="1320">web            Up 6 days</div><div class="ml hl" data-at="1340">queue-worker   Up 2 hours (unhealthy)</div><div class="ml" data-at="1360">redis          Up 6 days</div></div></div><div class="mt sm"><div class="mt-bar"><span class="mt-dots"><i></i><i></i><i></i></span><span class="mt-title">deploy — ssh — nginx</span></div><div class="mt-body"><div class="ml" data-at="1500"><span class="mpr">deploy@web-01:~$ </span><span data-type>sudo tail -n 2000 /var/log/nginx/access.log | awk &#x27;{print $9}&#x27; | sort | uniq -c | sort -rn</span></div><div class="ml" data-at="3700">[sudo] password for deploy: </div><div class="ml" data-at="4300">   1556 200</div><div class="ml hl" data-at="4320">    206 502</div><div class="ml hl" data-at="4340">    125 500</div><div class="ml" data-at="4360">     92 404</div></div></div><div class="mt sm"><div class="mt-bar"><span class="mt-dots"><i></i><i></i><i></i></span><span class="mt-title">deploy — ssh — cron</span></div><div class="mt-body"><div class="ml" data-at="4600"><span class="mpr">deploy@web-01:~$ </span><span data-type>crontab -l</span></div><div class="ml" data-at="5000"># m h  dom mon dow   command</div><div class="ml" data-at="5020">30 3 * * * /opt/backup/mysql.sh &gt;&gt; /var/log/backup.log 2&gt;&amp;1</div><div class="ml" data-at="5040">*/5 * * * * /usr/local/bin/healthcheck.sh</div></div></div><div class="mt sm"><div class="mt-bar"><span class="mt-dots"><i></i><i></i><i></i></span><span class="mt-title">deploy — ssh — supervisor</span></div><div class="mt-body"><div class="ml" data-at="5300"><span class="mpr">deploy@web-01:~$ </span><span data-type>sudo supervisorctl status</span></div><div class="ml" data-at="6000">queue:worker_00   RUNNING   pid 21877, uptime 2:04:11</div><div class="ml" data-at="6020">queue:worker_01   RUNNING   pid 21878, uptime 2:04:11</div><div class="ml hl" data-at="6040">scheduler         FATAL     Exited too quickly (process log may have details)</div></div></div></div></div>
+        <p class="act-c">Четыре окна, sudo и awk, чтобы понять, что с сервером, — и картина всё равно по кусочкам.</p>
+      </div>
+      <div class="act path" data-dur="2600">
+        <p class="act-l"><i>2</i>Те же команды — SSHKipper запускает их сам</p>
+        <div class="act-v" aria-hidden="true"><div class="fan"><div class="fan-l"><div class="fsrc" data-at="0"><span class="ms">deployed_code</span><code>docker ps · logs</code></div><div class="fsrc" data-at="300"><span class="ms">description</span><code>логи nginx</code></div><div class="fsrc" data-at="600"><span class="ms">schedule</span><code>crontab · /etc/cron.d</code></div><div class="fsrc" data-at="900"><span class="ms">settings</span><code>supervisorctl</code></div></div><div class="fan-m" data-at="1300"><span class="ms">arrow_forward</span><span>SSH</span><em>через те же бастионы</em></div><div class="fan-r" data-at="1800"><b>web-01</b><span>Дашборд · Docker · Nginx · Cron · Supervisor</span><em>одна вкладка, проблемы — одной строкой сверху</em></div></div></div>
+        <p class="act-c">Только SSH и обычные команды сервера; nginx читается без root, sudo — если вы его включите.</p>
+      </div>
+      <div class="act fix" style="--fw:1180">
+        <p class="act-l"><i>3</i>В SSHKipper</p>
+        <div class="fit" data-w="1180" data-h="690" data-fx="0" aria-hidden="true"><div class="app page" data-kind="services" style="width:1180px;height:690px">
 <div class="pg-h"><span class="ms t-ink2">dns</span><b>web-01</b><span class="segs"><i class="segpill"></i><span class="sg js-dash">Дашборд</span><span class="sg">Docker</span><span class="sg js-nginx">Nginx<i class=rdot></i></span><span class="sg">Cron</span><span class="sg">Supervisor<i class=rdot></i></span></span><span class="ms rb">refresh</span><span class="ms rb">more_horiz</span></div>
 <div class="pg-views"><div class="pg-v v-dash">
 <div class="pg-title">Дашборд</div>
@@ -199,22 +236,37 @@
     <div class="sl hd"><span>Путь</span><span>p95</span><span>макс.</span><span>раз</span></div>
     <div class="sl"><span><code>/reports/export</code><i></i></span><b class="o">1,2 с</b><span>1,2 с</span><span>174</span></div></div>
 </div></div></div></div></div>
+        <p class="act-c">Дашборд и Nginx — в одной вкладке web-01: числа, график, медленные маршруты.</p>
+      </div>
       <figcaption class="visually-hidden">Копия экрана SSHKipper: Страница служб сервера web-01: дашборд с нагрузкой, CPU, памятью и дисками, затем страница Nginx с запросами в минуту, долей ошибок 5xx и медленными маршрутами.</figcaption>
+      <button class="replay" type="button" hidden><span class="ms">refresh</span><span>Показать ещё раз</span></button>
     </figure>
+    <ul class="proofs">
+      <li><b>Nginx без root</b><span>Запросы в минуту, 2xx/4xx/5xx, p95, медленные маршруты и ошибки — прямо из логов.</span></li>
+      <li><b>Свои виджеты</b><span>Метрика, свой скрипт с порогами или виджет по описанию словами для AI.</span></li>
+      <li><b>Действия с подтверждением</b><span>Перезапуск в Docker и Supervisor, reload nginx после проверки конфигурации, логи потоком.</span></li>
+    </ul>
   </section>
-  <section id="sc-databases" class="sc full" aria-labelledby="sc-databases-h">
+  <section id="sc-databases" class="sc" aria-labelledby="sc-databases-h">
     <div class="sc-text">
       <p class="eyebrow"><span>04</span>Базы данных</p>
       <h2 id="sc-databases-h">Базы за бастионами — без ручных туннелей</h2>
       <p class="sc-lead">MySQL, PostgreSQL, Redis, ClickHouse, MongoDB и SQLite открываются через ту же цепочку, что и терминал. Таблицы с правкой, редактор запросов, схема — и фильтр, который понимает слова.</p>
-      <ul class="proofs">
-        <li><b>Фильтр словами</b><span>Фраза становится условием WHERE, которое можно поправить. Модель видит только колонки, а не строки.</span></li>
-        <li><b>Production под защитой</b><span>Каждое изменение — окном с полным SQL и проверкой AI по кнопке. «Только чтение» запрещает изменения совсем.</span></li>
-        <li><b>Правка таблиц</b><span>Ячейки и строки с показом SQL и записью одной транзакцией; экспорт CSV и JSON.</span></li>
-      </ul>
     </div>
-    <figure class="sc-vis">
-      <div class="fit" data-w="1180" data-h="660" data-fx="0.55" aria-hidden="true"><div class="app dbwin" data-kind="databases" style="width:1180px;height:660px">
+    <figure class="scene L2" data-scene="databases">
+      <div class="act pain" data-dur="8000">
+        <p class="act-l"><i>1</i>Без SSHKipper</p>
+        <div class="act-v" aria-hidden="true"><div class="pain-row"><div class="mt big"><div class="mt-bar"><span class="mt-dots"><i></i><i></i><i></i></span><span class="mt-title">you — ssh — 96×12</span></div><div class="mt-body"><div class="ml" data-at="0"><span class="mpr">you@MacBook-Pro ~ % </span><span data-type>ssh -N -L 13306:db-01:3306 -J ops@bastion-msk,ops@jump-prod deploy@web-01</span></div><div class="ml" data-at="2400">(ops@bastion-msk) Verification code: </div><div class="ml" data-at="3300">(ops@jump-prod) Verification code: </div><div class="ml" data-at="4200">(deploy@web-01) Password: </div><div class="ml" data-at="4900">(deploy@web-01) Verification code: </div><div class="ml" data-at="5600"><i class="mcur"></i> <span class="nt-s" data-at="5700">окно не закрывать — туннель живёт, пока оно открыто</span></div></div></div><div class="pain-side"><div class="dbform" data-at="6500"><div class="dbf-h">Клиент БД · новое подключение</div><div class="dbf"><span>Host</span><b>127.0.0.1</b></div><div class="dbf"><span>Port</span><b>13306</b></div><div class="dbf"><span>User</span><b>app</b></div><div class="dbf"><span>Password</span><b>••••••••••</b></div></div><div class="sticky" data-at="7200"><div>13306 — prod</div><div>13307 — stage?</div><div>13308 — ???</div></div></div></div></div>
+        <p class="act-c">Туннель держит отдельный терминал, порты — на стикере. Перепутали 13306 и 13307 — и вы в другой базе.</p>
+      </div>
+      <div class="act path" data-dur="3000">
+        <p class="act-l"><i>2</i>База знает свой сервер</p>
+        <div class="act-v" aria-hidden="true"><div class="chain v2"><div class="dn mac" data-at="0"><span>Этот Mac</span><i></i></div><i class="dl grey" data-at="300"></i><div class="dn hop sm" data-at="500"><span class="dn-i"><span class="ms">dns</span></span><div class="dn-t"><b>bastion-msk</b><div class=dchips><span class="dchip "><span class="ms f">verified_user</span>код 2FA — сам</span></div></div></div><i class="dl" data-at="800"></i><div class="dn hop sm" data-at="1000"><span class="dn-i"><span class="ms">dns</span></span><div class="dn-t"><b>jump-prod</b><div class=dchips><span class="dchip "><span class="ms f">verified_user</span>код 2FA — сам</span></div></div></div><i class="dl" data-at="1300"></i><div class="dn hop sm dst" data-at="1500"><span class="dn-i"><span class="ms">dns</span></span><div class="dn-t"><b>web-01</b><div class=dchips><span class="dchip "><span class="ms f">verified_user</span>код 2FA — сам</span></div></div></div><i class="dl dash" data-at="1900"></i><div class="dbcyl" data-at="2300"><span class="ms">database</span><b>northwind</b><span>MySQL · db-01:3306</span></div></div></div>
+        <p class="act-c">Узел базы указывает на сервер: соединение идёт по уже открытому входу — без туннеля и без второй 2FA.</p>
+      </div>
+      <div class="act fix" style="--fw:1180">
+        <p class="act-l"><i>3</i>В SSHKipper</p>
+        <div class="fit" data-w="1180" data-h="660" data-fx="0.55" aria-hidden="true"><div class="app dbwin" data-kind="databases" style="width:1180px;height:660px">
 <div class="db-h"><img class="a-logo" src="assets/icons/mysql.svg" alt=""><b>northwind</b><span class="g">MySQL 8.0.41 · через web-01 → db-01:3306</span><span class="sp"></span>
   <span class="btn"><span class="ms">code</span>Новый запрос</span><span class="btn"><span class="ms t-blue">hub</span>Схема</span><span class="ms rb">refresh</span><span class="ms rb">info</span><span class="ms rb">settings</span></div>
 <div class="db-b">
@@ -244,22 +296,37 @@
    <div class="db-foot"><span class="ms sm">add</span><span class=mn>−</span><code>SELECT * FROM `northwind`.`orders` W…qty &gt;= 3) ORDER BY `id` LIMIT 300</code><span class="sp"></span><span>1–300 из 450</span><span class="pp">по 300<span class="ms sm">expand_more</span></span><span>Экспорт</span><span class="ms sm">refresh</span></div>
  </div>
 </div></div></div>
+        <p class="act-c">Вкладка базы northwind: фраза «отменённые заказы от трёх штук» стала условием WHERE.</p>
+      </div>
       <figcaption class="visually-hidden">Копия экрана SSHKipper: Вкладка базы northwind (MySQL через web-01): AI-фильтр превращает фразу «отменённые заказы от трёх штук» в условие WHERE, в таблице — отфильтрованные заказы.</figcaption>
+      <button class="replay" type="button" hidden><span class="ms">refresh</span><span>Показать ещё раз</span></button>
     </figure>
+    <ul class="proofs">
+      <li><b>Фильтр словами</b><span>Фраза становится условием WHERE, которое можно поправить. Модель видит только колонки, а не строки.</span></li>
+      <li><b>Production под защитой</b><span>Каждое изменение — окном с полным SQL и проверкой AI по кнопке. «Только чтение» запрещает изменения совсем.</span></li>
+      <li><b>Правка таблиц</b><span>Ячейки и строки с показом SQL и записью одной транзакцией; экспорт CSV и JSON.</span></li>
+    </ul>
   </section>
-  <section id="sc-automations" class="sc full" aria-labelledby="sc-automations-h">
+  <section id="sc-automations" class="sc" aria-labelledby="sc-automations-h">
     <div class="sc-text">
       <p class="eyebrow"><span>05</span>Автоматизации и бэкапы</p>
       <h2 id="sc-automations-h">Ночной бэкап базы — из блоков, без скриптов</h2>
       <p class="sc-lead">Дамп, сжатие, выгрузка в S3, ротация и итог — модули на полотне. Запуск по расписанию, после другой автоматизации, по событию или прямо в crontab сервера.</p>
-      <ul class="proofs">
-        <li><b>Готовые модули</b><span>mysqldump, mydumper, XtraBackup, ClickHouse, Redis, rsync, архив папки, проверка сайта — или свой модуль.</span></li>
-        <li><b>Запуск без вас — по вашему разрешению</b><span>Перед первым запуском — окно со всеми командами и секретами словами. Если нужен ответ, автоматизация ждёт вас.</span></li>
-        <li><b>Бэкап, который точно восстановится</b><span>Проверка восстановлением во временном контейнере Docker на этом Mac; итог — в уведомлении или Telegram.</span></li>
-      </ul>
     </div>
-    <figure class="sc-vis">
-      <div class="fit" data-w="1180" data-h="560" data-fx="0.4" aria-hidden="true"><div class="app autowin" data-kind="automations" style="width:1180px;height:560px">
+    <figure class="scene L2" data-scene="automations">
+      <div class="act pain" data-dur="6400">
+        <p class="act-l"><i>1</i>Без SSHKipper</p>
+        <div class="act-v" aria-hidden="true"><div class="mt big"><div class="mt-bar"><span class="mt-dots"><i></i><i></i><i></i></span><span class="mt-title">deploy — ssh — 120×16</span></div><div class="mt-body"><div class="ml" data-at="0"><span class="mpr">deploy@db-01:~$ </span><span data-type>cat /opt/backup/mysql.sh</span></div><div class="ml" data-at="900">#!/bin/bash</div><div class="ml" data-at="950">mysqldump --single-transaction northwind | gzip &gt; /backup/northwind-$(date +%F).sql.gz</div><div class="ml" data-at="1000">aws s3 cp /backup/northwind-$(date +%F).sql.gz s3://northwind-backups/</div><div class="ml" data-at="1050">find /backup -name &#x27;*.sql.gz&#x27; -mtime +7 -delete</div><div class="ml" data-at="1500"><span class="nt-s r" data-at="1500">нет pipefail: упавший mysqldump всё равно даёт «удачный» .gz</span></div><div class="ml" data-at="3200"><span class="mpr">deploy@db-01:~$ </span><span data-type>tail -2 /var/log/backup.log</span></div><div class="ml clip hl" data-at="4400">upload failed: ../backup/northwind-2026-10-27.sql.gz to s3://northwind-backups/northwind-2026-10-27.sql.gz Unable to locate credentials</div><div class="ml clip hl" data-at="4450">upload failed: ../backup/northwind-2026-10-28.sql.gz to s3://northwind-backups/northwind-2026-10-28.sql.gz Unable to locate credentials</div><div class="ml" data-at="5000"><span class="nt-s r" data-at="5000">ошибки — в логе, который никто не читает</span> <span class="nt-s r" data-at="5600">восстановление никто не проверял</span></div></div></div></div>
+        <p class="act-c">Скрипт в cron годами «работает»: ошибок никто не видит, а был ли бэкап живым, узнают в день аварии.</p>
+      </div>
+      <div class="act path" data-dur="3200">
+        <p class="act-l"><i>2</i>Конвейер, который сообщает, чем кончился</p>
+        <div class="act-v" aria-hidden="true"><div class="pipe"><div class="pp" data-at="0"><span class="ms">schedule</span><span>03:30 каждый день</span></div><i class="dl" data-at="200"></i><div class="pp" data-at="400"><span class="ms">database</span><span>mysqldump</span></div><i class="dl" data-at="600"></i><div class="pp" data-at="800"><span class="ms">archive</span><span>zstd</span></div><i class="dl" data-at="1000"></i><div class="pp" data-at="1200"><span class="ms">cloud_upload</span><span>S3</span></div><i class="dl" data-at="1400"></i><div class="pp" data-at="1600"><span class="ms">autorenew</span><span>ротация 7·4·12</span></div><i class="dl" data-at="1800"></i><div class="pp wide" data-at="2000"><span class="ms">verified_user</span><span>проверка восстановлением в Docker на этом Mac</span></div><i class="dl" data-at="2300"></i><div class="pp" data-at="2500"><span class="ms">flag</span><span>итог: уведомление или Telegram</span></div></div></div>
+        <p class="act-c">Каждый шаг — модуль со своим итогом; если что-то не так, вы узнаёте утром, а не в день аварии.</p>
+      </div>
+      <div class="act fix" style="--fw:1180">
+        <p class="act-l"><i>3</i>В SSHKipper</p>
+        <div class="fit" data-w="1180" data-h="560" data-fx="0.4" aria-hidden="true"><div class="app autowin" data-kind="automations" style="width:1180px;height:560px">
 <div class="au-h"><span class="ms t-ink2">view_sidebar</span><span class="g">Автоматизации</span><span class="g">›</span><b>Ночной бэкап MySQL</b>
   <span class="g st"><span class="js-ok">✓ удачно · 03:30 · следующий: завтра в 03:30</span></span>
   <span class="seg2"><span class="">Обзор</span><span class="">Шаги</span><span class="">История</span><span class="on">Полотно</span></span>
@@ -273,22 +340,37 @@
     <div class="au-ask"><span class="ms t-purple">auto_awesome</span><span>Что поменять? Например: «сжимать zstd»</span><span class="ms up">arrow_upward</span></div>
     <div class="au-zm"><span class="pill">Разложить</span><span class="ms">zoom_out</span><span>60 %</span><span class="ms">zoom_in</span><span class="ms">fit_screen</span></div></div>
 </div></div></div>
+        <p class="act-c">Полотно «Ночной бэкап MySQL»: шаги загораются по очереди, у каждого — результат.</p>
+      </div>
       <figcaption class="visually-hidden">Копия экрана SSHKipper: Полотно автоматизации «Ночной бэкап MySQL»: northwind → MysqlDump → Сжать → В хранилище → Ротация → Итог, все шаги выполнены успешно, расписание — каждый день в 03:30.</figcaption>
+      <button class="replay" type="button" hidden><span class="ms">refresh</span><span>Показать ещё раз</span></button>
     </figure>
+    <ul class="proofs">
+      <li><b>Готовые модули</b><span>mysqldump, mydumper, XtraBackup, ClickHouse, Redis, rsync, архив папки, проверка сайта — или свой модуль.</span></li>
+      <li><b>Запуск без вас — по вашему разрешению</b><span>Перед первым запуском — окно со всеми командами и секретами словами. Если нужен ответ, автоматизация ждёт вас.</span></li>
+      <li><b>Бэкап, который точно восстановится</b><span>Проверка восстановлением во временном контейнере Docker на этом Mac; итог — в уведомлении или Telegram.</span></li>
+    </ul>
   </section>
-  <section id="sc-files" class="sc half" aria-labelledby="sc-files-h">
+  <section id="sc-files" class="sc" aria-labelledby="sc-files-h">
     <div class="sc-text">
       <p class="eyebrow"><span>06</span>Файлы и хранилища</p>
       <h2 id="sc-files-h">Файл идёт с сервера на сервер напрямую, минуя Mac</h2>
       <p class="sc-lead">Файл с сервера за бастионом копируется прямо на бастион: 2FA вводит приложение, ключ остаётся на Mac, SHA-256 сверяется на обоих концах.</p>
-      <ul class="proofs">
-        <li><b>Двухпанельный менеджер</b><span>Mac ⇄ сервер ⇄ хранилище, перетаскивание в обе стороны и в Finder; панель SFTP следует за cd.</span></li>
-        <li><b>S3 и WebDAV в том же дереве</b><span>AWS, Yandex Object Storage, Selectel, Cloudflare R2, MinIO, Nextcloud, Яндекс Диск; сервер ↔ S3 — тоже напрямую.</span></li>
-        <li><b>Очередь с докачкой</b><span>Пауза, продолжение, понятные конфликты имён; закрытая вкладка передачу не обрывает.</span></li>
-      </ul>
     </div>
-    <figure class="sc-vis">
-      <div class="fit" data-w="600" data-h="400" aria-hidden="true"><div class="app sheet done" data-kind="files" style="width:600px;height:400px">
+    <figure class="scene LS" data-scene="files">
+      <div class="act pain" data-dur="5800">
+        <p class="act-l"><i>1</i>Без SSHKipper</p>
+        <div class="act-v" aria-hidden="true"><div class="mt"><div class="mt-bar"><span class="mt-dots"><i></i><i></i><i></i></span><span class="mt-title">you — scp — 96×8</span></div><div class="mt-body"><div class="ml" data-at="0"><span class="mpr">you@MacBook-Pro ~ % </span><span data-type>scp web-01:/srv/backups/backup-2026-10-28.tar.gz ~/Downloads/</span></div><div class="ml" data-at="1900">backup-2026-10-28.tar.gz                      100% 1229MB   2.1MB/s   09:45</div><div class="ml" data-at="2400"><span class="mpr">you@MacBook-Pro ~ % </span><span data-type>scp ~/Downloads/backup-2026-10-28.tar.gz bastion-msk:/srv/backups/</span></div><div class="ml" data-at="4300">backup-2026-10-28.tar.gz                       37%  455MB   1.9MB/s   06:47 ETA</div><div class="ml" data-at="4600"><span class="nt-s" data-at="4600">плюс коды 2FA на каждый вход</span></div></div></div><div class="tri bad" data-at="5000"><span class="tn a">web-01</span><span class="tn m">Этот Mac</span><span class="tn b">bastion-msk</span><svg viewBox="0 0 100 100" preserveAspectRatio="none"><line x1="20" y1="72" x2="43" y2="24"/><line x1="57" y1="24" x2="80" y2="72"/></svg><em class="e1">↓ 1,2 ГБ</em><em class="e2">↑ 1,2 ГБ</em><b class="cap">дважды через ваш канал</b></div></div>
+        <p class="act-c">Скачать на Mac и закачать обратно — двойной трафик по домашнему каналу.</p>
+      </div>
+      <div class="act path" data-dur="2000">
+        <p class="act-l"><i>2</i>Mac только управляет</p>
+        <div class="act-v" aria-hidden="true"><div class="tri good"><span class="tn a" data-at="0">web-01</span><span class="tn m" data-at="0">Этот Mac</span><span class="tn b" data-at="0">bastion-msk</span><svg viewBox="0 0 100 100" preserveAspectRatio="none"><line data-at="400" x1="20" y1="72" x2="43" y2="24"/><line data-at="400" x1="57" y1="24" x2="80" y2="72"/><line class="tl3" data-at="1000" x1="25" y1="84" x2="75" y2="84"/></svg><em class="e1" data-at="400">ключ подписывает вход, код 2FA</em><em class="e3" data-at="1000">1,2 ГБ напрямую · SHA-256 на обоих концах</em></div></div>
+        <p class="act-c">Файл идёт между серверами, ключ остаётся на этом Mac.</p>
+      </div>
+      <div class="act fix" style="--fw:600">
+        <p class="act-l"><i>3</i>В SSHKipper</p>
+        <div class="fit" data-w="600" data-h="400" aria-hidden="true"><div class="app sheet done" data-kind="files" style="width:600px;height:400px">
 <div class="dc-t"><span class="ms t-blue">swap_horiz</span><b>Копирование напрямую</b></div>
 <div class="dc-r"><span class="ms t-ink2">dns</span><b>web-01</b><span class="ms sm t-ink2">arrow_forward</span><span class="ms t-ink2">dns</span><b>bastion-msk</b><span class="sp"></span><b>backup-2026-10-28.tar.gz</b></div>
 <div class="dc-s"><span class="s-run">Отдельный вход на «bastion-msk» для копирования…</span><span class="s-done"><span class="ms f t-green">check_circle</span>Готово: /srv/backups/backup-2026-10-28.tar.gz</span></div>
@@ -297,43 +379,73 @@
 <div class="dc-n"><span class="js-n" data-mb="МБ">1,2 ГБ</span> из 1,2 ГБ</div>
 <div class="dc-log"><div class="js-log">«bastion-msk» подключается к «web-01» (archiver@web-01:22) — файл пойдёт напрямую, не через этот Mac</div><div class="js-log">Ключ «archiver-key» подписал вход «bastion-msk» → «web-01» (1 из 2); сам ключ остаётся на этом Mac</div><div class="js-log">Код 2FA для «web-01» отправлен</div><div class="js-log">Проверка SHA-256 на обоих серверах…</div><div class="js-log">Готово: 1,2 ГБ за 31 с (39,6 МБ/с)</div></div>
 <div class="dc-b"><span class="b-run">Остановить</span><span class="b-done">Готово</span></div></div></div>
+        <p class="act-c">Окно «Копирование напрямую»: вход, передача, проверка SHA-256.</p>
+      </div>
       <figcaption class="visually-hidden">Копия экрана SSHKipper: Окно «Копирование напрямую»: архив с web-01 копируется на bastion-msk, не через Mac; журнал показывает вход с ключом, отправленный код 2FA и совпавший SHA-256.</figcaption>
+      <button class="replay" type="button" hidden><span class="ms">refresh</span><span>Показать ещё раз</span></button>
     </figure>
+    <ul class="proofs">
+      <li><b>Двухпанельный менеджер</b><span>Mac ⇄ сервер ⇄ хранилище, перетаскивание в обе стороны и в Finder; панель SFTP следует за cd.</span></li>
+      <li><b>S3 и WebDAV в том же дереве</b><span>AWS, Yandex Object Storage, Selectel, Cloudflare R2, MinIO, Nextcloud, Яндекс Диск; сервер ↔ S3 — тоже напрямую.</span></li>
+      <li><b>Очередь с докачкой</b><span>Пауза, продолжение, понятные конфликты имён; закрытая вкладка передачу не обрывает.</span></li>
+    </ul>
   </section>
-  <section id="sc-terminal" class="sc half rev" aria-labelledby="sc-terminal-h">
+  <section id="sc-terminal" class="sc" aria-labelledby="sc-terminal-h">
     <div class="sc-text">
       <p class="eyebrow"><span>07</span>Терминал</p>
       <h2 id="sc-terminal-h">Терминал на движке Ghostty — и одна команда сразу везде</h2>
       <p class="sc-lead">Быстрый GPU-рендер, вкладки и сплиты, сессии tmux, которые переживают обрыв. Ввод во все вкладки выделяет участников рамкой; серверы Production — только по явному выбору.</p>
-      <ul class="proofs">
-        <li><b>tmux на сервере</b><span>После обрыва или ⌘R вы возвращаетесь туда же, фоновые задачи продолжают работать.</span></li>
-        <li><b>Сниппеты</b><span>Команды с полями {{ host }} и вопросами — на нескольких серверах сразу, с итогом по каждому.</span></li>
-        <li><b>Журналы сессий</b><span>Запись вывода с маскировкой секретов, зашифрованная ключом документа; экспорт в asciinema.</span></li>
-      </ul>
     </div>
-    <figure class="sc-vis">
-      <div class="fit" data-w="640" data-h="420" aria-hidden="true"><div class="app bcwin" data-kind="terminal" style="width:640px;height:420px">
+    <figure class="scene LS" data-scene="terminal">
+      <div class="act pain" data-dur="6400">
+        <p class="act-l"><i>1</i>Без SSHKipper</p>
+        <div class="act-v" aria-hidden="true"><div class="grid4 tight"><div class="mt sm"><div class="mt-bar"><span class="mt-dots"><i></i><i></i><i></i></span><span class="mt-title">deploy — ssh web-01</span></div><div class="mt-body"><div class="ml" data-at="0"><span class="mpr">deploy@web-01:~$ </span><span data-type>uptime</span></div><div class="ml" data-at="700"> 09:31:00 up 41 days,  6:08,  1 user,  load average: 0.82, 0.79, 0.77</div></div></div><div class="mt sm"><div class="mt-bar"><span class="mt-dots"><i></i><i></i><i></i></span><span class="mt-title">deploy — ssh web-02</span></div><div class="mt-body"><div class="ml" data-at="1500"><span class="mpr">deploy@web-02:~$ </span><span data-type>uptime</span></div><div class="ml" data-at="2200"> 09:32:01 up 41 days,  6:09,  1 user,  load average: 0.81, 0.79, 0.77</div></div></div><div class="mt sm"><div class="mt-bar"><span class="mt-dots"><i></i><i></i><i></i></span><span class="mt-title">deploy — ssh web-03</span></div><div class="mt-body"><div class="ml" data-at="3000"><span class="mpr">deploy@web-03:~$ </span><span data-type>uptime</span></div><div class="ml" data-at="3700"> 09:33:02 up 41 days,  6:10,  1 user,  load average: 0.82, 0.79, 0.77</div></div></div><div class="mt sm"><div class="mt-bar"><span class="mt-dots"><i></i><i></i><i></i></span><span class="mt-title">deploy — ssh web-04</span></div><div class="mt-body"><div class="ml" data-at="4500"><span class="mpr">deploy@web-04:~$ </span><span data-type>uptime</span></div><div class="ml" data-at="5200"> 09:34:03 up 41 days,  6:11,  1 user,  load average: 0.81, 0.79, 0.77</div></div></div></div><div class="pain-foot"><span class="nt-s" data-at="5600">одна команда — четыре раза, по очереди</span></div></div>
+        <p class="act-c">Переключить вкладку, набрать, проверить — и так на каждом сервере.</p>
+      </div>
+      <div class="act path" data-dur="2200">
+        <p class="act-l"><i>2</i>Один ввод — все выбранные сессии</p>
+        <div class="act-v" aria-hidden="true"><div class="bcast"><div class="bc-in" data-at="0"><span class="ms">keyboard_return</span><code>uptime</code></div><div class="bc-arr" data-at="400"></div><div class="bc-hosts"><span class="on" data-at="700">web-01</span><span class="on" data-at="850">web-02</span><span class="on" data-at="1000">web-03</span><span class="on" data-at="1150">web-04</span><span class="off" data-at="1400"><span class="ms">lock</span>db-01 · Production</span></div><em data-at="1600">Production — только по явному выбору</em></div></div>
+        <p class="act-c">Участники выделены рамкой, ввод можно остановить одной кнопкой.</p>
+      </div>
+      <div class="act fix" style="--fw:640">
+        <p class="act-l"><i>3</i>В SSHKipper</p>
+        <div class="fit" data-w="640" data-h="420" aria-hidden="true"><div class="app bcwin" data-kind="terminal" style="width:640px;height:420px">
 <div class="w-tabs"><span class="w-tab sel"><span class="ms t-teal">terminal</span><span>web-01</span><span class="ms x">close</span></span><span class="w-plus"><span class="ms">add</span></span></div>
 <div class="w-status"><i class="a-dot g"></i><b>Подключено · 19 мин</b><span class="chain">bastion-msk<i>›</i>jump-prod<i>›</i><b>deploy@web-01</b></span>
   <span class="st-r"><span><span class="ms">auto_awesome</span>AI выкл</span><span><span class="ms">folder</span>Файлы</span><i class="vs"></i><span class="ms">more_horiz</span></span></div>
 <div class="bc-panes"><div class="bp"><div class="tl">Last login: Wed Oct 28 09:12:44 2026 from 10.20.0.5</div><div class="tl"><b class="pg">deploy@web-01</b>:<b class="pb">~</b>$ <span class="js-typed">uptime</span><i class="a-cur"></i></div><div class="tl js-out">&nbsp;09:31:07 up 41 days,  6:08,  2 users,  load average: 0.82, 0.79, 0.77</div><div class="tl js-out"><b class="pg">deploy@web-01</b>:<b class="pb">~</b>$ </div></div><div class="bp"><div class="tl">Last login: Wed Oct 28 09:30:58 2026 from 10.20.0.5</div><div class="tl"><b class="pg">deploy@web-01</b>:<b class="pb">~</b>$ <span class="js-typed">uptime</span><i class="a-cur"></i></div><div class="tl js-out">&nbsp;09:31:07 up 41 days,  6:08,  2 users,  load average: 0.82, 0.79, 0.77</div><div class="tl js-out"><b class="pg">deploy@web-01</b>:<b class="pb">~</b>$ </div></div></div>
 <div class="bc-pill"><span class="ms">sensors</span><span>Ввод идёт в 2 сессии — ⌥⌘I</span><u>Остановить</u></div></div></div>
+        <p class="act-c">uptime набран один раз и выполнился в обеих панелях.</p>
+      </div>
       <figcaption class="visually-hidden">Копия экрана SSHKipper: Вкладка web-01, разделённая на две панели в оранжевых рамках: команда uptime набрана один раз и выполнилась в обеих; внизу плашка «Ввод идёт в 2 сессии».</figcaption>
+      <button class="replay" type="button" hidden><span class="ms">refresh</span><span>Показать ещё раз</span></button>
     </figure>
+    <ul class="proofs">
+      <li><b>tmux на сервере</b><span>После обрыва или ⌘R вы возвращаетесь туда же, фоновые задачи продолжают работать.</span></li>
+      <li><b>Сниппеты</b><span>Команды с полями {{ host }} и вопросами — на нескольких серверах сразу, с итогом по каждому.</span></li>
+      <li><b>Журналы сессий</b><span>Запись вывода с маскировкой секретов, зашифрованная ключом документа; экспорт в asciinema.</span></li>
+    </ul>
   </section>
-  <section id="sc-tunnels" class="sc half" aria-labelledby="sc-tunnels-h">
+  <section id="sc-tunnels" class="sc" aria-labelledby="sc-tunnels-h">
     <div class="sc-text">
       <p class="eyebrow"><span>08</span>Туннели и строка меню</p>
       <h2 id="sc-tunnels-h">Туннели и расписания работают, даже когда окно закрыто</h2>
       <p class="sc-lead">Штурвал в строке меню показывает туннели и автоматизации, отвечает на «Спросить меня» и подключает по имени. Нагрузка на процессор в фоне — почти нулевая.</p>
-      <ul class="proofs">
-        <li><b>Туннели всех видов</b><span>К сервису, SOCKS-прокси и обратный — через ту же цепочку бастионов.</span></li>
-        <li><b>Включаются сами</b><span>Вручную, при разблокировке документа или вместе с сервером; после обрыва переподключаются.</span></li>
-        <li><b>Импорт ~/.ssh/config</b><span>ProxyJump и пробросы портов становятся бастионами и туннелями.</span></li>
-      </ul>
     </div>
-    <figure class="sc-vis">
-      <div class="fit" data-w="340" data-h="528" aria-hidden="true"><div class="app menubar" data-kind="tunnels" style="width:340px;height:528px">
+    <figure class="scene LS" data-scene="tunnels">
+      <div class="act pain" data-dur="4200">
+        <p class="act-l"><i>1</i>Без SSHKipper</p>
+        <div class="act-v" aria-hidden="true"><div class="mt"><div class="mt-bar"><span class="mt-dots"><i></i><i></i><i></i></span><span class="mt-title">you — zsh — 96×10</span></div><div class="mt-tabs"><span>ssh -N -L 13306…</span><span>ssh -N -L 19001…</span><span>ssh -N -D 1080…</span><span class="on">zsh</span></div><div class="mt-body"><div class="ml" data-at="0"><span class="mpr">you@MacBook-Pro ~ % </span><span data-type>cat ~/notes/tunnels.txt</span></div><div class="ml clip" data-at="900">mysql prod:  ssh -N -L 13306:db-01:3306 -J ops@bastion-msk,ops@jump-prod deploy@web-01</div><div class="ml clip" data-at="950">s3 console:  ssh -N -L 19001:s3.backup:9001 -J ops@bastion-msk,ops@jump-prod deploy@web-01</div><div class="ml clip" data-at="1000">socks:       ssh -N -D 1080 ops@bastion-msk</div><div class="ml" data-at="1600"><span class="mpr">you@MacBook-Pro ~ % </span><span data-type>lsof -nP -iTCP -sTCP:LISTEN | grep ssh</span></div><div class="ml clip tbl" data-at="3000">ssh     48211  you    7u  IPv4 0x8c3f1a2b      0t0  TCP 127.0.0.1:13306 (LISTEN)</div><div class="ml clip tbl" data-at="3050">ssh     48377  you    7u  IPv4 0x8c3f4d10      0t0  TCP 127.0.0.1:19001 (LISTEN)</div><div class="ml" data-at="3500"><span class="nt-s" data-at="3500">а какой из них ещё живой?</span></div></div></div></div>
+        <p class="act-c">Команды — в заметках, туннели — в открытых вкладках терминала.</p>
+      </div>
+      <div class="act path" data-dur="1600">
+        <p class="act-l"><i>2</i>Туннель — узел документа</p>
+        <div class="act-v" aria-hidden="true"><div class="tunl"><div class="tr" data-at="0"><span class="ms">swap_horiz</span><b>MySQL prod</b><code>:13306</code></div><div class="tr" data-at="300"><span class="ms">swap_horiz</span><b>Консоль S3</b><code>:19001</code></div><div class="tr" data-at="600"><span class="ms">swap_horiz</span><b>SOCKS через bastion-msk</b><code>:1080</code></div><div class="when" data-at="1000"><span>вручную</span><span>при разблокировке документа</span><span>вместе с сервером</span></div></div></div>
+        <p class="act-c">Включаются сами и переподключаются после обрыва — через ту же цепочку.</p>
+      </div>
+      <div class="act fix" style="--fw:340">
+        <p class="act-l"><i>3</i>В SSHKipper</p>
+        <div class="fit" data-w="340" data-h="528" aria-hidden="true"><div class="app menubar" data-kind="tunnels" style="width:340px;height:528px">
 <div class="mb-h"><img src="assets/icon-512.png" alt=""><div><b>SSHKipper</b><span class="js-sub" data-a="2 туннеля · 1 подключение" data-b="3 туннеля · 1 подключение">2 туннеля · 1 подключение</span></div><span class="ms">settings</span></div>
 <div class="mb-sep"></div>
 <div class="mb-in"><span class="ms">search</span>Подключиться… (имя или user@host)</div>
@@ -349,53 +461,91 @@
 <div class="mb-d"><span class="ms">lock_open</span><div><b>Northwind</b><span>открыт</span></div><span class="btn">Заблокировать</span></div>
 <div class="mb-sep"></div>
 <div class="mb-foot"><span>Открыть SSHKipper</span><span>Выйти</span></div></div></div>
+        <p class="act-c">Строка меню: включить туннель — один щелчок.</p>
+      </div>
       <figcaption class="visually-hidden">Копия экрана SSHKipper: Окно строки меню SSHKipper: поле подключения, сводка автоматизаций, три туннеля с портами и переключателями, избранные серверы и кнопка блокировки документа.</figcaption>
+      <button class="replay" type="button" hidden><span class="ms">refresh</span><span>Показать ещё раз</span></button>
     </figure>
+    <ul class="proofs">
+      <li><b>Туннели всех видов</b><span>К сервису, SOCKS-прокси и обратный — через ту же цепочку бастионов.</span></li>
+      <li><b>Включаются сами</b><span>Вручную, при разблокировке документа или вместе с сервером; после обрыва переподключаются.</span></li>
+      <li><b>Импорт ~/.ssh/config</b><span>ProxyJump и пробросы портов становятся бастионами и туннелями.</span></li>
+    </ul>
   </section>
-  <section id="sc-route" class="sc half rev" aria-labelledby="sc-route-h">
+  <section id="sc-route" class="sc" aria-labelledby="sc-route-h">
     <div class="sc-text">
       <p class="eyebrow"><span>09</span>Маршрут, профили, Tailscale</p>
       <h2 id="sc-route-h">Видно, как вы попадаете на сервер — и есть запасной путь</h2>
       <p class="sc-lead">Схема маршрута строится по фактам документа: бастионы, ключи, коды 2FA. У сервера может быть несколько профилей — Tailscale, офисный адрес, другой бастион; при сетевой ошибке пробуется следующий.</p>
-      <ul class="proofs">
-        <li><b>Tailscale и локальная сеть</b><span>Хосты tailnet и серверы, найденные по Bonjour, появляются в дереве сами и наследуют настройки папки.</span></li>
-        <li><b>Профиль хранит только отличия</b><span>Всё, что не задано, берётся из основного; ключ сервера общий, если это тот же sshd.</span></li>
-        <li><b>Свои схемы</b><span>Холст с узлами документа и живыми Docker, nginx и cron; по шагам и с вопросом к AI.</span></li>
-      </ul>
     </div>
-    <figure class="sc-vis">
-      <div class="fit" data-w="440" data-h="686" aria-hidden="true"><div class="app route" data-kind="route" style="width:440px;height:686px">
+    <figure class="scene LS" data-scene="route">
+      <div class="act pain" data-dur="5200">
+        <p class="act-l"><i>1</i>Без SSHKipper</p>
+        <div class="act-v" aria-hidden="true"><div class="mt"><div class="mt-bar"><span class="mt-dots"><i></i><i></i><i></i></span><span class="mt-title">you — ssh — 96×14</span></div><div class="mt-body"><div class="ml" data-at="0"><span class="mpr">you@MacBook-Pro ~ % </span><span data-type>grep -A2 web-01 ~/.ssh/config</span></div><div class="ml" data-at="900">Host web-01-office</div><div class="ml" data-at="920">  HostName 10.20.4.21</div><div class="ml" data-at="940">  ProxyJump ops@bastion-msk,ops@jump-prod</div><div class="ml" data-at="960">Host web-01-home</div><div class="ml" data-at="980">  HostName web-01.tail3f2c.ts.net</div><div class="ml" data-at="1500"><span class="mpr">you@MacBook-Pro ~ % </span><span data-type>ssh web-01-home</span></div><div class="ml hl" data-at="2700">ssh: Could not resolve hostname web-01.tail3f2c.ts.net: nodename nor servname provided, or not known</div><div class="ml" data-at="3000"><span class="nt-s" data-at="3000">в офисе Tailscale выключен</span></div><div class="ml" data-at="3400"><span class="mpr">you@MacBook-Pro ~ % </span><span data-type>ssh web-01-office</span></div><div class="ml" data-at="4500">(ops@bastion-msk) Verification code: </div></div></div></div>
+        <p class="act-c">Под каждую сеть — свой Host, а какой сработает, вы узнаёте по ошибке.</p>
+      </div>
+      <div class="act path" data-dur="2200">
+        <p class="act-l"><i>2</i>Профили пробуются по порядку</p>
+        <div class="act-v" aria-hidden="true"><div class="tries"><div class="try x" data-at="0"><span class="n">1</span><b>Tailscale · web-01</b><em>сеть недоступна → следующий</em><span class="ms f">close</span></div><div class="try ok" data-at="900"><span class="n">2</span><b>Офис</b><em>bastion-msk › jump-prod</em><span class="ms f">check</span></div><div class="try skip" data-at="1500"><span class="n">3</span><b>10.20.4.21</b><em>не понадобился</em><span class="ms f">more_horiz</span></div></div></div>
+        <p class="act-c">Один сервер, несколько профилей: при сетевой ошибке SSHKipper берёт следующий.</p>
+      </div>
+      <div class="act fix" style="--fw:440">
+        <p class="act-l"><i>3</i>В SSHKipper</p>
+        <div class="fit" data-w="440" data-h="686" aria-hidden="true"><div class="app route" data-kind="route" style="width:440px;height:686px">
 <div class="rt-prof"><span class="pi"><span class="ms f">terminal</span></span><div><b>web-01</b><span>Production · web-01</span>
   <div class="pchips"><span><svg class="a-ts" viewBox="0 0 12 12"><circle cx="2" cy="2" r="1.25" fill="currentColor" opacity="0.4"/><circle cx="6" cy="2" r="1.25" fill="currentColor" opacity="0.4"/><circle cx="10" cy="2" r="1.25" fill="currentColor" opacity="0.4"/><circle cx="2" cy="6" r="1.25" fill="currentColor" opacity="1"/><circle cx="6" cy="6" r="1.25" fill="currentColor" opacity="1"/><circle cx="10" cy="6" r="1.25" fill="currentColor" opacity="1"/><circle cx="2" cy="10" r="1.25" fill="currentColor" opacity="0.4"/><circle cx="6" cy="10" r="1.25" fill="currentColor" opacity="1"/><circle cx="10" cy="10" r="1.25" fill="currentColor" opacity="0.4"/></svg>Tailscale · web-01</span><span class="on"><span class="ms sm">dns</span>Офис</span><span><span class="ms sm">language</span>10.20.4.21</span><span><span class="ms sm">add</span></span></div></div></div>
 <div class="rt-c"><div class="rt-tb"><b>Маршрут до «web-01»</b><span class="seg3"><span>Понятно</span><span class="on">Технически</span></span></div>
   <div class="mac"><span>Этот Mac</span><i></i></div>
   <i class="rl l0"></i><i class="rl l1"></i><i class="rl l2"></i><i class="rdot js-rdot"></i>
-  <div class="rn js-rn" style="top:168px"><span class="ri"><span class="ms">dns</span></span><div><b>bastion-msk</b><code>ops@bastion.northwind.corp</code><div class="chps"><span class="chp "><span class="ms f">key</span>ключ</span></div><span class="frm">из «ops-ed25519»</span></div></div><div class="rn js-rn" style="top:304px"><span class="ri"><span class="ms">dns</span></span><div><b>jump-prod</b><code>ops@jump-prod</code><div class="chps"><span class="chp "><span class="ms f">key</span>ключ</span><span class="chp "><span class="ms f">verified_user</span>код 2FA — сам</span></div><span class="frm">из «ops-2fa»</span></div></div><div class="rn dst js-rn" style="top:440px"><span class="ri"><span class="ms">dns</span></span><div><b>web-01</b><code>deploy@web-01</code><div class="chps"><span class="chp y"><span class="ms f">key</span>пароль</span><span class="chp "><span class="ms f">verified_user</span>код 2FA — сам</span></div><span class="frm">из «deploy»</span></div></div>
+  <div class="rn js-rn" style="top:168px"><span class="ri"><span class="ms">dns</span></span><div><b>bastion-msk</b><code>ops@bastion.northwind.corp</code><div class="chps"><span class="chp "><span class="ms f">key</span>ключ</span><span class="chp "><span class="ms f">verified_user</span>код 2FA — сам</span></div><span class="frm">из «ops-2fa»</span></div></div><div class="rn js-rn" style="top:304px"><span class="ri"><span class="ms">dns</span></span><div><b>jump-prod</b><code>ops@jump-prod</code><div class="chps"><span class="chp "><span class="ms f">key</span>ключ</span><span class="chp "><span class="ms f">verified_user</span>код 2FA — сам</span></div><span class="frm">из «ops-2fa»</span></div></div><div class="rn dst js-rn" style="top:440px"><span class="ri"><span class="ms">dns</span></span><div><b>web-01</b><code>deploy@web-01</code><div class="chps"><span class="chp y"><span class="ms f">key</span>пароль</span><span class="chp "><span class="ms f">verified_user</span>код 2FA — сам</span></div><span class="frm">из «deploy»</span></div></div>
 </div></div></div>
+        <p class="act-c">Профили web-01 и схема маршрута по фактам документа.</p>
+      </div>
       <figcaption class="visually-hidden">Копия экрана SSHKipper: Сверху — шапка карточки подключения web-01 с профилями: Tailscale, Офис и адрес. Ниже — вкладка «Маршрут до web-01»: этот Mac → bastion-msk (ключ) → jump-prod (ключ и код 2FA) → web-01 (пароль и код 2FA).</figcaption>
+      <button class="replay" type="button" hidden><span class="ms">refresh</span><span>Показать ещё раз</span></button>
     </figure>
+    <ul class="proofs">
+      <li><b>Tailscale и локальная сеть</b><span>Хосты tailnet и серверы, найденные по Bonjour, появляются в дереве сами и наследуют настройки папки.</span></li>
+      <li><b>Профиль хранит только отличия</b><span>Всё, что не задано, берётся из основного; ключ сервера общий, если это тот же sshd.</span></li>
+      <li><b>Свои схемы</b><span>Холст с узлами документа и живыми Docker, nginx и cron; по шагам и с вопросом к AI.</span></li>
+    </ul>
   </section>
-  <section id="sc-security" class="sc half" aria-labelledby="sc-security-h">
+  <section id="sc-security" class="sc" aria-labelledby="sc-security-h">
     <div class="sc-text">
       <p class="eyebrow"><span>10</span>Документ и безопасность</p>
       <h2 id="sc-security-h">Всё в одном зашифрованном файле — и это бесплатно</h2>
       <p class="sc-lead">Подключения, пароли, ключи и секреты 2FA лежат в одном документе: Argon2id и XChaCha20-Poly1305. Открывается мастер-паролем или отпечатком пальца.</p>
-      <ul class="proofs">
-        <li><b>Ключ восстановления</b><span>Выручит, если забыли пароль; пять прошлых версий файла хранятся зашифрованными.</span></li>
-        <li><b>Автоблокировка</b><span>При блокировке экрана, сне Mac или простое; доступ AI отзывается сразу.</span></li>
-        <li><b>Маскировка секретов</b><span>Всё, что уходит модели, проходит потоковую маскировку; каждый вызов агента — в журнале аудита.</span></li>
-      </ul>
     </div>
-    <figure class="sc-vis">
-      <div class="fit" data-w="520" data-h="540" aria-hidden="true"><div class="app lock" data-kind="security" style="width:520px;height:540px">
+    <figure class="scene LS" data-scene="security">
+      <div class="act pain" data-dur="3200">
+        <p class="act-l"><i>1</i>Без SSHKipper</p>
+        <div class="act-v" aria-hidden="true"><div class="sec-p"><div class="notes" data-at="0"><div class="nt-h">Заметки · Пароли серверов</div><div>web-01 deploy — Nw!2024-deploy</div><div>db-01 app — Xk7#pQ2v9Lm</div><div>bastion-msk — ключ на старом ноуте?</div></div><div data-at="1200" class="phw"><div class="phone mini"><div class="ph-notch"></div><div class="ph-h">Authenticator</div><div class="ph-r"><div class="ph-t"><span>bastion-msk</span><em>ops</em></div><div class="ph-c"><b class="was" data-cls="6400:gone">481 927</b><b class="now">481 927</b><svg class="ring" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8"/><circle class="rf" cx="10" cy="10" r="8"/></svg></div></div><div class="ph-r"><div class="ph-t"><span>jump-prod</span><em>ops</em></div><div class="ph-c"><b class="was" data-cls="6400:gone">305 118</b><b class="now">305 118</b><svg class="ring" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8"/><circle class="rf" cx="10" cy="10" r="8"/></svg></div></div><div class="ph-r"><div class="ph-t"><span>web-01</span><em>deploy</em></div><div class="ph-c"><b class="was" data-cls="6400:gone">916 204</b><b class="now">916 204</b><svg class="ring" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8"/><circle class="rf" cx="10" cy="10" r="8"/></svg></div></div></div></div><div class="mt sm"><div class="mt-bar"><span class="mt-dots"><i></i><i></i><i></i></span><span class="mt-title">you — zsh</span></div><div class="mt-body"><div class="ml" data-at="800"><span class="mpr">you@MacBook-Pro ~ % </span><span data-type>ls ~/.ssh</span></div><div class="ml" data-at="1700">config  id_ed25519  id_ed25519.pub  known_hosts  ops_ed25519  ops_ed25519.pub</div></div></div></div><div class="pain-foot"><span class="nt-s" data-at="2400">сменили Mac или телефон — собирайте заново</span></div></div>
+        <p class="act-c">Пароли — в заметках, коды — только в телефоне, ключи — в ~/.ssh.</p>
+      </div>
+      <div class="act path" data-dur="2200">
+        <p class="act-l"><i>2</i>Один зашифрованный файл</p>
+        <div class="act-v" aria-hidden="true"><div class="vault"><div class="vin"><span data-at="0"><span class="ms">key</span>пароли и ключи</span><span data-at="250"><span class="ms">verified_user</span>секреты TOTP</span><span data-at="500"><span class="ms">dns</span>подключения</span></div><div class="varr" data-at="800"></div><div class="vfile" data-at="1100"><span class="ms f">lock</span><b>Northwind.sshkipper</b><code>Argon2id · XChaCha20-Poly1305</code></div><em data-at="1600">Touch ID или мастер-пароль · блокировка при блокировке экрана, сне и простое</em></div></div>
+        <p class="act-c">Всё, что нужно для входа, — в одном документе, который открываете только вы.</p>
+      </div>
+      <div class="act fix" style="--fw:520">
+        <p class="act-l"><i>3</i>В SSHKipper</p>
+        <div class="fit" data-w="520" data-h="540" aria-hidden="true"><div class="app lock" data-kind="security" style="width:520px;height:540px">
 <div class="lk-t"><span class="a-lights"><i></i><i></i><i></i></span><b>SSHKipper</b></div>
 <div class="lk-b"><img src="assets/icon-512.png" alt=""><div class="lk-n">SSHKipper</div>
   <div class="lk-f"><span class="ms">lock</span><b>Northwind.sshkipper</b></div>
   <div class="lk-in"><span>Мастер-пароль</span></div>
   <div class="lk-c"><i><span class="ms">check</span></i>Разблокировать по Touch ID на этом Mac</div>
   <div class="lk-btns"><span class="lk-more">Ещё<span class="ms">expand_more</span></span><span class="un">Разблокировать</span></div></div></div></div>
+        <p class="act-c">Окно блокировки документа: мастер-пароль или Touch ID.</p>
+      </div>
       <figcaption class="visually-hidden">Копия экрана SSHKipper: Окно блокировки документа Northwind.sshkipper: поле мастер-пароля, отметка «Разблокировать по Touch ID на этом Mac» и кнопка «Разблокировать».</figcaption>
+      <button class="replay" type="button" hidden><span class="ms">refresh</span><span>Показать ещё раз</span></button>
     </figure>
+    <ul class="proofs">
+      <li><b>Ключ восстановления</b><span>Выручит, если забыли пароль; пять прошлых версий файла хранятся зашифрованными.</span></li>
+      <li><b>Автоблокировка</b><span>При блокировке экрана, сне Mac или простое; доступ AI отзывается сразу.</span></li>
+      <li><b>Маскировка секретов</b><span>Всё, что уходит модели, проходит потоковую маскировку; каждый вызов агента — в журнале аудита.</span></li>
+    </ul>
   </section>
 </div>
 
@@ -479,7 +629,7 @@
   <a href="https://github.com/kdanet/sshkipper-releases/releases">Все релизы и что нового</a>
   <a class="plain" href="en/" hreflang="en">English version</a>
   <span class="end">Интерфейс: русский, English, 中文</span>
-  <p class="fnote">Картинки на странице — HTML-копии настоящих экранов SSHKipper; имена серверов и цифры в них вымышлены.</p>
+  <p class="fnote">Окна SSHKipper на странице — HTML-копии настоящих экранов приложения; «Без SSHKipper» — обычный Терминал macOS и телефон. Имена серверов, пароли и цифры вымышлены.</p>
 </footer>
 </body>
 </html>
