@@ -214,7 +214,15 @@
     ],
     services: [
       function (app, tl, cam) { seg(app, false); tl.at(1150, function () { cam.ringOn(true); }); },
-      function (app, tl, cam) { seg(app, false); tl.at(700, function () { seg(app, true); }); tl.at(1500, function () { cam.ringOn(true); }); },
+      function (app, tl, cam) { seg(app, false); tl.at(700, function () { seg(app, true); }); tl.at(1500, function () { cam.ringOn(true); }); }
+    ],
+    databases: [
+      function (app, tl, cam) {
+        var tx = app.querySelector('.js-type .tx');
+        app.classList.add('play'); app.classList.remove('typed', 'applied'); if (tx) tx.textContent = '';
+        tl.at(1150, function () { cam.ringOn(true); });
+      },
+      // words in the AI filter become WHERE, the grid shows the filtered rows
       function (app, tl, cam) {
         var box = app.querySelector('.js-type'), tx = box.querySelector('.tx'), text = box.dataset.text;
         app.classList.add('play'); app.classList.remove('typed', 'applied'); tx.textContent = '';
@@ -223,7 +231,25 @@
         t += text.length * 50 + 500;
         tl.at(t, function () { app.classList.add('typed'); cam.ringOn(true); });
         tl.at(t + 1100, function () { app.classList.add('applied'); });
-      }
+      },
+      // «Compose»: the task is typed, the SQL is inserted line by line and stays selected — not run
+      function (app, tl, cam) {
+        var task = app.querySelector('.js-task'), text = task.dataset.text, ql = $$(app, '.js-ql');
+        app.classList.add('play'); app.classList.remove('done'); task.textContent = '';
+        ql.forEach(function (l) { l.classList.remove('in', 'lit'); });
+        var t = 700;
+        for (var i = 1; i <= text.length; i++) (function (k) { tl.at(t + k * 32, function () { task.textContent = text.slice(0, k); }); })(i);
+        t += text.length * 32 + 600;
+        t = reveal(ql, tl, 120, t);
+        tl.at(t, function () { ql.forEach(function (l) { l.classList.add('lit'); }); app.classList.add('done'); cam.ringOn(true); });
+      },
+      function (app, tl, cam) {
+        var pop = app.querySelector('.js-pop');
+        app.classList.add('play'); pop.classList.remove('in');
+        tl.at(1000, function () { pop.classList.add('in'); });
+        tl.at(1300, function () { cam.ringOn(true); });
+      },
+      function (app, tl, cam) { tl.at(1150, function () { cam.ringOn(true); }); }
     ],
     automations: [
       function (app, tl, cam) {
@@ -257,7 +283,8 @@
   var FINAL = {
     bastions: function (app, i) { app.classList.toggle('done', i === 2); app.classList.toggle('play', i === 0); lines(app).forEach(function (l) { l.classList.add('in'); }); },
     agent: function (app) { app.classList.remove('play'); },
-    services: function (app, i) { if (app.classList.contains('page')) seg(app, i === 1); else app.classList.remove('play'); },
+    services: function (app, i) { seg(app, i === 1); },
+    databases: function (app) { app.classList.remove('play'); },
     automations: function (app) { app.classList.remove('play'); }
   };
 
@@ -266,7 +293,7 @@
     var scams = $$(story, '.k-cam').map(function (el) { return el._cam; }), btns = $$(story, '.k-step');
     var path = story.querySelector('.k-hops');
     var tl = new Timeline(), cur = 0, visible = false;
-    var DUR = btns.map(function (b, i) { return id === 'bastions' && i === 1 ? 6000 : id === 'automations' && i === 2 ? 9500 : 5400; });
+    var DUR = btns.map(function (b, i) { return id === 'bastions' && i === 1 ? 6000 : id === 'automations' && i === 2 ? 9500 : id === 'databases' && i === 2 ? 8000 : 5400; });
     function go(i, auto) {
       tl.stop(); cur = i;
       btns.forEach(function (b, k) { b.classList.toggle('on', k === i); b.classList.remove('run'); b.setAttribute('aria-current', k === i ? 'step' : 'false'); });
