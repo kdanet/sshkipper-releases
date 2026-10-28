@@ -82,16 +82,24 @@
     this.ring = this.app.querySelector('.k-ring'); this.tap = this.app.querySelector('.k-tap');
   }
   Cam.prototype.place = function (animate) {
-    var st = this.steps[this.i], el = this.el;
+    var st = this.steps[this.i], el = this.el, phone = PHONE.matches;
     if (!st || !el.clientWidth) return;
-    var zoom = (PHONE.matches && st.mzoom) || st.zoom;
     var R = rect(this.app, this.focus || st.focus) || { x: 0, y: 0, w: this.W, h: this.H };
-    var s = el.clientWidth / zoom;
-    if (st.fit) { var pad = (zoom - R.w) / 2; el.style.aspectRatio = 'auto'; el.style.height = Math.round((R.h + 2 * pad) * s) + 'px'; }
-    var vh = el.clientHeight / s;
+    var cw = el.clientWidth, zoom, auto = false;
+    if (phone && st.mzoom) zoom = st.mzoom;
+    else if (st.zoom) zoom = st.zoom;
+    else {
+      // The frame fits the whole focus with a margin, but never enlarges the screen past a readable size.
+      var pad = phone ? 10 : (st.pad != null ? st.pad : 28), ar = cw / el.clientHeight;
+      zoom = Math.max(R.w + 2 * pad, (R.h + 2 * pad) * ar, cw / (phone ? 1 : (st.ms || 1.5)));
+      auto = true;
+    }
+    var s = cw / zoom;
+    if (st.fit) { var p0 = (zoom - R.w) / 2; el.style.aspectRatio = 'auto'; el.style.height = Math.round((R.h + 2 * p0) * s) + 'px'; }
+    var vh = el.clientHeight / s, edge = auto ? 0 : 10;
     // ax — the left edge in replica points (lines of text read from their start, not from their middle)
-    var ax = PHONE.matches && st.max != null ? st.max : st.ax;
-    var tx = zoom >= this.W ? (this.W - zoom) / 2 : clamp(ax != null ? ax : R.x + R.w / 2 - zoom / 2, -10, this.W - zoom + 10);
+    var ax = phone && st.max != null ? st.max : st.ax;
+    var tx = zoom >= this.W ? (this.W - zoom) / 2 : clamp(ax != null ? ax : R.x + R.w / 2 - zoom / 2, -edge, this.W - zoom + edge);
     var ty = vh >= this.H ? (this.H - vh) / 2 : clamp(R.y + R.h / 2 - vh / 2, 0, this.H - vh);
     el.classList.toggle('moving', !!animate && !REDUCE);
     this.app.style.transform = 'scale(' + s.toFixed(4) + ') translate(' + (-tx).toFixed(1) + 'px,' + (-ty).toFixed(1) + 'px)';
@@ -103,10 +111,13 @@
     this.ringShown = !!on;
     var st = this.steps[this.i], sel = this.ringSel || (st && st.ring), R = on && sel && rect(this.app, sel);
     if (!R) { this.ring.classList.remove('on'); return; }
-    var p = 6;
+    var p = 6, g = this.ring;
+    // a ring that appears doesn't fly in from where it was last time; one that is on follows its target
+    if (!g.classList.contains('on')) { g.style.transition = 'opacity .4s ease'; void g.offsetWidth; }
     this.ring.style.left = (R.x - p) + 'px'; this.ring.style.top = (R.y - p) + 'px';
     this.ring.style.width = (R.w + 2 * p) + 'px'; this.ring.style.height = (R.h + 2 * p) + 'px';
-    this.ring.classList.add('on');
+    g.classList.add('on');
+    if (g.style.transition) { void g.offsetWidth; g.style.transition = ''; }
   };
   Cam.prototype.tapAt = function (sel) {
     var R = rect(this.app, sel); if (!R || REDUCE) return;
