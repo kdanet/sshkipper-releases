@@ -26,7 +26,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700;800&amp;display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..24,400..600,0..1,0&amp;icon_names=account_tree,add,apps,archive,arrow_forward,arrow_upward,auto_awesome,autorenew,check,check_circle,chevron_right,close,cloud_upload,code,content_copy,database,delete,deployed_code,description,dns,edit_square,expand_more,fit_screen,flag,folder,folder_open,grid_view,history,hub,info,inventory_2,key,keyboard_return,lan,language,laptop_mac,lock,lock_open,menu_book,more_horiz,open_in_full,person,play_arrow,refresh,sailing,schedule,search,sensors,settings,shield,speed,splitscreen_bottom,splitscreen_right,stop,swap_horiz,table,terminal,travel_explore,unfold_more,verified_user,view_sidebar,zoom_in,zoom_out&amp;display=block">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..24,400..600,0..1,0&amp;icon_names=account_tree,add,apps,archive,arrow_back,arrow_circle_up,arrow_forward,arrow_upward,auto_awesome,autorenew,bookmark,check,check_circle,chevron_right,close,cloud_upload,code,content_copy,create_new_folder,database,delete,deployed_code,description,dns,edit_square,expand_more,filter_alt,fit_screen,flag,folder,folder_open,grid_view,history,home,hub,info,inventory_2,key,keyboard_return,lan,language,laptop_mac,lock,lock_open,menu_book,more_horiz,open_in_full,pause,person,play_arrow,refresh,sailing,schedule,search,sensors,settings,shield,speed,splitscreen_bottom,splitscreen_right,stop,swap_horiz,table,terminal,travel_explore,unfold_more,verified_user,view_sidebar,visibility,zoom_in,zoom_out&amp;display=block">
 <link rel="stylesheet" href="../assets/site.css">
 <script src="../assets/site.js" defer></script>
 </head>
@@ -65,6 +65,7 @@
     <a class="ba-row" role="row" href="#sc-bastions"><span class="ba-was" role="cell">Three codes from your phone and a password — every time you go through the bastions</span><span class="ba-now" role="cell">Double-click: keys, passwords and 2FA codes are filled in for you</span></a>
     <a class="ba-row" role="row" href="#sc-agent"><span class="ba-was" role="cell">At night, by hand: top, docker stats, logs — and a password pasted into an AI chat by accident</span><span class="ba-now" role="cell">The agent looks for you, secrets are masked, changes only after your “yes”</span></a>
     <a class="ba-row" role="row" href="#sc-services"><span class="ba-was" role="cell">Five terminals for docker ps, nginx logs, crontab and supervisorctl</span><span class="ba-now" role="cell">One server tab: dashboard, Docker, Nginx, Cron, Supervisor</span></a>
+    <a class="ba-row" role="row" href="#sc-storage"><span class="ba-was" role="cell">scp to the Mac, then aws s3 cp to the bucket — and the 2FA codes again</span><span class="ba-now" role="cell">Two panes: the server over SFTP ⇄ S3 or WebDAV, by drag and drop</span></a>
     <a class="ba-row" role="row" href="#sc-databases"><span class="ba-was" role="cell">ssh -L to a database behind bastions and port numbers on a sticky note</span><span class="ba-now" role="cell">The database opens through the same chain by itself</span></a>
     <a class="ba-row" role="row" href="#sc-automations"><span class="ba-was" role="cell">A backup script in cron: errors in a log nobody reads</span><span class="ba-now" role="cell">A summary of every run and a check that the copy restores</span></a>
     <a class="ba-row" role="row" href="#sc-security"><span class="ba-was" role="cell">Passwords in notes, codes only on your phone, keys in ~/.ssh</span><span class="ba-now" role="cell">One encrypted document and Touch ID</span></a>
@@ -78,11 +79,12 @@
     <li><a href="#sc-services"><span>03</span>Services and dashboard</a></li>
     <li><a href="#sc-databases"><span>04</span>Databases</a></li>
     <li><a href="#sc-automations"><span>05</span>Automations and backups</a></li>
-    <li><a href="#sc-files"><span>06</span>Files and storage</a></li>
-    <li><a href="#sc-terminal"><span>07</span>Terminal</a></li>
-    <li><a href="#sc-tunnels"><span>08</span>Tunnels and the menu bar</a></li>
-    <li><a href="#sc-route"><span>09</span>Routes, profiles, Tailscale</a></li>
-    <li><a href="#sc-security"><span>10</span>Document and security</a></li>
+    <li><a href="#sc-storage"><span>06</span>Files: SFTP, S3 and WebDAV</a></li>
+    <li><a href="#sc-files"><span>07</span>Direct copy</a></li>
+    <li><a href="#sc-terminal"><span>08</span>Terminal</a></li>
+    <li><a href="#sc-tunnels"><span>09</span>Tunnels and the menu bar</a></li>
+    <li><a href="#sc-route"><span>10</span>Routes, profiles, Tailscale</a></li>
+    <li><a href="#sc-security"><span>11</span>Document and security</a></li>
   </ol></nav>
   <section id="sc-bastions" class="sc" aria-labelledby="sc-bastions-h">
     <div class="sc-text">
@@ -314,9 +316,42 @@
       <li><b>A backup that surely restores</b><span>A restore check in a temporary Docker container on this Mac; the result goes to a notification or Telegram.</span></li>
     </ul>
   </section>
+  <section id="sc-storage" class="sc" aria-labelledby="sc-storage-h">
+    <div class="sc-text">
+      <p class="eyebrow"><span>06</span>Files: SFTP, S3 and WebDAV</p>
+      <h2 id="sc-storage-h">Server, Mac and cloud — in two panes</h2>
+      <p class="sc-lead">Server files over SFTP beside an S3 bucket or a WebDAV folder: drag, and the transfer starts, with pause and resume. Storages live in the same tree as your servers.</p>
+    </div>
+    <figure class="scene L1" data-scene="storage">
+      <div class="act fix" style="--fw:1180">
+        <div class="fit" data-w="1180" data-h="600" data-fx="0.6" aria-hidden="true"><div class="app win done" data-kind="storage" style="width:1180px;height:600px">
+<div class="w-side">
+  <div class="w-tl"><span class="a-lights"><i></i><i></i><i></i></span><span class="a-rb"><span class="ms">view_sidebar</span></span><span class="a-rb w2"><span class="ms">add</span><span class="ms sm">expand_more</span></span></div>
+  <div class="w-search"><span class="ms">search</span>Search connections</div>
+  <div class="w-tree"><div class="a-row b" style="--d:0"><span class="ms a-chev">expand_more</span><img class="a-ic" src="../assets/icon-512.png" alt=""><span class="a-nm">Northwind</span></div><div class="a-row " style="--d:1"><span class=a-chev></span><span class="ms a-ic t-orange f">key</span><span class="a-nm">ops-2fa</span><span class=a-sb>ops</span></div><div class="a-row " style="--d:1"><span class=a-chev></span><span class="ms a-ic t-orange f">person</span><span class="a-nm">deploy</span></div><div class="a-row " style="--d:1"><span class="ms a-chev">expand_more</span><span class="ms a-ic t-blue f">folder</span><span class="a-nm">Production</span></div><div class="a-row " style="--d:2"><span class=a-chev></span><span class="ms a-ic t-teal f">terminal</span><span class="a-nm">bastion-msk</span></div><div class="a-row " style="--d:2"><span class=a-chev></span><span class="ms a-ic t-teal f">terminal</span><span class="a-nm">jump-prod</span></div><div class="a-row sel" style="--d:2"><span class="ms a-chev">expand_more</span><span class="ms a-ic t-teal f">terminal</span><span class="a-nm">web-01</span><span class="ms a-sync">swap_horiz</span><i class="a-dot g"></i></div><div class="a-row " style="--d:3"><span class=a-chev></span><span class="ms a-ic t-purple f">inventory_2</span><span class="a-nm">Backups · S3</span></div><div class="a-row " style="--d:2"><span class=a-chev></span><span class="ms a-ic t-teal f">terminal</span><span class="a-nm">web-02</span></div><div class="a-row " style="--d:1"><span class="ms a-chev">chevron_right</span><span class="ms a-ic t-blue f">folder</span><span class="a-nm">Staging</span></div><div class="a-row " style="--d:1"><span class="ms a-chev">chevron_right</span><span class="ms a-ic t-blue f">folder</span><span class="a-nm">Databases</span></div></div>
+</div>
+<div class="w-main fm">
+  <div class="w-bar"><span class="w-title">Files: web-01 ⇄ Backups · S3</span>
+    <span class="w-pal"><span class="ms">search</span><span>Connect to server…</span><span class="w-ss">⇧⇧</span></span>
+    <span class="a-grp"><span class="ms">folder</span><span class="ms">splitscreen_right</span><span class="ms">lock</span></span><span class="a-rb"><span class="ms">auto_awesome</span></span></div>
+  <div class="w-tabs"><span class="w-tab"><span class="ms t-teal">terminal</span><span>web-01</span></span><span class="w-tab sel"><span class="ms t-blue">folder</span><span>web-01 ⇄ Backups · S3</span><span class="ms x">close</span></span><span class="w-plus"><span class="ms">add</span></span></div>
+  <div class="f-panes"><div class="f-pane srv"><div class="f-top"><span class="ms t-ink2">terminal</span><b>web-01</b><span class="ms sm">unfold_more</span><span class="sp"></span><span class="ms">add</span></div><div class="f-bar"><span class="f-nav"><span class="ms">arrow_back</span><span class="ms">arrow_forward</span><span class="ms">arrow_upward</span><span class="ms">home</span><span class="ms">refresh</span></span><span class="f-tl"><span class="ms">create_new_folder</span><span class="ms">bookmark</span><span class="ms">visibility</span></span><span class="ms f-tl1">terminal</span><span class="f-filter"><span class="ms">search</span>Filter</span></div><div class="f-crumb">web-01<i>›</i>srv<i>›</i>backups</div><div class="f-head"><span class="c-n">Name<span class="ms sm">expand_more</span></span><span class="c-s">Size</span><span class="c-d">Modified</span><span class="c-p">Permissions</span><span class="c-o">Owner</span></div><div class="f-list"><div class="f-row"><span class="c-n"><span class="ms f-ic t-blue f">folder</span>mysql</span><span class="c-s">—</span><span class="c-d">10/28/26, 3:31 AM</span><span class="c-p">rwxr-x---</span><span class="c-o">deploy:deploy</span></div><div class="f-row"><span class="c-n"><span class="ms f-ic t-blue f">folder</span>redis</span><span class="c-s">—</span><span class="c-d">10/28/26, 3:32 AM</span><span class="c-p">rwxr-x---</span><span class="c-o">deploy:deploy</span></div><div class="f-row"><span class="c-n"><span class="ms f-ic t-ink2">description</span>mysql-2026-10-27.tgz</span><span class="c-s">1.2 GB</span><span class="c-d">10/27/26, 3:34 AM</span><span class="c-p">rw-r-----</span><span class="c-o">deploy:deploy</span></div><div class="f-row"><span class="c-n"><span class="ms f-ic t-ink2">description</span>mysql-2026-10-28.tgz</span><span class="c-s">1.2 GB</span><span class="c-d">10/28/26, 3:34 AM</span><span class="c-p">rw-r-----</span><span class="c-o">deploy:deploy</span></div><div class="f-row"><span class="c-n"><span class="ms f-ic t-ink2">description</span>restore.sh</span><span class="c-s">2 KB</span><span class="c-d">10/14/26, 11:02 AM</span><span class="c-p">rwxr-x---</span><span class="c-o">deploy:deploy</span></div></div><div class="f-foot">5 items · 31 GB free</div></div><div class="f-pane s3"><div class="f-top"><span class="ms t-ink2">inventory_2</span><b>Backups · S3</b><span class="ms sm">unfold_more</span><span class="sp"></span><span class="ms">add</span></div><div class="f-bar"><span class="f-nav"><span class="ms">arrow_back</span><span class="ms">arrow_forward</span><span class="ms">arrow_upward</span><span class="ms">home</span><span class="ms">refresh</span></span><span class="f-tl"><span class="ms">create_new_folder</span><span class="ms">bookmark</span><span class="ms">visibility</span></span><span class="f-filter"><span class="ms">search</span>Filter</span></div><div class="f-crumb">Backups · S3<i>›</i>backups<i>›</i>mysql</div><div class="f-head"><span class="c-n">Name<span class="ms sm">expand_more</span></span><span class="c-s">Size</span><span class="c-d">Modified</span></div><div class="f-list"><div class="f-row"><span class="c-n"><span class="ms f-ic t-blue f">folder</span>clickhouse</span><span class="c-s">—</span><span class="c-d">—</span></div><div class="f-row"><span class="c-n"><span class="ms f-ic t-blue f">folder</span>redis</span><span class="c-s">—</span><span class="c-d">—</span></div><div class="f-row"><span class="c-n"><span class="ms f-ic t-ink2">description</span>mysql-2026-10-26.tgz</span><span class="c-s">1.2 GB</span><span class="c-d">10/26/26, 3:41 AM</span></div><div class="f-row"><span class="c-n"><span class="ms f-ic t-ink2">description</span>mysql-2026-10-27.tgz</span><span class="c-s">1.2 GB</span><span class="c-d">10/27/26, 3:40 AM</span></div><div class="f-row f-new js-new"><span class="c-n"><span class="ms f-ic t-ink2">description</span>mysql-2026-10-28.tgz</span><span class="c-s">1.2 GB</span><span class="c-d">10/28/26, 3:52 AM</span></div></div><div class="f-foot"><span class="n4">4 items</span><span class="n5">5 items</span></div></div></div>
+  <div class="x-panel"><div class="x-head"><b>Transfers</b><span class="x-act">active: 1 (112 MB/s)</span><span class="x-all">all done (1)</span><span class="sp"></span><span class="ms x-pa">pause</span><span class="ms">more_horiz</span></div><div class="x-row"><span class="x-ic"><span class="ms">swap_horiz</span></span><span class="x-ok"><span class="ms f">check_circle</span></span><div class="x-mid"><b>mysql-2026-10-28.tgz</b><span class="x-sub">→ Backups · S3: /backups/mysql · direct</span><i class="x-bar"><i class="js-xprog"></i></i></div><span class="x-st js-xst" data-ru="0">38% · 112 MB/s · 0:07</span><span class="x-sz">1.2 GB</span><span class="ms x-pb">pause</span><span class="ms">close</span></div></div>
+</div></div></div>
+        <p class="act-c">The server over SFTP and an S3 bucket side by side; “Copy … directly” sends the archive from web-01 straight to the bucket, not through the Mac — the transfer queue shows the progress.</p>
+      </div>
+      <figcaption class="visually-hidden">A copy of an SSHKipper screen: The Files tab: web-01 over SFTP on the left (/srv/backups), the “Backups · S3” storage on the right (backups/mysql); below, an archive is being transferred to S3, then it appears in the bucket.</figcaption>
+      <button class="replay" type="button" hidden><span class="ms">refresh</span><span>Play again</span></button>
+    </figure>
+    <ul class="proofs">
+      <li><b>SFTP beside the terminal</b><span>The file panel follows cd; edit in your own editor, permissions for many files at once, Quick Look.</span></li>
+      <li><b>S3 and WebDAV</b><span>AWS, Yandex Object Storage, Selectel, Cloudflare R2, MinIO, Nextcloud, Yandex Disk; S3 links for an hour, a day or a week.</span></li>
+      <li><b>A queue that resumes</b><span>Pause, resume, clear name conflicts; closing the tab doesn’t stop a transfer.</span></li>
+    </ul>
+  </section>
   <section id="sc-files" class="sc" aria-labelledby="sc-files-h">
     <div class="sc-text">
-      <p class="eyebrow"><span>06</span>Files and storage</p>
+      <p class="eyebrow"><span>07</span>Direct copy</p>
       <h2 id="sc-files-h">Files go server to server directly, skipping the Mac</h2>
       <p class="sc-lead">A file from a server behind a bastion goes straight to the bastion: the app enters 2FA, the key stays on the Mac, and SHA-256 is checked on both ends.</p>
     </div>
@@ -337,14 +372,14 @@
       <button class="replay" type="button" hidden><span class="ms">refresh</span><span>Play again</span></button>
     </figure>
     <ul class="proofs">
-      <li><b>Two-pane manager</b><span>Mac ⇄ server ⇄ storage, drag and drop both ways and to Finder; the SFTP panel follows cd.</span></li>
-      <li><b>S3 and WebDAV in the same tree</b><span>AWS, Yandex Object Storage, Selectel, Cloudflare R2, MinIO, Nextcloud, Yandex Disk; server ↔ S3 directly too.</span></li>
-      <li><b>A queue that resumes</b><span>Pause, resume, clear name conflicts; closing the tab doesn’t stop a transfer.</span></li>
+      <li><b>Not through your link</b><span>The file goes between servers directly — your home connection isn’t part of the transfer.</span></li>
+      <li><b>Server ↔ S3 directly too</b><span>An archive from a server goes to the bucket without stopping on the Mac.</span></li>
+      <li><b>Checked on both ends</b><span>SHA-256 is compared after the copy; the key stays on the Mac, the app enters the 2FA codes.</span></li>
     </ul>
   </section>
   <section id="sc-terminal" class="sc" aria-labelledby="sc-terminal-h">
     <div class="sc-text">
-      <p class="eyebrow"><span>07</span>Terminal</p>
+      <p class="eyebrow"><span>08</span>Terminal</p>
       <h2 id="sc-terminal-h">A terminal on the Ghostty engine — and one command everywhere</h2>
       <p class="sc-lead">Fast GPU rendering, tabs and splits, tmux sessions that survive a drop. Typing into every tab outlines the participants; Production servers join only by explicit choice.</p>
     </div>
@@ -369,7 +404,7 @@
   </section>
   <section id="sc-tunnels" class="sc" aria-labelledby="sc-tunnels-h">
     <div class="sc-text">
-      <p class="eyebrow"><span>08</span>Tunnels and the menu bar</p>
+      <p class="eyebrow"><span>09</span>Tunnels and the menu bar</p>
       <h2 id="sc-tunnels-h">Tunnels and schedules keep running with the window closed</h2>
       <p class="sc-lead">The helm in the menu bar shows tunnels and automations, answers “Ask me” and connects by name. In the background the CPU load is near zero.</p>
     </div>
@@ -404,7 +439,7 @@
   </section>
   <section id="sc-route" class="sc" aria-labelledby="sc-route-h">
     <div class="sc-text">
-      <p class="eyebrow"><span>09</span>Routes, profiles, Tailscale</p>
+      <p class="eyebrow"><span>10</span>Routes, profiles, Tailscale</p>
       <h2 id="sc-route-h">See how you reach a server — and keep a way around</h2>
       <p class="sc-lead">The route map is drawn from the facts in your document: bastions, keys, 2FA codes. A server can have several profiles — Tailscale, an office address, another bastion; on a network error the next one is tried.</p>
     </div>
@@ -431,7 +466,7 @@
   </section>
   <section id="sc-security" class="sc" aria-labelledby="sc-security-h">
     <div class="sc-text">
-      <p class="eyebrow"><span>10</span>Document and security</p>
+      <p class="eyebrow"><span>11</span>Document and security</p>
       <h2 id="sc-security-h">Everything in one encrypted file — and it’s free</h2>
       <p class="sc-lead">Connections, passwords, keys and 2FA secrets live in one document: Argon2id and XChaCha20-Poly1305. It opens with a master password or your fingerprint.</p>
     </div>

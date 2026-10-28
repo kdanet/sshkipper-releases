@@ -187,6 +187,24 @@
       tl.at(6600, function () { logs[4].classList.add('in'); app.classList.add('done'); });
       tl.at(13000, loop);
     },
+    // Files — a direct copy from the server to the S3 storage runs in the queue, then the file is in the bucket
+    storage: function (app, tl, loop) {
+      var bar = app.querySelector('.js-xprog'), st = app.querySelector('.js-xst'), nw = app.querySelector('.js-new');
+      var ru = st.dataset.ru === '1', speed = ru ? '112 МБ/с' : '112 MB/s';
+      app.classList.add('play'); app.classList.remove('done'); nw.classList.remove('in');
+      bar.style.transition = 'none'; bar.style.width = '0%';
+      tl.at(50, function () { bar.style.transition = ''; });
+      var N = 20, t0 = 700, step = 380;
+      for (var k = 1; k <= N; k++) (function (k) {
+        tl.at(t0 + k * step, function () {
+          var pct = k * 100 / N, left = Math.round((N - k) * 0.55);
+          bar.style.width = pct + '%';
+          st.textContent = pct + '% · ' + speed + ' · 0:' + (left < 10 ? '0' : '') + left;
+        });
+      })(k);
+      tl.at(t0 + N * step + 400, function () { app.classList.add('done'); nw.classList.add('in'); });
+      tl.at(t0 + N * step + 9000, loop);
+    },
     // 07 — typed once, run in both panes
     terminal: function (app, tl, loop) {
       var typed = $$(app, '.js-typed'), outs = $$(app, '.js-out');
