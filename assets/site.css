@@ -141,13 +141,12 @@ body { margin: 0; overflow-x: clip; }
 .k-num { font-variant-numeric: tabular-nums; color: var(--ink3); font-weight: 600; margin-right: 4px; padding-right: 12px; border-right: 1px solid var(--line); }
 .k-story h2 { margin: 0; font-size: clamp(32px, 3.8vw, 50px); line-height: 1.04; letter-spacing: -.04em; font-weight: 700; }
 .k-sub { margin: 0; font-size: 17.5px; line-height: 1.55; color: var(--ink2); }
-.k-stagecard { margin-top: 36px; border-radius: 24px; background: var(--card); box-shadow: var(--lift); overflow: hidden; }
+.k-stagecard { margin-top: 44px; border-radius: 20px; background: var(--card); box-shadow: 0 0 0 1px var(--line); overflow: hidden; }
 .k-stagecard .k-story-vis { position: relative; }
 .k-stagecard .k-screen { --ar: 2 / 1; border-radius: 0; box-shadow: none; }
 .k-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--c, 3), minmax(0, 1fr)); border-top: 1px solid var(--line); }
 .k-steps li { display: flex; border-left: 1px solid var(--line); }
-.k-steps li:first-child { border-left: 0; }
-.k-steps.two li:nth-child(4) { border-left: 0; } .k-steps.two li:nth-child(n+4) { border-top: 1px solid var(--line); }
+.k-steps li.r0 { border-left: 0; } .k-steps li.r2 { border-top: 1px solid var(--line); }
 .k-step { all: unset; box-sizing: border-box; position: relative; width: 100%; cursor: pointer; display: grid; grid-template-columns: 26px minmax(0, 1fr);
   gap: 12px; padding: 18px 20px 20px; transition: background .3s; }
 .k-step:hover { background: color-mix(in oklab, var(--ink) 3%, transparent); }
@@ -166,24 +165,22 @@ body { margin: 0; overflow-x: clip; }
 .k-step.on.run .k-bar i { width: 0; animation: k-fill var(--dur, 5s) linear forwards; }
 @keyframes k-fill { to { width: 100%; } }
 /* A block of its own (databases): a tinted panel, the engines it speaks */
-.k-story.k-block { max-width: 1320px; margin-top: 150px; padding: 72px max(var(--gutter), 40px) 64px; border-radius: 36px;
-  background: radial-gradient(90% 60% at 50% 0%, color-mix(in oklab, var(--accent) 10%, var(--card)), var(--card) 70%); box-shadow: inset 0 0 0 1px var(--line); }
-.k-engines { list-style: none; margin: 36px 0 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; }
-.k-engines li { display: flex; flex-direction: column; gap: 4px; padding: 16px 16px 18px; border-radius: 16px; background: var(--bg); box-shadow: inset 0 0 0 1px var(--line);
-  transition: transform .3s cubic-bezier(.2, .8, .2, 1), box-shadow .3s; }
-.k-engines li:hover { transform: translateY(-3px); box-shadow: inset 0 0 0 1px var(--line), 0 18px 36px -22px rgba(10, 20, 45, .35); }
+.k-story.k-block { padding-top: 110px; margin-top: 110px; border-top: 1px solid var(--line); }
+.k-story.k-block:first-of-type { border-top: 0; }
+.k-engines { list-style: none; margin: 36px 0 0; padding: 0; display: grid; grid-template-columns: repeat(var(--ec, 6), minmax(0, 1fr)); gap: 26px 28px; }
+.k-engines li { display: flex; flex-direction: column; gap: 4px; }
 .k-engines .lg { display: flex; gap: 8px; height: 28px; margin-bottom: 6px; align-items: center; }
 .k-engines img { width: 28px; height: 28px; }
 .k-engines .lg .ms { font-size: 26px; color: var(--accentInk); }
 @media (prefers-color-scheme: dark) { .k-engines img.mono { filter: invert(1); } }
 /* a narrow screen of its own (a popover, the AI panel) floats in the middle of the stage */
-.k-story .k-cam > .app.modes, .k-story .k-cam > .app.aipanel, .k-story .k-cam > .app.frag, .k-story .k-cam > .app.sheet { border-radius: 14px; box-shadow: 0 0 0 1px var(--line), 0 24px 50px -24px rgba(10, 20, 45, .45); }
+.k-story .k-cam > .app.modes, .k-story .k-cam > .app.aipanel, .k-story .k-cam > .app.frag, .k-story .k-cam > .app.sheet { border-radius: 12px; box-shadow: 0 0 0 1px var(--line), 0 12px 32px -20px rgba(10, 20, 45, .35); }
 .k-engines b { font-size: 15.5px; font-weight: 600; letter-spacing: -.01em; }
 .k-engines span { font-size: 13.5px; line-height: 1.45; color: var(--ink2); }
 @media (prefers-color-scheme: dark) { .k-engines img[src$="sqlite.svg"], .k-engines img[src$="mysql.svg"] { filter: brightness(1.9) saturate(.8); } }
 @media (max-width: 1100px) { .k-engines { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-@media (max-width: 960px) { .k-story.k-block { margin: 110px var(--gutter) 0; padding: 44px 18px 36px; border-radius: 26px; } }
-@media (max-width: 640px) { .k-engines { grid-template-columns: repeat(2, minmax(0, 1fr)); } .k-story.k-block { margin: 110px 8px 0; padding: 40px 12px 28px; } }
+@media (max-width: 960px) { .k-story.k-block { padding-top: 80px; margin-top: 80px; } }
+@media (max-width: 640px) { .k-engines { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
 /* The path card over the screen (bastions, step 2): an explanation drawn by the site, not part of the app. */
 .k-hops { position: absolute; left: 50%; bottom: 26px; z-index: 3; display: flex; align-items: center; width: max-content; max-width: calc(100% - 32px);
@@ -218,7 +215,7 @@ body { margin: 0; overflow-x: clip; }
 .k-tile .k-screen { --ar: 16 / 10.5; margin: auto -26px 0; border-radius: 0; box-shadow: none; border-top: 1px solid var(--line);
   background: radial-gradient(120% 100% at 50% 0%, color-mix(in oklab, var(--accent) 9%, var(--bg2)), var(--bg2)); }
 .k-tile .k-cam { background: transparent; }
-.k-tile .k-cam > .app { border-radius: 12px; box-shadow: 0 0 0 1px rgba(15, 19, 32, .12), 0 24px 50px -24px rgba(10, 20, 45, .45); }
+.k-tile .k-cam > .app { border-radius: 10px; box-shadow: 0 0 0 1px rgba(15, 19, 32, .12), 0 12px 30px -20px rgba(10, 20, 45, .35); }
 @media (prefers-color-scheme: dark) { .k-tile .k-cam > .app { box-shadow: 0 0 0 1px rgba(255, 255, 255, .12), 0 24px 50px -24px rgba(0, 0, 0, .9); } }
 .k-extras { list-style: none; margin: 28px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
 .k-extras li { font-size: 14.5px; color: var(--ink2); padding: 7px 13px; border-radius: 99px; box-shadow: inset 0 0 0 1px var(--line); }
@@ -278,7 +275,7 @@ body { margin: 0; overflow-x: clip; }
   .k-stagecard { margin-top: 28px; }
   .k-stagecard .k-screen { --ar: 4 / 3; }
   .k-steps { grid-template-columns: minmax(0, 1fr); }
-  .k-steps li { border-left: 0; border-top: 1px solid var(--line); } .k-steps li:first-child { border-top: 0; }
+  .k-steps li, .k-steps li.r0 { border-left: 0; border-top: 1px solid var(--line); } .k-steps li:first-child { border-top: 0; }
   .k-proofs { grid-template-columns: minmax(0, 1fr); margin-top: 32px; gap: 18px; }
   .k-ba { grid-template-columns: 40px minmax(0, 1fr) 24px; gap: 10px 14px; }
   .k-ba-i { grid-row: span 2; width: 40px; height: 40px; align-self: start; } .k-to { display: none; } .k-now { grid-column: 2; } .k-go { grid-row: 1 / span 2; grid-column: 3; }

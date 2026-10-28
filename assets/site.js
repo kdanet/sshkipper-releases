@@ -214,11 +214,12 @@
       }
     ],
     agent: [
+      // the panel: the question, then the agent's steps one by one
       function (app, tl, cam) {
         app.classList.add('play');
         $$(app, '.in').forEach(function (x) { x.classList.remove('in'); });
-        reveal($$(app, '.js-step'), tl, 600, 1000);
-        tl.at(1600, function () { cam.ringOn(true); });
+        reveal($$(app, '.js-step'), tl, 600, 900);
+        tl.at(1500, function () { cam.ringOn(true); });
       },
       function (app, tl, cam) {
         app.classList.add('play');
@@ -229,23 +230,41 @@
       },
       function (app, tl, cam) {
         app.classList.add('play');
-        $$(app, '.js-step, .js-cmd').forEach(function (x) { x.classList.add('in'); });
+        $$(app, '.js-step').forEach(function (x) { x.classList.add('in'); });
         $$(app, '.js-card, .js-wait').forEach(function (x) { x.classList.remove('in'); });
         reveal($$(app, '.js-card, .js-wait'), tl, 0, 1100);
         tl.at(1400, function () { cam.ringOn(true); });
       },
-      function (app, tl, cam) { tl.at(1150, function () { cam.ringOn(true); }); },
       // the second model's verdict arrives in the card a moment after it
       function (app, tl, cam) {
         var rv = app.querySelector('.js-rv');
         app.classList.add('play'); rv.classList.remove('in');
         tl.at(1200, function () { rv.classList.add('in'); });
         tl.at(1700, function () { cam.ringOn(true); });
+      },
+      function (app, tl, cam) { tl.at(1150, function () { cam.ringOn(true); }); },
+      function (app, tl, cam) { tl.at(1150, function () { cam.ringOn(true); }); },
+      // the slider moves: the formula under it recounts the memory, no new question to the model
+      function (app, tl, cam) {
+        var th = app.querySelector('.js-wk'), tr = app.querySelector('.js-wt'), n = app.querySelector('.js-wn'), m = app.querySelector('.js-wm');
+        var ru = (document.documentElement.lang || 'ru') === 'ru';
+        function set(k) {
+          var p = (k - 1) / 5 * 100;
+          th.style.left = p + '%'; tr.style.width = p + '%'; n.textContent = k;
+          m.textContent = (k * 0.4).toFixed(1).replace('.', ru ? ',' : '.') + (ru ? ' ГБ' : ' GB');
+        }
+        set(2);
+        tl.at(1300, function () { cam.ringOn(true); });
+        [3, 4, 5, 4].forEach(function (k, i) { tl.at(2000 + i * 900, function () { set(k); }); });
+      },
+      // an external agent calls SSHKipper's tools, line by line
+      function (app, tl, cam) {
+        app.classList.add('play');
+        var ls = $$(app, '.js-ml');
+        ls.forEach(function (l) { l.classList.remove('in'); });
+        var t = reveal(ls, tl, 450, 900);
+        tl.at(t, function () { cam.ringOn(true); });
       }
-    ],
-    services: [
-      function (app, tl, cam) { seg(app, false); tl.at(1150, function () { cam.ringOn(true); }); },
-      function (app, tl, cam) { seg(app, false); tl.at(700, function () { seg(app, true); }); tl.at(1500, function () { cam.ringOn(true); }); }
     ],
     databases: [
       function (app, tl, cam) {
@@ -286,10 +305,22 @@
       function (app, tl, cam) {
         app.classList.add('play'); app.classList.remove('done');
         $$(app, '.js-ac').forEach(function (c) { c.classList.remove('ok'); });
-        $$(app, '.js-chip').forEach(function (c) { c.classList.remove('in'); });
         tl.at(1150, function () { cam.ringOn(true); });
       },
-      function (app, tl, cam) { tl.at(1150, function () { cam.ringOn(true); }); },
+      // the morning check runs: the server, the three checks at once, AI, the summary
+      function (app, tl, cam) {
+        var cards = $$(app, '.js-ac');
+        app.classList.add('play'); app.classList.remove('done');
+        cards.forEach(function (c) { c.classList.remove('ok'); });
+        var at = [900, 1700, 1700, 1700, 2900, 3700];
+        cards.forEach(function (c, i) { tl.at(at[i] || 900, function () { c.classList.add('ok'); }); });
+        tl.at(4000, function () { app.classList.add('done'); cam.ringOn(true); });
+      },
+      function (app, tl, cam) {
+        app.classList.add('play', 'done');
+        $$(app, '.js-ac').forEach(function (c) { c.classList.add('ok'); });
+        tl.at(1150, function () { cam.ringOn(true); });
+      },
       function (app, tl, cam) {
         var cards = $$(app, '.js-ac'), chips = $$(app, '.js-chip');
         app.classList.add('play'); app.classList.remove('done');
@@ -324,7 +355,7 @@
     var scams = $$(story, '.k-cam').map(function (el) { return el._cam; }), btns = $$(story, '.k-step');
     var path = story.querySelector('.k-hops');
     var tl = new Timeline(), cur = 0, visible = false;
-    var DUR = btns.map(function (b, i) { return id === 'bastions' && i === 1 ? 6000 : id === 'automations' && i === 2 ? 9500 : id === 'databases' && i === 2 ? 8000 : 5400; });
+    var DUR = btns.map(function (b, i) { return id === 'bastions' && i === 1 ? 6000 : id === 'automations' && i === 3 ? 9500 : id === 'databases' && i === 2 ? 8000 : id === 'agent' && (i === 6 || i === 7) ? 7000 : 5400; });
     function go(i, auto) {
       tl.stop(); cur = i;
       btns.forEach(function (b, k) { b.classList.toggle('on', k === i); b.classList.remove('run'); b.setAttribute('aria-current', k === i ? 'step' : 'false'); });
