@@ -83,7 +83,7 @@
       var w = +f.dataset.w, h = +f.dataset.h;
       f.style.setProperty('--w', w); f.style.setProperty('--h', h);
       // In a wide scene a big replica may grow a little past its design size (it is drawn, not a bitmap).
-      var big = f.closest('.scene.L2, .scene.L3');
+      var big = f.closest('.scene.L1, .scene.L2, .scene.L3');
       var cw = f.clientWidth, s = Math.min(big ? 1.14 : 1, cw / w), x = 0;
       // A wide screen on a phone: keep it readable and show its focus part (data-fx) instead of shrinking it all.
       if (f.dataset.fx && s < 0.5) { s = 0.5; x = -Math.round((w * s - cw) * +f.dataset.fx); }
