@@ -1,18 +1,24 @@
-/* SSHKipper landing: ASCII helm, sticky contents, and the replicas of real app screens (fit to the column, and
-   small animations of what each screen really does). Plain script, no dependencies. All text lives in the HTML.
-   Animations run only while their replica is on screen; with reduced motion the replicas stay in their final state. */
+/* SSHKipper landing: the ASCII helm, and a camera over each replica of an app screen — it scales the fixed-size
+   screen to its stage, moves to the part a story step talks about and rings it. Stories advance by themselves while on
+   screen; a click on a step jumps to it. With reduced motion nothing moves by itself. Plain script, no dependencies. */
 (function () {
   'use strict';
-  var root = document.documentElement;
-  root.classList.add('js');
+  document.documentElement.classList.add('js');
   var A = new URL('.', document.currentScript.src).href; // assets/ folder
   var REDUCE = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var PHONE = window.matchMedia('(max-width: 640px)');
+  var $$ = function (el, sel) { return Array.prototype.slice.call(el.querySelectorAll(sel)); };
+  var clamp = function (v, a, b) { return Math.max(a, Math.min(b, v)); };
 
-  /* ---------- ASCII helm (the logo drawn in characters) ---------- */
+  function Timeline() { this.ids = []; }
+  Timeline.prototype.at = function (ms, fn) { this.ids.push(setTimeout(fn, ms)); };
+  Timeline.prototype.stop = function () { this.ids.forEach(clearTimeout); this.ids = []; };
+
+  /* ---------- ASCII helm (the logo drawn in characters, slowly turning) ---------- */
   (function helm() {
     var box = document.getElementById('helm');
     if (!box) return;
-    box.insertAdjacentHTML('beforeend', '<div class="helm-art" aria-hidden="true"><pre class="w"></pre><pre class="blue"></pre></div><pre class="sea" aria-hidden="true"></pre>');
+    box.insertAdjacentHTML('beforeend', '<div class="k-helm-art" aria-hidden="true"><pre class="w"></pre><pre class="blue"></pre></div><pre class="sea" aria-hidden="true"></pre>');
     var W = box.querySelector('.w'), B = box.querySelector('.blue'), S = box.querySelector('.sea');
     var img = new Image(); img.src = A + 'mark-white.svg';
     var COLS = 76, ROWS = 42, SEA = 5, ramp = ' .:-=+*#%@';
@@ -52,264 +58,225 @@
     if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { es[0].isIntersecting ? go() : halt(); }).observe(box); else go();
   })();
 
-  /* ---------- Sticky contents: highlight the screen in view ---------- */
-  (function toc() {
-    var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
-    var secs = links.map(function (l) { return document.querySelector(l.getAttribute('href')); });
-    var bar = document.querySelector('.toc ol');
-    if (!links.length || !bar) return;
-    var cur = -1, raf = 0;
-    function update() {
-      raf = 0;
-      var idx = -1;
-      secs.forEach(function (s, i) { if (s && s.getBoundingClientRect().top < window.innerHeight * 0.45) idx = i; });
-      if (idx === cur) return;
-      if (cur >= 0) links[cur].removeAttribute('aria-current');
-      cur = idx;
-      if (cur >= 0) {
-        var l = links[cur]; l.setAttribute('aria-current', 'true');
-        var left = bar.scrollLeft + l.getBoundingClientRect().left - bar.getBoundingClientRect().left - bar.clientWidth / 2 + l.clientWidth / 2;
-        bar.scrollTo({ left: Math.max(0, left), behavior: REDUCE ? 'auto' : 'smooth' });
-      }
-    }
-    window.addEventListener('scroll', function () { if (!raf) raf = requestAnimationFrame(update); }, { passive: true });
-    update();
-  })();
-
-  /* ---------- Replicas: scale the fixed-size screen to its column ---------- */
-  var fits = Array.prototype.slice.call(document.querySelectorAll('.fit'));
-  function layout() {
-    fits.forEach(function (f) {
-      var w = +f.dataset.w, h = +f.dataset.h;
-      f.style.setProperty('--w', w); f.style.setProperty('--h', h);
-      // In a wide scene a big replica may grow a little past its design size (it is drawn, not a bitmap).
-      var big = f.closest('.scene.L1, .scene.L2, .scene.L3');
-      var cw = f.clientWidth, s = Math.min(big ? 1.14 : 1, cw / w), x = 0;
-      // A wide screen on a phone: keep it readable and show its focus part (data-fx) instead of shrinking it all.
-      if (f.dataset.fx && s < 0.5) { s = 0.5; x = -Math.round((w * s - cw) * +f.dataset.fx); }
-      f.style.setProperty('--s', s.toFixed(4));
-      f.style.setProperty('--x', x + 'px');
+  /* ---------- Camera ---------- */
+  // A rectangle in replica points (the union of the matches). The app's own scale right now — also in the middle of a
+  // camera move — comes from its drawn width, so inner transforms (a canvas at 60 %) are counted as drawn.
+  function rect(app, sel) {
+    var a = app.getBoundingClientRect(), k = a.width / app.offsetWidth, r = null;
+    if (!k) return null;
+    $$(app, sel).forEach(function (n) {
+      var b = n.getBoundingClientRect();
+      if (!b.width && !b.height) return;
+      var x = (b.left - a.left) / k, y = (b.top - a.top) / k, x2 = (b.right - a.left) / k, y2 = (b.bottom - a.top) / k;
+      r = r ? { x: Math.min(r.x, x), y: Math.min(r.y, y), x2: Math.max(r.x2, x2), y2: Math.max(r.y2, y2) } : { x: x, y: y, x2: x2, y2: y2 };
     });
+    if (r) { r.w = r.x2 - r.x; r.h = r.y2 - r.y; }
+    return r;
   }
-  layout();
-  if ('ResizeObserver' in window) { var ro = new ResizeObserver(layout); fits.forEach(function (f) { ro.observe(f); }); }
-  else window.addEventListener('resize', layout);
 
-  /* ---------- Replicas: what each screen does, played while it is on screen ---------- */
-  // A little timeline runner: step(fn, delay) chains; stop() cancels everything pending.
-  function Timeline() { this.ids = []; }
-  Timeline.prototype.at = function (ms, fn) { this.ids.push(setTimeout(fn, ms)); };
-  Timeline.prototype.stop = function () { this.ids.forEach(clearTimeout); this.ids = []; };
-  var $$ = function (el, sel) { return Array.prototype.slice.call(el.querySelectorAll(sel)); };
-
-  var players = {
-    // 01 — connecting through two bastions: the 2FA lines appear, the status turns «Connected»
-    bastions: function (app, tl, loop) {
-      var lines = $$(app, '.w-term .tl');
-      app.classList.remove('done'); app.classList.add('play');
-      lines.forEach(function (l) { l.classList.remove('in'); });
-      var t = 300;
-      lines.forEach(function (l, i) { tl.at(t, function () { l.classList.add('in'); }); t += i < 4 ? 1000 : 70; });
-      tl.at(t + 200, function () { app.classList.add('done'); });
-      tl.at(t + 7000, loop);
-    },
-    // 02 — the agent looks around step by step, then a red approval card waits for you
-    agent: function (app, tl, loop) {
-      var steps = $$(app, '.js-step'), cmds = $$(app, '.js-cmd'), card = $$(app, '.js-card, .js-wait');
-      app.classList.add('play');
-      $$(app, '.in').forEach(function (x) { x.classList.remove('in'); });
-      var t = 500;
-      steps.forEach(function (s, i) {
-        tl.at(t, function () {
-          s.classList.add('in');
-          cmds.forEach(function (c) { if (+c.dataset.at === i + 1 || (+c.dataset.at === i && false)) c.classList.add('in'); });
-        });
-        t += 750;
-      });
-      tl.at(t + 300, function () { card.forEach(function (c) { c.classList.add('in'); }); });
-      tl.at(t + 8000, loop);
-    },
-    // 03 — the same tab switches between the dashboard and Nginx
-    services: function (app, tl, loop) {
-      var pill = app.querySelector('.segpill'), d = app.querySelector('.js-dash'), n = app.querySelector('.js-nginx');
-      function to(el, nginx) {
-        pill.style.left = el.offsetLeft + 'px'; pill.style.width = el.offsetWidth + 'px';
-        app.classList.toggle('nginx', nginx);
-      }
-      to(d, false);
-      tl.at(5500, function () { to(n, true); });
-      tl.at(12500, loop);
-    },
-    // 04 — words in the AI filter become WHERE, the grid shows the filtered rows
-    databases: function (app, tl, loop) {
-      var box = app.querySelector('.js-type'), tx = box.querySelector('.tx'), text = box.dataset.text;
-      app.classList.add('play'); app.classList.remove('typed', 'applied'); tx.textContent = '';
-      var t = 700;
-      for (var i = 1; i <= text.length; i++) (function (k) { tl.at(t + k * 55, function () { tx.textContent = text.slice(0, k); }); })(i);
-      t += text.length * 55 + 600;
-      tl.at(t, function () { app.classList.add('typed'); });
-      tl.at(t + 1300, function () { app.classList.add('applied'); });
-      tl.at(t + 8000, loop);
-    },
-    // 05 — a run: every module turns green with its result, in order
-    automations: function (app, tl, loop) {
-      var cards = $$(app, '.js-ac'), chips = $$(app, '.js-chip');
-      app.classList.add('play'); app.classList.remove('done');
-      cards.forEach(function (c) { c.classList.remove('ok'); });
-      chips.forEach(function (c) { c.classList.remove('in'); });
-      var t = 800;
-      cards.forEach(function (c, i) {
-        tl.at(t, function () {
-          c.classList.add('ok');
-          chips.forEach(function (ch) { if (+ch.dataset.at === i) ch.classList.add('in'); });
-        });
-        t += i === 1 ? 1200 : 750;
-      });
-      tl.at(t, function () { app.classList.add('done'); });
-      tl.at(t + 7000, loop);
-    },
-    // 06 — direct copy: sign-in, transfer, checksum, done
-    files: function (app, tl, loop) {
-      var logs = $$(app, '.js-log'), bar = app.querySelector('.js-prog'), n = app.querySelector('.js-n');
-      var mb = n.dataset.mb;
-      var ru = (root.lang || 'ru').indexOf('ru') === 0;
-      app.classList.add('play'); app.classList.remove('done');
-      logs.forEach(function (l) { l.classList.remove('in'); });
-      bar.style.transition = 'none'; bar.style.width = '1%'; n.textContent = '0 ' + mb;
-      tl.at(50, function () { bar.style.transition = ''; });
-      tl.at(600, function () { logs[0].classList.add('in'); });
-      tl.at(1400, function () { logs[1].classList.add('in'); });
-      tl.at(2100, function () { logs[2].classList.add('in'); });
-      for (var k = 1; k <= 10; k++) (function (k) {
-        tl.at(2300 + k * 300, function () { bar.style.width = k * 10 + '%'; var v = Math.round(1229 * k / 10); n.textContent = (k === 10 ? (ru ? '1,2 ' : '1.2 ') + (ru ? 'ГБ' : 'GB') : v + ' ' + mb); });
-      })(k);
-      tl.at(5600, function () { logs[3].classList.add('in'); });
-      tl.at(6600, function () { logs[4].classList.add('in'); app.classList.add('done'); });
-      tl.at(13000, loop);
-    },
-    // Files — three close-ups: the upload Mac → server and the direct copy server → S3 run in their queues
-    storage: function (app, tl, loop) {
-      var fig = app.closest('.scene'), frags = $$(fig, '.app.frag');
-      var runs = frags.filter(function (f) { return f.querySelector('.x-row'); });
-      frags.forEach(function (f) { f.classList.add('play'); f.classList.remove('done'); });
-      runs.forEach(function (f, n) {
-        var bar = f.querySelector('.x-bar > i'), st = f.querySelector('.x-st'), nw = f.querySelector('.js-new');
-        var ru = st.dataset.ru === '1', speed = st.dataset.speed + (ru ? ' МБ/с' : ' MB/s');
-        if (nw) nw.classList.remove('in');
-        bar.style.transition = 'none'; bar.style.width = '0%';
-        tl.at(50, function () { bar.style.transition = ''; });
-        var N = 16, t0 = 600 + n * 1500, step = 300;
-        for (var k = 1; k <= N; k++) (function (k) {
-          tl.at(t0 + k * step, function () {
-            var pct = Math.round(k * 100 / N), left = Math.round((N - k) * 0.4);
-            bar.style.width = pct + '%';
-            st.textContent = pct + '% · ' + speed + ' · 0:' + (left < 10 ? '0' : '') + left;
-          });
-        })(k);
-        tl.at(t0 + N * step + 300, function () { f.classList.add('done'); if (nw) nw.classList.add('in'); });
-      });
-      frags.forEach(function (f) { if (!f.querySelector('.x-row')) f.classList.add('done'); });
-      tl.at(600 + (runs.length - 1) * 1500 + 16 * 300 + 9000, loop);
-    },
-    // 07 — typed once, run in both panes
-    terminal: function (app, tl, loop) {
-      var typed = $$(app, '.js-typed'), outs = $$(app, '.js-out');
-      app.classList.add('play'); app.classList.remove('ran');
-      typed.forEach(function (x) { x.textContent = ''; });
-      outs.forEach(function (o) { o.classList.remove('in'); });
-      var word = 'uptime', t = 900;
-      for (var i = 1; i <= word.length; i++) (function (k) { tl.at(t + k * 140, function () { typed.forEach(function (x) { x.textContent = word.slice(0, k); }); }); })(i);
-      t += word.length * 140 + 500;
-      tl.at(t, function () { app.classList.add('ran'); outs.forEach(function (o) { o.classList.add('in'); }); });
-      tl.at(t + 5000, loop);
-    },
-    // 08 — a tunnel switched on from the menu bar
-    tunnels: function (app, tl, loop) {
-      var row = app.querySelector('.js-tun'), on = app.querySelector('.js-on'), sub = app.querySelector('.js-sub');
-      function set(v) {
-        row.querySelector('.sw').classList.toggle('on', v); row.querySelector('.port').classList.toggle('on', v);
-        row.querySelector('.tic').classList.toggle('on', v);
-        on.textContent = v ? on.dataset.b : on.dataset.a; sub.textContent = v ? sub.dataset.b : sub.dataset.a;
-      }
-      set(false);
-      tl.at(2500, function () { set(true); });
-      tl.at(7500, loop);
-    },
-    // 09 — the diagram played step by step: a dot runs along the links, each hop lights up
-    route: function (app, tl, loop) {
-      var dot = app.querySelector('.js-rdot'), nodes = $$(app, '.js-rn');
-      var hops = [[96, 166], [262, 302], [398, 438]];
-      nodes.forEach(function (n) { n.classList.remove('lit'); });
-      dot.style.transition = 'none'; dot.style.opacity = 0; dot.style.top = '96px';
-      var t = 600;
-      hops.forEach(function (h, i) {
-        tl.at(t, function () { dot.style.transition = 'none'; dot.style.top = h[0] + 'px'; dot.style.opacity = 1; });
-        tl.at(t + 40, function () { dot.style.transition = 'top .9s ease-in-out, opacity .2s'; dot.style.top = h[1] + 'px'; });
-        tl.at(t + 950, function () { dot.style.opacity = 0; nodes.forEach(function (n, j) { n.classList.toggle('lit', j === i); }); });
-        t += 1900;
-      });
-      tl.at(t + 1500, function () { nodes.forEach(function (n) { n.classList.remove('lit'); }); });
-      tl.at(t + 2500, loop);
-    }
+  function Cam(el) {
+    this.el = el; this.app = el.querySelector('.app');
+    this.W = +el.dataset.w; this.H = +el.dataset.h;
+    this.steps = JSON.parse(el.dataset.steps);
+    this.i = 0; while (this.i < this.steps.length - 1 && !this.steps[this.i]) this.i++;
+    this.ring = this.app.querySelector('.k-ring'); this.tap = this.app.querySelector('.k-tap');
+  }
+  Cam.prototype.place = function (animate) {
+    var st = this.steps[this.i], el = this.el;
+    if (!st || !el.clientWidth) return;
+    var zoom = (PHONE.matches && st.mzoom) || st.zoom;
+    var R = rect(this.app, this.focus || st.focus) || { x: 0, y: 0, w: this.W, h: this.H };
+    var s = el.clientWidth / zoom;
+    if (st.fit) { var pad = (zoom - R.w) / 2; el.style.aspectRatio = 'auto'; el.style.height = Math.round((R.h + 2 * pad) * s) + 'px'; }
+    var vh = el.clientHeight / s;
+    // ax — the left edge in replica points (lines of text read from their start, not from their middle)
+    var ax = PHONE.matches && st.max != null ? st.max : st.ax;
+    var tx = zoom >= this.W ? (this.W - zoom) / 2 : clamp(ax != null ? ax : R.x + R.w / 2 - zoom / 2, -10, this.W - zoom + 10);
+    var ty = vh >= this.H ? (this.H - vh) / 2 : clamp(R.y + R.h / 2 - vh / 2, 0, this.H - vh);
+    el.classList.toggle('moving', !!animate && !REDUCE);
+    this.app.style.transform = 'scale(' + s.toFixed(4) + ') translate(' + (-tx).toFixed(1) + 'px,' + (-ty).toFixed(1) + 'px)';
+    this.ringOn(this.ringShown);
+  };
+  // A scene may point the camera somewhere else within its step (focus and ring selectors); null — back to the step's.
+  Cam.prototype.look = function (focus, ring) { this.focus = focus; this.ringSel = ring; this.place(true); };
+  Cam.prototype.ringOn = function (on) {
+    this.ringShown = !!on;
+    var st = this.steps[this.i], sel = this.ringSel || (st && st.ring), R = on && sel && rect(this.app, sel);
+    if (!R) { this.ring.classList.remove('on'); return; }
+    var p = 6;
+    this.ring.style.left = (R.x - p) + 'px'; this.ring.style.top = (R.y - p) + 'px';
+    this.ring.style.width = (R.w + 2 * p) + 'px'; this.ring.style.height = (R.h + 2 * p) + 'px';
+    this.ring.classList.add('on');
+  };
+  Cam.prototype.tapAt = function (sel) {
+    var R = rect(this.app, sel); if (!R || REDUCE) return;
+    var t = this.tap;
+    t.style.left = (R.x + Math.min(70, R.w / 2)) + 'px'; t.style.top = (R.y + R.h / 2) + 'px';
+    t.classList.remove('go'); void t.offsetWidth; t.classList.add('go');
   };
 
-  // The segmented control's moving pill starts under «Dashboard» (also with reduced motion).
-  $$(document, '.app.page').forEach(function (app) {
-    var pill = app.querySelector('.segpill'), d = app.querySelector('.js-dash');
-    if (pill && d) { pill.style.left = d.offsetLeft + 'px'; pill.style.width = d.offsetWidth + 'px'; }
-  });
-  if (REDUCE || !('IntersectionObserver' in window)) return;   // final states only (already in the markup)
+  var cams = $$(document, '.k-cam').map(function (el) { var c = new Cam(el); el._cam = c; return c; });
+  function layout() { cams.forEach(function (c) { c.place(false); }); }
+  layout();
+  if ('ResizeObserver' in window) { var ro = new ResizeObserver(layout); cams.forEach(function (c) { ro.observe(c.el); }); }
+  else window.addEventListener('resize', layout);
+  if (PHONE.addEventListener) PHONE.addEventListener('change', layout);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(layout);
 
-  /* ---------- Scenes: pain → path → solution, played once when they come into view ---------- */
-  // Each act starts when the previous one has finished AND the act itself is on screen (on a phone the acts sit
-  // one under another, so each plays when you reach it). The scene ends on its final state; «Play again» replays.
-  var NOTL = { at: function () {} }, noop = function () {};
-  $$(document, '.scene').forEach(function (fig) {
-    var acts = $$(fig, '.act'), app = fig.querySelector('.fit .app'), play = app && players[app.dataset.kind];
-    var steps = $$(fig, '.act-v [data-at]'), changers = $$(fig, '.act-v [data-cls]'), typed = $$(fig, '.act-v [data-type]');
-    var btn = fig.querySelector('.replay');
-    var tl = new Timeline(), vis = acts.map(function () { return false; }), pending = -1, started = false;
-    typed.forEach(function (x) { x.dataset.full = x.textContent; });
-    function ops(x) { return x.dataset.cls.split(/\s+/).map(function (o) { var p = o.split(':'); return { t: +p[0], c: p[1] }; }); }
-    function reset() {
-      tl.stop(); pending = -1;
-      fig.classList.add('play');
-      acts.forEach(function (a) { a.classList.remove('on', 'cur'); });
-      steps.forEach(function (x) { x.classList.remove('in'); });
-      changers.forEach(function (x) { ops(x).forEach(function (o) { x.classList.remove(o.c.replace(/^-/, '')); }); });
-      typed.forEach(function (x) { x.textContent = ''; });
-      if (play) play(app, NOTL, noop);      // the replica's own starting state
-    }
-    function start(i) {
-      var a = acts[i];
-      acts.forEach(function (b) { b.classList.remove('cur'); });
-      a.classList.add('on', 'cur');
-      if (a.classList.contains('fix')) { if (play) play(app, tl, noop); if (btn) btn.hidden = false; return; }
-      $$(a, '.act-v [data-at]').forEach(function (x) { tl.at(+x.dataset.at, function () { x.classList.add('in'); }); });
-      $$(a, '.act-v [data-cls]').forEach(function (x) {
-        ops(x).forEach(function (o) {
-          tl.at(o.t, function () { if (o.c.charAt(0) === '-') x.classList.remove(o.c.slice(1)); else x.classList.add(o.c); });
+  // The navigation gets its hairline once the page scrolls.
+  var nav = document.querySelector('.k-nav');
+  if (nav) {
+    var onScroll = function () { nav.classList.toggle('stuck', window.scrollY > 8); };
+    window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+  }
+
+  // The services page's segmented control: its pill sits under «Dashboard» or «Nginx».
+  function seg(app, nginx) {
+    var pill = app.querySelector('.segpill'), el = app.querySelector(nginx ? '.js-nginx' : '.js-dash');
+    if (pill && el) { pill.style.left = el.offsetLeft + 'px'; pill.style.width = el.offsetWidth + 'px'; }
+    app.classList.toggle('nginx', !!nginx);
+  }
+  $$(document, '.app.page').forEach(function (app) { if (!app.classList.contains('frag')) seg(app, false); });
+
+  function lines(app) { return $$(app, '.w-term .tl'); }
+  // Adds a class to each element in turn; returns when the last one happens.
+  function reveal(list, tl, gap, t0, cls) {
+    var t = t0 || 0;
+    list.forEach(function (l, k) { tl.at(t, function () { l.classList.add(cls || 'in'); }); t += typeof gap === 'function' ? gap(k) : gap; });
+    return t;
+  }
+
+  /* ---------- Hero: the main window connects through two bastions, once ---------- */
+  var hero = document.querySelector('.k-hero-win');
+  if (hero && !REDUCE) {
+    var happ = hero.querySelector('.app'), htl = new Timeline();
+    happ.classList.add('play');
+    var ht = reveal(lines(happ), htl, function (i) { return i < 4 ? 650 : 60; }, 700);
+    htl.at(ht + 150, function () { happ.classList.add('done'); });
+  } else if (hero) hero.querySelector('.app').classList.add('done');
+
+  /* ---------- Stories ---------- */
+  // What each step plays: the replica's state at the start of the step, then its little animation.
+  // fn(app, tl, cam, story); cam.ringOn(true) shows the ring once the step's point is on screen.
+  var SCENES = {
+    bastions: [
+      function (app, tl, cam) {
+        app.classList.add('play'); app.classList.remove('done');
+        lines(app).forEach(function (l) { l.classList.remove('in'); });
+        tl.at(1150, function () { cam.ringOn(true); cam.tapAt('.a-row.sel'); });
+      },
+      function (app, tl, cam, story) {
+        app.classList.add('play'); app.classList.remove('done');
+        lines(app).forEach(function (l) { l.classList.remove('in'); });
+        var t = reveal(lines(app).slice(0, 4), tl, 750, 900);
+        reveal($$(story, '.k-hop'), tl, 750, 900, 'lit');   // the path card, in step with the terminal lines
+        tl.at(t + 100, function () { cam.ringOn(true); });
+      },
+      function (app, tl, cam) {
+        app.classList.add('play', 'done');
+        lines(app).forEach(function (l, i) { if (i < 4) l.classList.add('in'); });
+        reveal(lines(app).slice(4), tl, 60, 300);
+        tl.at(1150, function () { cam.ringOn(true); });
+      }
+    ],
+    agent: [
+      function (app, tl, cam) {
+        app.classList.add('play');
+        $$(app, '.in').forEach(function (x) { x.classList.remove('in'); });
+        reveal($$(app, '.js-step'), tl, 600, 1000);
+        tl.at(1600, function () { cam.ringOn(true); });
+      },
+      function (app, tl, cam) {
+        app.classList.add('play');
+        $$(app, '.js-card, .js-wait, .js-cmd').forEach(function (x) { x.classList.remove('in'); });
+        $$(app, '.js-step').forEach(function (x) { x.classList.add('in'); });
+        var t = reveal($$(app, '.js-cmd'), tl, 700, 1100);
+        tl.at(t, function () { cam.ringOn(true); });
+      },
+      function (app, tl, cam) {
+        app.classList.add('play');
+        $$(app, '.js-step, .js-cmd').forEach(function (x) { x.classList.add('in'); });
+        $$(app, '.js-card, .js-wait').forEach(function (x) { x.classList.remove('in'); });
+        reveal($$(app, '.js-card, .js-wait'), tl, 0, 1100);
+        tl.at(1400, function () { cam.ringOn(true); });
+      }
+    ],
+    services: [
+      function (app, tl, cam) { seg(app, false); tl.at(1150, function () { cam.ringOn(true); }); },
+      function (app, tl, cam) { seg(app, false); tl.at(700, function () { seg(app, true); }); tl.at(1500, function () { cam.ringOn(true); }); },
+      function (app, tl, cam) {
+        var box = app.querySelector('.js-type'), tx = box.querySelector('.tx'), text = box.dataset.text;
+        app.classList.add('play'); app.classList.remove('typed', 'applied'); tx.textContent = '';
+        var t = 900;
+        for (var i = 1; i <= text.length; i++) (function (k) { tl.at(t + k * 50, function () { tx.textContent = text.slice(0, k); }); })(i);
+        t += text.length * 50 + 500;
+        tl.at(t, function () { app.classList.add('typed'); cam.ringOn(true); });
+        tl.at(t + 1100, function () { app.classList.add('applied'); });
+      }
+    ],
+    automations: [
+      function (app, tl, cam) {
+        app.classList.add('play'); app.classList.remove('done');
+        $$(app, '.js-ac').forEach(function (c) { c.classList.remove('ok'); });
+        $$(app, '.js-chip').forEach(function (c) { c.classList.remove('in'); });
+        tl.at(1150, function () { cam.ringOn(true); });
+      },
+      function (app, tl, cam) { tl.at(1150, function () { cam.ringOn(true); }); },
+      function (app, tl, cam) {
+        var cards = $$(app, '.js-ac'), chips = $$(app, '.js-chip');
+        app.classList.add('play'); app.classList.remove('done');
+        cards.forEach(function (c) { c.classList.remove('ok'); });
+        chips.forEach(function (c) { c.classList.remove('in'); });
+        // the camera follows the run along the chain: each module turns green with its result
+        cards.forEach(function (c, i) { c.setAttribute('data-n', i); });
+        var t = 1100;
+        cards.forEach(function (c, i) {
+          var sel = '.js-ac[data-n="' + i + '"]';
+          tl.at(t, function () {
+            c.classList.add('ok'); chips.forEach(function (ch) { if (+ch.dataset.at === i) ch.classList.add('in'); });
+            cam.look(sel, sel); cam.ringOn(true);
+          });
+          t += 1000;
         });
-      });
-      $$(a, '.act-v [data-type]').forEach(function (x) {
-        var host = x.closest('[data-at]'), t0 = (host ? +host.dataset.at : 0) + 150, full = x.dataset.full;
-        for (var k = 1; k <= full.length; k++) (function (k) { tl.at(t0 + k * 28, function () { x.textContent = full.slice(0, k); }); })(k);
-      });
-      tl.at(+a.dataset.dur || 1000, function () { next(i + 1); });
+        tl.at(t + 200, function () { app.classList.add('done'); cam.look(null, null); });
+      }
+    ]
+  };
+  // With reduced motion each step shows its final state.
+  var FINAL = {
+    bastions: function (app, i) { app.classList.toggle('done', i === 2); app.classList.toggle('play', i === 0); lines(app).forEach(function (l) { l.classList.add('in'); }); },
+    agent: function (app) { app.classList.remove('play'); },
+    services: function (app, i) { if (app.classList.contains('page')) seg(app, i === 1); else app.classList.remove('play'); },
+    automations: function (app) { app.classList.remove('play'); }
+  };
+
+  $$(document, '.k-story').forEach(function (story) {
+    var id = story.dataset.story, scenes = SCENES[id] || [];
+    var scams = $$(story, '.k-cam').map(function (el) { return el._cam; }), btns = $$(story, '.k-step');
+    var path = story.querySelector('.k-hops');
+    var tl = new Timeline(), cur = 0, visible = false;
+    var DUR = btns.map(function (b, i) { return id === 'bastions' && i === 1 ? 6000 : id === 'automations' && i === 2 ? 9500 : 5400; });
+    function go(i, auto) {
+      tl.stop(); cur = i;
+      btns.forEach(function (b, k) { b.classList.toggle('on', k === i); b.classList.remove('run'); b.setAttribute('aria-current', k === i ? 'step' : 'false'); });
+      var cam = scams.filter(function (c) { return c.steps[i]; })[0];
+      scams.forEach(function (c) { c.el.classList.toggle('on', c === cam); c.focus = c.ringSel = null; c.ringOn(false); });
+      if (path) { path.classList.toggle('on', i === 1); $$(path, '.k-hop').forEach(function (h) { h.classList.toggle('lit', REDUCE); }); }
+      cam.i = i;
+      if (REDUCE) { (FINAL[id] || function () {})(cam.app, i); cam.place(false); cam.ringOn(true); return; }
+      if (scenes[i]) scenes[i](cam.app, tl, cam, story);
+      cam.place(true);
+      if (!auto) return;
+      var b = btns[i]; b.style.setProperty('--dur', DUR[i] + 'ms'); void b.offsetWidth; b.classList.add('run');
+      tl.at(DUR[i], function () { go((i + 1) % btns.length, true); });
     }
-    function next(i) { if (i >= acts.length) return; if (vis[i]) start(i); else pending = i; }
-    reset();
-    var io = new IntersectionObserver(function (es) {
-      es.forEach(function (en) {
-        var i = acts.indexOf(en.target);
-        // a tall act counts as seen once it fills a good part of the window
-        vis[i] = en.isIntersecting && (en.intersectionRatio >= 0.35 || en.intersectionRect.height >= window.innerHeight * 0.45);
-        if (!vis[i]) return;
-        if (!started && i === 0) { started = true; start(0); }
-        else if (pending === i) { pending = -1; start(i); }
-      });
-    }, { threshold: [0, 0.1, 0.2, 0.35, 0.5] });
-    acts.forEach(function (a) { io.observe(a); });
-    if (btn) btn.addEventListener('click', function () { btn.hidden = true; reset(); start(0); });
+    btns.forEach(function (b, k) { b.addEventListener('click', function () { go(k, visible); }); });
+    go(0, false);
+    if (REDUCE || !('IntersectionObserver' in window)) return;
+    new IntersectionObserver(function (es) {
+      var was = visible; visible = es[0].isIntersecting;
+      if (visible && !was) go(cur, true);
+      else if (!visible && was) { tl.stop(); btns.forEach(function (b) { b.classList.remove('run'); }); }
+    }, { threshold: 0.45 }).observe(story.querySelector('.k-story-vis'));
   });
 })();
