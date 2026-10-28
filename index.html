@@ -64,7 +64,7 @@
     <div class="ba-row ba-head" role="row"><span role="columnheader">Без SSHKipper</span><span role="columnheader">В SSHKipper</span></div>
     <a class="ba-row" role="row" href="#sc-bastions"><span class="ba-was" role="cell">Три кода с телефона и пароль — на каждый вход через бастионы</span><span class="ba-now" role="cell">Двойной щелчок: ключи, пароли и коды 2FA подставляются сами</span></a>
     <a class="ba-row" role="row" href="#sc-agent"><span class="ba-was" role="cell">Ночью вручную: top, docker stats, логи — и пароль, случайно вставленный в AI-чат</span><span class="ba-now" role="cell">Агент смотрит сам, секреты скрыты, изменения — только после вашего «да»</span></a>
-    <a class="ba-row" role="row" href="#sc-services"><span class="ba-was" role="cell">Пять терминалов ради docker ps, логов nginx, crontab и supervisorctl</span><span class="ba-now" role="cell">Одна вкладка сервера: дашборд, Docker, Nginx, Cron, Supervisor</span></a>
+    <a class="ba-row" role="row" href="#sc-services"><span class="ba-was" role="cell">Пять терминалов ради docker ps, логов nginx, crontab и supervisorctl</span><span class="ba-now" role="cell">Одна вкладка сервера: дашборд, Docker, Nginx, Cron, Supervisor, Firewall</span></a>
     <a class="ba-row" role="row" href="#sc-storage"><span class="ba-was" role="cell">scp на Mac, потом aws s3 cp в бакет — и снова коды 2FA</span><span class="ba-now" role="cell">Две панели: сервер по SFTP ⇄ S3 или WebDAV, перетаскиванием</span></a>
     <a class="ba-row" role="row" href="#sc-databases"><span class="ba-was" role="cell">ssh -L к базе за бастионами и номера портов на стикере</span><span class="ba-now" role="cell">База открывается по той же цепочке сама</span></a>
     <a class="ba-row" role="row" href="#sc-automations"><span class="ba-was" role="cell">Бэкап скриптом в cron: ошибки в логе, который никто не читает</span><span class="ba-now" role="cell">Итог каждого запуска и проверка, что копия восстанавливается</span></a>
@@ -117,6 +117,7 @@
   </div>
   <div class="w-term js-lines"><div class="tl dim">Подключение к web-01…</div><div class="tl dim">✓ Код 2FA для ops@bastion-msk (bastion-msk) подставлен автоматически из «ops-2fa»</div><div class="tl dim">✓ Код 2FA для ops@jump-prod (jump-prod) подставлен автоматически из «ops-2fa»</div><div class="tl dim">✓ Код 2FA для deploy@web-01 (web-01) подставлен автоматически из «deploy»</div><div class="tl ">Linux web-01 6.12.48+deb13-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.12.48-1 x86_64</div><div class="tl ">&nbsp;</div><div class="tl ">The programs included with the Debian GNU/Linux system are free software;</div><div class="tl ">the exact distribution terms for each program are described in the</div><div class="tl ">individual files in /usr/share/doc/*/copyright.</div><div class="tl ">&nbsp;</div><div class="tl ">Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent</div><div class="tl ">permitted by applicable law.</div><div class="tl ">Last login: Wed Oct 28 09:12:44 2026 from 10.20.0.5</div><div class="tl"><b class="pg">deploy@web-01</b>:<b class="pb">~</b>$ <i class="a-cur"></i></div></div>
 </div></div></div>
+        
         <p class="act-c">Двойной щелчок по web-01 — коды всех трёх серверов подставлены, строка вкладки показывает пройденную цепочку.</p>
       </div>
       <figcaption class="visually-hidden">Копия экрана SSHKipper: Окно SSHKipper: дерево подключений, вкладка web-01 подключается через bastion-msk и jump-prod, в терминале — строки о кодах 2FA, подставленных автоматически.</figcaption>
@@ -175,6 +176,7 @@
     <div class="ai-m"><svg class="a-claude" viewBox="0 0 16 16"><rect width="16" height="16" rx="3.5" fill="#d97757"/><g stroke="#fff" stroke-width="1.6" stroke-linecap="round"><path d="M8 3.2v9.6M3.2 8h9.6M4.6 4.6l6.8 6.8M11.4 4.6l-6.8 6.8"/></g></svg><span>Claude Opus 5.5</span><span class="g">· средняя</span><span class="ms sm">expand_more</span><span class="sp"></span><span class="ai-stop"><span class="ms f">stop</span></span></div></div>
  </div>
 </div></div></div>
+        
         <p class="act-c">Каждая команда агента видна под терминалом, секрет в выводе замаскирован, перезапуск ждёт кнопки.</p>
       </div>
       <figcaption class="visually-hidden">Копия экрана SSHKipper: Терминал web-01 с блоком «Команды агента» и AI-панель: агент проверил нагрузку и просит разрешения перезапустить контейнер — карточка помечена «опасно».</figcaption>
@@ -194,8 +196,8 @@
     </div>
     <figure class="scene L1" data-scene="services">
       <div class="act fix" style="--fw:1180">
-        <div class="fit" data-w="1180" data-h="690" data-fx="0" aria-hidden="true"><div class="app page" data-kind="services" style="width:1180px;height:690px">
-<div class="pg-h"><span class="ms t-ink2">dns</span><b>web-01</b><span class="segs"><i class="segpill"></i><span class="sg js-dash">Дашборд</span><span class="sg">Docker</span><span class="sg js-nginx">Nginx<i class=rdot></i></span><span class="sg">Cron</span><span class="sg">Supervisor<i class=rdot></i></span></span><span class="ms rb">refresh</span><span class="ms rb">more_horiz</span></div>
+        <div class="fit" data-w="1180" data-h="1150" data-fx="0" aria-hidden="true"><div class="app page" data-kind="services" style="width:1180px;height:1150px">
+<div class="pg-h"><span class="ms t-ink2">dns</span><b>web-01</b><span class="segs"><i class="segpill"></i><span class="sg js-dash">Дашборд</span><span class="sg">Docker</span><span class="sg js-nginx">Nginx<i class=rdot></i></span><span class="sg">Cron</span><span class="sg">Supervisor<i class=rdot></i></span><span class="sg">Firewall</span></span><span class="ms rb">refresh</span><span class="ms rb">more_horiz</span></div>
 <div class="pg-views"><div class="pg-v v-dash">
 <div class="pg-title">Дашборд</div>
 <div class="pg-sum"><span>5 проблем:</span> <span class="r">Nginx: 5xx 5,6 %, /var/lib/mysql — 91,3 %, northwind.shop — 104 запр/мин · 5xx 15,3 %,</span> и ещё 2. <span class="g">· Debian GNU/Linux 13 (trixie) · работает 41 д 6 ч · 8 ядер</span></div>
@@ -206,7 +208,14 @@
   <div class="dcard"><div class="dch">CPU и память</div><div class="lg2"><i class="b"></i>CPU <b>12,6 %</b><i class="p"></i>Память <b>48,6 %</b></div>
     <svg class="dline" viewBox="0 0 480 140" preserveAspectRatio="none"><polygon class="fm" points="0,140 0,36 30,35 60,36 90,35 120,36 150,36 180,37 210,35 240,36 270,36 300,35 330,36 360,35 390,36 420,36 450,35 480,36 480,140"/><polyline class="lm" points="0,36 30,35 60,36 90,35 120,36 150,36 180,37 210,35 240,36 270,36 300,35 330,36 360,35 390,36 420,36 450,35 480,36"/><polygon class="fc" points="0,140 0,118 30,92 60,104 90,120 120,112 150,106 180,122 210,110 240,102 270,116 300,108 330,112 360,120 390,105 420,109 450,114 480,111 480,140"/><polyline class="lc" points="0,118 30,92 60,104 90,120 120,112 150,106 180,122 210,110 240,102 270,116 300,108 330,112 360,120 390,105 420,109 450,114 480,111"/></svg>
     <div class="dax"><span>09:15</span><span>сейчас</span></div></div>
-</div></div><div class="pg-v v-nginx">
+</div>
+<div class="dcard net"><div class="dch">Сеть<span class="dots"><span class="ms">more_horiz</span></span></div>
+  <div class="lg2"><i class="b"></i>Передача <b>2,8 МБ/с</b><i class="p"></i>Приём <b>122 КБ/с</b></div>
+  <svg class="dline" viewBox="0 0 960 120" preserveAspectRatio="none"><polygon class="fc" points="0,120 0,70 60,64 120,58 180,66 240,50 300,44 360,52 420,40 480,36 540,48 600,42 660,30 720,38 780,46 840,34 900,40 960,44 960,120"/><polyline class="lc" points="0,70 60,64 120,58 180,66 240,50 300,44 360,52 420,40 480,36 540,48 600,42 660,30 720,38 780,46 840,34 900,40 960,44"/><polygon class="fm" points="0,120 0,110 60,108 120,109 180,107 240,110 300,106 360,108 420,109 480,107 540,108 600,110 660,106 720,108 780,107 840,109 900,108 960,107 960,120"/><polyline class="lm" points="0,110 60,108 120,109 180,107 240,110 300,106 360,108 420,109 480,107 540,108 600,110 660,106 720,108 780,107 840,109 900,108 960,107"/></svg>
+  <span class="nax a1">4 МБ/с</span><span class="nax a2">2 МБ/с</span>
+  <div class="dax"><span>09:15</span><span>сейчас</span></div></div>
+<div class="dbs"><div class="dbh">Базы данных<span>4</span><span class="dots"><span class="ms">more_horiz</span></span></div>
+  <div class="dbr"><i></i><b>northwind</b><span>не подключена · MySQL</span></div><div class="dbr"><i></i><b>cache</b><span>не подключена · Redis</span></div><div class="dbr"><i></i><b>analytics</b><span>не подключена · ClickHouse</span></div><div class="dbr"><i></i><b>orders-pg</b><span>не подключена · PostgreSQL</span></div></div></div><div class="pg-v v-nginx">
 <div class="pg-title">Nginx</div>
 <div class="pg-sum">За 1 час: ≈6157 запросов. <span class="r">≈939 ошибок 5xx, чаще всего на</span> <span class="lnk">/legacy/feed</span> <span class="g">· прочитано 1979 строк лога за 19 мин</span></div>
 <div class="pg-ctl"><span class="pop">northwind.shop<span class="ms sm">expand_more</span></span><span class="seg2"><span class="">15 мин</span><span class="">30 мин</span><span class="on">1 час</span><span class="">6 часов</span><span class="">24 часа</span></span></div>
@@ -223,6 +232,7 @@
     <div class="sl hd"><span>Путь</span><span>p95</span><span>макс.</span><span>раз</span></div>
     <div class="sl"><span><code>/reports/export</code><i></i></span><b class="o">1,2 с</b><span>1,2 с</span><span>174</span></div></div>
 </div></div></div></div></div>
+        <div class="ftiles svt"><div class="ftile"><h3>Docker и Compose</h3><p>Контейнеры по проектам Compose: здоровье, CPU, память и порты; логи, терминал в контейнере, перезапуск.</p><div class="fit" data-w="520" data-h="330" aria-hidden="true"><div class="app frag page sv-docker" style="width:520px;height:330px"><div class="pg-v"><div class="pg-title">Docker</div><div class="pg-sum">Все 4 контейнера работают. <span class="g">· Docker 27.3.1 · Compose 2.29.7</span></div><div class="pg-ctl"><span class="seg2"><span class="on">Все</span><span class="">Работают</span><span class="">Требуют внимания</span></span></div><div class="dgrp"><b>northwind</b><span>4 работают</span><code>/srv/northwind</code><span class="sp"></span><span class="lnk">Перезапустить проект</span></div><div class="dkg"><div class="dkc"><div class="t"><i class="a-dot g"></i><b>web</b><span>исправен</span></div><div class="im">northwind/web:2.4</div><div class="ft"><span class="lnk">8080</span><span>CPU 3,2 % · 148 МБ</span></div></div><div class="dkc"><div class="t"><i class="a-dot g"></i><b>worker</b><span>исправен</span></div><div class="im">northwind/worker:2.4</div><div class="ft"><span class="">без портов</span><span>CPU 57 % · 300 МБ</span></div></div><div class="dkc"><div class="t"><i class="a-dot g"></i><b>redis</b><span>исправен</span></div><div class="im">redis:8.4-alpine</div><div class="ft"><span class="lnk">6379</span><span>CPU 0,4 % · 12 МБ</span></div></div><div class="dkc"><div class="t"><i class="a-dot g"></i><b>mailer</b><span>исправен</span></div><div class="im">northwind/mailer:2.4</div><div class="ft"><span class="">без портов</span><span>CPU 0,1 % · 41 МБ</span></div></div></div></div></div></div></div><div class="ftile"><h3>Cron — по дням</h3><p>Задачи из crontab и /etc/cron.d неделей: что уже прошло, что дальше, вывод каждого запуска.</p><div class="fit" data-w="520" data-h="330" aria-hidden="true"><div class="app frag page sv-cron" style="width:520px;height:330px"><div class="pg-v"><div class="pg-title">Cron</div><div class="pg-sum">9 задач. <span class="g">Ближайшая — Nightly backup завтра в 03:30.</span></div><div class="pg-ctl"><span class="seg2"><span class="on">Неделя</span><span class="">Месяц</span><span class="">Все задачи</span></span></div><div class="cdays"><div class="cday"><div class="ch"><b class="r">Сегодня</b><span>ср 28 окт</span></div><div class="cj past"><span class="tm">03:30</span><div><b>Nightly backup</b><span>crontab deploy</span></div></div><div class="cj past"><span class="tm">06:25</span><div><b>cron.daily</b><span>4 скрипта</span></div></div><div class="cj"><span class="tm">12:00</span><div><b>cleanup tmp</b><span>cron.d/northwind</span></div></div></div><div class="cday"><div class="ch"><b class="">Завтра</b><span>чт 29 окт</span></div><div class="cj"><span class="tm">03:30</span><div><b>Nightly backup</b><span>crontab deploy</span></div></div><div class="cj"><span class="tm">06:25</span><div><b>cron.daily</b><span>4 скрипта</span></div></div><div class="cj"><span class="tm">12:00</span><div><b>cleanup tmp</b><span>cron.d/northwind</span></div></div></div></div></div></div></div></div><div class="ftile"><h3>Supervisor</h3><p>Что упало и почему — с концом stderr; запуск, остановка и перезапуск программ.</p><div class="fit" data-w="520" data-h="330" aria-hidden="true"><div class="app frag page sv-sup" style="width:520px;height:330px"><div class="pg-v"><div class="pg-title">Supervisor</div><div class="pg-sum">Работают 3 из 4 программ. <span class="r">mailer-queue не работает.</span></div><div class="spf"><div class="t"><i class="a-dot r"></i><b>mailer-queue</b><span class="r">не запускается</span></div><pre>SMTPAuthError: 535 authentication failed<br>SMTPAuthError: 535 authentication failed</pre><div class="bt"><span class="pri">Запустить снова</span><span>Весь stderr</span></div></div><div class="spr"><i class="a-dot g"></i><b>worker_00</b><em>queue</em><span>работает 3 д 3 ч</span></div><div class="spr"><i class="a-dot g"></i><b>worker_01</b><em>queue</em><span>работает 3 д 3 ч</span></div><div class="spr"><i class="a-dot g"></i><b>web</b><span>работает 3 д 3 ч</span></div></div></div></div></div><div class="ftile"><h3>Firewall</h3><p>Кто может подключиться к каждому порту: ufw, nftables или iptables, Docker и fail2ban вместе.</p><div class="fit" data-w="520" data-h="330" aria-hidden="true"><div class="app frag page sv-fw" style="width:520px;height:330px"><div class="pg-v"><div class="pg-title">Firewall</div><div class="pg-sum">Сам сервер не ограничивает 22 и 80. <span class="g">Остальное отбрасывает политика INPUT.</span></div><div class="fwb"><span class="ok">ufw · активен</span><span class="bad">fail2ban · 31 в бане</span></div><div class="fwh"><b>Кто может подключиться</b></div><div class="fwr hd"><span>Порт</span><span>Что слушает</span><span>Снаружи</span><span>Что решает</span></div><div class="fwr"><span class="pt"><b>22</b>/tcp</span><span class="wh"><b>SSH</b> sshd</span><span class="cap b">все</span><span class="dc">правило ufw</span></div><div class="fwr"><span class="pt"><b>80</b>/tcp</span><span class="wh"><b>HTTP</b> nginx</span><span class="cap b">все</span><span class="dc">правило ufw</span></div><div class="fwr"><span class="pt"><b>8081</b>/tcp</span><span class="wh"><b>caddy</b> Docker → контейнер</span><span class="cap o">не ограничено</span><span class="dc">Docker публикует</span></div><div class="fwr"><span class="pt"><b>6379</b>/tcp</span><span class="wh"><b>Redis</b> redis</span><span class="cap n">никто</span><span class="dc">политика INPUT: отбрасывать</span></div></div></div></div></div></div>
         <p class="act-c">Дашборд и Nginx — в одной вкладке web-01: числа, график, медленные маршруты.</p>
       </div>
       <figcaption class="visually-hidden">Копия экрана SSHKipper: Страница служб сервера web-01: дашборд с нагрузкой, CPU, памятью и дисками, затем страница Nginx с запросами в минуту, долей ошибок 5xx и медленными маршрутами.</figcaption>
@@ -272,6 +282,7 @@
    <div class="db-foot"><span class="ms sm">add</span><span class=mn>−</span><code>SELECT * FROM `northwind`.`orders` W…qty &gt;= 3) ORDER BY `id` LIMIT 300</code><span class="sp"></span><span>1–300 из 450</span><span class="pp">по 300<span class="ms sm">expand_more</span></span><span>Экспорт</span><span class="ms sm">refresh</span></div>
  </div>
 </div></div></div>
+        
         <p class="act-c">Вкладка базы northwind: фраза «отменённые заказы от трёх штук» стала условием WHERE.</p>
       </div>
       <figcaption class="visually-hidden">Копия экрана SSHKipper: Вкладка базы northwind (MySQL через web-01): AI-фильтр превращает фразу «отменённые заказы от трёх штук» в условие WHERE, в таблице — отфильтрованные заказы.</figcaption>
@@ -305,6 +316,7 @@
     <div class="au-ask"><span class="ms t-purple">auto_awesome</span><span>Что поменять? Например: «сжимать zstd»</span><span class="ms up">arrow_upward</span></div>
     <div class="au-zm"><span class="pill">Разложить</span><span class="ms">zoom_out</span><span>60 %</span><span class="ms">zoom_in</span><span class="ms">fit_screen</span></div></div>
 </div></div></div>
+        
         <p class="act-c">Полотно «Ночной бэкап MySQL»: шаги загораются по очереди, у каждого — результат.</p>
       </div>
       <figcaption class="visually-hidden">Копия экрана SSHKipper: Полотно автоматизации «Ночной бэкап MySQL»: northwind → MysqlDump → Сжать → В хранилище → Ротация → Итог, все шаги выполнены успешно, расписание — каждый день в 03:30.</figcaption>
@@ -343,6 +355,7 @@
     <div class="f-crumb">backups<i>›</i>mysql</div><div class="f-head"><span class="c-n">Имя<span class="ms sm">expand_more</span></span><span class="c-s">Размер</span></div><div class="f-list"><div class="f-row "><span class="c-n"><span class="ms f-ic t-blue f">folder</span>clickhouse</span><span class="c-s">—</span></div><div class="f-row "><span class="c-n"><span class="ms f-ic t-ink2">description</span>mysql-10-27.tgz</span><span class="c-s">1,2 ГБ</span></div><div class="f-row f-new js-new"><span class="c-n"><span class="ms f-ic t-ink2">description</span>mysql-10-28.tgz</span><span class="c-s">1,2 ГБ</span></div></div></div></div>
 <div class="x-panel mini"><div class="x-head"><b>Передачи</b><span class="x-act">активно: 1 (112 МБ/с)</span><span class="x-all">все завершены (1)</span></div><div class="x-row"><span class="x-ic"><span class="ms">swap_horiz</span></span><span class="x-ok"><span class="ms f">check_circle</span></span><div class="x-mid"><b>mysql-10-28.tgz</b><span class="x-sub">→ Бэкапы · S3: /backups/mysql · напрямую</span><i class="x-bar"><i class="js-xp3"></i></i></div><span class="x-st" data-speed="112" data-ru="1">0%</span><span class="x-sz">1,2 ГБ</span><span class="ms x-pb">pause</span><span class="ms">close</span></div></div></div></div></div></div>
         
+        
       </div>
       <figcaption class="visually-hidden">Копия экрана SSHKipper: Вкладка «Файлы»: слева web-01 по SFTP (/srv/backups), справа хранилище «Бэкапы · S3» (backups/mysql); внизу идёт передача архива в S3, после неё файл появляется в бакете.</figcaption>
       <button class="replay" type="button" hidden><span class="ms">refresh</span><span>Показать ещё раз</span></button>
@@ -370,6 +383,7 @@
 <div class="dc-n"><span class="js-n" data-mb="МБ">1,2 ГБ</span> из 1,2 ГБ</div>
 <div class="dc-log"><div class="js-log">«bastion-msk» подключается к «web-01» (archiver@web-01:22) — файл пойдёт напрямую, не через этот Mac</div><div class="js-log">Ключ «archiver-key» подписал вход «bastion-msk» → «web-01» (1 из 2); сам ключ остаётся на этом Mac</div><div class="js-log">Код 2FA для «web-01» отправлен</div><div class="js-log">Проверка SHA-256 на обоих серверах…</div><div class="js-log">Готово: 1,2 ГБ за 31 с (39,6 МБ/с)</div></div>
 <div class="dc-b"><span class="b-run">Остановить</span><span class="b-done">Готово</span></div></div></div>
+        
         <p class="act-c">Окно «Копирование напрямую»: вход, передача, проверка SHA-256.</p>
       </div>
       <figcaption class="visually-hidden">Копия экрана SSHKipper: Окно «Копирование напрямую»: архив с web-01 копируется на bastion-msk, не через Mac; журнал показывает вход с ключом, отправленный код 2FA и совпавший SHA-256.</figcaption>
@@ -395,6 +409,7 @@
   <span class="st-r"><span><span class="ms">auto_awesome</span>AI выкл</span><span><span class="ms">folder</span>Файлы</span><i class="vs"></i><span class="ms">more_horiz</span></span></div>
 <div class="bc-panes"><div class="bp"><div class="tl">Last login: Wed Oct 28 09:12:44 2026 from 10.20.0.5</div><div class="tl"><b class="pg">deploy@web-01</b>:<b class="pb">~</b>$ <span class="js-typed">uptime</span><i class="a-cur"></i></div><div class="tl js-out">&nbsp;09:31:07 up 41 days,  6:08,  2 users,  load average: 0.82, 0.79, 0.77</div><div class="tl js-out"><b class="pg">deploy@web-01</b>:<b class="pb">~</b>$ </div></div><div class="bp"><div class="tl">Last login: Wed Oct 28 09:30:58 2026 from 10.20.0.5</div><div class="tl"><b class="pg">deploy@web-01</b>:<b class="pb">~</b>$ <span class="js-typed">uptime</span><i class="a-cur"></i></div><div class="tl js-out">&nbsp;09:31:07 up 41 days,  6:08,  2 users,  load average: 0.82, 0.79, 0.77</div><div class="tl js-out"><b class="pg">deploy@web-01</b>:<b class="pb">~</b>$ </div></div></div>
 <div class="bc-pill"><span class="ms">sensors</span><span>Ввод идёт в 2 сессии — ⌥⌘I</span><u>Остановить</u></div></div></div>
+        
         <p class="act-c">uptime набран один раз и выполнился в обеих панелях.</p>
       </div>
       <figcaption class="visually-hidden">Копия экрана SSHKipper: Вкладка web-01, разделённая на две панели в оранжевых рамках: команда uptime набрана один раз и выполнилась в обеих; внизу плашка «Ввод идёт в 2 сессии».</figcaption>
@@ -430,6 +445,7 @@
 <div class="mb-d"><span class="ms">lock_open</span><div><b>Northwind</b><span>открыт</span></div><span class="btn">Заблокировать</span></div>
 <div class="mb-sep"></div>
 <div class="mb-foot"><span>Открыть SSHKipper</span><span>Выйти</span></div></div></div>
+        
         <p class="act-c">Строка меню: включить туннель — один щелчок.</p>
       </div>
       <figcaption class="visually-hidden">Копия экрана SSHKipper: Окно строки меню SSHKipper: поле подключения, сводка автоматизаций, три туннеля с портами и переключателями, избранные серверы и кнопка блокировки документа.</figcaption>
@@ -457,6 +473,7 @@
   <i class="rl l0"></i><i class="rl l1"></i><i class="rl l2"></i><i class="rdot js-rdot"></i>
   <div class="rn js-rn" style="top:168px"><span class="ri"><span class="ms">dns</span></span><div><b>bastion-msk</b><code>ops@bastion.northwind.corp</code><div class="chps"><span class="chp "><span class="ms f">key</span>ключ</span><span class="chp "><span class="ms f">verified_user</span>код 2FA — сам</span></div><span class="frm">из «ops-2fa»</span></div></div><div class="rn js-rn" style="top:304px"><span class="ri"><span class="ms">dns</span></span><div><b>jump-prod</b><code>ops@jump-prod</code><div class="chps"><span class="chp "><span class="ms f">key</span>ключ</span><span class="chp "><span class="ms f">verified_user</span>код 2FA — сам</span></div><span class="frm">из «ops-2fa»</span></div></div><div class="rn dst js-rn" style="top:440px"><span class="ri"><span class="ms">dns</span></span><div><b>web-01</b><code>deploy@web-01</code><div class="chps"><span class="chp y"><span class="ms f">key</span>пароль</span><span class="chp "><span class="ms f">verified_user</span>код 2FA — сам</span></div><span class="frm">из «deploy»</span></div></div>
 </div></div></div>
+        
         <p class="act-c">Профили web-01 и схема маршрута по фактам документа.</p>
       </div>
       <figcaption class="visually-hidden">Копия экрана SSHKipper: Сверху — шапка карточки подключения web-01 с профилями: Tailscale, Офис и адрес. Ниже — вкладка «Маршрут до web-01»: этот Mac → bastion-msk (ключ) → jump-prod (ключ и код 2FA) → web-01 (пароль и код 2FA).</figcaption>
@@ -483,6 +500,7 @@
   <div class="lk-in"><span>Мастер-пароль</span></div>
   <div class="lk-c"><i><span class="ms">check</span></i>Разблокировать по Touch ID на этом Mac</div>
   <div class="lk-btns"><span class="lk-more">Ещё<span class="ms">expand_more</span></span><span class="un">Разблокировать</span></div></div></div></div>
+        
         <p class="act-c">Окно блокировки документа: мастер-пароль или Touch ID.</p>
       </div>
       <figcaption class="visually-hidden">Копия экрана SSHKipper: Окно блокировки документа Northwind.sshkipper: поле мастер-пароля, отметка «Разблокировать по Touch ID на этом Mac» и кнопка «Разблокировать».</figcaption>
