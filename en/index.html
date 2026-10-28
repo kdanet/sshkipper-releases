@@ -28,14 +28,14 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..24,400..600,0..1,0&amp;icon_names=account_tree,add,apps,archive,arrow_back,arrow_circle_up,arrow_forward,arrow_upward,auto_awesome,autorenew,back_hand,bookmark,cancel,check,check_circle,chevron_right,close,cloud,cloud_upload,code,content_copy,create_new_folder,database,delete,deployed_code,description,dns,download,edit_square,expand_more,filter_alt,fit_screen,flag,folder,folder_open,grid_view,help,history,home,hub,info,inventory_2,key,keyboard_return,lan,language,laptop_mac,list,lock,lock_open,menu_book,more_horiz,open_in_full,pause,person,play_arrow,refresh,remove,sailing,schedule,search,sensors,settings,shield,skip_next,speed,splitscreen_bottom,splitscreen_right,stop,swap_horiz,table,terminal,travel_explore,unfold_more,verified_user,view_sidebar,visibility,zoom_in,zoom_out&amp;display=block">
 <link rel="stylesheet" href="../assets/app.css?v=7d5b1bda">
-<link rel="stylesheet" href="../assets/site.css?v=9be0a9ee">
-<script src="../assets/site.js?v=f81703e6" defer></script>
+<link rel="stylesheet" href="../assets/site.css?v=5d415b29">
+<script src="../assets/site.js?v=d3ac0ad8" defer></script>
 </head>
 <body class="kpage">
 <a class="k-skip" href="#main">Skip to content</a>
 <header class="k-nav">
   <a class="k-brand" href="#top"><picture><source srcset="../assets/mark-white.svg" media="(prefers-color-scheme: dark)"><img src="../assets/mark.svg" alt="" width="22" height="22"></picture>SSHKipper</a>
-  <nav aria-label="Page sections"><a href="#features">Features</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a></nav>
+  <nav aria-label="Page sections"><a href="#bastions">Bastions</a><a href="#agent">AI agent</a><a href="#databases">Databases</a><a href="#services">Services</a><a href="#files">Files</a><a href="#automations">Automations</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a></nav>
   <a class="k-lang" href="../" hreflang="ru" lang="ru" aria-label="Русская версия">RU</a>
   <a class="k-btn sm" href="https://github.com/kdanet/sshkipper-releases/releases/latest/download/SSHKipper.dmg">Download</a>
 </header>
@@ -115,48 +115,46 @@
 </section>
 
 <section class="k-ba-wrap" aria-labelledby="ba-h">
-  <h2 id="ba-h" class="k-h2">Sound familiar?</h2>
-  <p class="k-h2-sub">What an admin does by hand every day — and how it looks in SSHKipper.</p>
+  <h2 id="ba-h" class="k-h2 rv">Sound familiar?</h2>
+  <p class="k-h2-sub rv">What an admin does by hand every day — and how it looks in SSHKipper.</p>
   <div class="k-bas">
-    <a class="k-ba" href="#bastions"><span class="k-ba-i"><span class="ms">key</span></span>
+    <a class="k-ba rv" href="#bastions" style="--i:0"><span class="k-ba-i"><span class="ms">key</span></span>
       <span class="k-was"><em>Before</em>Three codes from your phone and a password — every time you go through the bastions</span>
+      <span class="k-to" aria-hidden="true"><span class="ms">arrow_forward</span></span>
       <span class="k-now"><em>After</em>Double-click: keys, passwords and 2FA codes are filled in for you</span>
-      <span class="k-more">Learn more<span class="ms">arrow_forward</span></span></a>
-    <a class="k-ba" href="#agent"><span class="k-ba-i"><span class="ms">auto_awesome</span></span>
+      <span class="k-go" aria-label="Learn more"><span class="ms">chevron_right</span></span></a>
+    <a class="k-ba rv" href="#agent" style="--i:1"><span class="k-ba-i"><span class="ms">auto_awesome</span></span>
       <span class="k-was"><em>Before</em>At night, by hand: top, docker stats, logs — and a password pasted into an AI chat</span>
+      <span class="k-to" aria-hidden="true"><span class="ms">arrow_forward</span></span>
       <span class="k-now"><em>After</em>The agent looks for you, secrets are masked, changes wait for your “yes”</span>
-      <span class="k-more">Learn more<span class="ms">arrow_forward</span></span></a>
-    <a class="k-ba" href="#databases"><span class="k-ba-i"><span class="ms">database</span></span>
+      <span class="k-go" aria-label="Learn more"><span class="ms">chevron_right</span></span></a>
+    <a class="k-ba rv" href="#databases" style="--i:2"><span class="k-ba-i"><span class="ms">database</span></span>
       <span class="k-was"><em>Before</em>ssh -L to a database behind bastions, ports on a sticky note and SQL from memory</span>
+      <span class="k-to" aria-hidden="true"><span class="ms">arrow_forward</span></span>
       <span class="k-now"><em>After</em>The database opens by itself, and you can ask for a query in words</span>
-      <span class="k-more">Learn more<span class="ms">arrow_forward</span></span></a>
-    <a class="k-ba" href="#services"><span class="k-ba-i"><span class="ms">dns</span></span>
+      <span class="k-go" aria-label="Learn more"><span class="ms">chevron_right</span></span></a>
+    <a class="k-ba rv" href="#services" style="--i:3"><span class="k-ba-i"><span class="ms">dns</span></span>
       <span class="k-was"><em>Before</em>Five terminals for docker ps, nginx logs, crontab and supervisorctl</span>
+      <span class="k-to" aria-hidden="true"><span class="ms">arrow_forward</span></span>
       <span class="k-now"><em>After</em>One server tab: dashboard, Docker, Nginx, Cron, Supervisor</span>
-      <span class="k-more">Learn more<span class="ms">arrow_forward</span></span></a>
-    <a class="k-ba" href="#automations"><span class="k-ba-i"><span class="ms">archive</span></span>
+      <span class="k-go" aria-label="Learn more"><span class="ms">chevron_right</span></span></a>
+    <a class="k-ba rv" href="#automations" style="--i:4"><span class="k-ba-i"><span class="ms">archive</span></span>
       <span class="k-was"><em>Before</em>A backup script in cron — errors in a log nobody reads</span>
+      <span class="k-to" aria-hidden="true"><span class="ms">arrow_forward</span></span>
       <span class="k-now"><em>After</em>A summary of every run and a check that the copy restores</span>
-      <span class="k-more">Learn more<span class="ms">arrow_forward</span></span></a>
+      <span class="k-go" aria-label="Learn more"><span class="ms">chevron_right</span></span></a>
   </div>
 </section>
 
 <section id="bastions" class="k-story k-block" data-story="bastions" aria-labelledby="bastions-h" style="--c:3">
-  <div class="k-story-head">
-    <div><p class="k-eyebrow"><span class="ms">key</span>Bastions and 2FA</p>
+  <div class="k-story-head rv">
+    <div><p class="k-eyebrow"><span class="k-num">01</span><span class="ms">key</span>Bastions and 2FA</p>
       <h2 id="bastions-h">A server behind two bastions — in one double-click</h2></div>
     <p class="k-sub">Without SSHKipper it’s <code>ssh -J</code>, three codes from your phone and a password — every time. Here keys, passwords and 2FA secrets live in an encrypted document, and the app answers every hop itself.</p>
   </div>
-  <ul class="k-engines"><li><span class="lg"><span class="ms">account_tree</span></span><b>Bastion through bastion</b><span>A chain of any length — in a double-click.</span></li><li><span class="lg"><span class="ms">swap_horiz</span></span><b>SOCKS5 and HTTP proxies</b><span>The first bastion through a proxy if needed.</span></li><li><span class="lg"><span class="ms">verified_user</span></span><b>TOTP from anything</b><span>base32, otpauth://, a Google Authenticator export, a QR code.</span></li><li><span class="lg"><span class="ms">description</span></span><b>Import ~/.ssh/config</b><span>ProxyJump and forwards become bastions and tunnels.</span></li><li><span class="lg"><img class="" src="../assets/icons/tailscale.svg" alt="" width="28" height="28"></span><b>Tailscale and Bonjour</b><span>Network hosts show up in the tree by themselves.</span></li><li><span class="lg"><span class="ms">lan</span></span><b>Route profiles</b><span>Tailscale, office, another bastion — a way around.</span></li></ul>
-  <ol class="k-steps">
-        <li><button type="button" class="k-step on" data-i="0"><span class="k-n">1</span>
-          <span class="k-st"><b>Double-click web-01</b><span>The server sits behind bastion-msk and jump-prod. You open it like any other.</span></span><i class="k-bar"><i></i></i></button></li>
-        <li><button type="button" class="k-step" data-i="1"><span class="k-n">2</span>
-          <span class="k-st"><b>2FA codes go in by themselves</b><span>At every hop SSHKipper answers itself: the key, the password and a fresh code from the TOTP secret in the document.</span></span><i class="k-bar"><i></i></i></button></li>
-        <li><button type="button" class="k-step" data-i="2"><span class="k-n">3</span>
-          <span class="k-st"><b>You’re on the server</b><span>The tab’s status line shows the way you came. Files, Docker and databases of this server use the same sign-in — no second 2FA.</span></span><i class="k-bar"><i></i></i></button></li>
-  </ol>
-  <div class="k-story-vis"><div class="k-screen"><div class="k-cam on" data-w="1180" data-h="600" data-steps="[{&quot;focus&quot;: &quot;.w-tree .a-row:nth-child(n+5):nth-child(-n+9)&quot;, &quot;ring&quot;: &quot;.a-row.sel&quot;, &quot;mzoom&quot;: 330, &quot;tap&quot;: 1}, {&quot;focus&quot;: &quot;.w-status, .w-term .tl:nth-child(-n+4)&quot;, &quot;ring&quot;: &quot;.w-term .tl:nth-child(n+2):nth-child(-n+4)&quot;, &quot;mzoom&quot;: 440, &quot;max&quot;: 214}, {&quot;focus&quot;: &quot;.w-tabs, .w-status .st-ok, .w-status .chain&quot;, &quot;ring&quot;: &quot;.w-status .st-ok, .w-status .chain&quot;, &quot;mzoom&quot;: 440, &quot;max&quot;: 214}]" aria-hidden="true"><div class="app win" style="width:1180px;height:600px">
+  <ul class="k-engines"><li class="rv" style="--i:0"><span class="lg"><span class="ms">account_tree</span></span><b>Bastion through bastion</b><span>A chain of any length — in a double-click.</span></li><li class="rv" style="--i:1"><span class="lg"><span class="ms">swap_horiz</span></span><b>SOCKS5 and HTTP proxies</b><span>The first bastion through a proxy if needed.</span></li><li class="rv" style="--i:2"><span class="lg"><span class="ms">verified_user</span></span><b>TOTP from anything</b><span>base32, otpauth://, a Google Authenticator export, a QR code.</span></li><li class="rv" style="--i:3"><span class="lg"><span class="ms">description</span></span><b>Import ~/.ssh/config</b><span>ProxyJump and forwards become bastions and tunnels.</span></li><li class="rv" style="--i:4"><span class="lg"><img class="" src="../assets/icons/tailscale.svg" alt="" width="28" height="28"></span><b>Tailscale and Bonjour</b><span>Network hosts show up in the tree by themselves.</span></li><li class="rv" style="--i:5"><span class="lg"><span class="ms">lan</span></span><b>Route profiles</b><span>Tailscale, office, another bastion — a way around.</span></li></ul>
+  <div class="k-stagecard rv">
+    <div class="k-story-vis"><div class="k-screen"><div class="k-cam on" data-w="1180" data-h="600" data-steps="[{&quot;focus&quot;: &quot;.w-tree .a-row:nth-child(n+5):nth-child(-n+9)&quot;, &quot;ring&quot;: &quot;.a-row.sel&quot;, &quot;mzoom&quot;: 330, &quot;tap&quot;: 1}, {&quot;focus&quot;: &quot;.w-status, .w-term .tl:nth-child(-n+4)&quot;, &quot;ring&quot;: &quot;.w-term .tl:nth-child(n+2):nth-child(-n+4)&quot;, &quot;mzoom&quot;: 440, &quot;max&quot;: 214}, {&quot;focus&quot;: &quot;.w-tabs, .w-status .st-ok, .w-status .chain&quot;, &quot;ring&quot;: &quot;.w-status .st-ok, .w-status .chain&quot;, &quot;mzoom&quot;: 440, &quot;max&quot;: 214}]" aria-hidden="true"><div class="app win" style="width:1180px;height:600px">
 <div class="w-side">
   <div class="w-tl"><span class="a-lights"><i></i><i></i><i></i></span><span class="a-rb"><span class="ms">view_sidebar</span></span><span class="a-rb w2"><span class="ms">add</span><span class="ms sm">expand_more</span></span></div>
   <div class="w-search"><span class="ms">search</span>Search connections</div>
@@ -175,28 +173,26 @@
   </div>
   <div class="w-term js-lines"><div class="tl dim">Connecting to web-01…</div><div class="tl dim">✓ 2FA code for ops@bastion-msk (bastion-msk) filled in automatically from “ops-2fa”</div><div class="tl dim">✓ 2FA code for ops@jump-prod (jump-prod) filled in automatically from “ops-2fa”</div><div class="tl dim">✓ 2FA code for deploy@web-01 (web-01) filled in automatically from “deploy”</div><div class="tl ">Linux web-01 6.12.48+deb13-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.12.48-1 x86_64</div><div class="tl ">&nbsp;</div><div class="tl ">The programs included with the Debian GNU/Linux system are free software;</div><div class="tl ">the exact distribution terms for each program are described in the</div><div class="tl ">individual files in /usr/share/doc/*/copyright.</div><div class="tl ">&nbsp;</div><div class="tl ">Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent</div><div class="tl ">permitted by applicable law.</div><div class="tl ">Last login: Wed Oct 28 09:12:44 2026 from 10.20.0.5</div><div class="tl"><b class="pg">deploy@web-01</b>:<b class="pb">~</b>$ <i class="a-cur"></i></div></div>
 </div><i class="k-ring"></i><i class="k-tap"></i></div></div></div><div class="k-hops" aria-hidden="true"><span class="k-hop"><span class="ms">laptop_mac</span><span><b>This Mac</b><em>document</em></span><i class="k-ok"><span class="ms">check</span></i></span><i class="k-link"></i><span class="k-hop"><span class="ms">dns</span><span><b>bastion-msk</b><em>key + 2FA</em></span><i class="k-ok"><span class="ms">check</span></i></span><i class="k-link"></i><span class="k-hop"><span class="ms">dns</span><span><b>jump-prod</b><em>key + 2FA</em></span><i class="k-ok"><span class="ms">check</span></i></span><i class="k-link"></i><span class="k-hop"><span class="ms">dns</span><span><b>web-01</b><em>password + 2FA</em></span><i class="k-ok"><span class="ms">check</span></i></span></div></div>
-  <ul class="k-proofs"><li><span class="ms">lan</span><b>One sign-in per server</b><span>Tabs, splits, files, Docker and databases of a server share one connection — no second 2FA.</span></li><li><span class="ms">key</span><b>Host keys under control</b><span>Its own known_hosts; a changed host key is a warning, not a silent sign-in.</span></li><li><span class="ms">hub</span><b>Route map</b><span>How this Mac reaches a server: bastions, proxies, keys and codes — from the document’s facts.</span></li></ul>
+    <ol class="k-steps">
+        <li><button type="button" class="k-step on" data-i="0"><span class="k-n">1</span>
+          <span class="k-st"><b>Double-click web-01</b><span>The server sits behind bastion-msk and jump-prod. You open it like any other.</span></span><i class="k-bar"><i></i></i></button></li>
+        <li><button type="button" class="k-step" data-i="1"><span class="k-n">2</span>
+          <span class="k-st"><b>2FA codes go in by themselves</b><span>At every hop SSHKipper answers itself: the key, the password and a fresh code from the TOTP secret in the document.</span></span><i class="k-bar"><i></i></i></button></li>
+        <li><button type="button" class="k-step" data-i="2"><span class="k-n">3</span>
+          <span class="k-st"><b>You’re on the server</b><span>The tab’s status line shows the way you came. Files, Docker and databases of this server use the same sign-in — no second 2FA.</span></span><i class="k-bar"><i></i></i></button></li>
+    </ol>
+  </div>
+  <ul class="k-proofs"><li class="rv" style="--i:0"><span class="ms">lan</span><b>One sign-in per server</b><span>Tabs, splits, files, Docker and databases of a server share one connection — no second 2FA.</span></li><li class="rv" style="--i:1"><span class="ms">key</span><b>Host keys under control</b><span>Its own known_hosts; a changed host key is a warning, not a silent sign-in.</span></li><li class="rv" style="--i:2"><span class="ms">hub</span><b>Route map</b><span>How this Mac reaches a server: bastions, proxies, keys and codes — from the document’s facts.</span></li></ul>
 </section>
 <section id="agent" class="k-story k-block" data-story="agent" aria-labelledby="agent-h" style="--c:5">
-  <div class="k-story-head">
-    <div><p class="k-eyebrow"><span class="ms">auto_awesome</span>AI agent</p>
+  <div class="k-story-head rv">
+    <div><p class="k-eyebrow"><span class="k-num">02</span><span class="ms">auto_awesome</span>AI agent</p>
       <h2 id="agent-h">The agent digs into the server itself — and asks before it changes anything</h2></div>
     <p class="k-sub">It reads logs, load and containers on its own, yet never gets passwords, keys or addresses. What it may do without asking is up to you — per server and folder. The model is yours.</p>
   </div>
-  <ul class="k-engines"><li><span class="lg"><img class="" src="../assets/icons/ai-claude.svg" alt="" width="28" height="28"></span><b>Claude API</b><span>Model and reasoning depth right in the chat.</span></li><li><span class="lg"><img class="mono" src="../assets/icons/ai-ollama.svg" alt="" width="28" height="28"><img class="mono" src="../assets/icons/ai-lmstudio.svg" alt="" width="28" height="28"></span><b>OpenAI-compatible</b><span>Ollama, LM Studio and others — the model can run on this Mac.</span></li><li><span class="lg"><img class="" src="../assets/icons/ai-claudecode.svg" alt="" width="28" height="28"></span><b>Claude Code</b><span>Your agent and subscription; web search if you want it.</span></li><li><span class="lg"><img class="" src="../assets/icons/ai-codex.svg" alt="" width="28" height="28"></span><b>Codex</b><span>In the panel too, with web search too.</span></li><li><span class="lg"><img class="mono" src="../assets/icons/ai-cursor.svg" alt="" width="28" height="28"></span><b>Cursor</b><span>Cursor’s agent answers in the same panel.</span></li><li><span class="lg"><span class="ms">hub</span></span><b>ACP agents</b><span>Gemini CLI, Goose, Hermes, pi — over ACP.</span></li></ul>
-  <ol class="k-steps">
-        <li><button type="button" class="k-step on" data-i="0"><span class="k-n">1</span>
-          <span class="k-st"><b>Ask in words</b><span>“Why is the server slow?” — the agent checks sessions, load, containers and logs itself.</span></span><i class="k-bar"><i></i></i></button></li>
-        <li><button type="button" class="k-step" data-i="1"><span class="k-n">2</span>
-          <span class="k-st"><b>Every command in plain sight</b><span>Under the terminal: what ran and why, with output. A password in the log is masked before the model.</span></span><i class="k-bar"><i></i></i></button></li>
-        <li><button type="button" class="k-step" data-i="2"><span class="k-n">3</span>
-          <span class="k-st"><b>Changes after your “yes”</b><span>A command that changes a server comes as a card: what, why and what could go wrong.</span></span><i class="k-bar"><i></i></i></button></li>
-        <li><button type="button" class="k-step" data-i="3"><span class="k-n">4</span>
-          <span class="k-st"><b>You decide what’s allowed</b><span>Four modes per server or folder; Production always asks. Check any command in advance.</span></span><i class="k-bar"><i></i></i></button></li>
-        <li><button type="button" class="k-step" data-i="4"><span class="k-n">5</span>
-          <span class="k-st"><b>A second model checks</b><span>What the command will really do — and whether that matches what the agent said.</span></span><i class="k-bar"><i></i></i></button></li>
-  </ol>
-  <div class="k-story-vis"><div class="k-screen"><div class="k-cam on" data-w="1180" data-h="700" data-steps="[{&quot;focus&quot;: &quot;.ai-h, .ai-q, .ai-who, .ai-st&quot;, &quot;ring&quot;: &quot;.ai-q, .ai-who, .ai-st&quot;, &quot;mzoom&quot;: 380}, {&quot;focus&quot;: &quot;.cmds&quot;, &quot;ring&quot;: &quot;.cmd-x&quot;, &quot;mzoom&quot;: 420, &quot;max&quot;: 0}, {&quot;focus&quot;: &quot;.ai-card, .ai-wt&quot;, &quot;ring&quot;: &quot;.ai-card&quot;, &quot;mzoom&quot;: 380}, null, null]" aria-hidden="true"><div class="app aiwin" style="width:1180px;height:700px">
+  <ul class="k-engines"><li class="rv" style="--i:0"><span class="lg"><img class="" src="../assets/icons/ai-claude.svg" alt="" width="28" height="28"></span><b>Claude API</b><span>Model and reasoning depth right in the chat.</span></li><li class="rv" style="--i:1"><span class="lg"><img class="mono" src="../assets/icons/ai-ollama.svg" alt="" width="28" height="28"><img class="mono" src="../assets/icons/ai-lmstudio.svg" alt="" width="28" height="28"></span><b>OpenAI-compatible</b><span>Ollama, LM Studio and others — the model can run on this Mac.</span></li><li class="rv" style="--i:2"><span class="lg"><img class="" src="../assets/icons/ai-claudecode.svg" alt="" width="28" height="28"></span><b>Claude Code</b><span>Your agent and subscription; web search if you want it.</span></li><li class="rv" style="--i:3"><span class="lg"><img class="" src="../assets/icons/ai-codex.svg" alt="" width="28" height="28"></span><b>Codex</b><span>In the panel too, with web search too.</span></li><li class="rv" style="--i:4"><span class="lg"><img class="mono" src="../assets/icons/ai-cursor.svg" alt="" width="28" height="28"></span><b>Cursor</b><span>Cursor’s agent answers in the same panel.</span></li><li class="rv" style="--i:5"><span class="lg"><span class="ms">hub</span></span><b>ACP agents</b><span>Gemini CLI, Goose, Hermes, pi — over ACP.</span></li></ul>
+  <div class="k-stagecard rv">
+    <div class="k-story-vis"><div class="k-screen"><div class="k-cam on" data-w="1180" data-h="700" data-steps="[{&quot;focus&quot;: &quot;.ai-h, .ai-q, .ai-who, .ai-st&quot;, &quot;ring&quot;: &quot;.ai-q, .ai-who, .ai-st&quot;, &quot;mzoom&quot;: 380}, {&quot;focus&quot;: &quot;.cmds&quot;, &quot;ring&quot;: &quot;.cmd-x&quot;, &quot;mzoom&quot;: 420, &quot;max&quot;: 0}, {&quot;focus&quot;: &quot;.ai-card, .ai-wt&quot;, &quot;ring&quot;: &quot;.ai-card&quot;, &quot;mzoom&quot;: 380}, null, null]" aria-hidden="true"><div class="app aiwin" style="width:1180px;height:700px">
 <div class="w-bar full"><span class="a-lights"><i></i><i></i><i></i></span><span class="a-rb"><span class="ms">view_sidebar</span></span><span class="a-rb w2"><span class="ms">add</span><span class="ms sm">expand_more</span></span>
   <span class="w-title">web-01</span><span class="sp"></span><span class="a-rb on"><span class="ms">auto_awesome</span></span></div>
 <div class="ai-body">
@@ -260,28 +256,30 @@
   <div class="ai-in"><div class="ph">Task for the agent…</div>
     <div class="ai-m"><svg class="a-claude" viewBox="0 0 16 16"><rect width="16" height="16" rx="3.5" fill="#d97757"/><g stroke="#fff" stroke-width="1.6" stroke-linecap="round"><path d="M8 3.2v9.6M3.2 8h9.6M4.6 4.6l6.8 6.8M11.4 4.6l-6.8 6.8"/></g></svg><span>Claude Opus 5.5</span><span class="g">· medium</span><span class="ms sm">expand_more</span></div></div>
 </div><i class="k-ring"></i><i class="k-tap"></i></div></div></div></div>
-  <ul class="k-proofs"><li><span class="ms">visibility</span><b>Secrets never reach the model</b><span>Passwords and keys are masked before sending; local agents get neither a shell nor your Mac’s files.</span></li><li><span class="ms">verified_user</span><b>A plan in one card</b><span>Several steps with a verdict and rollback each; “Allow until the session ends” if you want.</span></li><li><span class="ms">hub</span><b>MCP for external agents</b><span>Claude Code, Codex and Cursor from your own terminal get the same modes and confirmations.</span></li></ul>
+    <ol class="k-steps">
+        <li><button type="button" class="k-step on" data-i="0"><span class="k-n">1</span>
+          <span class="k-st"><b>Ask in words</b><span>“Why is the server slow?” — the agent checks sessions, load, containers and logs itself.</span></span><i class="k-bar"><i></i></i></button></li>
+        <li><button type="button" class="k-step" data-i="1"><span class="k-n">2</span>
+          <span class="k-st"><b>Every command in plain sight</b><span>Under the terminal: what ran and why, with output. A password in the log is masked before the model.</span></span><i class="k-bar"><i></i></i></button></li>
+        <li><button type="button" class="k-step" data-i="2"><span class="k-n">3</span>
+          <span class="k-st"><b>Changes after your “yes”</b><span>A command that changes a server comes as a card: what, why and what could go wrong.</span></span><i class="k-bar"><i></i></i></button></li>
+        <li><button type="button" class="k-step" data-i="3"><span class="k-n">4</span>
+          <span class="k-st"><b>You decide what’s allowed</b><span>Four modes per server or folder; Production always asks. Check any command in advance.</span></span><i class="k-bar"><i></i></i></button></li>
+        <li><button type="button" class="k-step" data-i="4"><span class="k-n">5</span>
+          <span class="k-st"><b>A second model checks</b><span>What the command will really do — and whether that matches what the agent said.</span></span><i class="k-bar"><i></i></i></button></li>
+    </ol>
+  </div>
+  <ul class="k-proofs"><li class="rv" style="--i:0"><span class="ms">visibility</span><b>Secrets never reach the model</b><span>Passwords and keys are masked before sending; local agents get neither a shell nor your Mac’s files.</span></li><li class="rv" style="--i:1"><span class="ms">verified_user</span><b>A plan in one card</b><span>Several steps with a verdict and rollback each; “Allow until the session ends” if you want.</span></li><li class="rv" style="--i:2"><span class="ms">hub</span><b>MCP for external agents</b><span>Claude Code, Codex and Cursor from your own terminal get the same modes and confirmations.</span></li></ul>
 </section>
 <section id="databases" class="k-story k-block" data-story="databases" aria-labelledby="databases-h" style="--c:5">
-  <div class="k-story-head">
-    <div><p class="k-eyebrow"><span class="ms">database</span>Databases</p>
+  <div class="k-story-head rv">
+    <div><p class="k-eyebrow"><span class="k-num">03</span><span class="ms">database</span>Databases</p>
       <h2 id="databases-h">A database client — right behind your bastions</h2></div>
     <p class="k-sub">Six engines, editable tables, a query editor and AI that turns words into SQL. Databases open through the same chain as the terminal — no <code>ssh -L</code>, no manual tunnels.</p>
   </div>
-  <ul class="k-engines"><li><span class="lg"><img class="" src="../assets/icons/mysql.svg" alt="" width="28" height="28"></span><b>MySQL · MariaDB</b><span>Editable tables, structure, DDL and a relationship map.</span></li><li><span class="lg"><img class="" src="../assets/icons/postgresql.svg" alt="" width="28" height="28"></span><b>PostgreSQL</b><span>Plus partitions, sequences and functions.</span></li><li><span class="lg"><img class="" src="../assets/icons/clickhouse.svg" alt="" width="28" height="28"></span><b>ClickHouse</b><span>Partitions and table compression.</span></li><li><span class="lg"><img class="" src="../assets/icons/redis.svg" alt="" width="28" height="28"></span><b>Redis · Valkey</b><span>Keys with TTL, memory by prefix, a console.</span></li><li><span class="lg"><img class="" src="../assets/icons/mongodb.svg" alt="" width="28" height="28"></span><b>MongoDB</b><span>Documents as a table or a tree, aggregations.</span></li><li><span class="lg"><img class="" src="../assets/icons/sqlite.svg" alt="" width="28" height="28"></span><b>SQLite</b><span>A file on a server or on this Mac.</span></li></ul>
-  <ol class="k-steps">
-        <li><button type="button" class="k-step on" data-i="0"><span class="k-n">1</span>
-          <span class="k-st"><b>Any database behind bastions</b><span>Tables with sizes and editing — through the same chain as the terminal.</span></span><i class="k-bar"><i></i></i></button></li>
-        <li><button type="button" class="k-step" data-i="1"><span class="k-n">2</span>
-          <span class="k-st"><b>Filter in words</b><span>Words → a WHERE you can adjust. The model sees only the columns.</span></span><i class="k-bar"><i></i></i></button></li>
-        <li><button type="button" class="k-step" data-i="2"><span class="k-n">3</span>
-          <span class="k-st"><b>A query from a task</b><span>⌘J: a task in words → SQL from the schema. Inserted, not run.</span></span><i class="k-bar"><i></i></i></button></li>
-        <li><button type="button" class="k-step" data-i="3"><span class="k-n">4</span>
-          <span class="k-st"><b>An editor that helps</b><span>Tables and columns with types; every query has its own ▶ and result.</span></span><i class="k-bar"><i></i></i></button></li>
-        <li><button type="button" class="k-step" data-i="4"><span class="k-n">5</span>
-          <span class="k-st"><b>Redis, done its own way</b><span>Keys with TTL and size, memory by prefix, a console.</span></span><i class="k-bar"><i></i></i></button></li>
-  </ol>
-  <div class="k-story-vis"><div class="k-screen"><div class="k-cam on" data-w="1180" data-h="660" data-steps="[{&quot;focus&quot;: &quot;.db-h .a-logo, .db-h .g, .db-nav .nt, .db-g .gr.hd&quot;, &quot;ring&quot;: &quot;.db-h .a-logo, .db-h b, .db-h .g&quot;, &quot;mzoom&quot;: 420, &quot;max&quot;: 0}, {&quot;focus&quot;: &quot;.aif, .db-g .gr.hd&quot;, &quot;ring&quot;: &quot;.aif &gt; :nth-child(3)&quot;, &quot;mzoom&quot;: 440}, null, null, null]" aria-hidden="true"><div class="app dbwin" style="width:1180px;height:660px">
+  <ul class="k-engines"><li class="rv" style="--i:0"><span class="lg"><img class="" src="../assets/icons/mysql.svg" alt="" width="28" height="28"></span><b>MySQL · MariaDB</b><span>Editable tables, structure, DDL and a relationship map.</span></li><li class="rv" style="--i:1"><span class="lg"><img class="" src="../assets/icons/postgresql.svg" alt="" width="28" height="28"></span><b>PostgreSQL</b><span>Plus partitions, sequences and functions.</span></li><li class="rv" style="--i:2"><span class="lg"><img class="" src="../assets/icons/clickhouse.svg" alt="" width="28" height="28"></span><b>ClickHouse</b><span>Partitions and table compression.</span></li><li class="rv" style="--i:3"><span class="lg"><img class="" src="../assets/icons/redis.svg" alt="" width="28" height="28"></span><b>Redis · Valkey</b><span>Keys with TTL, memory by prefix, a console.</span></li><li class="rv" style="--i:4"><span class="lg"><img class="" src="../assets/icons/mongodb.svg" alt="" width="28" height="28"></span><b>MongoDB</b><span>Documents as a table or a tree, aggregations.</span></li><li class="rv" style="--i:5"><span class="lg"><img class="" src="../assets/icons/sqlite.svg" alt="" width="28" height="28"></span><b>SQLite</b><span>A file on a server or on this Mac.</span></li></ul>
+  <div class="k-stagecard rv">
+    <div class="k-story-vis"><div class="k-screen"><div class="k-cam on" data-w="1180" data-h="660" data-steps="[{&quot;focus&quot;: &quot;.db-h .a-logo, .db-h .g, .db-nav .nt, .db-g .gr.hd&quot;, &quot;ring&quot;: &quot;.db-h .a-logo, .db-h b, .db-h .g&quot;, &quot;mzoom&quot;: 420, &quot;max&quot;: 0}, {&quot;focus&quot;: &quot;.aif, .db-g .gr.hd&quot;, &quot;ring&quot;: &quot;.aif &gt; :nth-child(3)&quot;, &quot;mzoom&quot;: 440}, null, null, null]" aria-hidden="true"><div class="app dbwin" style="width:1180px;height:660px">
 <div class="db-h"><img class="a-logo" src="../assets/icons/mysql.svg" alt=""><b>northwind</b><span class="g">MySQL 8.0.41 · via web-01 → db-01:3306</span><span class="sp"></span>
   <span class="btn"><span class="ms">code</span>New query</span><span class="btn"><span class="ms t-blue">hub</span>Diagram</span><span class="ms rb">refresh</span><span class="ms rb">info</span><span class="ms rb">settings</span></div>
 <div class="db-b">
@@ -341,30 +339,30 @@
      <div class="rd-r">Select a key on the left</div></div>
  </div>
 </div><i class="k-ring"></i><i class="k-tap"></i></div></div></div></div>
-  <ul class="k-proofs"><li><span class="ms">shield</span><b>Production stays safe</b><span>Every change opens with the full SQL and “Check with AI”; read-only forbids changes altogether.</span></li><li><span class="ms">visibility</span><b>The model doesn’t see your data</b><span>The AI filter and “Compose” get only the columns and schema — never table rows.</span></li><li><span class="ms">auto_awesome</span><b>The agent plays by the rules</b><span>The AI agent reads the schema and runs queries by the database’s mode; password tables are always refused.</span></li></ul>
+    <ol class="k-steps">
+        <li><button type="button" class="k-step on" data-i="0"><span class="k-n">1</span>
+          <span class="k-st"><b>Any database behind bastions</b><span>Tables with sizes and editing — through the same chain as the terminal.</span></span><i class="k-bar"><i></i></i></button></li>
+        <li><button type="button" class="k-step" data-i="1"><span class="k-n">2</span>
+          <span class="k-st"><b>Filter in words</b><span>Words → a WHERE you can adjust. The model sees only the columns.</span></span><i class="k-bar"><i></i></i></button></li>
+        <li><button type="button" class="k-step" data-i="2"><span class="k-n">3</span>
+          <span class="k-st"><b>A query from a task</b><span>⌘J: a task in words → SQL from the schema. Inserted, not run.</span></span><i class="k-bar"><i></i></i></button></li>
+        <li><button type="button" class="k-step" data-i="3"><span class="k-n">4</span>
+          <span class="k-st"><b>An editor that helps</b><span>Tables and columns with types; every query has its own ▶ and result.</span></span><i class="k-bar"><i></i></i></button></li>
+        <li><button type="button" class="k-step" data-i="4"><span class="k-n">5</span>
+          <span class="k-st"><b>Redis, done its own way</b><span>Keys with TTL and size, memory by prefix, a console.</span></span><i class="k-bar"><i></i></i></button></li>
+    </ol>
+  </div>
+  <ul class="k-proofs"><li class="rv" style="--i:0"><span class="ms">shield</span><b>Production stays safe</b><span>Every change opens with the full SQL and “Check with AI”; read-only forbids changes altogether.</span></li><li class="rv" style="--i:1"><span class="ms">visibility</span><b>The model doesn’t see your data</b><span>The AI filter and “Compose” get only the columns and schema — never table rows.</span></li><li class="rv" style="--i:2"><span class="ms">auto_awesome</span><b>The agent plays by the rules</b><span>The AI agent reads the schema and runs queries by the database’s mode; password tables are always refused.</span></li></ul>
 </section>
 <section id="services" class="k-story k-block" data-story="services" aria-labelledby="services-h" style="--c:3">
-  <div class="k-story-head">
-    <div><p class="k-eyebrow"><span class="ms">dns</span>Server services</p>
+  <div class="k-story-head rv">
+    <div><p class="k-eyebrow"><span class="k-num">04</span><span class="ms">dns</span>Server services</p>
       <h2 id="services-h">Everything about a server — in one tab</h2></div>
     <p class="k-sub">Dashboard, Docker, Nginx, Cron, Supervisor and Firewall — over the same SSH and through the same bastions. No extra terminals, no agents on the server; anything that changes things asks first.</p>
   </div>
-  <ul class="k-engines"><li><span class="lg"><img class="" src="../assets/icons/docker.svg" alt="" width="28" height="28"></span><b>Docker · Compose</b><span>Projects, health and ports, logs, a shell inside; this Mac’s Docker too.</span></li><li><span class="lg"><img class="" src="../assets/icons/nginx.svg" alt="" width="28" height="28"></span><b>Nginx</b><span>Requests, errors and p95 from logs; reload after a config test.</span></li><li><span class="lg"><img class="" src="../assets/icons/caddy.svg" alt="" width="28" height="28"></span><b>Caddy</b><span>Sites and their certificates.</span></li><li><span class="lg"><span class="ms">schedule</span></span><b>Cron · Supervisor</b><span>Jobs as a week, schedules in words; fallen programs with the end of stderr.</span></li><li><span class="lg"><span class="ms">shield</span></span><b>Firewall · fail2ban</b><span>ufw, nftables or iptables together with Docker — per port; bans.</span></li><li><span class="lg"><img class="" src="../assets/icons/proxmox.svg" alt="" width="28" height="28"></span><b>Proxmox</b><span>A virtual machine next to its host.</span></li></ul>
-  <ol class="k-steps">
-        <li><button type="button" class="k-step on" data-i="0"><span class="k-n">1</span>
-          <span class="k-st"><b>Problems in one line</b><span>Load, memory, disks, network — and on top, whatever needs attention.</span></span><i class="k-bar"><i></i></i></button></li>
-        <li><button type="button" class="k-step" data-i="1"><span class="k-n">2</span>
-          <span class="k-st"><b>Nginx from the logs</b><span>Requests per minute, 5xx, p95 and slow routes — without root.</span></span><i class="k-bar"><i></i></i></button></li>
-        <li><button type="button" class="k-step" data-i="2"><span class="k-n">3</span>
-          <span class="k-st"><b>Docker by project</b><span>Health, CPU, memory and ports; restart a project in one click.</span></span><i class="k-bar"><i></i></i></button></li>
-        <li><button type="button" class="k-step" data-i="3"><span class="k-n">4</span>
-          <span class="k-st"><b>What fell and why</b><span>Supervisor with the end of stderr; “Run again” asks first.</span></span><i class="k-bar"><i></i></i></button></li>
-        <li><button type="button" class="k-step" data-i="4"><span class="k-n">5</span>
-          <span class="k-st"><b>Cron as a week</b><span>What already ran and what’s next; the output of every run.</span></span><i class="k-bar"><i></i></i></button></li>
-        <li><button type="button" class="k-step" data-i="5"><span class="k-n">6</span>
-          <span class="k-st"><b>Who may connect</b><span>Per port: what listens, whether it’s open and what decides it.</span></span><i class="k-bar"><i></i></i></button></li>
-  </ol>
-  <div class="k-story-vis"><div class="k-screen"><div class="k-cam on" data-w="1180" data-h="1150" data-steps="[{&quot;focus&quot;: &quot;.v-dash .pg-title, .v-dash .pg-sum, .v-dash .dks&quot;, &quot;ring&quot;: &quot;.v-dash .pg-sum&quot;, &quot;mzoom&quot;: 560, &quot;max&quot;: 0}, {&quot;focus&quot;: &quot;.v-nginx .pg-title, .v-nginx .kps, .v-nginx .chart&quot;, &quot;ring&quot;: &quot;.v-nginx .chart&quot;, &quot;mzoom&quot;: 560, &quot;max&quot;: 0}, null, null, null, null]" aria-hidden="true"><div class="app page" style="width:1180px;height:1150px">
+  <ul class="k-engines"><li class="rv" style="--i:0"><span class="lg"><img class="" src="../assets/icons/docker.svg" alt="" width="28" height="28"></span><b>Docker · Compose</b><span>Projects, health and ports, logs, a shell inside; this Mac’s Docker too.</span></li><li class="rv" style="--i:1"><span class="lg"><img class="" src="../assets/icons/nginx.svg" alt="" width="28" height="28"></span><b>Nginx</b><span>Requests, errors and p95 from logs; reload after a config test.</span></li><li class="rv" style="--i:2"><span class="lg"><img class="" src="../assets/icons/caddy.svg" alt="" width="28" height="28"></span><b>Caddy</b><span>Sites and their certificates.</span></li><li class="rv" style="--i:3"><span class="lg"><span class="ms">schedule</span></span><b>Cron · Supervisor</b><span>Jobs as a week, schedules in words; fallen programs with the end of stderr.</span></li><li class="rv" style="--i:4"><span class="lg"><span class="ms">shield</span></span><b>Firewall · fail2ban</b><span>ufw, nftables or iptables together with Docker — per port; bans.</span></li><li class="rv" style="--i:5"><span class="lg"><img class="" src="../assets/icons/proxmox.svg" alt="" width="28" height="28"></span><b>Proxmox</b><span>A virtual machine next to its host.</span></li></ul>
+  <div class="k-stagecard rv">
+    <div class="k-story-vis"><div class="k-screen"><div class="k-cam on" data-w="1180" data-h="1150" data-steps="[{&quot;focus&quot;: &quot;.v-dash .pg-title, .v-dash .pg-sum, .v-dash .dks&quot;, &quot;ring&quot;: &quot;.v-dash .pg-sum&quot;, &quot;mzoom&quot;: 560, &quot;max&quot;: 0}, {&quot;focus&quot;: &quot;.v-nginx .pg-title, .v-nginx .kps, .v-nginx .chart&quot;, &quot;ring&quot;: &quot;.v-nginx .chart&quot;, &quot;mzoom&quot;: 560, &quot;max&quot;: 0}, null, null, null, null]" aria-hidden="true"><div class="app page" style="width:1180px;height:1150px">
 <div class="pg-h"><span class="ms t-ink2">dns</span><b>web-01</b><span class="segs"><i class="segpill"></i><span class="sg js-dash">Dashboard</span><span class="sg">Docker</span><span class="sg js-nginx">Nginx<i class=rdot></i></span><span class="sg">Cron</span><span class="sg">Supervisor<i class=rdot></i></span><span class="sg">Firewall</span></span><span class="ms rb">refresh</span><span class="ms rb">more_horiz</span></div>
 <div class="pg-views"><div class="pg-v v-dash">
 <div class="pg-title">Dashboard</div>
@@ -401,26 +399,32 @@
     <div class="sl"><span><code>/legacy/feed</code><i style="width:93%"></i></span><b class="o">1.4 s</b><span>2.9 s</span><span>96</span></div>
     <div class="sl"><span><code>/reports/export</code><i style="width:80%"></i></span><b class="o">1.2 s</b><span>1.2 s</span><span>12</span></div></div>
 </div></div></div><i class="k-ring"></i><i class="k-tap"></i></div></div><div class="k-cam " data-w="520" data-h="330" data-steps="[null, null, {&quot;ring&quot;: &quot;.dgrp, .dkg&quot;, &quot;mzoom&quot;: 520}, null, null, null]" aria-hidden="true"><div class="app frag page sv-docker" style="width:520px;height:330px"><div class="pg-v"><div class="pg-title">Docker</div><div class="pg-sum">All 4 containers are running. <span class="g">· Docker 27.3.1 · Compose 2.29.7</span></div><div class="pg-ctl"><span class="seg2"><span class="on">All</span><span class="">Running</span><span class="">Need attention</span></span></div><div class="dgrp"><b>northwind</b><span>4 running</span><code>/srv/northwind</code><span class="sp"></span><span class="lnk">Restart project</span></div><div class="dkg"><div class="dkc"><div class="t"><i class="a-dot g"></i><b>web</b><span>healthy</span></div><div class="im">northwind/web:2.4</div><div class="ft"><span class="lnk">8080</span><span>CPU 3.2% · 148 MB</span></div></div><div class="dkc"><div class="t"><i class="a-dot g"></i><b>worker</b><span>healthy</span></div><div class="im">northwind/worker:2.4</div><div class="ft"><span class="">no ports</span><span>CPU 57% · 300 MB</span></div></div><div class="dkc"><div class="t"><i class="a-dot g"></i><b>redis</b><span>healthy</span></div><div class="im">redis:8.4-alpine</div><div class="ft"><span class="lnk">6379</span><span>CPU 0.4% · 12 MB</span></div></div><div class="dkc"><div class="t"><i class="a-dot g"></i><b>mailer</b><span>healthy</span></div><div class="im">northwind/mailer:2.4</div><div class="ft"><span class="">no ports</span><span>CPU 0.1% · 41 MB</span></div></div></div></div><i class="k-ring"></i><i class="k-tap"></i></div></div><div class="k-cam " data-w="520" data-h="330" data-steps="[null, null, null, {&quot;ring&quot;: &quot;.spf&quot;, &quot;mzoom&quot;: 520}, null, null]" aria-hidden="true"><div class="app frag page sv-sup" style="width:520px;height:330px"><div class="pg-v"><div class="pg-title">Supervisor</div><div class="pg-sum">Running: 3 of 4 programs. <span class="r">mailer-queue isn’t running.</span></div><div class="spf"><div class="t"><i class="a-dot r"></i><b>mailer-queue</b><span class="r">won’t start</span></div><pre>SMTPAuthError: 535 authentication failed<br>SMTPAuthError: 535 authentication failed</pre><div class="bt"><span class="pri">Run again</span><span>Full stderr</span></div></div><div class="spr"><i class="a-dot g"></i><b>worker_00</b><em>queue</em><span>running 3d 3h</span></div><div class="spr"><i class="a-dot g"></i><b>worker_01</b><em>queue</em><span>running 3d 3h</span></div><div class="spr"><i class="a-dot g"></i><b>web</b><span>running 3d 3h</span></div></div><i class="k-ring"></i><i class="k-tap"></i></div></div><div class="k-cam " data-w="520" data-h="330" data-steps="[null, null, null, null, {&quot;ring&quot;: &quot;.cdays&quot;, &quot;mzoom&quot;: 520}, null]" aria-hidden="true"><div class="app frag page sv-cron" style="width:520px;height:330px"><div class="pg-v"><div class="pg-title">Cron</div><div class="pg-sum">9 jobs. <span class="g">Next: Nightly backup tomorrow at 03:30.</span></div><div class="pg-ctl"><span class="seg2"><span class="on">Week</span><span class="">Month</span><span class="">All jobs</span></span></div><div class="cdays"><div class="cday"><div class="ch"><b class="r">Today</b><span>Wed, Oct 28</span></div><div class="cj past"><span class="tm">03:30</span><div><b>Nightly backup</b><span>crontab deploy</span></div></div><div class="cj past"><span class="tm">06:25</span><div><b>cron.daily</b><span>4 scripts</span></div></div><div class="cj"><span class="tm">12:00</span><div><b>cleanup tmp</b><span>cron.d/northwind</span></div></div></div><div class="cday"><div class="ch"><b class="">Tomorrow</b><span>Thu, Oct 29</span></div><div class="cj"><span class="tm">03:30</span><div><b>Nightly backup</b><span>crontab deploy</span></div></div><div class="cj"><span class="tm">06:25</span><div><b>cron.daily</b><span>4 scripts</span></div></div><div class="cj"><span class="tm">12:00</span><div><b>cleanup tmp</b><span>cron.d/northwind</span></div></div></div></div></div><i class="k-ring"></i><i class="k-tap"></i></div></div><div class="k-cam " data-w="520" data-h="330" data-steps="[null, null, null, null, null, {&quot;ring&quot;: &quot;.fwr:not(.hd)&quot;, &quot;mzoom&quot;: 520}]" aria-hidden="true"><div class="app frag page sv-fw" style="width:520px;height:330px"><div class="pg-v"><div class="pg-title">Firewall</div><div class="pg-sum">The server itself doesn’t limit 22 and 80. <span class="g">Everything else is dropped by the INPUT policy.</span></div><div class="fwb"><span class="ok">ufw · active</span><span class="bad">fail2ban · 31 banned</span></div><div class="fwh"><b>Who may connect</b></div><div class="fwr hd"><span>Port</span><span>What listens</span><span>External</span><span>What decides</span></div><div class="fwr"><span class="pt"><b>22</b>/tcp</span><span class="wh"><b>SSH</b> sshd</span><span class="cap b">all</span><span class="dc">ufw rule</span></div><div class="fwr"><span class="pt"><b>80</b>/tcp</span><span class="wh"><b>HTTP</b> nginx</span><span class="cap b">all</span><span class="dc">ufw rule</span></div><div class="fwr"><span class="pt"><b>8081</b>/tcp</span><span class="wh"><b>caddy</b> Docker → container</span><span class="cap o">not limited</span><span class="dc">Docker publishes</span></div><div class="fwr"><span class="pt"><b>6379</b>/tcp</span><span class="wh"><b>Redis</b> redis</span><span class="cap n">nobody</span><span class="dc">policy INPUT: drop</span></div></div><i class="k-ring"></i><i class="k-tap"></i></div></div></div></div>
-  <ul class="k-proofs"><li><span class="ms">dns</span><b>Actions with confirmation</b><span>Restarts in Docker and Supervisor, nginx reload after a config test.</span></li><li><span class="ms">add</span><b>Your own widgets</b><span>A metric, your own script with thresholds, or a widget described for AI.</span></li><li><span class="ms">auto_awesome</span><b>Logs with AI</b><span>Streaming logs with filters and levels; AI answers about the lines you pick.</span></li></ul>
+    <ol class="k-steps two">
+        <li><button type="button" class="k-step on" data-i="0"><span class="k-n">1</span>
+          <span class="k-st"><b>Problems in one line</b><span>Load, memory, disks, network — and on top, whatever needs attention.</span></span><i class="k-bar"><i></i></i></button></li>
+        <li><button type="button" class="k-step" data-i="1"><span class="k-n">2</span>
+          <span class="k-st"><b>Nginx from the logs</b><span>Requests per minute, 5xx, p95 and slow routes — without root.</span></span><i class="k-bar"><i></i></i></button></li>
+        <li><button type="button" class="k-step" data-i="2"><span class="k-n">3</span>
+          <span class="k-st"><b>Docker by project</b><span>Health, CPU, memory and ports; restart a project in one click.</span></span><i class="k-bar"><i></i></i></button></li>
+        <li><button type="button" class="k-step" data-i="3"><span class="k-n">4</span>
+          <span class="k-st"><b>What fell and why</b><span>Supervisor with the end of stderr; “Run again” asks first.</span></span><i class="k-bar"><i></i></i></button></li>
+        <li><button type="button" class="k-step" data-i="4"><span class="k-n">5</span>
+          <span class="k-st"><b>Cron as a week</b><span>What already ran and what’s next; the output of every run.</span></span><i class="k-bar"><i></i></i></button></li>
+        <li><button type="button" class="k-step" data-i="5"><span class="k-n">6</span>
+          <span class="k-st"><b>Who may connect</b><span>Per port: what listens, whether it’s open and what decides it.</span></span><i class="k-bar"><i></i></i></button></li>
+    </ol>
+  </div>
+  <ul class="k-proofs"><li class="rv" style="--i:0"><span class="ms">dns</span><b>Actions with confirmation</b><span>Restarts in Docker and Supervisor, nginx reload after a config test.</span></li><li class="rv" style="--i:1"><span class="ms">add</span><b>Your own widgets</b><span>A metric, your own script with thresholds, or a widget described for AI.</span></li><li class="rv" style="--i:2"><span class="ms">auto_awesome</span><b>Logs with AI</b><span>Streaming logs with filters and levels; AI answers about the lines you pick.</span></li></ul>
 </section>
 <section id="files" class="k-story k-block" data-story="files" aria-labelledby="files-h" style="--c:4">
-  <div class="k-story-head">
-    <div><p class="k-eyebrow"><span class="ms">folder_open</span>Files and storage</p>
+  <div class="k-story-head rv">
+    <div><p class="k-eyebrow"><span class="k-num">05</span><span class="ms">folder_open</span>Files and storage</p>
       <h2 id="files-h">Server, Mac and cloud files — in one window</h2></div>
     <p class="k-sub">SFTP, S3 and WebDAV live in the same tree as your servers and go through the same bastions. Drag and drop both ways and one transfer queue for everything.</p>
   </div>
-  <ul class="k-engines"><li><span class="lg"><span class="ms">terminal</span></span><b>SFTP</b><span>Any server of the document — same sign-in, no second 2FA.</span></li><li><span class="lg"><img class="" src="../assets/icons/cloudflare.svg" alt="" width="28" height="28"><img class="" src="../assets/icons/minio.svg" alt="" width="28" height="28"><img class="" src="../assets/icons/yandexcloud.svg" alt="" width="28" height="28"></span><b>S3-compatible</b><span>AWS, Yandex Cloud, Selectel, Cloudflare R2, MinIO.</span></li><li><span class="lg"><img class="" src="../assets/icons/nextcloud.svg" alt="" width="28" height="28"></span><b>WebDAV · Nextcloud</b><span>Nextcloud with browser sign-in.</span></li><li><span class="lg"><span class="ms">cloud</span></span><b>Yandex Disk</b><span>A cloud drive in the same tree.</span></li><li><span class="lg"><span class="ms">laptop_mac</span></span><b>This Mac</b><span>Two panes and drag and drop to Finder.</span></li><li><span class="lg"><span class="ms">edit_square</span></span><b>Your editor</b><span>Save, and the file goes back to the server.</span></li></ul>
-  <ol class="k-steps">
-        <li><button type="button" class="k-step on" data-i="0"><span class="k-n">1</span>
-          <span class="k-st"><b>Beside the terminal</b><span>An SFTP panel to the right of the session, same sign-in.</span></span><i class="k-bar"><i></i></i></button></li>
-        <li><button type="button" class="k-step" data-i="1"><span class="k-n">2</span>
-          <span class="k-st"><b>Mac ⇄ server</b><span>Two panes, drag and drop, a queue with pause and resume.</span></span><i class="k-bar"><i></i></i></button></li>
-        <li><button type="button" class="k-step" data-i="2"><span class="k-n">3</span>
-          <span class="k-st"><b>S3 and WebDAV in the tree</b><span>A storage is a document item; server to bucket goes directly, skipping the Mac.</span></span><i class="k-bar"><i></i></i></button></li>
-        <li><button type="button" class="k-step" data-i="3"><span class="k-n">4</span>
-          <span class="k-st"><b>Server to server</b><span>A file behind a bastion goes straight to the bastion; SHA-256 checked on both ends.</span></span><i class="k-bar"><i></i></i></button></li>
-  </ol>
-  <div class="k-story-vis"><div class="k-screen"><div class="k-cam on" data-w="440" data-h="300" data-steps="[{&quot;ring&quot;: &quot;.f-pane.side&quot;, &quot;mzoom&quot;: 440}, null, null, null]" aria-hidden="true"><div class="app frag done tf1" style="width:440px;height:300px">
+  <ul class="k-engines"><li class="rv" style="--i:0"><span class="lg"><span class="ms">terminal</span></span><b>SFTP</b><span>Any server of the document — same sign-in, no second 2FA.</span></li><li class="rv" style="--i:1"><span class="lg"><img class="" src="../assets/icons/cloudflare.svg" alt="" width="28" height="28"><img class="" src="../assets/icons/minio.svg" alt="" width="28" height="28"><img class="" src="../assets/icons/yandexcloud.svg" alt="" width="28" height="28"></span><b>S3-compatible</b><span>AWS, Yandex Cloud, Selectel, Cloudflare R2, MinIO.</span></li><li class="rv" style="--i:2"><span class="lg"><img class="" src="../assets/icons/nextcloud.svg" alt="" width="28" height="28"></span><b>WebDAV · Nextcloud</b><span>Nextcloud with browser sign-in.</span></li><li class="rv" style="--i:3"><span class="lg"><span class="ms">cloud</span></span><b>Yandex Disk</b><span>A cloud drive in the same tree.</span></li><li class="rv" style="--i:4"><span class="lg"><span class="ms">laptop_mac</span></span><b>This Mac</b><span>Two panes and drag and drop to Finder.</span></li><li class="rv" style="--i:5"><span class="lg"><span class="ms">edit_square</span></span><b>Your editor</b><span>Save, and the file goes back to the server.</span></li></ul>
+  <div class="k-stagecard rv">
+    <div class="k-story-vis"><div class="k-screen"><div class="k-cam on" data-w="440" data-h="300" data-steps="[{&quot;ring&quot;: &quot;.f-pane.side&quot;, &quot;mzoom&quot;: 440}, null, null, null]" aria-hidden="true"><div class="app frag done tf1" style="width:440px;height:300px">
 <div class="w-status"><span class="st-ok"><i class="a-dot g"></i><b>Connected</b></span>
   <span class="chain">jump-prod<i>›</i><b>deploy@web-01</b></span>
   <span class="st-r"><span class="pill-on"><span class="ms">folder</span>Files</span></span></div>
@@ -446,24 +450,28 @@
 <div class="dc-n"><span class="js-n" data-mb="MB">1.2 GB</span> of 1.2 GB</div>
 <div class="dc-log"><div class="js-log">“bastion-msk” is connecting to “web-01” (archiver@web-01:22) — the file goes directly, not through this Mac</div><div class="js-log">Key “archiver-key” signed the sign-in “bastion-msk” → “web-01” (1 of 2); the key itself stays on this Mac</div><div class="js-log">2FA code for “web-01” sent</div><div class="js-log">Verifying SHA-256 on both servers…</div><div class="js-log">Done: 1.2 GB in 31 s (39.6 MB/s)</div></div>
 <div class="dc-b"><span class="b-run">Stop</span><span class="b-done">Done</span></div><i class="k-ring"></i><i class="k-tap"></i></div></div></div></div>
-  <ul class="k-proofs"><li><span class="ms">folder</span><b>Permissions and Quick Look</b><span>Permissions for many files at once; Space for a preview, as in Finder.</span></li><li><span class="ms">cloud</span><b>S3 links</b><span>A link to a file in a bucket for an hour, a day or a week — from the menu.</span></li><li><span class="ms">swap_horiz</span><b>Not through your link</b><span>Server-to-server copies and bucket uploads go directly — your home connection isn’t used.</span></li></ul>
+    <ol class="k-steps">
+        <li><button type="button" class="k-step on" data-i="0"><span class="k-n">1</span>
+          <span class="k-st"><b>Beside the terminal</b><span>An SFTP panel to the right of the session, same sign-in.</span></span><i class="k-bar"><i></i></i></button></li>
+        <li><button type="button" class="k-step" data-i="1"><span class="k-n">2</span>
+          <span class="k-st"><b>Mac ⇄ server</b><span>Two panes, drag and drop, a queue with pause and resume.</span></span><i class="k-bar"><i></i></i></button></li>
+        <li><button type="button" class="k-step" data-i="2"><span class="k-n">3</span>
+          <span class="k-st"><b>S3 and WebDAV in the tree</b><span>A storage is a document item; server to bucket goes directly, skipping the Mac.</span></span><i class="k-bar"><i></i></i></button></li>
+        <li><button type="button" class="k-step" data-i="3"><span class="k-n">4</span>
+          <span class="k-st"><b>Server to server</b><span>A file behind a bastion goes straight to the bastion; SHA-256 checked on both ends.</span></span><i class="k-bar"><i></i></i></button></li>
+    </ol>
+  </div>
+  <ul class="k-proofs"><li class="rv" style="--i:0"><span class="ms">folder</span><b>Permissions and Quick Look</b><span>Permissions for many files at once; Space for a preview, as in Finder.</span></li><li class="rv" style="--i:1"><span class="ms">cloud</span><b>S3 links</b><span>A link to a file in a bucket for an hour, a day or a week — from the menu.</span></li><li class="rv" style="--i:2"><span class="ms">swap_horiz</span><b>Not through your link</b><span>Server-to-server copies and bucket uploads go directly — your home connection isn’t used.</span></li></ul>
 </section>
 <section id="automations" class="k-story k-block" data-story="automations" aria-labelledby="automations-h" style="--c:3">
-  <div class="k-story-head">
-    <div><p class="k-eyebrow"><span class="ms">archive</span>Automations and backups</p>
+  <div class="k-story-head rv">
+    <div><p class="k-eyebrow"><span class="k-num">06</span><span class="ms">archive</span>Automations and backups</p>
       <h2 id="automations-h">A nightly database backup — from blocks, no scripts</h2></div>
     <p class="k-sub">Dump, compression, upload to S3, rotation and a summary — modules on a canvas. Runs on a schedule, after another automation, on an event or right in the server’s crontab.</p>
   </div>
-  <ul class="k-engines"><li><span class="lg"><span class="ms">schedule</span></span><b>On a schedule</b><span>In words, no cron syntax: “every 10 min on weekdays”.</span></li><li><span class="lg"><span class="ms">account_tree</span></span><b>After another</b><span>After success, failure or either — as a chain.</span></li><li><span class="lg"><span class="ms">sensors</span></span><b>On an event</b><span>A container died, nginx 5xx, a metric over a threshold.</span></li><li><span class="lg"><span class="ms">dns</span></span><b>In the server’s crontab</b><span>The Mac may sleep: results are read later.</span></li><li><span class="lg"><span class="ms">help</span></span><b>“Ask me”</b><span>A question in a window, the menu bar or Telegram.</span></li><li><span class="lg"><span class="ms">verified_user</span></span><b>Restore check</b><span>The copy is restored in a container on this Mac.</span></li></ul>
-  <ol class="k-steps">
-        <li><button type="button" class="k-step on" data-i="0"><span class="k-n">1</span>
-          <span class="k-st"><b>Ready-made modules</b><span>mysqldump, mydumper, XtraBackup, ClickHouse, Redis, rsync, folder archive — or your own module.</span></span><i class="k-bar"><i></i></i></button></li>
-        <li><button type="button" class="k-step" data-i="1"><span class="k-n">2</span>
-          <span class="k-st"><b>A schedule in words</b><span>“Every day at 03:30”. Before the first run you see every command and secret; unattended runs need your approval.</span></span><i class="k-bar"><i></i></i></button></li>
-        <li><button type="button" class="k-step" data-i="2"><span class="k-n">3</span>
-          <span class="k-st"><b>A result for every step</b><span>You see how big the dump was, how it compressed and how many copies are left. The summary goes to a notification or Telegram.</span></span><i class="k-bar"><i></i></i></button></li>
-  </ol>
-  <div class="k-story-vis"><div class="k-screen"><div class="k-cam on" data-w="1180" data-h="560" data-steps="[{&quot;focus&quot;: &quot;.au-lib&quot;, &quot;ring&quot;: &quot;.au-lib .li, .au-lib .lh&quot;, &quot;mzoom&quot;: 380, &quot;max&quot;: 0}, {&quot;focus&quot;: &quot;.au-h .pill, .au-h .go&quot;, &quot;ring&quot;: &quot;.au-h .pill&quot;, &quot;mzoom&quot;: 400}, {&quot;focus&quot;: &quot;.au-z&quot;, &quot;ring&quot;: &quot;.js-ac&quot;, &quot;mzoom&quot;: 300, &quot;ms&quot;: 2.2}]" aria-hidden="true"><div class="app autowin" style="width:1180px;height:560px">
+  <ul class="k-engines"><li class="rv" style="--i:0"><span class="lg"><span class="ms">schedule</span></span><b>On a schedule</b><span>In words, no cron syntax: “every 10 min on weekdays”.</span></li><li class="rv" style="--i:1"><span class="lg"><span class="ms">account_tree</span></span><b>After another</b><span>After success, failure or either — as a chain.</span></li><li class="rv" style="--i:2"><span class="lg"><span class="ms">sensors</span></span><b>On an event</b><span>A container died, nginx 5xx, a metric over a threshold.</span></li><li class="rv" style="--i:3"><span class="lg"><span class="ms">dns</span></span><b>In the server’s crontab</b><span>The Mac may sleep: results are read later.</span></li><li class="rv" style="--i:4"><span class="lg"><span class="ms">help</span></span><b>“Ask me”</b><span>A question in a window, the menu bar or Telegram.</span></li><li class="rv" style="--i:5"><span class="lg"><span class="ms">verified_user</span></span><b>Restore check</b><span>The copy is restored in a container on this Mac.</span></li></ul>
+  <div class="k-stagecard rv">
+    <div class="k-story-vis"><div class="k-screen"><div class="k-cam on" data-w="1180" data-h="560" data-steps="[{&quot;focus&quot;: &quot;.au-lib&quot;, &quot;ring&quot;: &quot;.au-lib .li, .au-lib .lh&quot;, &quot;mzoom&quot;: 380, &quot;max&quot;: 0}, {&quot;focus&quot;: &quot;.au-h .pill, .au-h .go&quot;, &quot;ring&quot;: &quot;.au-h .pill&quot;, &quot;mzoom&quot;: 400}, {&quot;focus&quot;: &quot;.au-z&quot;, &quot;ring&quot;: &quot;.js-ac&quot;, &quot;mzoom&quot;: 300, &quot;ms&quot;: 2.2}]" aria-hidden="true"><div class="app autowin" style="width:1180px;height:560px">
 <div class="au-h"><span class="ms t-ink2">view_sidebar</span><span class="g">Automations</span><span class="g">›</span><b>Nightly MySQL backup</b>
   <span class="g st"><span class="js-ok">✓ success · 03:30 · next: tomorrow at 03:30</span></span>
   <span class="seg2"><span class="">Overview</span><span class="">Steps</span><span class="">History</span><span class="on">Canvas</span></span>
@@ -477,21 +485,30 @@
     <div class="au-ask"><span class="ms t-purple">auto_awesome</span><span>What to change? For example: “compress with zstd”</span><span class="ms up">arrow_upward</span></div>
     <div class="au-zm"><span class="pill">Arrange</span><span class="ms">zoom_out</span><span>60 %</span><span class="ms">zoom_in</span><span class="ms">fit_screen</span></div></div>
 </div><i class="k-ring"></i><i class="k-tap"></i></div></div></div></div>
-  <ul class="k-proofs"><li><span class="ms">lock</span><b>Secrets in plain words</b><span>Before the first run: every command and where each secret goes.</span></li><li><span class="ms">auto_awesome</span><b>With AI</b><span>A draft from a description, an “Agent” module and “Why did it fail?” from the run history.</span></li><li><span class="ms">grid_view</span><b>All in one tab</b><span>A summary: what failed, what waits for you and what runs next.</span></li></ul>
+    <ol class="k-steps">
+        <li><button type="button" class="k-step on" data-i="0"><span class="k-n">1</span>
+          <span class="k-st"><b>Ready-made modules</b><span>mysqldump, mydumper, XtraBackup, ClickHouse, Redis, rsync, folder archive — or your own module.</span></span><i class="k-bar"><i></i></i></button></li>
+        <li><button type="button" class="k-step" data-i="1"><span class="k-n">2</span>
+          <span class="k-st"><b>A schedule in words</b><span>“Every day at 03:30”. Before the first run you see every command and secret; unattended runs need your approval.</span></span><i class="k-bar"><i></i></i></button></li>
+        <li><button type="button" class="k-step" data-i="2"><span class="k-n">3</span>
+          <span class="k-st"><b>A result for every step</b><span>You see how big the dump was, how it compressed and how many copies are left. The summary goes to a notification or Telegram.</span></span><i class="k-bar"><i></i></i></button></li>
+    </ol>
+  </div>
+  <ul class="k-proofs"><li class="rv" style="--i:0"><span class="ms">lock</span><b>Secrets in plain words</b><span>Before the first run: every command and where each secret goes.</span></li><li class="rv" style="--i:1"><span class="ms">auto_awesome</span><b>With AI</b><span>A draft from a description, an “Agent” module and “Why did it fail?” from the run history.</span></li><li class="rv" style="--i:2"><span class="ms">grid_view</span><b>All in one tab</b><span>A summary: what failed, what waits for you and what runs next.</span></li></ul>
 </section>
 
 <section class="k-grid-wrap" aria-labelledby="grid-h">
-  <h2 id="grid-h" class="k-h2">And there’s more</h2>
-  <p class="k-h2-sub">Terminal, tunnels, routes and security — every tile shows a real screen of the app.</p>
+  <h2 id="grid-h" class="k-h2 rv">And there’s more</h2>
+  <p class="k-h2-sub rv">Terminal, tunnels, routes and security — every tile shows a real screen of the app.</p>
   <ul class="k-grid">
-    <li class="k-tile"><h3>One command in every tab</h3><p>Broadcast input outlines the participants; Production joins only by explicit choice.</p>
+    <li class="k-tile rv"><h3>One command in every tab</h3><p>Broadcast input outlines the participants; Production joins only by explicit choice.</p>
       <div class="k-screen"><div class="k-cam on" data-w="640" data-h="420" data-steps="[{&quot;pad&quot;: 12}]" aria-hidden="true"><div class="app bcwin" style="width:640px;height:420px">
 <div class="w-tabs"><span class="w-tab sel"><span class="ms t-teal">terminal</span><span>web-01</span><span class="ms x">close</span></span><span class="w-plus"><span class="ms">add</span></span></div>
 <div class="w-status"><i class="a-dot g"></i><b>Connected · 19 min</b><span class="chain">bastion-msk<i>›</i>jump-prod<i>›</i><b>deploy@web-01</b></span>
   <span class="st-r"><span><span class="ms">auto_awesome</span>AI off</span><span><span class="ms">folder</span>Files</span><i class="vs"></i><span class="ms">more_horiz</span></span></div>
 <div class="bc-panes"><div class="bp"><div class="tl">Last login: Wed Oct 28 09:12:44 2026 from 10.20.0.5</div><div class="tl"><b class="pg">deploy@web-01</b>:<b class="pb">~</b>$ <span class="js-typed">uptime</span><i class="a-cur"></i></div><div class="tl js-out">&nbsp;09:31:07 up 41 days,  6:08,  2 users,  load average: 0.82, 0.79, 0.77</div><div class="tl js-out"><b class="pg">deploy@web-01</b>:<b class="pb">~</b>$ </div></div><div class="bp"><div class="tl">Last login: Wed Oct 28 09:30:58 2026 from 10.20.0.5</div><div class="tl"><b class="pg">deploy@web-01</b>:<b class="pb">~</b>$ <span class="js-typed">uptime</span><i class="a-cur"></i></div><div class="tl js-out">&nbsp;09:31:07 up 41 days,  6:08,  2 users,  load average: 0.82, 0.79, 0.77</div><div class="tl js-out"><b class="pg">deploy@web-01</b>:<b class="pb">~</b>$ </div></div></div>
 <div class="bc-pill"><span class="ms">sensors</span><span>Input goes to 2 sessions — ⌥⌘I</span><u>Stop</u></div><i class="k-ring"></i><i class="k-tap"></i></div></div></div></li>
-    <li class="k-tile" id="tunnels"><h3>Tunnels in the menu bar</h3><p>To a service, SOCKS and reverse — through the same bastions; they run with the window closed.</p>
+    <li class="k-tile rv" id="tunnels"><h3>Tunnels in the menu bar</h3><p>To a service, SOCKS and reverse — through the same bastions; they run with the window closed.</p>
       <div class="k-screen"><div class="k-cam on" data-w="340" data-h="528" data-steps="[{&quot;focus&quot;: &quot;.mb-t&quot;, &quot;ms&quot;: 1.2}]" aria-hidden="true"><div class="app menubar" style="width:340px;height:528px">
 <div class="mb-h"><img src="../assets/icon-512.png" alt=""><div><b>SSHKipper</b><span class="js-sub" data-a="2 tunnels · 1 connection" data-b="3 tunnels · 1 connection">2 tunnels · 1 connection</span></div><span class="ms">settings</span></div>
 <div class="mb-sep"></div>
@@ -508,7 +525,7 @@
 <div class="mb-d"><span class="ms">lock_open</span><div><b>Northwind</b><span>open</span></div><span class="btn">Lock</span></div>
 <div class="mb-sep"></div>
 <div class="mb-foot"><span>Open SSHKipper</span><span>Quit</span></div><i class="k-ring"></i><i class="k-tap"></i></div></div></div></li>
-    <li class="k-tile" id="route"><h3>Profiles and the route</h3><p>Tailscale, an office address, another bastion: on a network error the next way is tried.</p>
+    <li class="k-tile rv" id="route"><h3>Profiles and the route</h3><p>Tailscale, an office address, another bastion: on a network error the next way is tried.</p>
       <div class="k-screen"><div class="k-cam on" data-w="440" data-h="686" data-steps="[{&quot;focus&quot;: &quot;.rt-prof, .rt-tb, .mac&quot;}]" aria-hidden="true"><div class="app route" style="width:440px;height:686px">
 <div class="rt-prof"><span class="pi"><span class="ms f">terminal</span></span><div><b>web-01</b><span>Production · web-01</span>
   <div class="pchips"><span><svg class="a-ts" viewBox="0 0 12 12"><circle cx="2" cy="2" r="1.25" fill="currentColor" opacity="0.4"/><circle cx="6" cy="2" r="1.25" fill="currentColor" opacity="0.4"/><circle cx="10" cy="2" r="1.25" fill="currentColor" opacity="0.4"/><circle cx="2" cy="6" r="1.25" fill="currentColor" opacity="1"/><circle cx="6" cy="6" r="1.25" fill="currentColor" opacity="1"/><circle cx="10" cy="6" r="1.25" fill="currentColor" opacity="1"/><circle cx="2" cy="10" r="1.25" fill="currentColor" opacity="0.4"/><circle cx="6" cy="10" r="1.25" fill="currentColor" opacity="1"/><circle cx="10" cy="10" r="1.25" fill="currentColor" opacity="0.4"/></svg>Tailscale · web-01</span><span class="on"><span class="ms sm">dns</span>Office</span><span><span class="ms sm">language</span>10.20.4.21</span><span><span class="ms sm">add</span></span></div></div></div>
@@ -517,7 +534,7 @@
   <i class="rl l0"></i><i class="rl l1"></i><i class="rl l2"></i><i class="rdot js-rdot"></i>
   <div class="rn js-rn" style="top:168px"><span class="ri"><span class="ms">dns</span></span><div><b>bastion-msk</b><code>ops@bastion.northwind.corp</code><div class="chps"><span class="chp "><span class="ms f">key</span>key</span><span class="chp "><span class="ms f">verified_user</span>2FA code — automatic</span></div><span class="frm">from “ops-2fa”</span></div></div><div class="rn js-rn" style="top:304px"><span class="ri"><span class="ms">dns</span></span><div><b>jump-prod</b><code>ops@jump-prod</code><div class="chps"><span class="chp "><span class="ms f">key</span>key</span><span class="chp "><span class="ms f">verified_user</span>2FA code — automatic</span></div><span class="frm">from “ops-2fa”</span></div></div><div class="rn dst js-rn" style="top:440px"><span class="ri"><span class="ms">dns</span></span><div><b>web-01</b><code>deploy@web-01</code><div class="chps"><span class="chp y"><span class="ms f">key</span>password</span><span class="chp "><span class="ms f">verified_user</span>2FA code — automatic</span></div><span class="frm">from “deploy”</span></div></div>
 </div><i class="k-ring"></i><i class="k-tap"></i></div></div></div></li>
-    <li class="k-tile" id="security"><h3>Everything in one encrypted file</h3><p>Argon2id and XChaCha20-Poly1305, Touch ID, a recovery key and auto-lock.</p>
+    <li class="k-tile rv" id="security"><h3>Everything in one encrypted file</h3><p>Argon2id and XChaCha20-Poly1305, Touch ID, a recovery key and auto-lock.</p>
       <div class="k-screen"><div class="k-cam on" data-w="520" data-h="540" data-steps="[{&quot;focus&quot;: &quot;.lk-b &gt; img, .lk-n, .lk-f, .lk-in, .lk-c, .lk-btns&quot;, &quot;ms&quot;: 1.35}]" aria-hidden="true"><div class="app lock" style="width:520px;height:540px">
 <div class="lk-t"><span class="a-lights"><i></i><i></i><i></i></span><b>SSHKipper</b></div>
 <div class="lk-b"><img src="../assets/icon-512.png" alt=""><div class="lk-n">SSHKipper</div>
@@ -530,16 +547,16 @@
 </section>
 
 <section id="pricing" class="k-pricing" aria-labelledby="pricing-h">
-  <h2 id="pricing-h" class="k-h2">Free for a couple of servers</h2>
-  <p class="k-h2-sub">One DMG for everyone. Without a key it’s the free version: every feature, with limits. With a key it’s the full version. There’s no trial — the free version is the trial.</p>
+  <h2 id="pricing-h" class="k-h2 rv">Free for a couple of servers</h2>
+  <p class="k-h2-sub rv">One DMG for everyone. Without a key it’s the free version: every feature, with limits. With a key it’s the full version. There’s no trial — the free version is the trial.</p>
   <div class="k-plans">
-    <article class="k-plan">
+    <article class="k-plan rv">
       <h3>Free</h3>
       <p class="k-price"><strong>$0</strong><span>forever</span></p>
       <ul><li><span class="ms">check</span>5 connections</li><li><span class="ms">check</span>1 open document and 1 terminal</li><li><span class="ms">check</span>1 automation, run by hand</li><li><span class="ms">check</span>5 AI messages per chat — a new chat starts again</li><li><span class="ms">check</span>1 tunnel, 1 database, 1 storage</li></ul>
       <a class="k-btn ghost" href="https://github.com/kdanet/sshkipper-releases/releases/latest/download/SSHKipper.dmg"><img src="../assets/mark-white.svg" alt="" width="18" height="18">Download</a>
     </article>
-    <article class="k-plan full">
+    <article class="k-plan full rv" style="--i:1">
       <h3>Full</h3>
       <!-- PRICE: replace the text below when the price is decided -->
       <p class="k-price"><strong id="price">Price — coming soon</strong><span>perpetual license + a year of updates</span></p>
@@ -552,19 +569,19 @@
 </section>
 
 <section id="faq" class="k-faq" aria-labelledby="faq-h">
-  <h2 id="faq-h" class="k-h2">Questions</h2>
+  <h2 id="faq-h" class="k-h2 rv">Questions</h2>
   <div class="k-qs">
-    <details class="k-q"><summary>Where are passwords and keys stored?<span class="ms">expand_more</span></summary><p>In one document on your Mac, encrypted with Argon2id and XChaCha20-Poly1305. No accounts, no cloud: the file stays where you saved it and opens with a master password or Touch ID.</p></details>
-    <details class="k-q"><summary>Does the AI see my passwords?<span class="ms">expand_more</span></summary><p>No. Secrets are masked before anything goes to a model, the agent works only on servers you let it into, and commands that change something wait for your consent. You can leave AI off entirely.</p></details>
-    <details class="k-q"><summary>How do I bring my hosts over?<span class="ms">expand_more</span></summary><p>File → “Import from ~/.ssh/config…”: hosts, ProxyJump and port forwards become connections, bastions and tunnels.</p></details>
-    <details class="k-q"><summary>What’s in the free version?<span class="ms">expand_more</span></summary><p>Everything, with limits: 5 connections, 1 open document and terminal, 1 automation run by hand, 5 AI messages per chat, one tunnel, database and storage. A document over the limits opens read-only.</p></details>
-    <details class="k-q"><summary>How many Macs does a key cover?<span class="ms">expand_more</span></summary><p>Two. You can unlink an old Mac yourself in the License window.</p></details>
-    <details class="k-q"><summary>What happens after a year?<span class="ms">expand_more</span></summary><p>The version you bought works forever. The year includes updates; versions after it come with a renewal.</p></details>
-    <details class="k-q"><summary>Which Mac and macOS do I need?<span class="ms">expand_more</span></summary><p>A Mac with Apple Silicon and macOS 26 or later. The app is signed with Developer ID and notarized by Apple — it opens without workarounds.</p></details>
+    <details class="k-q rv"><summary>Where are passwords and keys stored?<span class="ms">expand_more</span></summary><p>In one document on your Mac, encrypted with Argon2id and XChaCha20-Poly1305. No accounts, no cloud: the file stays where you saved it and opens with a master password or Touch ID.</p></details>
+    <details class="k-q rv"><summary>Does the AI see my passwords?<span class="ms">expand_more</span></summary><p>No. Secrets are masked before anything goes to a model, the agent works only on servers you let it into, and commands that change something wait for your consent. You can leave AI off entirely.</p></details>
+    <details class="k-q rv"><summary>How do I bring my hosts over?<span class="ms">expand_more</span></summary><p>File → “Import from ~/.ssh/config…”: hosts, ProxyJump and port forwards become connections, bastions and tunnels.</p></details>
+    <details class="k-q rv"><summary>What’s in the free version?<span class="ms">expand_more</span></summary><p>Everything, with limits: 5 connections, 1 open document and terminal, 1 automation run by hand, 5 AI messages per chat, one tunnel, database and storage. A document over the limits opens read-only.</p></details>
+    <details class="k-q rv"><summary>How many Macs does a key cover?<span class="ms">expand_more</span></summary><p>Two. You can unlink an old Mac yourself in the License window.</p></details>
+    <details class="k-q rv"><summary>What happens after a year?<span class="ms">expand_more</span></summary><p>The version you bought works forever. The year includes updates; versions after it come with a renewal.</p></details>
+    <details class="k-q rv"><summary>Which Mac and macOS do I need?<span class="ms">expand_more</span></summary><p>A Mac with Apple Silicon and macOS 26 or later. The app is signed with Developer ID and notarized by Apple — it opens without workarounds.</p></details>
   </div>
 </section>
 
-<section class="k-end" aria-labelledby="end-h">
+<section class="k-end rv" aria-labelledby="end-h">
   <picture><source srcset="../assets/mark-white.svg" media="(prefers-color-scheme: dark)"><img src="../assets/mark.svg" alt="" width="56" height="56"></picture>
   <h2 id="end-h" class="k-h2">Try it on your own servers</h2>
   <p class="k-h2-sub">The free version needs no sign-up and has no trial period. Bring your hosts from ~/.ssh/config in a minute.</p>

@@ -141,6 +141,29 @@
     window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
   }
 
+  // Things come in as you reach them (CSS does the motion; without IntersectionObserver they're simply there).
+  var rvs = $$(document, '.rv');
+  if ('IntersectionObserver' in window && !REDUCE) {
+    var rio = new IntersectionObserver(function (es) {
+      es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); rio.unobserve(en.target); } });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    rvs.forEach(function (x) { rio.observe(x); });
+  } else rvs.forEach(function (x) { x.classList.add('in'); });
+
+  // The navigation marks the section you are reading.
+  var links = $$(document, '.k-nav nav a'), spy = links.map(function (l) { return document.querySelector(l.getAttribute('href')); });
+  if (links.length) {
+    var spyRaf = 0;
+    var mark = function () {
+      spyRaf = 0;
+      var cur = -1, y = window.innerHeight * 0.35;
+      spy.forEach(function (sec, i) { if (sec && sec.getBoundingClientRect().top < y && sec.getBoundingClientRect().bottom > y) cur = i; });
+      links.forEach(function (l, i) { l.classList.toggle('cur', i === cur); });
+    };
+    window.addEventListener('scroll', function () { if (!spyRaf) spyRaf = requestAnimationFrame(mark); }, { passive: true });
+    mark();
+  }
+
   // The services page's segmented control: its pill sits under «Dashboard» or «Nginx».
   function seg(app, nginx) {
     var pill = app.querySelector('.segpill'), el = app.querySelector(nginx ? '.js-nginx' : '.js-dash');

@@ -28,14 +28,14 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..24,400..600,0..1,0&amp;icon_names=account_tree,add,apps,archive,arrow_back,arrow_circle_up,arrow_forward,arrow_upward,auto_awesome,autorenew,back_hand,bookmark,cancel,check,check_circle,chevron_right,close,cloud,cloud_upload,code,content_copy,create_new_folder,database,delete,deployed_code,description,dns,download,edit_square,expand_more,filter_alt,fit_screen,flag,folder,folder_open,grid_view,help,history,home,hub,info,inventory_2,key,keyboard_return,lan,language,laptop_mac,list,lock,lock_open,menu_book,more_horiz,open_in_full,pause,person,play_arrow,refresh,remove,sailing,schedule,search,sensors,settings,shield,skip_next,speed,splitscreen_bottom,splitscreen_right,stop,swap_horiz,table,terminal,travel_explore,unfold_more,verified_user,view_sidebar,visibility,zoom_in,zoom_out&amp;display=block">
 <link rel="stylesheet" href="assets/app.css?v=7d5b1bda">
-<link rel="stylesheet" href="assets/site.css?v=9be0a9ee">
-<script src="assets/site.js?v=f81703e6" defer></script>
+<link rel="stylesheet" href="assets/site.css?v=5d415b29">
+<script src="assets/site.js?v=d3ac0ad8" defer></script>
 </head>
 <body class="kpage">
 <a class="k-skip" href="#main">К содержимому</a>
 <header class="k-nav">
   <a class="k-brand" href="#top"><picture><source srcset="assets/mark-white.svg" media="(prefers-color-scheme: dark)"><img src="assets/mark.svg" alt="" width="22" height="22"></picture>SSHKipper</a>
-  <nav aria-label="Разделы страницы"><a href="#features">Возможности</a><a href="#pricing">Цены</a><a href="#faq">Вопросы</a></nav>
+  <nav aria-label="Разделы страницы"><a href="#bastions">Бастионы</a><a href="#agent">AI-агент</a><a href="#databases">Базы</a><a href="#services">Службы</a><a href="#files">Файлы</a><a href="#automations">Автоматизации</a><a href="#pricing">Цены</a><a href="#faq">Вопросы</a></nav>
   <a class="k-lang" href="en/" hreflang="en" lang="en" aria-label="English version">EN</a>
   <a class="k-btn sm" href="https://github.com/kdanet/sshkipper-releases/releases/latest/download/SSHKipper.dmg">Скачать</a>
 </header>
@@ -115,48 +115,46 @@
 </section>
 
 <section class="k-ba-wrap" aria-labelledby="ba-h">
-  <h2 id="ba-h" class="k-h2">Знакомо?</h2>
-  <p class="k-h2-sub">Что администратор делает руками каждый день — и как это выглядит в SSHKipper.</p>
+  <h2 id="ba-h" class="k-h2 rv">Знакомо?</h2>
+  <p class="k-h2-sub rv">Что администратор делает руками каждый день — и как это выглядит в SSHKipper.</p>
   <div class="k-bas">
-    <a class="k-ba" href="#bastions"><span class="k-ba-i"><span class="ms">key</span></span>
+    <a class="k-ba rv" href="#bastions" style="--i:0"><span class="k-ba-i"><span class="ms">key</span></span>
       <span class="k-was"><em>Было</em>Три кода с телефона и пароль — на каждый вход через бастионы</span>
+      <span class="k-to" aria-hidden="true"><span class="ms">arrow_forward</span></span>
       <span class="k-now"><em>Стало</em>Двойной щелчок: ключи, пароли и коды 2FA подставляются сами</span>
-      <span class="k-more">Подробнее<span class="ms">arrow_forward</span></span></a>
-    <a class="k-ba" href="#agent"><span class="k-ba-i"><span class="ms">auto_awesome</span></span>
+      <span class="k-go" aria-label="Подробнее"><span class="ms">chevron_right</span></span></a>
+    <a class="k-ba rv" href="#agent" style="--i:1"><span class="k-ba-i"><span class="ms">auto_awesome</span></span>
       <span class="k-was"><em>Было</em>Ночью вручную: top, docker stats, логи — и пароль, случайно вставленный в AI-чат</span>
+      <span class="k-to" aria-hidden="true"><span class="ms">arrow_forward</span></span>
       <span class="k-now"><em>Стало</em>Агент смотрит сам, секреты скрыты, изменения — после вашего «да»</span>
-      <span class="k-more">Подробнее<span class="ms">arrow_forward</span></span></a>
-    <a class="k-ba" href="#databases"><span class="k-ba-i"><span class="ms">database</span></span>
+      <span class="k-go" aria-label="Подробнее"><span class="ms">chevron_right</span></span></a>
+    <a class="k-ba rv" href="#databases" style="--i:2"><span class="k-ba-i"><span class="ms">database</span></span>
       <span class="k-was"><em>Было</em>ssh -L к базе за бастионами, номера портов на стикере и SQL по памяти</span>
+      <span class="k-to" aria-hidden="true"><span class="ms">arrow_forward</span></span>
       <span class="k-now"><em>Стало</em>База открывается сама, а запрос можно попросить словами</span>
-      <span class="k-more">Подробнее<span class="ms">arrow_forward</span></span></a>
-    <a class="k-ba" href="#services"><span class="k-ba-i"><span class="ms">dns</span></span>
+      <span class="k-go" aria-label="Подробнее"><span class="ms">chevron_right</span></span></a>
+    <a class="k-ba rv" href="#services" style="--i:3"><span class="k-ba-i"><span class="ms">dns</span></span>
       <span class="k-was"><em>Было</em>Пять терминалов ради docker ps, логов nginx, crontab и supervisorctl</span>
+      <span class="k-to" aria-hidden="true"><span class="ms">arrow_forward</span></span>
       <span class="k-now"><em>Стало</em>Одна вкладка сервера: дашборд, Docker, Nginx, Cron, Supervisor</span>
-      <span class="k-more">Подробнее<span class="ms">arrow_forward</span></span></a>
-    <a class="k-ba" href="#automations"><span class="k-ba-i"><span class="ms">archive</span></span>
+      <span class="k-go" aria-label="Подробнее"><span class="ms">chevron_right</span></span></a>
+    <a class="k-ba rv" href="#automations" style="--i:4"><span class="k-ba-i"><span class="ms">archive</span></span>
       <span class="k-was"><em>Было</em>Бэкап скриптом в cron — ошибки в логе, который никто не читает</span>
+      <span class="k-to" aria-hidden="true"><span class="ms">arrow_forward</span></span>
       <span class="k-now"><em>Стало</em>Итог каждого запуска и проверка, что копия восстанавливается</span>
-      <span class="k-more">Подробнее<span class="ms">arrow_forward</span></span></a>
+      <span class="k-go" aria-label="Подробнее"><span class="ms">chevron_right</span></span></a>
   </div>
 </section>
 
 <section id="bastions" class="k-story k-block" data-story="bastions" aria-labelledby="bastions-h" style="--c:3">
-  <div class="k-story-head">
-    <div><p class="k-eyebrow"><span class="ms">key</span>Бастионы и 2FA</p>
+  <div class="k-story-head rv">
+    <div><p class="k-eyebrow"><span class="k-num">01</span><span class="ms">key</span>Бастионы и 2FA</p>
       <h2 id="bastions-h">Сервер за двумя бастионами — одним двойным щелчком</h2></div>
     <p class="k-sub">Без SSHKipper это <code>ssh -J</code>, три кода с телефона и пароль — на каждый вход. Здесь ключи, пароли и секреты 2FA лежат в зашифрованном документе, и на каждом звене приложение отвечает само.</p>
   </div>
-  <ul class="k-engines"><li><span class="lg"><span class="ms">account_tree</span></span><b>Бастион через бастион</b><span>Цепочка любой длины — двойным щелчком.</span></li><li><span class="lg"><span class="ms">swap_horiz</span></span><b>SOCKS5 и HTTP-прокси</b><span>Первый бастион — через прокси, если нужно.</span></li><li><span class="lg"><span class="ms">verified_user</span></span><b>TOTP из чего угодно</b><span>base32, otpauth://, экспорт Google Authenticator, QR-код.</span></li><li><span class="lg"><span class="ms">description</span></span><b>Импорт ~/.ssh/config</b><span>ProxyJump и пробросы становятся бастионами и туннелями.</span></li><li><span class="lg"><img class="" src="assets/icons/tailscale.svg" alt="" width="28" height="28"></span><b>Tailscale и Bonjour</b><span>Узлы сети появляются в дереве сами.</span></li><li><span class="lg"><span class="ms">lan</span></span><b>Профили маршрута</b><span>Tailscale, офис, другой бастион — запасной путь.</span></li></ul>
-  <ol class="k-steps">
-        <li><button type="button" class="k-step on" data-i="0"><span class="k-n">1</span>
-          <span class="k-st"><b>Двойной щелчок по web-01</b><span>Сервер стоит за bastion-msk и jump-prod. Вы открываете его, как любой другой.</span></span><i class="k-bar"><i></i></i></button></li>
-        <li><button type="button" class="k-step" data-i="1"><span class="k-n">2</span>
-          <span class="k-st"><b>Коды 2FA вводятся сами</b><span>На каждом звене SSHKipper отвечает сам: ключ, пароль и свежий код из секрета TOTP в документе.</span></span><i class="k-bar"><i></i></i></button></li>
-        <li><button type="button" class="k-step" data-i="2"><span class="k-n">3</span>
-          <span class="k-st"><b>Вы на сервере</b><span>Строка вкладки показывает пройденный путь. Файлы, Docker и базы этого сервера идут через тот же вход — без второй 2FA.</span></span><i class="k-bar"><i></i></i></button></li>
-  </ol>
-  <div class="k-story-vis"><div class="k-screen"><div class="k-cam on" data-w="1180" data-h="600" data-steps="[{&quot;focus&quot;: &quot;.w-tree .a-row:nth-child(n+5):nth-child(-n+9)&quot;, &quot;ring&quot;: &quot;.a-row.sel&quot;, &quot;mzoom&quot;: 330, &quot;tap&quot;: 1}, {&quot;focus&quot;: &quot;.w-status, .w-term .tl:nth-child(-n+4)&quot;, &quot;ring&quot;: &quot;.w-term .tl:nth-child(n+2):nth-child(-n+4)&quot;, &quot;mzoom&quot;: 440, &quot;max&quot;: 214}, {&quot;focus&quot;: &quot;.w-tabs, .w-status .st-ok, .w-status .chain&quot;, &quot;ring&quot;: &quot;.w-status .st-ok, .w-status .chain&quot;, &quot;mzoom&quot;: 440, &quot;max&quot;: 214}]" aria-hidden="true"><div class="app win" style="width:1180px;height:600px">
+  <ul class="k-engines"><li class="rv" style="--i:0"><span class="lg"><span class="ms">account_tree</span></span><b>Бастион через бастион</b><span>Цепочка любой длины — двойным щелчком.</span></li><li class="rv" style="--i:1"><span class="lg"><span class="ms">swap_horiz</span></span><b>SOCKS5 и HTTP-прокси</b><span>Первый бастион — через прокси, если нужно.</span></li><li class="rv" style="--i:2"><span class="lg"><span class="ms">verified_user</span></span><b>TOTP из чего угодно</b><span>base32, otpauth://, экспорт Google Authenticator, QR-код.</span></li><li class="rv" style="--i:3"><span class="lg"><span class="ms">description</span></span><b>Импорт ~/.ssh/config</b><span>ProxyJump и пробросы становятся бастионами и туннелями.</span></li><li class="rv" style="--i:4"><span class="lg"><img class="" src="assets/icons/tailscale.svg" alt="" width="28" height="28"></span><b>Tailscale и Bonjour</b><span>Узлы сети появляются в дереве сами.</span></li><li class="rv" style="--i:5"><span class="lg"><span class="ms">lan</span></span><b>Профили маршрута</b><span>Tailscale, офис, другой бастион — запасной путь.</span></li></ul>
+  <div class="k-stagecard rv">
+    <div class="k-story-vis"><div class="k-screen"><div class="k-cam on" data-w="1180" data-h="600" data-steps="[{&quot;focus&quot;: &quot;.w-tree .a-row:nth-child(n+5):nth-child(-n+9)&quot;, &quot;ring&quot;: &quot;.a-row.sel&quot;, &quot;mzoom&quot;: 330, &quot;tap&quot;: 1}, {&quot;focus&quot;: &quot;.w-status, .w-term .tl:nth-child(-n+4)&quot;, &quot;ring&quot;: &quot;.w-term .tl:nth-child(n+2):nth-child(-n+4)&quot;, &quot;mzoom&quot;: 440, &quot;max&quot;: 214}, {&quot;focus&quot;: &quot;.w-tabs, .w-status .st-ok, .w-status .chain&quot;, &quot;ring&quot;: &quot;.w-status .st-ok, .w-status .chain&quot;, &quot;mzoom&quot;: 440, &quot;max&quot;: 214}]" aria-hidden="true"><div class="app win" style="width:1180px;height:600px">
 <div class="w-side">
   <div class="w-tl"><span class="a-lights"><i></i><i></i><i></i></span><span class="a-rb"><span class="ms">view_sidebar</span></span><span class="a-rb w2"><span class="ms">add</span><span class="ms sm">expand_more</span></span></div>
   <div class="w-search"><span class="ms">search</span>Поиск подключений</div>
@@ -175,28 +173,26 @@
   </div>
   <div class="w-term js-lines"><div class="tl dim">Подключение к web-01…</div><div class="tl dim">✓ Код 2FA для ops@bastion-msk (bastion-msk) подставлен автоматически из «ops-2fa»</div><div class="tl dim">✓ Код 2FA для ops@jump-prod (jump-prod) подставлен автоматически из «ops-2fa»</div><div class="tl dim">✓ Код 2FA для deploy@web-01 (web-01) подставлен автоматически из «deploy»</div><div class="tl ">Linux web-01 6.12.48+deb13-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.12.48-1 x86_64</div><div class="tl ">&nbsp;</div><div class="tl ">The programs included with the Debian GNU/Linux system are free software;</div><div class="tl ">the exact distribution terms for each program are described in the</div><div class="tl ">individual files in /usr/share/doc/*/copyright.</div><div class="tl ">&nbsp;</div><div class="tl ">Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent</div><div class="tl ">permitted by applicable law.</div><div class="tl ">Last login: Wed Oct 28 09:12:44 2026 from 10.20.0.5</div><div class="tl"><b class="pg">deploy@web-01</b>:<b class="pb">~</b>$ <i class="a-cur"></i></div></div>
 </div><i class="k-ring"></i><i class="k-tap"></i></div></div></div><div class="k-hops" aria-hidden="true"><span class="k-hop"><span class="ms">laptop_mac</span><span><b>Этот Mac</b><em>документ</em></span><i class="k-ok"><span class="ms">check</span></i></span><i class="k-link"></i><span class="k-hop"><span class="ms">dns</span><span><b>bastion-msk</b><em>ключ + 2FA</em></span><i class="k-ok"><span class="ms">check</span></i></span><i class="k-link"></i><span class="k-hop"><span class="ms">dns</span><span><b>jump-prod</b><em>ключ + 2FA</em></span><i class="k-ok"><span class="ms">check</span></i></span><i class="k-link"></i><span class="k-hop"><span class="ms">dns</span><span><b>web-01</b><em>пароль + 2FA</em></span><i class="k-ok"><span class="ms">check</span></i></span></div></div>
-  <ul class="k-proofs"><li><span class="ms">lan</span><b>Один вход на сервер</b><span>Вкладки, сплиты, файлы, Docker и базы сервера — по одному соединению, без второй 2FA.</span></li><li><span class="ms">key</span><b>Ключи сервера под контролем</b><span>Свой known_hosts; сменившийся ключ сервера — предупреждение, а не тихий вход.</span></li><li><span class="ms">hub</span><b>Схема маршрута</b><span>Как этот Mac доходит до сервера: бастионы, прокси, ключи и коды — по фактам документа.</span></li></ul>
+    <ol class="k-steps">
+        <li><button type="button" class="k-step on" data-i="0"><span class="k-n">1</span>
+          <span class="k-st"><b>Двойной щелчок по web-01</b><span>Сервер стоит за bastion-msk и jump-prod. Вы открываете его, как любой другой.</span></span><i class="k-bar"><i></i></i></button></li>
+        <li><button type="button" class="k-step" data-i="1"><span class="k-n">2</span>
+          <span class="k-st"><b>Коды 2FA вводятся сами</b><span>На каждом звене SSHKipper отвечает сам: ключ, пароль и свежий код из секрета TOTP в документе.</span></span><i class="k-bar"><i></i></i></button></li>
+        <li><button type="button" class="k-step" data-i="2"><span class="k-n">3</span>
+          <span class="k-st"><b>Вы на сервере</b><span>Строка вкладки показывает пройденный путь. Файлы, Docker и базы этого сервера идут через тот же вход — без второй 2FA.</span></span><i class="k-bar"><i></i></i></button></li>
+    </ol>
+  </div>
+  <ul class="k-proofs"><li class="rv" style="--i:0"><span class="ms">lan</span><b>Один вход на сервер</b><span>Вкладки, сплиты, файлы, Docker и базы сервера — по одному соединению, без второй 2FA.</span></li><li class="rv" style="--i:1"><span class="ms">key</span><b>Ключи сервера под контролем</b><span>Свой known_hosts; сменившийся ключ сервера — предупреждение, а не тихий вход.</span></li><li class="rv" style="--i:2"><span class="ms">hub</span><b>Схема маршрута</b><span>Как этот Mac доходит до сервера: бастионы, прокси, ключи и коды — по фактам документа.</span></li></ul>
 </section>
 <section id="agent" class="k-story k-block" data-story="agent" aria-labelledby="agent-h" style="--c:5">
-  <div class="k-story-head">
-    <div><p class="k-eyebrow"><span class="ms">auto_awesome</span>AI-агент</p>
+  <div class="k-story-head rv">
+    <div><p class="k-eyebrow"><span class="k-num">02</span><span class="ms">auto_awesome</span>AI-агент</p>
       <h2 id="agent-h">Агент разбирается в сервере сам — и спрашивает, прежде чем менять</h2></div>
     <p class="k-sub">Логи, нагрузку и контейнеры он смотрит без вас, но паролей, ключей и адресов не получает. Что можно делать без вопроса, решаете вы — для каждого сервера и папки. Модель — ваша.</p>
   </div>
-  <ul class="k-engines"><li><span class="lg"><img class="" src="assets/icons/ai-claude.svg" alt="" width="28" height="28"></span><b>Claude API</b><span>Модель и глубина рассуждения — прямо в чате.</span></li><li><span class="lg"><img class="mono" src="assets/icons/ai-ollama.svg" alt="" width="28" height="28"><img class="mono" src="assets/icons/ai-lmstudio.svg" alt="" width="28" height="28"></span><b>OpenAI-совместимые</b><span>Ollama, LM Studio и другие — модель может работать на этом Mac.</span></li><li><span class="lg"><img class="" src="assets/icons/ai-claudecode.svg" alt="" width="28" height="28"></span><b>Claude Code</b><span>Ваш агент и подписка; поиск в интернете — по желанию.</span></li><li><span class="lg"><img class="" src="assets/icons/ai-codex.svg" alt="" width="28" height="28"></span><b>Codex</b><span>Тоже в панели, тоже с поиском в интернете.</span></li><li><span class="lg"><img class="mono" src="assets/icons/ai-cursor.svg" alt="" width="28" height="28"></span><b>Cursor</b><span>Агент Cursor отвечает в той же панели.</span></li><li><span class="lg"><span class="ms">hub</span></span><b>ACP-агенты</b><span>Gemini CLI, Goose, Hermes, pi — по протоколу ACP.</span></li></ul>
-  <ol class="k-steps">
-        <li><button type="button" class="k-step on" data-i="0"><span class="k-n">1</span>
-          <span class="k-st"><b>Спросите словами</b><span>«Почему сервер тормозит?» — агент сам смотрит сессии, нагрузку, контейнеры и логи.</span></span><i class="k-bar"><i></i></i></button></li>
-        <li><button type="button" class="k-step" data-i="1"><span class="k-n">2</span>
-          <span class="k-st"><b>Каждая команда на виду</b><span>Под терминалом — что выполнено и зачем, с выводом. Пароль из лога скрыт ещё до модели.</span></span><i class="k-bar"><i></i></i></button></li>
-        <li><button type="button" class="k-step" data-i="2"><span class="k-n">3</span>
-          <span class="k-st"><b>Меняет — после вашего «да»</b><span>Команда, которая меняет сервер, приходит карточкой: что, зачем и чем рискованно.</span></span><i class="k-bar"><i></i></i></button></li>
-        <li><button type="button" class="k-step" data-i="3"><span class="k-n">4</span>
-          <span class="k-st"><b>Вы решаете, что можно</b><span>Четыре режима на сервер или папку; Production спрашивает всегда. Любую команду можно проверить заранее.</span></span><i class="k-bar"><i></i></i></button></li>
-        <li><button type="button" class="k-step" data-i="4"><span class="k-n">5</span>
-          <span class="k-st"><b>Вторая модель проверяет</b><span>Что команда сделает на самом деле и совпадает ли это с тем, что сказал агент.</span></span><i class="k-bar"><i></i></i></button></li>
-  </ol>
-  <div class="k-story-vis"><div class="k-screen"><div class="k-cam on" data-w="1180" data-h="700" data-steps="[{&quot;focus&quot;: &quot;.ai-h, .ai-q, .ai-who, .ai-st&quot;, &quot;ring&quot;: &quot;.ai-q, .ai-who, .ai-st&quot;, &quot;mzoom&quot;: 380}, {&quot;focus&quot;: &quot;.cmds&quot;, &quot;ring&quot;: &quot;.cmd-x&quot;, &quot;mzoom&quot;: 420, &quot;max&quot;: 0}, {&quot;focus&quot;: &quot;.ai-card, .ai-wt&quot;, &quot;ring&quot;: &quot;.ai-card&quot;, &quot;mzoom&quot;: 380}, null, null]" aria-hidden="true"><div class="app aiwin" style="width:1180px;height:700px">
+  <ul class="k-engines"><li class="rv" style="--i:0"><span class="lg"><img class="" src="assets/icons/ai-claude.svg" alt="" width="28" height="28"></span><b>Claude API</b><span>Модель и глубина рассуждения — прямо в чате.</span></li><li class="rv" style="--i:1"><span class="lg"><img class="mono" src="assets/icons/ai-ollama.svg" alt="" width="28" height="28"><img class="mono" src="assets/icons/ai-lmstudio.svg" alt="" width="28" height="28"></span><b>OpenAI-совместимые</b><span>Ollama, LM Studio и другие — модель может работать на этом Mac.</span></li><li class="rv" style="--i:2"><span class="lg"><img class="" src="assets/icons/ai-claudecode.svg" alt="" width="28" height="28"></span><b>Claude Code</b><span>Ваш агент и подписка; поиск в интернете — по желанию.</span></li><li class="rv" style="--i:3"><span class="lg"><img class="" src="assets/icons/ai-codex.svg" alt="" width="28" height="28"></span><b>Codex</b><span>Тоже в панели, тоже с поиском в интернете.</span></li><li class="rv" style="--i:4"><span class="lg"><img class="mono" src="assets/icons/ai-cursor.svg" alt="" width="28" height="28"></span><b>Cursor</b><span>Агент Cursor отвечает в той же панели.</span></li><li class="rv" style="--i:5"><span class="lg"><span class="ms">hub</span></span><b>ACP-агенты</b><span>Gemini CLI, Goose, Hermes, pi — по протоколу ACP.</span></li></ul>
+  <div class="k-stagecard rv">
+    <div class="k-story-vis"><div class="k-screen"><div class="k-cam on" data-w="1180" data-h="700" data-steps="[{&quot;focus&quot;: &quot;.ai-h, .ai-q, .ai-who, .ai-st&quot;, &quot;ring&quot;: &quot;.ai-q, .ai-who, .ai-st&quot;, &quot;mzoom&quot;: 380}, {&quot;focus&quot;: &quot;.cmds&quot;, &quot;ring&quot;: &quot;.cmd-x&quot;, &quot;mzoom&quot;: 420, &quot;max&quot;: 0}, {&quot;focus&quot;: &quot;.ai-card, .ai-wt&quot;, &quot;ring&quot;: &quot;.ai-card&quot;, &quot;mzoom&quot;: 380}, null, null]" aria-hidden="true"><div class="app aiwin" style="width:1180px;height:700px">
 <div class="w-bar full"><span class="a-lights"><i></i><i></i><i></i></span><span class="a-rb"><span class="ms">view_sidebar</span></span><span class="a-rb w2"><span class="ms">add</span><span class="ms sm">expand_more</span></span>
   <span class="w-title">web-01</span><span class="sp"></span><span class="a-rb on"><span class="ms">auto_awesome</span></span></div>
 <div class="ai-body">
@@ -260,28 +256,30 @@
   <div class="ai-in"><div class="ph">Задача для агента…</div>
     <div class="ai-m"><svg class="a-claude" viewBox="0 0 16 16"><rect width="16" height="16" rx="3.5" fill="#d97757"/><g stroke="#fff" stroke-width="1.6" stroke-linecap="round"><path d="M8 3.2v9.6M3.2 8h9.6M4.6 4.6l6.8 6.8M11.4 4.6l-6.8 6.8"/></g></svg><span>Claude Opus 5.5</span><span class="g">· средняя</span><span class="ms sm">expand_more</span></div></div>
 </div><i class="k-ring"></i><i class="k-tap"></i></div></div></div></div>
-  <ul class="k-proofs"><li><span class="ms">visibility</span><b>Секреты не уходят модели</b><span>Пароли и ключи маскируются до отправки; локальные агенты не получают ни shell, ни файлов Mac.</span></li><li><span class="ms">verified_user</span><b>План одной карточкой</b><span>Несколько шагов с вердиктом у каждого и откатом; «Разрешать до конца сессии» — по желанию.</span></li><li><span class="ms">hub</span><b>MCP для внешних агентов</b><span>Claude Code, Codex и Cursor из своего терминала получают те же режимы и подтверждения.</span></li></ul>
+    <ol class="k-steps">
+        <li><button type="button" class="k-step on" data-i="0"><span class="k-n">1</span>
+          <span class="k-st"><b>Спросите словами</b><span>«Почему сервер тормозит?» — агент сам смотрит сессии, нагрузку, контейнеры и логи.</span></span><i class="k-bar"><i></i></i></button></li>
+        <li><button type="button" class="k-step" data-i="1"><span class="k-n">2</span>
+          <span class="k-st"><b>Каждая команда на виду</b><span>Под терминалом — что выполнено и зачем, с выводом. Пароль из лога скрыт ещё до модели.</span></span><i class="k-bar"><i></i></i></button></li>
+        <li><button type="button" class="k-step" data-i="2"><span class="k-n">3</span>
+          <span class="k-st"><b>Меняет — после вашего «да»</b><span>Команда, которая меняет сервер, приходит карточкой: что, зачем и чем рискованно.</span></span><i class="k-bar"><i></i></i></button></li>
+        <li><button type="button" class="k-step" data-i="3"><span class="k-n">4</span>
+          <span class="k-st"><b>Вы решаете, что можно</b><span>Четыре режима на сервер или папку; Production спрашивает всегда. Любую команду можно проверить заранее.</span></span><i class="k-bar"><i></i></i></button></li>
+        <li><button type="button" class="k-step" data-i="4"><span class="k-n">5</span>
+          <span class="k-st"><b>Вторая модель проверяет</b><span>Что команда сделает на самом деле и совпадает ли это с тем, что сказал агент.</span></span><i class="k-bar"><i></i></i></button></li>
+    </ol>
+  </div>
+  <ul class="k-proofs"><li class="rv" style="--i:0"><span class="ms">visibility</span><b>Секреты не уходят модели</b><span>Пароли и ключи маскируются до отправки; локальные агенты не получают ни shell, ни файлов Mac.</span></li><li class="rv" style="--i:1"><span class="ms">verified_user</span><b>План одной карточкой</b><span>Несколько шагов с вердиктом у каждого и откатом; «Разрешать до конца сессии» — по желанию.</span></li><li class="rv" style="--i:2"><span class="ms">hub</span><b>MCP для внешних агентов</b><span>Claude Code, Codex и Cursor из своего терминала получают те же режимы и подтверждения.</span></li></ul>
 </section>
 <section id="databases" class="k-story k-block" data-story="databases" aria-labelledby="databases-h" style="--c:5">
-  <div class="k-story-head">
-    <div><p class="k-eyebrow"><span class="ms">database</span>Базы данных</p>
+  <div class="k-story-head rv">
+    <div><p class="k-eyebrow"><span class="k-num">03</span><span class="ms">database</span>Базы данных</p>
       <h2 id="databases-h">Клиент баз данных — прямо за бастионами</h2></div>
     <p class="k-sub">Шесть движков, таблицы с правкой, редактор запросов и AI, который превращает слова в SQL. Базы открываются по той же цепочке, что и терминал, — без <code>ssh -L</code> и ручных туннелей.</p>
   </div>
-  <ul class="k-engines"><li><span class="lg"><img class="" src="assets/icons/mysql.svg" alt="" width="28" height="28"></span><b>MySQL · MariaDB</b><span>Таблицы с правкой, структура, DDL и схема связей.</span></li><li><span class="lg"><img class="" src="assets/icons/postgresql.svg" alt="" width="28" height="28"></span><b>PostgreSQL</b><span>Ещё партиции, последовательности и функции.</span></li><li><span class="lg"><img class="" src="assets/icons/clickhouse.svg" alt="" width="28" height="28"></span><b>ClickHouse</b><span>Партиции и сжатие таблиц.</span></li><li><span class="lg"><img class="" src="assets/icons/redis.svg" alt="" width="28" height="28"></span><b>Redis · Valkey</b><span>Ключи с TTL, память по префиксам, консоль.</span></li><li><span class="lg"><img class="" src="assets/icons/mongodb.svg" alt="" width="28" height="28"></span><b>MongoDB</b><span>Документы таблицей или деревом, агрегации.</span></li><li><span class="lg"><img class="" src="assets/icons/sqlite.svg" alt="" width="28" height="28"></span><b>SQLite</b><span>Файл на сервере или на этом Mac.</span></li></ul>
-  <ol class="k-steps">
-        <li><button type="button" class="k-step on" data-i="0"><span class="k-n">1</span>
-          <span class="k-st"><b>Любая база за бастионами</b><span>Таблицы с размерами и правкой — по той же цепочке, что и терминал.</span></span><i class="k-bar"><i></i></i></button></li>
-        <li><button type="button" class="k-step" data-i="1"><span class="k-n">2</span>
-          <span class="k-st"><b>Фильтр словами</b><span>Слова → WHERE, который можно поправить. Модель видит только колонки.</span></span><i class="k-bar"><i></i></i></button></li>
-        <li><button type="button" class="k-step" data-i="2"><span class="k-n">3</span>
-          <span class="k-st"><b>Запрос по задаче</b><span>⌘J: задача словами → SQL по схеме базы. Вставляется, не выполняется.</span></span><i class="k-bar"><i></i></i></button></li>
-        <li><button type="button" class="k-step" data-i="3"><span class="k-n">4</span>
-          <span class="k-st"><b>Редактор с подсказками</b><span>Таблицы и колонки с типами; у каждого запроса свой ▶ и результат.</span></span><i class="k-bar"><i></i></i></button></li>
-        <li><button type="button" class="k-step" data-i="4"><span class="k-n">5</span>
-          <span class="k-st"><b>Redis — по-своему</b><span>Ключи с TTL и размером, память по префиксам, консоль.</span></span><i class="k-bar"><i></i></i></button></li>
-  </ol>
-  <div class="k-story-vis"><div class="k-screen"><div class="k-cam on" data-w="1180" data-h="660" data-steps="[{&quot;focus&quot;: &quot;.db-h .a-logo, .db-h .g, .db-nav .nt, .db-g .gr.hd&quot;, &quot;ring&quot;: &quot;.db-h .a-logo, .db-h b, .db-h .g&quot;, &quot;mzoom&quot;: 420, &quot;max&quot;: 0}, {&quot;focus&quot;: &quot;.aif, .db-g .gr.hd&quot;, &quot;ring&quot;: &quot;.aif &gt; :nth-child(3)&quot;, &quot;mzoom&quot;: 440}, null, null, null]" aria-hidden="true"><div class="app dbwin" style="width:1180px;height:660px">
+  <ul class="k-engines"><li class="rv" style="--i:0"><span class="lg"><img class="" src="assets/icons/mysql.svg" alt="" width="28" height="28"></span><b>MySQL · MariaDB</b><span>Таблицы с правкой, структура, DDL и схема связей.</span></li><li class="rv" style="--i:1"><span class="lg"><img class="" src="assets/icons/postgresql.svg" alt="" width="28" height="28"></span><b>PostgreSQL</b><span>Ещё партиции, последовательности и функции.</span></li><li class="rv" style="--i:2"><span class="lg"><img class="" src="assets/icons/clickhouse.svg" alt="" width="28" height="28"></span><b>ClickHouse</b><span>Партиции и сжатие таблиц.</span></li><li class="rv" style="--i:3"><span class="lg"><img class="" src="assets/icons/redis.svg" alt="" width="28" height="28"></span><b>Redis · Valkey</b><span>Ключи с TTL, память по префиксам, консоль.</span></li><li class="rv" style="--i:4"><span class="lg"><img class="" src="assets/icons/mongodb.svg" alt="" width="28" height="28"></span><b>MongoDB</b><span>Документы таблицей или деревом, агрегации.</span></li><li class="rv" style="--i:5"><span class="lg"><img class="" src="assets/icons/sqlite.svg" alt="" width="28" height="28"></span><b>SQLite</b><span>Файл на сервере или на этом Mac.</span></li></ul>
+  <div class="k-stagecard rv">
+    <div class="k-story-vis"><div class="k-screen"><div class="k-cam on" data-w="1180" data-h="660" data-steps="[{&quot;focus&quot;: &quot;.db-h .a-logo, .db-h .g, .db-nav .nt, .db-g .gr.hd&quot;, &quot;ring&quot;: &quot;.db-h .a-logo, .db-h b, .db-h .g&quot;, &quot;mzoom&quot;: 420, &quot;max&quot;: 0}, {&quot;focus&quot;: &quot;.aif, .db-g .gr.hd&quot;, &quot;ring&quot;: &quot;.aif &gt; :nth-child(3)&quot;, &quot;mzoom&quot;: 440}, null, null, null]" aria-hidden="true"><div class="app dbwin" style="width:1180px;height:660px">
 <div class="db-h"><img class="a-logo" src="assets/icons/mysql.svg" alt=""><b>northwind</b><span class="g">MySQL 8.0.41 · через web-01 → db-01:3306</span><span class="sp"></span>
   <span class="btn"><span class="ms">code</span>Новый запрос</span><span class="btn"><span class="ms t-blue">hub</span>Схема</span><span class="ms rb">refresh</span><span class="ms rb">info</span><span class="ms rb">settings</span></div>
 <div class="db-b">
@@ -341,30 +339,30 @@
      <div class="rd-r">Выберите ключ слева</div></div>
  </div>
 </div><i class="k-ring"></i><i class="k-tap"></i></div></div></div></div>
-  <ul class="k-proofs"><li><span class="ms">shield</span><b>Production под защитой</b><span>Каждое изменение — окном с полным SQL и «Проверить с AI»; «Только чтение» запрещает их совсем.</span></li><li><span class="ms">visibility</span><b>Модель не видит данные</b><span>AI-фильтру и «Составить» уходят только колонки и схема — не строки таблиц.</span></li><li><span class="ms">auto_awesome</span><b>Агенту — по правилам</b><span>AI-агент читает схему и выполняет запросы по режиму базы; таблицы паролей — всегда отказ.</span></li></ul>
+    <ol class="k-steps">
+        <li><button type="button" class="k-step on" data-i="0"><span class="k-n">1</span>
+          <span class="k-st"><b>Любая база за бастионами</b><span>Таблицы с размерами и правкой — по той же цепочке, что и терминал.</span></span><i class="k-bar"><i></i></i></button></li>
+        <li><button type="button" class="k-step" data-i="1"><span class="k-n">2</span>
+          <span class="k-st"><b>Фильтр словами</b><span>Слова → WHERE, который можно поправить. Модель видит только колонки.</span></span><i class="k-bar"><i></i></i></button></li>
+        <li><button type="button" class="k-step" data-i="2"><span class="k-n">3</span>
+          <span class="k-st"><b>Запрос по задаче</b><span>⌘J: задача словами → SQL по схеме базы. Вставляется, не выполняется.</span></span><i class="k-bar"><i></i></i></button></li>
+        <li><button type="button" class="k-step" data-i="3"><span class="k-n">4</span>
+          <span class="k-st"><b>Редактор с подсказками</b><span>Таблицы и колонки с типами; у каждого запроса свой ▶ и результат.</span></span><i class="k-bar"><i></i></i></button></li>
+        <li><button type="button" class="k-step" data-i="4"><span class="k-n">5</span>
+          <span class="k-st"><b>Redis — по-своему</b><span>Ключи с TTL и размером, память по префиксам, консоль.</span></span><i class="k-bar"><i></i></i></button></li>
+    </ol>
+  </div>
+  <ul class="k-proofs"><li class="rv" style="--i:0"><span class="ms">shield</span><b>Production под защитой</b><span>Каждое изменение — окном с полным SQL и «Проверить с AI»; «Только чтение» запрещает их совсем.</span></li><li class="rv" style="--i:1"><span class="ms">visibility</span><b>Модель не видит данные</b><span>AI-фильтру и «Составить» уходят только колонки и схема — не строки таблиц.</span></li><li class="rv" style="--i:2"><span class="ms">auto_awesome</span><b>Агенту — по правилам</b><span>AI-агент читает схему и выполняет запросы по режиму базы; таблицы паролей — всегда отказ.</span></li></ul>
 </section>
 <section id="services" class="k-story k-block" data-story="services" aria-labelledby="services-h" style="--c:3">
-  <div class="k-story-head">
-    <div><p class="k-eyebrow"><span class="ms">dns</span>Службы сервера</p>
+  <div class="k-story-head rv">
+    <div><p class="k-eyebrow"><span class="k-num">04</span><span class="ms">dns</span>Службы сервера</p>
       <h2 id="services-h">Всё о сервере — на одной вкладке</h2></div>
     <p class="k-sub">Дашборд, Docker, Nginx, Cron, Supervisor и Firewall — по тому же SSH и через те же бастионы. Без отдельных терминалов, без агентов на сервере; меняющее действие — только с подтверждением.</p>
   </div>
-  <ul class="k-engines"><li><span class="lg"><img class="" src="assets/icons/docker.svg" alt="" width="28" height="28"></span><b>Docker · Compose</b><span>Проекты, здоровье и порты, логи, терминал внутри; Docker этого Mac — тоже.</span></li><li><span class="lg"><img class="" src="assets/icons/nginx.svg" alt="" width="28" height="28"></span><b>Nginx</b><span>Запросы, ошибки и p95 из логов; reload после проверки конфигурации.</span></li><li><span class="lg"><img class="" src="assets/icons/caddy.svg" alt="" width="28" height="28"></span><b>Caddy</b><span>Сайты и их сертификаты.</span></li><li><span class="lg"><span class="ms">schedule</span></span><b>Cron · Supervisor</b><span>Задачи неделей с расписанием словами; упавшие программы с концом stderr.</span></li><li><span class="lg"><span class="ms">shield</span></span><b>Firewall · fail2ban</b><span>ufw, nftables или iptables вместе с Docker — по каждому порту; баны.</span></li><li><span class="lg"><img class="" src="assets/icons/proxmox.svg" alt="" width="28" height="28"></span><b>Proxmox</b><span>Виртуальная машина и её хост — рядом.</span></li></ul>
-  <ol class="k-steps">
-        <li><button type="button" class="k-step on" data-i="0"><span class="k-n">1</span>
-          <span class="k-st"><b>Проблемы — одной строкой</b><span>Нагрузка, память, диски, сеть — и сверху всё, что требует внимания.</span></span><i class="k-bar"><i></i></i></button></li>
-        <li><button type="button" class="k-step" data-i="1"><span class="k-n">2</span>
-          <span class="k-st"><b>Nginx — из логов</b><span>Запросы в минуту, 5xx, p95 и медленные маршруты — без root.</span></span><i class="k-bar"><i></i></i></button></li>
-        <li><button type="button" class="k-step" data-i="2"><span class="k-n">3</span>
-          <span class="k-st"><b>Docker по проектам</b><span>Здоровье, CPU, память и порты; перезапуск проекта — одной кнопкой.</span></span><i class="k-bar"><i></i></i></button></li>
-        <li><button type="button" class="k-step" data-i="3"><span class="k-n">4</span>
-          <span class="k-st"><b>Что упало и почему</b><span>Supervisor с концом stderr; «Запустить снова» — с подтверждением.</span></span><i class="k-bar"><i></i></i></button></li>
-        <li><button type="button" class="k-step" data-i="4"><span class="k-n">5</span>
-          <span class="k-st"><b>Cron — неделей</b><span>Что уже прошло и что дальше; вывод каждого запуска.</span></span><i class="k-bar"><i></i></i></button></li>
-        <li><button type="button" class="k-step" data-i="5"><span class="k-n">6</span>
-          <span class="k-st"><b>Кто может подключиться</b><span>По каждому порту: что слушает, открыт ли снаружи и что это решает.</span></span><i class="k-bar"><i></i></i></button></li>
-  </ol>
-  <div class="k-story-vis"><div class="k-screen"><div class="k-cam on" data-w="1180" data-h="1150" data-steps="[{&quot;focus&quot;: &quot;.v-dash .pg-title, .v-dash .pg-sum, .v-dash .dks&quot;, &quot;ring&quot;: &quot;.v-dash .pg-sum&quot;, &quot;mzoom&quot;: 560, &quot;max&quot;: 0}, {&quot;focus&quot;: &quot;.v-nginx .pg-title, .v-nginx .kps, .v-nginx .chart&quot;, &quot;ring&quot;: &quot;.v-nginx .chart&quot;, &quot;mzoom&quot;: 560, &quot;max&quot;: 0}, null, null, null, null]" aria-hidden="true"><div class="app page" style="width:1180px;height:1150px">
+  <ul class="k-engines"><li class="rv" style="--i:0"><span class="lg"><img class="" src="assets/icons/docker.svg" alt="" width="28" height="28"></span><b>Docker · Compose</b><span>Проекты, здоровье и порты, логи, терминал внутри; Docker этого Mac — тоже.</span></li><li class="rv" style="--i:1"><span class="lg"><img class="" src="assets/icons/nginx.svg" alt="" width="28" height="28"></span><b>Nginx</b><span>Запросы, ошибки и p95 из логов; reload после проверки конфигурации.</span></li><li class="rv" style="--i:2"><span class="lg"><img class="" src="assets/icons/caddy.svg" alt="" width="28" height="28"></span><b>Caddy</b><span>Сайты и их сертификаты.</span></li><li class="rv" style="--i:3"><span class="lg"><span class="ms">schedule</span></span><b>Cron · Supervisor</b><span>Задачи неделей с расписанием словами; упавшие программы с концом stderr.</span></li><li class="rv" style="--i:4"><span class="lg"><span class="ms">shield</span></span><b>Firewall · fail2ban</b><span>ufw, nftables или iptables вместе с Docker — по каждому порту; баны.</span></li><li class="rv" style="--i:5"><span class="lg"><img class="" src="assets/icons/proxmox.svg" alt="" width="28" height="28"></span><b>Proxmox</b><span>Виртуальная машина и её хост — рядом.</span></li></ul>
+  <div class="k-stagecard rv">
+    <div class="k-story-vis"><div class="k-screen"><div class="k-cam on" data-w="1180" data-h="1150" data-steps="[{&quot;focus&quot;: &quot;.v-dash .pg-title, .v-dash .pg-sum, .v-dash .dks&quot;, &quot;ring&quot;: &quot;.v-dash .pg-sum&quot;, &quot;mzoom&quot;: 560, &quot;max&quot;: 0}, {&quot;focus&quot;: &quot;.v-nginx .pg-title, .v-nginx .kps, .v-nginx .chart&quot;, &quot;ring&quot;: &quot;.v-nginx .chart&quot;, &quot;mzoom&quot;: 560, &quot;max&quot;: 0}, null, null, null, null]" aria-hidden="true"><div class="app page" style="width:1180px;height:1150px">
 <div class="pg-h"><span class="ms t-ink2">dns</span><b>web-01</b><span class="segs"><i class="segpill"></i><span class="sg js-dash">Дашборд</span><span class="sg">Docker</span><span class="sg js-nginx">Nginx<i class=rdot></i></span><span class="sg">Cron</span><span class="sg">Supervisor<i class=rdot></i></span><span class="sg">Firewall</span></span><span class="ms rb">refresh</span><span class="ms rb">more_horiz</span></div>
 <div class="pg-views"><div class="pg-v v-dash">
 <div class="pg-title">Дашборд</div>
@@ -401,26 +399,32 @@
     <div class="sl"><span><code>/legacy/feed</code><i style="width:93%"></i></span><b class="o">1,4 с</b><span>2,9 с</span><span>96</span></div>
     <div class="sl"><span><code>/reports/export</code><i style="width:80%"></i></span><b class="o">1,2 с</b><span>1,2 с</span><span>12</span></div></div>
 </div></div></div><i class="k-ring"></i><i class="k-tap"></i></div></div><div class="k-cam " data-w="520" data-h="330" data-steps="[null, null, {&quot;ring&quot;: &quot;.dgrp, .dkg&quot;, &quot;mzoom&quot;: 520}, null, null, null]" aria-hidden="true"><div class="app frag page sv-docker" style="width:520px;height:330px"><div class="pg-v"><div class="pg-title">Docker</div><div class="pg-sum">Все 4 контейнера работают. <span class="g">· Docker 27.3.1 · Compose 2.29.7</span></div><div class="pg-ctl"><span class="seg2"><span class="on">Все</span><span class="">Работают</span><span class="">Требуют внимания</span></span></div><div class="dgrp"><b>northwind</b><span>4 работают</span><code>/srv/northwind</code><span class="sp"></span><span class="lnk">Перезапустить проект</span></div><div class="dkg"><div class="dkc"><div class="t"><i class="a-dot g"></i><b>web</b><span>исправен</span></div><div class="im">northwind/web:2.4</div><div class="ft"><span class="lnk">8080</span><span>CPU 3,2 % · 148 МБ</span></div></div><div class="dkc"><div class="t"><i class="a-dot g"></i><b>worker</b><span>исправен</span></div><div class="im">northwind/worker:2.4</div><div class="ft"><span class="">без портов</span><span>CPU 57 % · 300 МБ</span></div></div><div class="dkc"><div class="t"><i class="a-dot g"></i><b>redis</b><span>исправен</span></div><div class="im">redis:8.4-alpine</div><div class="ft"><span class="lnk">6379</span><span>CPU 0,4 % · 12 МБ</span></div></div><div class="dkc"><div class="t"><i class="a-dot g"></i><b>mailer</b><span>исправен</span></div><div class="im">northwind/mailer:2.4</div><div class="ft"><span class="">без портов</span><span>CPU 0,1 % · 41 МБ</span></div></div></div></div><i class="k-ring"></i><i class="k-tap"></i></div></div><div class="k-cam " data-w="520" data-h="330" data-steps="[null, null, null, {&quot;ring&quot;: &quot;.spf&quot;, &quot;mzoom&quot;: 520}, null, null]" aria-hidden="true"><div class="app frag page sv-sup" style="width:520px;height:330px"><div class="pg-v"><div class="pg-title">Supervisor</div><div class="pg-sum">Работают 3 из 4 программ. <span class="r">mailer-queue не работает.</span></div><div class="spf"><div class="t"><i class="a-dot r"></i><b>mailer-queue</b><span class="r">не запускается</span></div><pre>SMTPAuthError: 535 authentication failed<br>SMTPAuthError: 535 authentication failed</pre><div class="bt"><span class="pri">Запустить снова</span><span>Весь stderr</span></div></div><div class="spr"><i class="a-dot g"></i><b>worker_00</b><em>queue</em><span>работает 3 д 3 ч</span></div><div class="spr"><i class="a-dot g"></i><b>worker_01</b><em>queue</em><span>работает 3 д 3 ч</span></div><div class="spr"><i class="a-dot g"></i><b>web</b><span>работает 3 д 3 ч</span></div></div><i class="k-ring"></i><i class="k-tap"></i></div></div><div class="k-cam " data-w="520" data-h="330" data-steps="[null, null, null, null, {&quot;ring&quot;: &quot;.cdays&quot;, &quot;mzoom&quot;: 520}, null]" aria-hidden="true"><div class="app frag page sv-cron" style="width:520px;height:330px"><div class="pg-v"><div class="pg-title">Cron</div><div class="pg-sum">9 задач. <span class="g">Ближайшая — Nightly backup завтра в 03:30.</span></div><div class="pg-ctl"><span class="seg2"><span class="on">Неделя</span><span class="">Месяц</span><span class="">Все задачи</span></span></div><div class="cdays"><div class="cday"><div class="ch"><b class="r">Сегодня</b><span>ср 28 окт</span></div><div class="cj past"><span class="tm">03:30</span><div><b>Nightly backup</b><span>crontab deploy</span></div></div><div class="cj past"><span class="tm">06:25</span><div><b>cron.daily</b><span>4 скрипта</span></div></div><div class="cj"><span class="tm">12:00</span><div><b>cleanup tmp</b><span>cron.d/northwind</span></div></div></div><div class="cday"><div class="ch"><b class="">Завтра</b><span>чт 29 окт</span></div><div class="cj"><span class="tm">03:30</span><div><b>Nightly backup</b><span>crontab deploy</span></div></div><div class="cj"><span class="tm">06:25</span><div><b>cron.daily</b><span>4 скрипта</span></div></div><div class="cj"><span class="tm">12:00</span><div><b>cleanup tmp</b><span>cron.d/northwind</span></div></div></div></div></div><i class="k-ring"></i><i class="k-tap"></i></div></div><div class="k-cam " data-w="520" data-h="330" data-steps="[null, null, null, null, null, {&quot;ring&quot;: &quot;.fwr:not(.hd)&quot;, &quot;mzoom&quot;: 520}]" aria-hidden="true"><div class="app frag page sv-fw" style="width:520px;height:330px"><div class="pg-v"><div class="pg-title">Firewall</div><div class="pg-sum">Сам сервер не ограничивает 22 и 80. <span class="g">Остальное отбрасывает политика INPUT.</span></div><div class="fwb"><span class="ok">ufw · активен</span><span class="bad">fail2ban · 31 в бане</span></div><div class="fwh"><b>Кто может подключиться</b></div><div class="fwr hd"><span>Порт</span><span>Что слушает</span><span>Снаружи</span><span>Что решает</span></div><div class="fwr"><span class="pt"><b>22</b>/tcp</span><span class="wh"><b>SSH</b> sshd</span><span class="cap b">все</span><span class="dc">правило ufw</span></div><div class="fwr"><span class="pt"><b>80</b>/tcp</span><span class="wh"><b>HTTP</b> nginx</span><span class="cap b">все</span><span class="dc">правило ufw</span></div><div class="fwr"><span class="pt"><b>8081</b>/tcp</span><span class="wh"><b>caddy</b> Docker → контейнер</span><span class="cap o">не ограничено</span><span class="dc">Docker публикует</span></div><div class="fwr"><span class="pt"><b>6379</b>/tcp</span><span class="wh"><b>Redis</b> redis</span><span class="cap n">никто</span><span class="dc">политика INPUT: отбрасывать</span></div></div><i class="k-ring"></i><i class="k-tap"></i></div></div></div></div>
-  <ul class="k-proofs"><li><span class="ms">dns</span><b>Действия с подтверждением</b><span>Перезапуск в Docker и Supervisor, reload nginx после проверки конфигурации.</span></li><li><span class="ms">add</span><b>Свои виджеты</b><span>Метрика, свой скрипт с порогами или виджет по описанию для AI.</span></li><li><span class="ms">auto_awesome</span><b>Логи с AI</b><span>Поток логов с фильтром и уровнями; AI отвечает по выбранным строкам.</span></li></ul>
+    <ol class="k-steps two">
+        <li><button type="button" class="k-step on" data-i="0"><span class="k-n">1</span>
+          <span class="k-st"><b>Проблемы — одной строкой</b><span>Нагрузка, память, диски, сеть — и сверху всё, что требует внимания.</span></span><i class="k-bar"><i></i></i></button></li>
+        <li><button type="button" class="k-step" data-i="1"><span class="k-n">2</span>
+          <span class="k-st"><b>Nginx — из логов</b><span>Запросы в минуту, 5xx, p95 и медленные маршруты — без root.</span></span><i class="k-bar"><i></i></i></button></li>
+        <li><button type="button" class="k-step" data-i="2"><span class="k-n">3</span>
+          <span class="k-st"><b>Docker по проектам</b><span>Здоровье, CPU, память и порты; перезапуск проекта — одной кнопкой.</span></span><i class="k-bar"><i></i></i></button></li>
+        <li><button type="button" class="k-step" data-i="3"><span class="k-n">4</span>
+          <span class="k-st"><b>Что упало и почему</b><span>Supervisor с концом stderr; «Запустить снова» — с подтверждением.</span></span><i class="k-bar"><i></i></i></button></li>
+        <li><button type="button" class="k-step" data-i="4"><span class="k-n">5</span>
+          <span class="k-st"><b>Cron — неделей</b><span>Что уже прошло и что дальше; вывод каждого запуска.</span></span><i class="k-bar"><i></i></i></button></li>
+        <li><button type="button" class="k-step" data-i="5"><span class="k-n">6</span>
+          <span class="k-st"><b>Кто может подключиться</b><span>По каждому порту: что слушает, открыт ли снаружи и что это решает.</span></span><i class="k-bar"><i></i></i></button></li>
+    </ol>
+  </div>
+  <ul class="k-proofs"><li class="rv" style="--i:0"><span class="ms">dns</span><b>Действия с подтверждением</b><span>Перезапуск в Docker и Supervisor, reload nginx после проверки конфигурации.</span></li><li class="rv" style="--i:1"><span class="ms">add</span><b>Свои виджеты</b><span>Метрика, свой скрипт с порогами или виджет по описанию для AI.</span></li><li class="rv" style="--i:2"><span class="ms">auto_awesome</span><b>Логи с AI</b><span>Поток логов с фильтром и уровнями; AI отвечает по выбранным строкам.</span></li></ul>
 </section>
 <section id="files" class="k-story k-block" data-story="files" aria-labelledby="files-h" style="--c:4">
-  <div class="k-story-head">
-    <div><p class="k-eyebrow"><span class="ms">folder_open</span>Файлы и хранилища</p>
+  <div class="k-story-head rv">
+    <div><p class="k-eyebrow"><span class="k-num">05</span><span class="ms">folder_open</span>Файлы и хранилища</p>
       <h2 id="files-h">Файлы сервера, Mac и облака — в одном окне</h2></div>
     <p class="k-sub">SFTP, S3 и WebDAV живут в том же дереве, что и серверы, и ходят через те же бастионы. Перетаскивание в обе стороны и одна очередь передач для всего.</p>
   </div>
-  <ul class="k-engines"><li><span class="lg"><span class="ms">terminal</span></span><b>SFTP</b><span>Любой сервер документа — по тому же входу, без второй 2FA.</span></li><li><span class="lg"><img class="" src="assets/icons/cloudflare.svg" alt="" width="28" height="28"><img class="" src="assets/icons/minio.svg" alt="" width="28" height="28"><img class="" src="assets/icons/yandexcloud.svg" alt="" width="28" height="28"></span><b>S3-совместимые</b><span>AWS, Yandex Cloud, Selectel, Cloudflare R2, MinIO.</span></li><li><span class="lg"><img class="" src="assets/icons/nextcloud.svg" alt="" width="28" height="28"></span><b>WebDAV · Nextcloud</b><span>Nextcloud — со входом через браузер.</span></li><li><span class="lg"><span class="ms">cloud</span></span><b>Яндекс Диск</b><span>Облачный диск — в том же дереве.</span></li><li><span class="lg"><span class="ms">laptop_mac</span></span><b>Этот Mac</b><span>Две панели и перетаскивание в Finder.</span></li><li><span class="lg"><span class="ms">edit_square</span></span><b>Свой редактор</b><span>Сохранили — файл ушёл на сервер.</span></li></ul>
-  <ol class="k-steps">
-        <li><button type="button" class="k-step on" data-i="0"><span class="k-n">1</span>
-          <span class="k-st"><b>Рядом с терминалом</b><span>Панель SFTP справа от сессии — по тому же входу.</span></span><i class="k-bar"><i></i></i></button></li>
-        <li><button type="button" class="k-step" data-i="1"><span class="k-n">2</span>
-          <span class="k-st"><b>Mac ⇄ сервер</b><span>Две панели, перетаскивание, очередь с паузой и докачкой.</span></span><i class="k-bar"><i></i></i></button></li>
-        <li><button type="button" class="k-step" data-i="2"><span class="k-n">3</span>
-          <span class="k-st"><b>S3 и WebDAV в дереве</b><span>Хранилище — узел документа; с сервера в бакет — напрямую, минуя Mac.</span></span><i class="k-bar"><i></i></i></button></li>
-        <li><button type="button" class="k-step" data-i="3"><span class="k-n">4</span>
-          <span class="k-st"><b>С сервера на сервер</b><span>Файл за бастионом идёт прямо на бастион; SHA-256 сверяется на обоих концах.</span></span><i class="k-bar"><i></i></i></button></li>
-  </ol>
-  <div class="k-story-vis"><div class="k-screen"><div class="k-cam on" data-w="440" data-h="300" data-steps="[{&quot;ring&quot;: &quot;.f-pane.side&quot;, &quot;mzoom&quot;: 440}, null, null, null]" aria-hidden="true"><div class="app frag done tf1" style="width:440px;height:300px">
+  <ul class="k-engines"><li class="rv" style="--i:0"><span class="lg"><span class="ms">terminal</span></span><b>SFTP</b><span>Любой сервер документа — по тому же входу, без второй 2FA.</span></li><li class="rv" style="--i:1"><span class="lg"><img class="" src="assets/icons/cloudflare.svg" alt="" width="28" height="28"><img class="" src="assets/icons/minio.svg" alt="" width="28" height="28"><img class="" src="assets/icons/yandexcloud.svg" alt="" width="28" height="28"></span><b>S3-совместимые</b><span>AWS, Yandex Cloud, Selectel, Cloudflare R2, MinIO.</span></li><li class="rv" style="--i:2"><span class="lg"><img class="" src="assets/icons/nextcloud.svg" alt="" width="28" height="28"></span><b>WebDAV · Nextcloud</b><span>Nextcloud — со входом через браузер.</span></li><li class="rv" style="--i:3"><span class="lg"><span class="ms">cloud</span></span><b>Яндекс Диск</b><span>Облачный диск — в том же дереве.</span></li><li class="rv" style="--i:4"><span class="lg"><span class="ms">laptop_mac</span></span><b>Этот Mac</b><span>Две панели и перетаскивание в Finder.</span></li><li class="rv" style="--i:5"><span class="lg"><span class="ms">edit_square</span></span><b>Свой редактор</b><span>Сохранили — файл ушёл на сервер.</span></li></ul>
+  <div class="k-stagecard rv">
+    <div class="k-story-vis"><div class="k-screen"><div class="k-cam on" data-w="440" data-h="300" data-steps="[{&quot;ring&quot;: &quot;.f-pane.side&quot;, &quot;mzoom&quot;: 440}, null, null, null]" aria-hidden="true"><div class="app frag done tf1" style="width:440px;height:300px">
 <div class="w-status"><span class="st-ok"><i class="a-dot g"></i><b>Подключено</b></span>
   <span class="chain">jump-prod<i>›</i><b>deploy@web-01</b></span>
   <span class="st-r"><span class="pill-on"><span class="ms">folder</span>Файлы</span></span></div>
@@ -446,24 +450,28 @@
 <div class="dc-n"><span class="js-n" data-mb="МБ">1,2 ГБ</span> из 1,2 ГБ</div>
 <div class="dc-log"><div class="js-log">«bastion-msk» подключается к «web-01» (archiver@web-01:22) — файл пойдёт напрямую, не через этот Mac</div><div class="js-log">Ключ «archiver-key» подписал вход «bastion-msk» → «web-01» (1 из 2); сам ключ остаётся на этом Mac</div><div class="js-log">Код 2FA для «web-01» отправлен</div><div class="js-log">Проверка SHA-256 на обоих серверах…</div><div class="js-log">Готово: 1,2 ГБ за 31 с (39,6 МБ/с)</div></div>
 <div class="dc-b"><span class="b-run">Остановить</span><span class="b-done">Готово</span></div><i class="k-ring"></i><i class="k-tap"></i></div></div></div></div>
-  <ul class="k-proofs"><li><span class="ms">folder</span><b>Права и Quick Look</b><span>Права для многих файлов сразу; пробел — предпросмотр, как в Finder.</span></li><li><span class="ms">cloud</span><b>Ссылки S3</b><span>Ссылка на файл в бакете на час, день или неделю — из меню.</span></li><li><span class="ms">swap_horiz</span><b>Не через ваш канал</b><span>Копия между серверами и выгрузка в бакет идут напрямую — домашний интернет не участвует.</span></li></ul>
+    <ol class="k-steps">
+        <li><button type="button" class="k-step on" data-i="0"><span class="k-n">1</span>
+          <span class="k-st"><b>Рядом с терминалом</b><span>Панель SFTP справа от сессии — по тому же входу.</span></span><i class="k-bar"><i></i></i></button></li>
+        <li><button type="button" class="k-step" data-i="1"><span class="k-n">2</span>
+          <span class="k-st"><b>Mac ⇄ сервер</b><span>Две панели, перетаскивание, очередь с паузой и докачкой.</span></span><i class="k-bar"><i></i></i></button></li>
+        <li><button type="button" class="k-step" data-i="2"><span class="k-n">3</span>
+          <span class="k-st"><b>S3 и WebDAV в дереве</b><span>Хранилище — узел документа; с сервера в бакет — напрямую, минуя Mac.</span></span><i class="k-bar"><i></i></i></button></li>
+        <li><button type="button" class="k-step" data-i="3"><span class="k-n">4</span>
+          <span class="k-st"><b>С сервера на сервер</b><span>Файл за бастионом идёт прямо на бастион; SHA-256 сверяется на обоих концах.</span></span><i class="k-bar"><i></i></i></button></li>
+    </ol>
+  </div>
+  <ul class="k-proofs"><li class="rv" style="--i:0"><span class="ms">folder</span><b>Права и Quick Look</b><span>Права для многих файлов сразу; пробел — предпросмотр, как в Finder.</span></li><li class="rv" style="--i:1"><span class="ms">cloud</span><b>Ссылки S3</b><span>Ссылка на файл в бакете на час, день или неделю — из меню.</span></li><li class="rv" style="--i:2"><span class="ms">swap_horiz</span><b>Не через ваш канал</b><span>Копия между серверами и выгрузка в бакет идут напрямую — домашний интернет не участвует.</span></li></ul>
 </section>
 <section id="automations" class="k-story k-block" data-story="automations" aria-labelledby="automations-h" style="--c:3">
-  <div class="k-story-head">
-    <div><p class="k-eyebrow"><span class="ms">archive</span>Автоматизации и бэкапы</p>
+  <div class="k-story-head rv">
+    <div><p class="k-eyebrow"><span class="k-num">06</span><span class="ms">archive</span>Автоматизации и бэкапы</p>
       <h2 id="automations-h">Ночной бэкап базы — из блоков, без скриптов</h2></div>
     <p class="k-sub">Дамп, сжатие, выгрузка в S3, ротация и итог — модули на полотне. Запуск по расписанию, после другой автоматизации, по событию или прямо в crontab сервера.</p>
   </div>
-  <ul class="k-engines"><li><span class="lg"><span class="ms">schedule</span></span><b>По расписанию</b><span>Словами, без синтаксиса cron: «каждые 10 мин, в будни».</span></li><li><span class="lg"><span class="ms">account_tree</span></span><b>После другой</b><span>Удачной, неудачной или любой — цепочкой.</span></li><li><span class="lg"><span class="ms">sensors</span></span><b>По событию</b><span>Контейнер упал, 5xx в nginx, метрика выше порога.</span></li><li><span class="lg"><span class="ms">dns</span></span><b>В crontab сервера</b><span>Mac может спать: результаты прочитаются потом.</span></li><li><span class="lg"><span class="ms">help</span></span><b>«Спросить меня»</b><span>Вопрос в окне, строке меню или Telegram.</span></li><li><span class="lg"><span class="ms">verified_user</span></span><b>Проверка восстановлением</b><span>Копия разворачивается в контейнере на этом Mac.</span></li></ul>
-  <ol class="k-steps">
-        <li><button type="button" class="k-step on" data-i="0"><span class="k-n">1</span>
-          <span class="k-st"><b>Готовые модули</b><span>mysqldump, mydumper, XtraBackup, ClickHouse, Redis, rsync, архив папки — или свой модуль.</span></span><i class="k-bar"><i></i></i></button></li>
-        <li><button type="button" class="k-step" data-i="1"><span class="k-n">2</span>
-          <span class="k-st"><b>Расписание словами</b><span>«Каждый день в 03:30». Перед первым запуском — окно со всеми командами и секретами, без вас — только с вашего разрешения.</span></span><i class="k-bar"><i></i></i></button></li>
-        <li><button type="button" class="k-step" data-i="2"><span class="k-n">3</span>
-          <span class="k-st"><b>Итог каждого шага</b><span>Видно, сколько весил дамп, как сжался и сколько копий осталось. Итог — в уведомлении или Telegram.</span></span><i class="k-bar"><i></i></i></button></li>
-  </ol>
-  <div class="k-story-vis"><div class="k-screen"><div class="k-cam on" data-w="1180" data-h="560" data-steps="[{&quot;focus&quot;: &quot;.au-lib&quot;, &quot;ring&quot;: &quot;.au-lib .li, .au-lib .lh&quot;, &quot;mzoom&quot;: 380, &quot;max&quot;: 0}, {&quot;focus&quot;: &quot;.au-h .pill, .au-h .go&quot;, &quot;ring&quot;: &quot;.au-h .pill&quot;, &quot;mzoom&quot;: 400}, {&quot;focus&quot;: &quot;.au-z&quot;, &quot;ring&quot;: &quot;.js-ac&quot;, &quot;mzoom&quot;: 300, &quot;ms&quot;: 2.2}]" aria-hidden="true"><div class="app autowin" style="width:1180px;height:560px">
+  <ul class="k-engines"><li class="rv" style="--i:0"><span class="lg"><span class="ms">schedule</span></span><b>По расписанию</b><span>Словами, без синтаксиса cron: «каждые 10 мин, в будни».</span></li><li class="rv" style="--i:1"><span class="lg"><span class="ms">account_tree</span></span><b>После другой</b><span>Удачной, неудачной или любой — цепочкой.</span></li><li class="rv" style="--i:2"><span class="lg"><span class="ms">sensors</span></span><b>По событию</b><span>Контейнер упал, 5xx в nginx, метрика выше порога.</span></li><li class="rv" style="--i:3"><span class="lg"><span class="ms">dns</span></span><b>В crontab сервера</b><span>Mac может спать: результаты прочитаются потом.</span></li><li class="rv" style="--i:4"><span class="lg"><span class="ms">help</span></span><b>«Спросить меня»</b><span>Вопрос в окне, строке меню или Telegram.</span></li><li class="rv" style="--i:5"><span class="lg"><span class="ms">verified_user</span></span><b>Проверка восстановлением</b><span>Копия разворачивается в контейнере на этом Mac.</span></li></ul>
+  <div class="k-stagecard rv">
+    <div class="k-story-vis"><div class="k-screen"><div class="k-cam on" data-w="1180" data-h="560" data-steps="[{&quot;focus&quot;: &quot;.au-lib&quot;, &quot;ring&quot;: &quot;.au-lib .li, .au-lib .lh&quot;, &quot;mzoom&quot;: 380, &quot;max&quot;: 0}, {&quot;focus&quot;: &quot;.au-h .pill, .au-h .go&quot;, &quot;ring&quot;: &quot;.au-h .pill&quot;, &quot;mzoom&quot;: 400}, {&quot;focus&quot;: &quot;.au-z&quot;, &quot;ring&quot;: &quot;.js-ac&quot;, &quot;mzoom&quot;: 300, &quot;ms&quot;: 2.2}]" aria-hidden="true"><div class="app autowin" style="width:1180px;height:560px">
 <div class="au-h"><span class="ms t-ink2">view_sidebar</span><span class="g">Автоматизации</span><span class="g">›</span><b>Ночной бэкап MySQL</b>
   <span class="g st"><span class="js-ok">✓ удачно · 03:30 · следующий: завтра в 03:30</span></span>
   <span class="seg2"><span class="">Обзор</span><span class="">Шаги</span><span class="">История</span><span class="on">Полотно</span></span>
@@ -477,21 +485,30 @@
     <div class="au-ask"><span class="ms t-purple">auto_awesome</span><span>Что поменять? Например: «сжимать zstd»</span><span class="ms up">arrow_upward</span></div>
     <div class="au-zm"><span class="pill">Разложить</span><span class="ms">zoom_out</span><span>60 %</span><span class="ms">zoom_in</span><span class="ms">fit_screen</span></div></div>
 </div><i class="k-ring"></i><i class="k-tap"></i></div></div></div></div>
-  <ul class="k-proofs"><li><span class="ms">lock</span><b>Секреты — словами</b><span>Перед первым запуском — окно со всеми командами и тем, какой секрет куда уходит.</span></li><li><span class="ms">auto_awesome</span><b>С AI</b><span>Черновик по описанию, модуль «Агент» и «Почему упало?» по истории запуска.</span></li><li><span class="ms">grid_view</span><b>Все на одной вкладке</b><span>Сводка: что упало, что ждёт вас и что запустится дальше.</span></li></ul>
+    <ol class="k-steps">
+        <li><button type="button" class="k-step on" data-i="0"><span class="k-n">1</span>
+          <span class="k-st"><b>Готовые модули</b><span>mysqldump, mydumper, XtraBackup, ClickHouse, Redis, rsync, архив папки — или свой модуль.</span></span><i class="k-bar"><i></i></i></button></li>
+        <li><button type="button" class="k-step" data-i="1"><span class="k-n">2</span>
+          <span class="k-st"><b>Расписание словами</b><span>«Каждый день в 03:30». Перед первым запуском — окно со всеми командами и секретами, без вас — только с вашего разрешения.</span></span><i class="k-bar"><i></i></i></button></li>
+        <li><button type="button" class="k-step" data-i="2"><span class="k-n">3</span>
+          <span class="k-st"><b>Итог каждого шага</b><span>Видно, сколько весил дамп, как сжался и сколько копий осталось. Итог — в уведомлении или Telegram.</span></span><i class="k-bar"><i></i></i></button></li>
+    </ol>
+  </div>
+  <ul class="k-proofs"><li class="rv" style="--i:0"><span class="ms">lock</span><b>Секреты — словами</b><span>Перед первым запуском — окно со всеми командами и тем, какой секрет куда уходит.</span></li><li class="rv" style="--i:1"><span class="ms">auto_awesome</span><b>С AI</b><span>Черновик по описанию, модуль «Агент» и «Почему упало?» по истории запуска.</span></li><li class="rv" style="--i:2"><span class="ms">grid_view</span><b>Все на одной вкладке</b><span>Сводка: что упало, что ждёт вас и что запустится дальше.</span></li></ul>
 </section>
 
 <section class="k-grid-wrap" aria-labelledby="grid-h">
-  <h2 id="grid-h" class="k-h2">И это ещё не всё</h2>
-  <p class="k-h2-sub">Терминал, туннели, маршрут и безопасность — каждая плитка показывает настоящий экран приложения.</p>
+  <h2 id="grid-h" class="k-h2 rv">И это ещё не всё</h2>
+  <p class="k-h2-sub rv">Терминал, туннели, маршрут и безопасность — каждая плитка показывает настоящий экран приложения.</p>
   <ul class="k-grid">
-    <li class="k-tile"><h3>Одна команда — во все вкладки</h3><p>Ввод во все вкладки выделяет участников рамкой; Production — только по явному выбору.</p>
+    <li class="k-tile rv"><h3>Одна команда — во все вкладки</h3><p>Ввод во все вкладки выделяет участников рамкой; Production — только по явному выбору.</p>
       <div class="k-screen"><div class="k-cam on" data-w="640" data-h="420" data-steps="[{&quot;pad&quot;: 12}]" aria-hidden="true"><div class="app bcwin" style="width:640px;height:420px">
 <div class="w-tabs"><span class="w-tab sel"><span class="ms t-teal">terminal</span><span>web-01</span><span class="ms x">close</span></span><span class="w-plus"><span class="ms">add</span></span></div>
 <div class="w-status"><i class="a-dot g"></i><b>Подключено · 19 мин</b><span class="chain">bastion-msk<i>›</i>jump-prod<i>›</i><b>deploy@web-01</b></span>
   <span class="st-r"><span><span class="ms">auto_awesome</span>AI выкл</span><span><span class="ms">folder</span>Файлы</span><i class="vs"></i><span class="ms">more_horiz</span></span></div>
 <div class="bc-panes"><div class="bp"><div class="tl">Last login: Wed Oct 28 09:12:44 2026 from 10.20.0.5</div><div class="tl"><b class="pg">deploy@web-01</b>:<b class="pb">~</b>$ <span class="js-typed">uptime</span><i class="a-cur"></i></div><div class="tl js-out">&nbsp;09:31:07 up 41 days,  6:08,  2 users,  load average: 0.82, 0.79, 0.77</div><div class="tl js-out"><b class="pg">deploy@web-01</b>:<b class="pb">~</b>$ </div></div><div class="bp"><div class="tl">Last login: Wed Oct 28 09:30:58 2026 from 10.20.0.5</div><div class="tl"><b class="pg">deploy@web-01</b>:<b class="pb">~</b>$ <span class="js-typed">uptime</span><i class="a-cur"></i></div><div class="tl js-out">&nbsp;09:31:07 up 41 days,  6:08,  2 users,  load average: 0.82, 0.79, 0.77</div><div class="tl js-out"><b class="pg">deploy@web-01</b>:<b class="pb">~</b>$ </div></div></div>
 <div class="bc-pill"><span class="ms">sensors</span><span>Ввод идёт в 2 сессии — ⌥⌘I</span><u>Остановить</u></div><i class="k-ring"></i><i class="k-tap"></i></div></div></div></li>
-    <li class="k-tile" id="tunnels"><h3>Туннели в строке меню</h3><p>К сервису, SOCKS и обратные — через те же бастионы; работают и с закрытым окном.</p>
+    <li class="k-tile rv" id="tunnels"><h3>Туннели в строке меню</h3><p>К сервису, SOCKS и обратные — через те же бастионы; работают и с закрытым окном.</p>
       <div class="k-screen"><div class="k-cam on" data-w="340" data-h="528" data-steps="[{&quot;focus&quot;: &quot;.mb-t&quot;, &quot;ms&quot;: 1.2}]" aria-hidden="true"><div class="app menubar" style="width:340px;height:528px">
 <div class="mb-h"><img src="assets/icon-512.png" alt=""><div><b>SSHKipper</b><span class="js-sub" data-a="2 туннеля · 1 подключение" data-b="3 туннеля · 1 подключение">2 туннеля · 1 подключение</span></div><span class="ms">settings</span></div>
 <div class="mb-sep"></div>
@@ -508,7 +525,7 @@
 <div class="mb-d"><span class="ms">lock_open</span><div><b>Northwind</b><span>открыт</span></div><span class="btn">Заблокировать</span></div>
 <div class="mb-sep"></div>
 <div class="mb-foot"><span>Открыть SSHKipper</span><span>Выйти</span></div><i class="k-ring"></i><i class="k-tap"></i></div></div></div></li>
-    <li class="k-tile" id="route"><h3>Профили и маршрут</h3><p>Tailscale, офисный адрес, другой бастион: при сетевой ошибке пробуется следующий путь.</p>
+    <li class="k-tile rv" id="route"><h3>Профили и маршрут</h3><p>Tailscale, офисный адрес, другой бастион: при сетевой ошибке пробуется следующий путь.</p>
       <div class="k-screen"><div class="k-cam on" data-w="440" data-h="686" data-steps="[{&quot;focus&quot;: &quot;.rt-prof, .rt-tb, .mac&quot;}]" aria-hidden="true"><div class="app route" style="width:440px;height:686px">
 <div class="rt-prof"><span class="pi"><span class="ms f">terminal</span></span><div><b>web-01</b><span>Production · web-01</span>
   <div class="pchips"><span><svg class="a-ts" viewBox="0 0 12 12"><circle cx="2" cy="2" r="1.25" fill="currentColor" opacity="0.4"/><circle cx="6" cy="2" r="1.25" fill="currentColor" opacity="0.4"/><circle cx="10" cy="2" r="1.25" fill="currentColor" opacity="0.4"/><circle cx="2" cy="6" r="1.25" fill="currentColor" opacity="1"/><circle cx="6" cy="6" r="1.25" fill="currentColor" opacity="1"/><circle cx="10" cy="6" r="1.25" fill="currentColor" opacity="1"/><circle cx="2" cy="10" r="1.25" fill="currentColor" opacity="0.4"/><circle cx="6" cy="10" r="1.25" fill="currentColor" opacity="1"/><circle cx="10" cy="10" r="1.25" fill="currentColor" opacity="0.4"/></svg>Tailscale · web-01</span><span class="on"><span class="ms sm">dns</span>Офис</span><span><span class="ms sm">language</span>10.20.4.21</span><span><span class="ms sm">add</span></span></div></div></div>
@@ -517,7 +534,7 @@
   <i class="rl l0"></i><i class="rl l1"></i><i class="rl l2"></i><i class="rdot js-rdot"></i>
   <div class="rn js-rn" style="top:168px"><span class="ri"><span class="ms">dns</span></span><div><b>bastion-msk</b><code>ops@bastion.northwind.corp</code><div class="chps"><span class="chp "><span class="ms f">key</span>ключ</span><span class="chp "><span class="ms f">verified_user</span>код 2FA — сам</span></div><span class="frm">из «ops-2fa»</span></div></div><div class="rn js-rn" style="top:304px"><span class="ri"><span class="ms">dns</span></span><div><b>jump-prod</b><code>ops@jump-prod</code><div class="chps"><span class="chp "><span class="ms f">key</span>ключ</span><span class="chp "><span class="ms f">verified_user</span>код 2FA — сам</span></div><span class="frm">из «ops-2fa»</span></div></div><div class="rn dst js-rn" style="top:440px"><span class="ri"><span class="ms">dns</span></span><div><b>web-01</b><code>deploy@web-01</code><div class="chps"><span class="chp y"><span class="ms f">key</span>пароль</span><span class="chp "><span class="ms f">verified_user</span>код 2FA — сам</span></div><span class="frm">из «deploy»</span></div></div>
 </div><i class="k-ring"></i><i class="k-tap"></i></div></div></div></li>
-    <li class="k-tile" id="security"><h3>Всё в одном зашифрованном файле</h3><p>Argon2id и XChaCha20-Poly1305, Touch ID, ключ восстановления и автоблокировка.</p>
+    <li class="k-tile rv" id="security"><h3>Всё в одном зашифрованном файле</h3><p>Argon2id и XChaCha20-Poly1305, Touch ID, ключ восстановления и автоблокировка.</p>
       <div class="k-screen"><div class="k-cam on" data-w="520" data-h="540" data-steps="[{&quot;focus&quot;: &quot;.lk-b &gt; img, .lk-n, .lk-f, .lk-in, .lk-c, .lk-btns&quot;, &quot;ms&quot;: 1.35}]" aria-hidden="true"><div class="app lock" style="width:520px;height:540px">
 <div class="lk-t"><span class="a-lights"><i></i><i></i><i></i></span><b>SSHKipper</b></div>
 <div class="lk-b"><img src="assets/icon-512.png" alt=""><div class="lk-n">SSHKipper</div>
@@ -530,16 +547,16 @@
 </section>
 
 <section id="pricing" class="k-pricing" aria-labelledby="pricing-h">
-  <h2 id="pricing-h" class="k-h2">Бесплатно для пары серверов</h2>
-  <p class="k-h2-sub">Один DMG для всех. Без ключа — бесплатная версия со всеми возможностями и лимитами. С ключом — полная. Пробного периода нет: бесплатная версия и есть проба.</p>
+  <h2 id="pricing-h" class="k-h2 rv">Бесплатно для пары серверов</h2>
+  <p class="k-h2-sub rv">Один DMG для всех. Без ключа — бесплатная версия со всеми возможностями и лимитами. С ключом — полная. Пробного периода нет: бесплатная версия и есть проба.</p>
   <div class="k-plans">
-    <article class="k-plan">
+    <article class="k-plan rv">
       <h3>Бесплатная</h3>
       <p class="k-price"><strong>0 ₽</strong><span>навсегда</span></p>
       <ul><li><span class="ms">check</span>5 подключений</li><li><span class="ms">check</span>1 открытый документ и 1 терминал</li><li><span class="ms">check</span>1 автоматизация, запуск вручную</li><li><span class="ms">check</span>5 сообщений AI в чате — новый чат, снова 5</li><li><span class="ms">check</span>1 туннель, 1 база данных, 1 хранилище</li></ul>
       <a class="k-btn ghost" href="https://github.com/kdanet/sshkipper-releases/releases/latest/download/SSHKipper.dmg"><img src="assets/mark-white.svg" alt="" width="18" height="18">Скачать</a>
     </article>
-    <article class="k-plan full">
+    <article class="k-plan full rv" style="--i:1">
       <h3>Полная</h3>
       <!-- PRICE: replace the text below when the price is decided -->
       <p class="k-price"><strong id="price">Цена — скоро</strong><span>лицензия навсегда + год обновлений</span></p>
@@ -552,19 +569,19 @@
 </section>
 
 <section id="faq" class="k-faq" aria-labelledby="faq-h">
-  <h2 id="faq-h" class="k-h2">Частые вопросы</h2>
+  <h2 id="faq-h" class="k-h2 rv">Частые вопросы</h2>
   <div class="k-qs">
-    <details class="k-q"><summary>Где хранятся пароли и ключи?<span class="ms">expand_more</span></summary><p>В одном документе на вашем Mac, зашифрованном Argon2id и XChaCha20-Poly1305. Аккаунтов и облака нет: файл лежит там, где вы его сохранили, открывается мастер-паролем или Touch ID.</p></details>
-    <details class="k-q"><summary>Видит ли AI мои пароли?<span class="ms">expand_more</span></summary><p>Нет. Секреты маскируются до отправки модели, агент работает только на серверах, куда вы его пустили, а команды, которые что-то меняют, ждут вашего согласия. AI можно не включать совсем.</p></details>
-    <details class="k-q"><summary>Как перенести мои хосты?<span class="ms">expand_more</span></summary><p>Файл → «Импорт из ~/.ssh/config…»: хосты, ProxyJump и пробросы портов становятся подключениями, бастионами и туннелями.</p></details>
-    <details class="k-q"><summary>Что есть в бесплатной версии?<span class="ms">expand_more</span></summary><p>Всё, но с лимитами: 5 подключений, 1 открытый документ и терминал, 1 автоматизация вручную, 5 сообщений AI в чате, по одному туннелю, базе и хранилищу. Документ больше лимитов открывается только для чтения.</p></details>
-    <details class="k-q"><summary>На скольких Mac работает ключ?<span class="ms">expand_more</span></summary><p>На двух. Отвязать старый Mac можно самому, в окне «Лицензия».</p></details>
-    <details class="k-q"><summary>Что будет через год?<span class="ms">expand_more</span></summary><p>Купленная версия работает всегда. Год включает обновления; новые версии после него — продлением.</p></details>
-    <details class="k-q"><summary>Какие нужны Mac и macOS?<span class="ms">expand_more</span></summary><p>Mac с Apple Silicon и macOS 26 или новее. Приложение подписано Developer ID и нотаризовано Apple — открывается без обходов.</p></details>
+    <details class="k-q rv"><summary>Где хранятся пароли и ключи?<span class="ms">expand_more</span></summary><p>В одном документе на вашем Mac, зашифрованном Argon2id и XChaCha20-Poly1305. Аккаунтов и облака нет: файл лежит там, где вы его сохранили, открывается мастер-паролем или Touch ID.</p></details>
+    <details class="k-q rv"><summary>Видит ли AI мои пароли?<span class="ms">expand_more</span></summary><p>Нет. Секреты маскируются до отправки модели, агент работает только на серверах, куда вы его пустили, а команды, которые что-то меняют, ждут вашего согласия. AI можно не включать совсем.</p></details>
+    <details class="k-q rv"><summary>Как перенести мои хосты?<span class="ms">expand_more</span></summary><p>Файл → «Импорт из ~/.ssh/config…»: хосты, ProxyJump и пробросы портов становятся подключениями, бастионами и туннелями.</p></details>
+    <details class="k-q rv"><summary>Что есть в бесплатной версии?<span class="ms">expand_more</span></summary><p>Всё, но с лимитами: 5 подключений, 1 открытый документ и терминал, 1 автоматизация вручную, 5 сообщений AI в чате, по одному туннелю, базе и хранилищу. Документ больше лимитов открывается только для чтения.</p></details>
+    <details class="k-q rv"><summary>На скольких Mac работает ключ?<span class="ms">expand_more</span></summary><p>На двух. Отвязать старый Mac можно самому, в окне «Лицензия».</p></details>
+    <details class="k-q rv"><summary>Что будет через год?<span class="ms">expand_more</span></summary><p>Купленная версия работает всегда. Год включает обновления; новые версии после него — продлением.</p></details>
+    <details class="k-q rv"><summary>Какие нужны Mac и macOS?<span class="ms">expand_more</span></summary><p>Mac с Apple Silicon и macOS 26 или новее. Приложение подписано Developer ID и нотаризовано Apple — открывается без обходов.</p></details>
   </div>
 </section>
 
-<section class="k-end" aria-labelledby="end-h">
+<section class="k-end rv" aria-labelledby="end-h">
   <picture><source srcset="assets/mark-white.svg" media="(prefers-color-scheme: dark)"><img src="assets/mark.svg" alt="" width="56" height="56"></picture>
   <h2 id="end-h" class="k-h2">Попробуйте на своих серверах</h2>
   <p class="k-h2-sub">Бесплатная версия — без регистрации и пробного срока. Перенесите хосты из ~/.ssh/config за минуту.</p>
