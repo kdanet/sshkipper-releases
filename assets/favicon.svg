@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+<title>SSHKipper</title>
+<rect x="0" y="0" width="512" height="512" rx="115.2" fill="#13294B"></rect>
+<path d="M310.73 123.88L328.51 80.94" stroke="#FFFFFF" stroke-width="35.75" stroke-linecap="round"></path>
+<path d="M388.12 201.27L431.06 183.49" stroke="#FFFFFF" stroke-width="35.75" stroke-linecap="round"></path>
+<path d="M388.12 310.73L431.06 328.51" stroke="#FFFFFF" stroke-width="35.75" stroke-linecap="round"></path>
+<path d="M310.73 388.12L328.51 431.06" stroke="#FFFFFF" stroke-width="35.75" stroke-linecap="round"></path>
+<path d="M201.27 388.12L183.49 431.06" stroke="#FFFFFF" stroke-width="35.75" stroke-linecap="round"></path>
+<path d="M123.88 310.73L80.94 328.51" stroke="#FFFFFF" stroke-width="35.75" stroke-linecap="round"></path>
+<path d="M123.88 201.27L80.94 183.49" stroke="#FFFFFF" stroke-width="35.75" stroke-linecap="round"></path>
+<path d="M201.27 123.88L183.49 80.94" stroke="#FFFFFF" stroke-width="35.75" stroke-linecap="round"></path>
+<circle cx="256" cy="256" r="143.01" fill="none" stroke="#FFFFFF" stroke-width="28.6"></circle>
+<circle cx="256" cy="256" r="89.38" fill="#3D8BFF"></circle>
+<path d="M199.39 270.89C217.27 235.14 238.12 235.14 256 257.19C273.88 279.83 294.73 279.83 312.61 242.89" fill="none" stroke="#FFFFFF" stroke-width="23.52" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>

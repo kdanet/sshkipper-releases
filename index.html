@@ -3,75 +3,426 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SSHKipper — SSH-менеджер для macOS</title>
-<meta name="description" content="Нативный SSH-менеджер для macOS: цепочки бастионов с 2FA, зашифрованный документ с подключениями, Docker, Nginx, базы данных, автоматизации бэкапов и AI-агент в ваших сессиях.">
-<link rel="icon" type="image/png" href="assets/favicon.png">
-<link rel="stylesheet" href="assets/style.css">
-<link rel="alternate" hreflang="en" href="en/">
+<title>SSHKipper — нативный SSH-менеджер для macOS</title>
+<meta name="description" content="Нативный SSH-менеджер для macOS: цепочки бастионов с автоподстановкой 2FA, зашифрованный документ, службы серверов, файлы и хранилища, шесть видов баз данных, автоматизации и AI-ассистент в ваших сессиях.">
+<meta name="theme-color" content="#f6f6f3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0a0b0f" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://sshkipper.com/">
+<link rel="alternate" hreflang="ru" href="https://sshkipper.com/">
+<link rel="alternate" hreflang="en" href="https://sshkipper.com/en/">
+<link rel="alternate" hreflang="x-default" href="https://sshkipper.com/en/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SSHKipper">
+<meta property="og:title" content="SSHKipper — нативный SSH-менеджер для macOS">
+<meta property="og:description" content="Бастионы и 2FA без ручного ввода, службы, файлы, базы, автоматизации и AI-ассистент — в одном зашифрованном документе.">
+<meta property="og:url" content="https://sshkipper.com/">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:image" content="https://sshkipper.com/assets/shots/term.jpg">
+<meta property="og:image:width" content="1400">
+<meta property="og:image:height" content="875">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/icon-512.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Fonts from Google Fonts, as in the design handoff; can be self-hosted later. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600;700;800&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..24,400..600,0..1,0&amp;icon_names=account_tree,add,auto_awesome,autorenew,check_circle,chevron_right,cloud,cloud_upload,compress,database,deployed_code,dns,download,draft,fingerprint,flag,folder,folder_open,inventory_2,language,laptop_mac,lock,lock_open,progress_activity,radio_button_unchecked,sailing,schedule,search,settings,shield,speed,splitscreen_right,swap_horiz,terminal,view_sidebar,wifi&amp;display=block">
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/site.js" defer></script>
 </head>
 <body>
-<div class="wrap">
-  <header class="top">
-    <a class="brand" href="./"><img src="assets/icon.png" alt="">SSHKipper</a>
-    <nav>
-      <a href="#features">Возможности</a>
-      <a href="#install">Установка</a>
-      <a href="https://github.com/kdanet/SSHkipper/releases">Релизы</a>
-      <a class="lang" href="en/">English</a>
-    </nav>
-  </header>
+<a class="skip" href="#main">К содержимому</a>
+<header class="top wrap">
+  <a class="brand" href="#top"><picture><source srcset="assets/mark-white.svg" media="(prefers-color-scheme: dark)"><img src="assets/mark.svg" alt="" width="24" height="24"></picture>sshkipper</a>
+  <nav aria-label="Разделы страницы">
+    <a href="#demo">демо</a>
+    <a href="#features">возможности</a>
+    <a href="#pricing">цены</a>
+    <a href="#install">установка</a>
+    <a href="https://github.com/kdanet/sshkipper-releases/releases">релизы</a>
+  </nav>
+  <a class="lang-link" href="en/" hreflang="en" lang="en" aria-label="English version">EN</a>
+  <a class="btn-ink" href="https://github.com/kdanet/sshkipper-releases/releases/latest/download/SSHKipper.dmg">скачать</a>
+</header>
 
-  <div class="hero">
-    <img class="icon" src="assets/icon.png" alt="Значок SSHKipper">
-    <h1>SSH-менеджер для тех,<br>кто держит много серверов</h1>
-    <p class="lead">Нативное приложение для macOS: бастионы и 2FA без ручного ввода, все подключения в одном зашифрованном документе, службы серверов, базы данных, бэкапы по расписанию и AI-агент, который работает в ваших сессиях под вашим контролем.</p>
-    <a class="cta" href="https://github.com/kdanet/SSHkipper/releases/latest/download/SSHKipper.dmg">Скачать для macOS</a>
-    <div class="meta">macOS 26 и новее · Apple Silicon · обновляется само</div>
+<main id="main">
+<section id="top" class="hero wrap">
+  <div id="helm" class="helm"><picture><source srcset="assets/mark-white.svg" media="(prefers-color-scheme: dark)"><img class="helm-static" src="assets/mark.svg" alt="" width="128" height="128"></picture></div>
+  <h1>Проложите курс к любому серверу</h1>
+  <p class="lead">SSHKipper — нативный SSH-менеджер для macOS. Бастионы и 2FA без ручного ввода, службы серверов, файлы, шесть видов баз данных, автоматизации и AI-ассистент — в одном зашифрованном документе.</p>
+  <div class="ctas">
+    <a class="btn-acc" href="https://github.com/kdanet/sshkipper-releases/releases/latest/download/SSHKipper.dmg"><img src="assets/mark-white.svg" alt="" width="18" height="18"><span>Скачать для macOS</span></a>
+    <a class="btn-line" href="#pricing"><span class="acc" aria-hidden="true">~</span>Есть бесплатная версия</a>
   </div>
+  <p class="meta">macOS 26+ · Apple Silicon · нотаризовано Apple</p>
+</section>
 
-  <div class="shot"><img src="assets/shots/term.jpg" alt="Окно SSHKipper: подключение через два бастиона с кодами 2FA"></div>
+<section id="demo" class="demo-sec wrap" aria-labelledby="demo-h">
+  <h2 id="demo-h" class="visually-hidden">Демо: окно SSHKipper</h2>
+  <p class="demo-hint"><span class="acc">~/demo</span> — интерактивная копия окна — нажимайте на узлы дерева</p>
+  <div id="demo-app" class="demo"><img class="demo-static" loading="lazy" src="assets/shots/term.jpg" alt="Окно SSHKipper: дерево подключений и терминал после входа через два бастиона" width="1400" height="875"></div>
+  <p class="demo-note">Снимок настоящего окна. Интерактивное демо работает с включённым JavaScript.</p>
+</section>
 
-  <section id="features">
-    <h2>Возможности</h2>
-    <p class="sub">Сделано вместо Royal TSX для ежедневной работы администратора: никаких WebView и Electron, только родные контролы macOS.</p>
-    <div class="grid">
-      <div class="card"><div class="ico">🔐</div><h3>Бастионы и 2FA</h3><p>Цепочки через несколько бастионов с ключами, паролями и TOTP-кодами: SSHKipper входит сам, коды подставляет из документа.</p></div>
-      <div class="card"><div class="ico">🗄️</div><h3>Зашифрованный документ</h3><p>Подключения, пароли, ключи и секреты 2FA в одном файле: Argon2id и XChaCha20-Poly1305, разблокировка паролем или Touch ID.</p></div>
-      <div class="card"><div class="ico">🧭</div><h3>Профили сервера</h3><p>Один сервер — несколько путей: Tailscale, домашняя сеть, через бастион. Найденные хосты Tailscale и локальной сети появляются сами.</p></div>
-      <div class="card"><div class="ico">🐳</div><h3>Службы и дашборды</h3><p>Docker, Nginx с метриками из логов, Cron, Supervisor и дашборды сервера — прямо в дереве подключений.</p></div>
-      <div class="card"><div class="ico">📁</div><h3>Файлы и хранилища</h3><p>SFTP рядом с терминалом, двухпанельный менеджер, S3 и WebDAV, копирование напрямую между серверами.</p></div>
-      <div class="card"><div class="ico">🧮</div><h3>Базы данных</h3><p>MySQL, Redis и ClickHouse через SSH-туннель: таблицы, правка, запросы и AI-фильтры.</p></div>
-      <div class="card"><div class="ico">⚙️</div><h3>Автоматизации</h3><p>Бэкапы баз из готовых блоков — mysqldump, mydumper, XtraBackup, сжатие, шифрование age, в S3 — по расписанию и без вас.</p></div>
-      <div class="card"><div class="ico">✦</div><h3>AI-агент в сессиях</h3><p>Claude Code или Codex работают в ваших сессиях: режимы от «Строгого» до свободного, подтверждения, секреты маскируются.</p></div>
-      <div class="card"><div class="ico">🛶</div><h3>Туннели и строка меню</h3><p>Туннели и автоматизации работают в фоне: значок в строке меню показывает, что идёт, и включает туннели одним щелчком.</p></div>
+<section id="features" aria-labelledby="features-h">
+  <div class="feat-head wrap">
+    <div>
+      <h2 id="features-h" class="big">Всё, что нужно на вахте</h2>
+      <p class="sub">Сделано вместо Royal TSX для ежедневной работы администратора. Нативное приложение на AppKit — без Electron и WebView.</p>
     </div>
-  </section>
-
-  <section id="screens">
-    <h2>Как это выглядит</h2>
-    <div class="gallery">
-      <figure><img src="assets/shots/ai.jpg" alt="AI-агент в сессии"><figcaption>AI-агент смотрит сервер и спрашивает разрешения на всё, что меняет.</figcaption></figure>
-      <figure><img src="assets/shots/dash.jpg" alt="Дашборд сервера"><figcaption>Дашборд сервера: нагрузка, память, диски, контейнеры и ошибки nginx.</figcaption></figure>
-      <figure><img src="assets/shots/nginx.jpg" alt="Nginx"><figcaption>Nginx: сайты, запросы, ошибки и время ответа — из access-логов.</figcaption></figure>
-      <figure><img src="assets/shots/steps.jpg" alt="Автоматизация бэкапа"><figcaption>Бэкап базы: дамп, сжатие, хранилище и ротация — по шагам.</figcaption></figure>
-    </div>
-  </section>
-
-  <section id="install" class="install">
-    <h2>Установка</h2>
-    <p class="sub">Приложение подписано, но пока не нотаризовано Apple, поэтому при первом запуске macOS попросит подтверждение.</p>
+    <p class="total"><b>104</b> возможности в 10 разделах</p>
+  </div>
+  <nav class="toc" aria-label="Разделы возможностей">
     <ol>
-      <li>Скачайте <a href="https://github.com/kdanet/SSHkipper/releases/latest/download/SSHKipper.dmg">SSHKipper.dmg</a>, откройте его и перетащите SSHKipper в «Программы».</li>
-      <li>Запустите SSHKipper. Если macOS не откроет его: Системные настройки → Конфиденциальность и безопасность → «Всё равно открыть». Или в Терминале:
-        <pre>xattr -dr com.apple.quarantine /Applications/SSHKipper.app</pre></li>
-      <li>Создайте документ и задайте пароль. Свои хосты можно перенести: Файл → «Импорт из ~/.ssh/config…».</li>
-      <li>Дальше SSHKipper обновляется сам — новые версии приходят через встроенный механизм обновлений (Sparkle), подписанные ключом разработчика.</li>
+      <li><a href="#ch-connections"><span>01</span>connections</a></li>
+      <li><a href="#ch-terminal"><span>02</span>terminal</a></li>
+      <li><a href="#ch-services"><span>03</span>services</a></li>
+      <li><a href="#ch-files"><span>04</span>files</a></li>
+      <li><a href="#ch-databases"><span>05</span>databases</a></li>
+      <li><a href="#ch-automations"><span>06</span>automations</a></li>
+      <li><a href="#ch-agent"><span>07</span>agent</a></li>
+      <li><a href="#ch-diagrams"><span>08</span>diagrams</a></li>
+      <li><a href="#ch-vault"><span>09</span>vault</a></li>
+      <li><a href="#ch-app"><span>10</span>app</a></li>
     </ol>
-  </section>
+  </nav>
+  <div class="chapters wrap">
+    <section id="ch-connections" class="ch" aria-labelledby="ch-connections-h">
+      <div class="ch-top">
+        <div class="ch-text">
+          <p class="ch-path"><span class="muted">01</span><span class="acc">~/connections</span><span class="muted">· 14 возможностей</span></p>
+          <h3 id="ch-connections-h">Подключения и вход</h3>
+          <p class="ch-lead">Бастионы, 2FA, профили и туннели. SSHKipper сам проходит всю цепочку и подставляет коды — вы просто дважды щёлкаете по серверу.</p>
+        </div>
+        <div class="ch-vis"><div class="ins" data-kind="bastion" aria-hidden="true"></div></div>
+      </div>
+      <ul class="ch-items">
+        <li><h4>Цепочки бастионов</h4><p>Бастион может идти через другой бастион. Вход по всей цепочке без окон: ключ, ключ + 2FA, пароль + 2FA. Строка вкладки показывает, какие серверы пройдены.</p></li>
+        <li><h4>Автоподстановка 2FA</h4><p>Коды TOTP подставляются сами; повторный вход ждёт свежий код. Секрет — base32, otpauth://, экспорт Google Authenticator или QR-код с камеры либо картинки.</p></li>
+        <li><h4>Профили сервера</h4><p>Несколько путей к одному серверу: Tailscale, другой адрес, другой бастион. Профиль хранит только отличия; при сетевой ошибке пробуется следующий.</p></li>
+        <li><h4>Учётные данные</h4><p>Пользователь, пароль, ключ и 2FA одним узлом для многих серверов. Сохранённый пароль виден только после Touch ID или пароля macOS.</p></li>
+        <li><h4>SSH-ключи</h4><p>Создание ed25519, ECDSA и RSA, импорт ключей OpenSSH и PEM с паролем. Ключи живут только во встроенном ssh-agent и не пишутся на диск.</p></li>
+        <li><h4>Туннели</h4><p>К сервису, SOCKS-прокси и обратный. Включаются вручную, при разблокировке документа или вместе с сервером; после обрыва переподключаются сами.</p></li>
+      </ul>
+      <details class="ch-more">
+        <summary><span class="more">Ещё 8 возможностей</span><span class="less">Свернуть</span></summary>
+        <ul class="ch-items">
+        <li><h4>Сводка туннелей</h4><p>Все туннели с состоянием и переключателями в одном окошке: «Открыть в браузере», «Скопировать команду», «Выключить все».</p></li>
+        <li><h4>Прокси</h4><p>SOCKS5 или HTTP CONNECT с логином: через прокси идёт первый сервер цепочки, а «Проверить» доходит до самого сервера.</p></li>
+        <li><h4>Ключи серверов</h4><p>Отпечаток при первом входе, отказ при смене ключа — защита от подмены сервера. Свой список known_hosts с поиском.</p></li>
+        <li><h4>Один вход на сервер</h4><p>Вкладки, сплиты, файлы, Docker и базы одного сервера идут через одно соединение — без повторной 2FA.</p></li>
+        <li><h4>Свои опции ssh и команда после входа</h4><p>Опции наследуются от папки. Опции, которые действуют на этом Mac, и команды из чужого документа спрашивают вашего разрешения.</p></li>
+        <li><h4>Импорт ~/.ssh/config</h4><p>Алиасы, Include, ProxyJump и пробросы портов становятся подключениями, бастионами и туннелями. Повторный импорт не трогает ваши правки.</p></li>
+        <li><h4>Tailscale и локальная сеть</h4><p>Хосты tailnet и серверы, найденные в сети по Bonjour и проверке портов SSH, появляются в дереве сами и наследуют настройки папки.</p></li>
+        <li><h4>Быстрое подключение</h4><p>Вставьте user@host:port, ssh -p … или ssh://… — подключитесь без сохранения или сохраните одной клавишей.</p></li>
+        </ul>
+      </details>
+    </section>
+    <section id="ch-terminal" class="ch" aria-labelledby="ch-terminal-h">
+      <div class="ch-top">
+        <div class="ch-text">
+          <p class="ch-path"><span class="muted">02</span><span class="acc">~/terminal</span><span class="muted">· 11 возможностей</span></p>
+          <h3 id="ch-terminal-h">Терминал на движке Ghostty</h3>
+          <p class="ch-lead">Быстрый GPU-рендер Ghostty: большой вывод без задержек, кириллица, точные цвета. Вкладки, сплиты, tmux и сниппеты.</p>
+        </div>
+        <div class="ch-vis"><div class="ins" data-kind="terminal" aria-hidden="true"></div></div>
+      </div>
+      <ul class="ch-items">
+        <li><h4>Вкладки и сплиты</h4><p>Разделение вправо и вниз, у каждой панели своя оболочка. Короткие названия и список всех вкладок, когда их много.</p></li>
+        <li><h4>Сессии tmux на сервере</h4><p>Вкладка живёт в tmux: после обрыва или ⌘R вы возвращаетесь туда же, фоновые задачи продолжают работать.</p></li>
+        <li><h4>Ввод во все вкладки</h4><p>Набранное уходит во все живые терминалы окна, участники выделены рамкой. Серверы Production — только по явному выбору.</p></li>
+        <li><h4>Сниппеты</h4><p>Команды с полями {{ host }}, {{ user }} и вопросами: вставить, выполнить или запустить на нескольких серверах с итогом по каждому.</p></li>
+        <li><h4>Наборы вкладок</h4><p>Сохраните открытые вкладки со сплитами, папками и сессиями tmux и откройте их снова одним щелчком.</p></li>
+        <li><h4>Локальный терминал</h4><p>Оболочка этого Mac как узел документа: папка, команда при запуске и переменные.</p></li>
+      </ul>
+      <details class="ch-more">
+        <summary><span class="more">Ещё 5 возможностей</span><span class="less">Свернуть</span></summary>
+        <ul class="ch-items">
+        <li><h4>Журналы сессий</h4><p>Запись вывода терминала с маскировкой секретов, файлы зашифрованы ключом документа; поиск и экспорт в asciinema или текст.</p></li>
+        <li><h4>Поиск в выводе</h4><p>По экрану и истории, в tmux тоже.</p></li>
+        <li><h4>Буфер обмена с сервера</h4><p>tmux и vim на сервере пишут в буфер Mac через OSC 52 — только с вашего разрешения.</p></li>
+        <li><h4>Безопасный ввод</h4><p>Пока терминал принимает ввод, другие программы не перехватывают нажатия — пароли и коды 2FA тоже.</p></li>
+        <li><h4>Темы и шрифты</h4><p>Встроенный JetBrains Mono, форма курсора, цвета для светлой и тёмной темы, импорт тем Ghostty.</p></li>
+        </ul>
+      </details>
+    </section>
+    <section id="ch-services" class="ch" aria-labelledby="ch-services-h">
+      <div class="ch-top">
+        <div class="ch-text">
+          <p class="ch-path"><span class="muted">03</span><span class="acc">~/services</span><span class="muted">· 12 возможностей</span></p>
+          <h3 id="ch-services-h">Службы сервера</h3>
+          <p class="ch-lead">Сервер раскрывается в дереве в свои службы. Одна вкладка на сервер: дашборд, Docker, Nginx, Caddy, Cron, Supervisor, Firewall.</p>
+        </div>
+        <div class="ch-vis"><div class="ins" data-kind="services" aria-hidden="true"></div></div>
+      </div>
+      <ul class="ch-items">
+        <li><h4>Дашборд сервера</h4><p>Нагрузка, CPU, память, диски, сеть и службы. Плитки меняют размер и порядок мышью; данные собираются одним запросом и только пока вкладка открыта.</p></li>
+        <li><h4>Свои виджеты</h4><p>Готовая метрика или свой скрипт с порогами. «Описать для AI» собирает виджет по описанию словами; скрипт запускается только после вашего разрешения.</p></li>
+        <li><h4>Docker и Compose</h4><p>Проекты и контейнеры со статусом и health, нагрузка, логи, терминал в контейнере, действия с подтверждением, проброс порта. И Docker этого Mac.</p></li>
+        <li><h4>Nginx</h4><p>Сайты из конфигурации без root: запросы в минуту, 2xx/4xx/5xx, p95, медленные маршруты, IP-адреса, ошибки; проверка конфигурации и reload.</p></li>
+        <li><h4>Caddy</h4><p>Сайты из admin API, JSON-логи из файла, journald или Docker, графики, ошибки и сертификаты со сроками.</p></li>
+        <li><h4>Cron</h4><p>Задачи из всех источников, расписание словами, ближайшие запуски по часам и поясу сервера, логи задачи.</p></li>
+      </ul>
+      <details class="ch-more">
+        <summary><span class="more">Ещё 6 возможностей</span><span class="less">Свернуть</span></summary>
+        <ul class="ch-items">
+        <li><h4>Supervisor</h4><p>Упавшие программы карточками с концом лога; start, stop, restart и update с подтверждением.</p></li>
+        <li><h4>Firewall</h4><p>ufw, firewalld, nftables, iptables: кто может подключиться к каждому порту — интернет, Tailscale, локальная сеть, VPN. Правила только показываются, не меняются.</p></li>
+        <li><h4>Fail2ban</h4><p>Правила jail словами, кто забанен и на сколько, график и журнал; «Разбанить…» объясняет, что произойдёт.</p></li>
+        <li><h4>Хост Proxmox</h4><p>Для ВМ на Proxmox firewall хоста показывается шагом «перед сервером».</p></li>
+        <li><h4>Службы в контейнере</h4><p>Nginx, cron, supervisor, Caddy и fail2ban, работающие внутри Docker, видны так же, как на сервере.</p></li>
+        <li><h4>Логи с AI</h4><p>Поток логов по SSH с фильтрами и уровнями. Вопрос словами становится фильтром или разбором со ссылками на строки.</p></li>
+        </ul>
+      </details>
+    </section>
+    <section id="ch-files" class="ch" aria-labelledby="ch-files-h">
+      <div class="ch-top">
+        <div class="ch-text">
+          <p class="ch-path"><span class="muted">04</span><span class="acc">~/files</span><span class="muted">· 9 возможностей</span></p>
+          <h3 id="ch-files-h">Файлы и хранилища</h3>
+          <p class="ch-lead">SFTP рядом с терминалом, двухпанельный менеджер, S3 и WebDAV в том же дереве. Между серверами и в S3 файлы могут идти напрямую, минуя Mac.</p>
+        </div>
+        <div class="ch-vis"><div class="ins" data-kind="files" aria-hidden="true"></div></div>
+      </div>
+      <ul class="ch-items">
+        <li><h4>Панель SFTP</h4><p>Файлы сервера справа от терминала; панель следует за cd.</p></li>
+        <li><h4>Двухпанельный менеджер</h4><p>Mac ⇄ сервер ⇄ хранилище, перетаскивание в обе стороны, в Finder и из Finder.</p></li>
+        <li><h4>Очередь передач</h4><p>Пауза, продолжение и докачка, понятные конфликты имён; закрытие вкладки передачу не обрывает.</p></li>
+        <li><h4>Напрямую между серверами</h4><p>Файл с сервера за бастионом копируется прямо на бастион: 2FA вводит приложение, контрольная сумма сверяется.</p></li>
+        <li><h4>Сервер ↔ S3 напрямую</h4><p>Файлы идут между сервером и бакетом по временным ссылкам, без Mac посередине.</p></li>
+        <li><h4>S3</h4><p>AWS, Yandex Object Storage, VK Cloud, Selectel, Cloudflare R2, Backblaze B2, MinIO; ссылки для скачивания на час, день или неделю.</p></li>
+      </ul>
+      <details class="ch-more">
+        <summary><span class="more">Ещё 3 возможности</span><span class="less">Свернуть</span></summary>
+        <ul class="ch-items">
+        <li><h4>WebDAV и Nextcloud</h4><p>Яндекс Диск, Synology, pCloud, Koofr; Nextcloud — со входом через браузер. Большие файлы — частями с продолжением.</p></li>
+        <li><h4>Правка во внешнем редакторе</h4><p>Файл сервера или хранилища открывается в редакторе Mac, сохранение уходит обратно.</p></li>
+        <li><h4>Права и Quick Look</h4><p>Права для нескольких файлов сразу и рекурсивно, превью пробелом.</p></li>
+        </ul>
+      </details>
+    </section>
+    <section id="ch-databases" class="ch" aria-labelledby="ch-databases-h">
+      <div class="ch-top">
+        <div class="ch-text">
+          <p class="ch-path"><span class="muted">05</span><span class="acc">~/databases</span><span class="muted">· 10 возможностей</span></p>
+          <h3 id="ch-databases-h">Базы данных</h3>
+          <p class="ch-lead">Шесть движков через ту же цепочку бастионов, без ручных туннелей. Таблицы, запросы, схема и AI.</p>
+        </div>
+        <div class="ch-vis"><div class="ins" data-kind="db" aria-hidden="true"></div></div>
+      </div>
+      <ul class="ch-items">
+        <li><h4>Шесть движков</h4><p>MySQL и MariaDB, PostgreSQL, Redis и Valkey, ClickHouse, MongoDB, SQLite — через сервер или прямо с этого Mac.</p></li>
+        <li><h4>Таблица с правкой</h4><p>Фильтры по колонкам, сортировка на сервере, правка ячеек и строк — с показом SQL и записью одной транзакцией.</p></li>
+        <li><h4>Редактор запросов</h4><p>Подсветка, автодополнение таблиц и колонок, несколько результатов, история, экспорт CSV и JSON.</p></li>
+        <li><h4>Структура и схема</h4><p>Колонки, индексы, внешние ключи, DDL и схема связей всей базы.</p></li>
+        <li><h4>AI-фильтр и «Составить запрос»</h4><p>Слова превращаются в условие фильтра или в SQL по схеме базы. Сам запрос не выполняется — решаете вы.</p></li>
+        <li><h4>Production и «Только чтение»</h4><p>В Production каждое изменение — окно с полным текстом и проверкой AI по кнопке; «Только чтение» запрещает изменения.</p></li>
+      </ul>
+      <details class="ch-more">
+        <summary><span class="more">Ещё 4 возможности</span><span class="less">Свернуть</span></summary>
+        <ul class="ch-items">
+        <li><h4>Redis</h4><p>Ключи по шаблону, память по префиксам, значения всех основных типов с правкой, консоль.</p></li>
+        <li><h4>MongoDB</h4><p>Коллекции, документы таблицей или деревом, фильтры и конвейеры агрегации, правка с сохранением типов.</p></li>
+        <li><h4>SQLite на сервере и на Mac</h4><p>Файл базы на сервере за бастионами или на этом Mac; по умолчанию — только чтение.</p></li>
+        <li><h4>Драйверы отдельно</h4><p>Драйверы — отдельное расширение, вложенное в приложение и устанавливаемое одним нажатием. Оно получает только порт и пароль одной базы.</p></li>
+        </ul>
+      </details>
+    </section>
+    <section id="ch-automations" class="ch" aria-labelledby="ch-automations-h">
+      <div class="ch-top">
+        <div class="ch-text">
+          <p class="ch-path"><span class="muted">06</span><span class="acc">~/automations</span><span class="muted">· 12 возможностей</span></p>
+          <h3 id="ch-automations-h">Автоматизации</h3>
+          <p class="ch-lead">Сценарии из модулей на полотне: бэкапы, проверки и обслуживание — по расписанию, по событию или прямо на сервере.</p>
+        </div>
+        <div class="ch-vis"><div class="ins" data-kind="auto" aria-hidden="true"></div></div>
+      </div>
+      <ul class="ch-items">
+        <li><h4>Полотно модулей</h4><p>Подключение, команда, скрипт, условие, файлы, хранилища, AI и итог соединяются связями; несовместимые входы видно сразу.</p></li>
+        <li><h4>Библиотека готовых модулей</h4><p>Дамп MySQL, mydumper, XtraBackup, бэкап ClickHouse, снимок Redis, архив папки, rsync, проверка сайта, Docker, systemd.</p></li>
+        <li><h4>Свои модули</h4><p>Входы, параметры, команда с полями и проверка на сервере — модуль под свою задачу. Выполняется на сервере, в контейнере или на этом Mac.</p></li>
+        <li><h4>Расписание и события</h4><p>Построитель без синтаксиса cron, запуск после другой автоматизации или по событию: контейнер упал, FATAL в supervisor, 5xx в nginx, порог метрики.</p></li>
+        <li><h4>Вопрос, пауза, условие</h4><p>«Спросить меня» — в окне, строке меню или Telegram, «Подождать до 04:30», ветвление «да / нет».</p></li>
+        <li><h4>На сервере по cron</h4><p>Автоматизация одного сервера ставится в его crontab и работает без Mac; секреты — файлами с доступом только для владельца и только по вашему разрешению.</p></li>
+      </ul>
+      <details class="ch-more">
+        <summary><span class="more">Ещё 6 возможностей</span><span class="less">Свернуть</span></summary>
+        <ul class="ch-items">
+        <li><h4>Сжатие, шифрование, хранилища</h4><p>zstd, gzip, pigz, шифрование age, выгрузка в S3, WebDAV, на этот Mac или внешний диск, ротация старых копий.</p></li>
+        <li><h4>Проверка восстановлением</h4><p>Копия загружается в базу во временном контейнере Docker на этом Mac и сверяется по таблицам — бэкап точно рабочий.</p></li>
+        <li><h4>Разрешение и запуск без вас</h4><p>Перед первым запуском — окно со всеми командами и секретами словами. Без человека проходит только тихий вход; если нужен ответ, автоматизация ждёт вас.</p></li>
+        <li><h4>AI в автоматизациях</h4><p>Черновик сценария по описанию, модуль «Агент» с отчётом, «Почему упало?» по журналу запуска.</p></li>
+        <li><h4>Итог и Telegram</h4><p>Статус, сводка и метрики; уведомления macOS и Telegram — при проблемах, при смене статуса или всегда.</p></li>
+        <li><h4>Все автоматизации</h4><p>Одна вкладка со всеми: что в норме, что с проблемами, что ждёт вас, когда следующие запуски.</p></li>
+        </ul>
+      </details>
+    </section>
+    <section id="ch-agent" class="ch" aria-labelledby="ch-agent-h">
+      <div class="ch-top">
+        <div class="ch-text">
+          <p class="ch-path"><span class="muted">07</span><span class="acc">~/agent</span><span class="muted">· 12 возможностей</span></p>
+          <h3 id="ch-agent-h">AI-ассистент и MCP</h3>
+          <p class="ch-lead">Агент работает в ваших сессиях, но не получает паролей, ключей и адресов. Всё, что меняет сервер, — с вашего разрешения.</p>
+        </div>
+        <div class="ch-vis"><div class="ins" data-kind="ai" aria-hidden="true"></div></div>
+      </div>
+      <ul class="ch-items">
+        <li><h4>Ваши провайдеры</h4><p>Claude Code, Codex, Cursor и ACP-агенты (Gemini CLI, Goose и другие) или API: Anthropic и OpenAI-совместимые, включая Ollama и LM Studio.</p></li>
+        <li><h4>Режимы доступа</h4><p>Строгий, Только чтение, Безопасная запись, Без ограничений — на сервер или папку. AI-доступ к узлу можно запретить совсем.</p></li>
+        <li><h4>Карточки подтверждения</h4><p>Команда, зачем она агенту и что о ней думает SSHKipper. «Запомнить ответ» — до конца сессии или по шаблону.</p></li>
+        <li><h4>План из нескольких команд</h4><p>Шаги с оценкой и откатом одной карточкой: разрешили — шаги идут без лишних вопросов.</p></li>
+        <li><h4>Проверка второй моделью</h4><p>Отдельная модель объясняет, что сделает команда и чем рискованна, и ставит метку риска.</p></li>
+        <li><h4>Метка Production</h4><p>Перезапуски на боевых серверах спрашивают красной карточкой, вторая модель не пропускает их молча.</p></li>
+      </ul>
+      <details class="ch-more">
+        <summary><span class="more">Ещё 6 возможностей</span><span class="less">Свернуть</span></summary>
+        <ul class="ch-items">
+        <li><h4>Секреты для sudo</h4><p>Агент просит ввести сохранённый пароль, вы подтверждаете Touch ID — значения он не видит.</p></li>
+        <li><h4>Команды агента на виду</h4><p>Под терминалом сервера — каждая команда агента с причиной, выводом и кодом выхода. Ваша оболочка не меняется.</p></li>
+        <li><h4>MCP для внешних агентов</h4><p>Claude Code, Codex, Cursor и другие MCP-клиенты получают те же инструменты, режимы, подтверждения и маскировку.</p></li>
+        <li><h4>Виды в ответах</h4><p>Метрики, графики, таблицы и схемы прямо в ленте чата; ответ можно открыть отдельной вкладкой.</p></li>
+        <li><h4>Поиск в интернете</h4><p>Claude Code и Codex в панели ищут уязвимости, версии и документацию; оболочки и файлов Mac у них нет.</p></li>
+        <li><h4>Чаты и отзыв доступа</h4><p>Чаты по серверам, история зашифрована ключом документа. Одно действие снимает доступ AI ко всем сессиям.</p></li>
+        </ul>
+      </details>
+    </section>
+    <section id="ch-diagrams" class="ch" aria-labelledby="ch-diagrams-h">
+      <div class="ch-top">
+        <div class="ch-text">
+          <p class="ch-path"><span class="muted">08</span><span class="acc">~/diagrams</span><span class="muted">· 6 возможностей</span></p>
+          <h3 id="ch-diagrams-h">Схемы</h3>
+          <p class="ch-lead">SSHKipper рисует, как устроена ваша инфраструктура, и оживляет схему данными серверов.</p>
+        </div>
+        <div class="ch-vis"><div class="ins" data-kind="canvas" aria-hidden="true"></div></div>
+      </div>
+      <ul class="ch-items">
+        <li><h4>Схема маршрута</h4><p>Как этот Mac доходит до сервера: бастионы, прокси, ключи, коды 2FA — по фактам из документа.</p></li>
+        <li><h4>Холст схем</h4><p>Узлы документа, вложенные рамки (сервер ⊃ сеть ⊃ контейнеры) и связи; копия картинкой или PNG.</p></li>
+        <li><h4>Шаги</h4><p>Схему можно проиграть по шагам: части подсвечиваются, по связям бежит точка.</p></li>
+        <li><h4>Живые узлы</h4><p>Docker, nginx, supervisor и cron на схеме показывают текущее состояние сервера.</p></li>
+        <li><h4>Спросить AI о части</h4><p>Выделите блоки — «Подробнее», «Раскрыть, что внутри», «Объяснить по шагам», и агент дорисует схему.</p></li>
+        <li><h4>Сохранение в документ</h4><p>Схемы и виды хранятся рядом с подключениями; при открытии ничего не запускается.</p></li>
+      </ul>
+    </section>
+    <section id="ch-vault" class="ch" aria-labelledby="ch-vault-h">
+      <div class="ch-top">
+        <div class="ch-text">
+          <p class="ch-path"><span class="muted">09</span><span class="acc">~/vault</span><span class="muted">· 8 возможностей</span></p>
+          <h3 id="ch-vault-h">Документ и безопасность</h3>
+          <p class="ch-lead">Всё хранится в одном зашифрованном файле. Безопасность не продаётся: всё это есть и в бесплатной версии.</p>
+        </div>
+        <div class="ch-vis"><div class="ins" data-kind="sec" aria-hidden="true"></div></div>
+      </div>
+      <ul class="ch-items">
+        <li><h4>Зашифрованный документ</h4><p>Argon2id и XChaCha20-Poly1305: дерево, пароли, ключи и секреты 2FA в одном файле.</p></li>
+        <li><h4>Touch ID и ключ восстановления</h4><p>Открывайте документ отпечатком пальца, а ключ восстановления выручит, если забыли пароль.</p></li>
+        <li><h4>Автоблокировка</h4><p>При блокировке экрана, сне Mac или простое. Блокировка экрана и сон всегда отзывают доступ AI.</p></li>
+        <li><h4>Резервные копии и экспорт</h4><p>Пять прошлых версий файла, зашифрованных, как и он сам; экспорт в OpenSSH config без секретов.</p></li>
+        <li><h4>Несколько документов</h4><p>Работа и личное — разные файлы, каждый блокируется отдельно.</p></li>
+        <li><h4>Маскирование секретов</h4><p>Всё, что уходит модели, проходит потоковую маскировку: значения из документа, ключи, токены, пароли.</p></li>
+      </ul>
+      <details class="ch-more">
+        <summary><span class="more">Ещё 2 возможности</span><span class="less">Свернуть</span></summary>
+        <ul class="ch-items">
+        <li><h4>Журнал аудита</h4><p>Каждый вызов инструмента агентом записывается после маскировки, записи связаны в цепочку.</p></li>
+        <li><h4>Разрешения «на этом Mac»</h4><p>Команды и скрипты из чужого документа не выполнятся без разрешения, которое хранится на вашем Mac, а не в документе.</p></li>
+        </ul>
+      </details>
+    </section>
+    <section id="ch-app" class="ch" aria-labelledby="ch-app-h">
+      <div class="ch-top">
+        <div class="ch-text">
+          <p class="ch-path"><span class="muted">10</span><span class="acc">~/app</span><span class="muted">· 10 возможностей</span></p>
+          <h3 id="ch-app-h">Дерево, запуск и строка меню</h3>
+          <p class="ch-lead">Нативное приложение на AppKit, без Electron и WebView. Сотни серверов в дереве — и всё находится за секунду.</p>
+        </div>
+        <div class="ch-vis"><div class="ins" data-kind="menubar" aria-hidden="true"></div></div>
+      </div>
+      <ul class="ch-items">
+        <li><h4>Дерево с наследованием</h4><p>Структуру задаёте вы. Папки передают вложенным серверам пользователя, бастион, прокси, Docker и режим AI.</p></li>
+        <li><h4>Режим «По папкам»</h4><p>Одна папка за раз со строкой пути и историей, как в Finder.</p></li>
+        <li><h4>Быстрый запуск ⇧⇧</h4><p>Поиск по серверам, базам, туннелям, вкладкам, чатам и действиям. Набор в русской раскладке находит латинские имена.</p></li>
+        <li><h4>Избранное, иконки, цвета</h4><p>Логотипы ОС и сервисов, цветные метки подкрашивают вкладку.</p></li>
+        <li><h4>Строка меню</h4><p>Штурвал показывает автоматизации и туннели и отвечает на «Спросить меня».</p></li>
+        <li><h4>Работа в фоне</h4><p>Окно закрыто — туннели и расписания работают, нагрузка на процессор почти нулевая.</p></li>
+      </ul>
+      <details class="ch-more">
+        <summary><span class="more">Ещё 4 возможности</span><span class="less">Свернуть</span></summary>
+        <ul class="ch-items">
+        <li><h4>Меню Dock</h4><p>Подключиться к серверу или заблокировать документы, не открывая окно.</p></li>
+        <li><h4>Три языка</h4><p>Русский, English, 简体中文. AI отвечает на выбранном языке.</p></li>
+        <li><h4>Модули</h4><p>Свои интеграции: служба сервера со своей страницей, действиями и блоками автоматизаций. Набор для разработчиков готовится к публикации.</p></li>
+        <li><h4>Обновления</h4><p>Новые версии приходят через встроенный механизм обновлений, подписанные разработчиком.</p></li>
+        </ul>
+      </details>
+    </section>
+  </div>
+</section>
 
-  <footer>
-    SSHKipper · <a href="https://github.com/kdanet/SSHkipper/releases">Все релизы и что нового</a> · <a href="en/">English</a>
-  </footer>
-</div>
+<section id="pricing" class="pricing wrap" aria-labelledby="pricing-h">
+  <header>
+    <h2 id="pricing-h" class="big">Бесплатно для пары серверов</h2>
+    <p class="sub">Один DMG для всех. Без ключа — бесплатная версия: в ней есть всё, но с лимитами. С ключом — полная. Пробного периода нет: бесплатная версия и есть проба.</p>
+  </header>
+  <div class="plans">
+    <article class="plan">
+      <h3>Бесплатная версия</h3>
+      <p class="price"><strong>0 ₽</strong><span>навсегда</span></p>
+      <ul>
+        <li>1 открытый документ</li>
+        <li>5 подключений</li>
+        <li>1 открытый терминал</li>
+        <li>1 автоматизация, запуск вручную</li>
+        <li>5 сообщений AI-ассистенту в чате (новый чат — снова 5)</li>
+        <li>1 включённый туннель, 1 база данных, 1 хранилище</li>
+      </ul>
+      <p class="small">Документ больше лимитов — например, от коллеги — открывается только для чтения.</p>
+      <a class="btn" href="https://github.com/kdanet/sshkipper-releases/releases/latest/download/SSHKipper.dmg">Скачать</a>
+    </article>
+    <article class="plan full">
+      <h3>Полная версия</h3>
+      <!-- PRICE: replace the text below when the price is decided -->
+      <p class="price"><strong id="price">Цена — скоро</strong><span>лицензия навсегда + год обновлений</span></p>
+      <ul>
+        <li>Без лимитов</li>
+        <li>Расписания, события и запуск на сервере в автоматизациях</li>
+        <li>AI-ассистент без лимита сообщений</li>
+        <li>Один ключ — на 2 Mac</li>
+        <li>Отвязать Mac можно самому</li>
+        <li>Купленная версия работает всегда, обновления после года — продлением</li>
+      </ul>
+      <p class="small">Оплата появится вместе с ценой.</p>
+      <a class="btn" href="/buy/">Купить</a>
+    </article>
+  </div>
+  <p class="always">Всегда бесплатно: шифрование документа, Touch ID, проверка ключей серверов, маскировка секретов, экспорт и резервные копии.</p>
+</section>
+
+<section id="install" class="install wrap" aria-labelledby="install-h">
+  <div>
+    <h2 id="install-h">Установка за минуту</h2>
+    <p class="sub">Приложение подписано Developer ID и нотаризовано Apple — открывается сразу, без обходов. Нужен Mac с Apple Silicon и macOS 26 или новее.</p>
+    <a class="btn-acc" href="https://github.com/kdanet/sshkipper-releases/releases/latest/download/SSHKipper.dmg"><img src="assets/mark-white.svg" alt="" width="18" height="18"><span>Скачать для macOS</span></a>
+    <p class="meta">macOS 26+ · Apple Silicon · нотаризовано Apple</p>
+  </div>
+  <div class="term-card">
+    <div class="bar" aria-hidden="true"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span>install.md</span></div>
+    <ol>
+      <li>Скачайте SSHKipper.dmg, откройте его и перетащите SSHKipper в «Программы».</li>
+      <li>Создайте документ: имя, мастер-пароль и ключ восстановления — сохраните его.</li>
+      <li>Перенесите свои хосты: Файл → «Импорт из ~/.ssh/config…» <kbd>⇧⌘I</kbd> — вместе с бастионами и туннелями.</li>
+      <li>Новые версии приходят через встроенный механизм обновлений.</li>
+    </ol>
+  </div>
+</section>
+</main>
+
+<footer class="foot wrap">
+  <b>sshkipper</b>
+  <a href="https://github.com/kdanet/sshkipper-releases/releases">Все релизы и что нового</a>
+  <a class="plain" href="en/" hreflang="en">English version</a>
+  <span class="end">Интерфейс: русский, English, 中文</span>
+</footer>
 </body>
 </html>
