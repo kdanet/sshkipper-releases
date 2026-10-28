@@ -164,13 +164,14 @@
     mark();
   }
 
-  // The services page's segmented control: its pill sits under «Dashboard» or «Nginx».
-  function seg(app, nginx) {
-    var pill = app.querySelector('.segpill'), el = app.querySelector(nginx ? '.js-nginx' : '.js-dash');
+  // The services page's segmented control: the pill slides under the section shown.
+  var VIEWS = ['dash', 'nginx', 'docker', 'sup', 'cron', 'sec'];
+  function seg(app, key) {
+    var pill = app.querySelector('.segpill'), el = app.querySelector('.js-' + key);
     if (pill && el) { pill.style.left = el.offsetLeft + 'px'; pill.style.width = el.offsetWidth + 'px'; }
-    app.classList.toggle('nginx', !!nginx);
+    app.dataset.v = key;
   }
-  $$(document, '.app.page').forEach(function (app) { if (!app.classList.contains('frag')) seg(app, false); });
+  $$(document, '.app.page').forEach(function (app) { seg(app, 'dash'); });
 
   function lines(app) { return $$(app, '.w-term .tl'); }
   // Adds a class to each element in turn; returns when the last one happens.
@@ -300,6 +301,16 @@
       },
       null
     ],
+    services: VIEWS.map(function (v, i) {
+      return function (app, tl, cam) {
+        seg(app, v);
+        if (v === 'sec') {
+          tl.at(1150, function () { cam.ringOn(true); });
+          tl.at(3000, function () { cam.ringOn(false); cam.look('.v-sec .fwh.f2, .v-sec .fpc, .v-sec .fpw', '.v-sec .fpath'); });
+          tl.at(3700, function () { cam.ringOn(true); });
+        } else tl.at(1150, function () { cam.ringOn(true); });
+      };
+    }),
     databases: [
       function (app, tl, cam) {
         var tx = app.querySelector('.js-type .tx');
@@ -379,7 +390,7 @@
   var FINAL = {
     bastions: function (app, i) { app.classList.toggle('done', i === 2); app.classList.toggle('play', i === 0); lines(app).forEach(function (l) { l.classList.add('in'); }); },
     agent: function (app) { app.classList.remove('play'); $$(app, '.js-rv').forEach(function (x) { x.classList.add('in'); }); },
-    services: function (app, i) { if (!app.classList.contains('frag')) seg(app, i === 1); },
+    services: function (app, i) { seg(app, VIEWS[i]); },
     databases: function (app) { app.classList.remove('play'); },
     terminal: function (app, i) { if (!app.classList.contains('win')) app.classList.remove('play'); app.classList.toggle('menu', i === 1); },
     tunnels: function (app) { app.classList.remove('play'); $$(app, '.js-tw').forEach(function (x) { x.classList.add('on'); }); },
@@ -391,7 +402,7 @@
     var scams = $$(story, '.k-cam').map(function (el) { return el._cam; }), btns = $$(story, '.k-step');
     var path = story.querySelector('.k-hops');
     var tl = new Timeline(), cur = 0, visible = false;
-    var DUR = btns.map(function (b, i) { return id === 'bastions' && i === 1 ? 6000 : id === 'automations' && i === 3 ? 9500 : id === 'databases' && i === 2 ? 8000 : id === 'agent' && (i === 6 || i === 7) ? 7000 : 5400; });
+    var DUR = btns.map(function (b, i) { return id === 'bastions' && i === 1 ? 6000 : id === 'automations' && i === 3 ? 9500 : id === 'databases' && i === 2 ? 8000 : id === 'agent' && (i === 6 || i === 7) ? 7000 : id === 'services' && i === 5 ? 8000 : 5400; });
     function go(i, auto) {
       tl.stop(); cur = i;
       btns.forEach(function (b, k) { b.classList.toggle('on', k === i); b.classList.remove('run'); b.setAttribute('aria-current', k === i ? 'step' : 'false'); });
