@@ -266,6 +266,40 @@
         tl.at(t, function () { cam.ringOn(true); });
       }
     ],
+    terminal: [
+      function (app, tl, cam) { app.classList.remove('menu'); tl.at(1150, function () { cam.ringOn(true); }); },
+      // the tab's mark opens its sessions menu
+      function (app, tl, cam) { app.classList.remove('menu'); tl.at(900, function () { app.classList.add('menu'); }); tl.at(1300, function () { cam.ringOn(true); }); },
+      // the command runs on the group: servers answer one by one
+      function (app, tl, cam) {
+        var rows = $$(app, '.js-sn');
+        app.classList.add('play'); rows.forEach(function (r) { r.classList.remove('in'); });
+        var t = reveal(rows, tl, 450, 800);
+        tl.at(t, function () { cam.ringOn(true); });
+      },
+      // typed once, run in both panes
+      function (app, tl, cam) {
+        var typed = $$(app, '.js-typed'), outs = $$(app, '.js-out');
+        app.classList.add('play'); app.classList.remove('ran');
+        typed.forEach(function (x) { x.textContent = ''; });
+        outs.forEach(function (o) { o.classList.remove('in'); });
+        var word = 'uptime', t = 900;
+        for (var i = 1; i <= word.length; i++) (function (k) { tl.at(t + k * 140, function () { typed.forEach(function (x) { x.textContent = word.slice(0, k); }); }); })(i);
+        t += word.length * 140 + 500;
+        tl.at(t, function () { app.classList.add('ran'); outs.forEach(function (o) { o.classList.add('in'); }); cam.ringOn(true); });
+      }
+    ],
+    tunnels: [
+      null,
+      // the switch goes on, the port appears
+      function (app, tl, cam) {
+        var sw = $$(app, '.js-tw');
+        app.classList.add('play'); sw.forEach(function (x) { x.classList.remove('on'); });
+        tl.at(1100, function () { sw.forEach(function (x) { x.classList.add('on'); }); });
+        tl.at(1500, function () { cam.ringOn(true); });
+      },
+      null
+    ],
     databases: [
       function (app, tl, cam) {
         var tx = app.querySelector('.js-type .tx');
@@ -347,6 +381,8 @@
     agent: function (app) { app.classList.remove('play'); $$(app, '.js-rv').forEach(function (x) { x.classList.add('in'); }); },
     services: function (app, i) { if (!app.classList.contains('frag')) seg(app, i === 1); },
     databases: function (app) { app.classList.remove('play'); },
+    terminal: function (app, i) { if (!app.classList.contains('win')) app.classList.remove('play'); app.classList.toggle('menu', i === 1); },
+    tunnels: function (app) { app.classList.remove('play'); $$(app, '.js-tw').forEach(function (x) { x.classList.add('on'); }); },
     automations: function (app) { app.classList.remove('play'); }
   };
 
