@@ -1093,3 +1093,18 @@ html[lang="en"] .frag .side .f-head, html[lang="en"] .frag .side .f-row { grid-t
 .gf-p b { font-size: 13px; font-weight: 500; color: #ccccdc; } .gf-p svg { width: 100%; height: 162px; display: block; margin-top: 6px; }
 .gf-p polyline { fill: none; stroke-width: 1.6; }
 .tmx .tm-menu { opacity: 0; transform: translateY(-4px); transition: opacity .25s, transform .25s; } .app.menu .tmx .tm-menu, .app:not(.play) .tmx .tm-menu.always { opacity: 1; transform: none; }
+
+/* Node logos (NodeIcons.brand): brand colour, deepened on light and lifted on dark; black and white brands follow the text */
+svg.lgo { fill: var(--lc, currentColor); flex: none; }
+.a-row svg.lgo { width: 16px; height: 16px; margin: 0 1px; }
+@media (prefers-color-scheme: dark) { svg.lgo { fill: var(--ld, currentColor); } }
+
+/* neofetch: the Debian swirl, the facts, the palette */
+.w-term .tl.nf { white-space: pre; }
+.nf-a { color: #c70036; } .nf-k { color: #c70036; font-weight: 700; }
+@media (prefers-color-scheme: dark) { .nf-a, .nf-k { color: #f0507a; } }
+.nf-c { display: inline-block; width: 2.4ch; height: 1em; vertical-align: -2px; }
+.nf-c.c0 { background: #1e1e1e; } .nf-c.c1 { background: #c91b00; } .nf-c.c2 { background: #00c200; } .nf-c.c3 { background: #c7c400; }
+.nf-c.c4 { background: #0225c7; } .nf-c.c5 { background: #c930c7; } .nf-c.c6 { background: #00c5c7; } .nf-c.c7 { background: #c7c7c7; }
+.nf-c.c8 { background: #686868; } .nf-c.c9 { background: #ff6e67; } .nf-c.c10 { background: #5ffa68; } .nf-c.c11 { background: #fffc67; }
+.nf-c.c12 { background: #6871ff; } .nf-c.c13 { background: #ff77ff; } .nf-c.c14 { background: #60fdff; } .nf-c.c15 { background: #ffffff; }
