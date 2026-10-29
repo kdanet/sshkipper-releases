@@ -212,6 +212,12 @@
     htl.at(ht + 150, function () { happ.classList.add('done'); });
   } else if (hero) hero.querySelector('.app').classList.add('done');
 
+  // The live hero window (demo.js) comes only where it runs: a pointer and room for the whole window
+  var live = document.querySelector('.k-live-src');
+  if (live && matchMedia('(hover: hover) and (pointer: fine) and (min-width: 861px)').matches) {
+    var sc = document.createElement('script'); sc.src = live.dataset.js; sc.defer = true; document.head.appendChild(sc);
+  }
+
   /* ---------- Stories ---------- */
   // What each step plays: the replica's state at the start of the step, then its little animation.
   // fn(app, tl, cam, story); cam.ringOn(true) shows the ring once the step's point is on screen.
