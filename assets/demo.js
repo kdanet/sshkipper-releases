@@ -21,22 +21,7 @@
     if (s.os === 'macos') return esc(s.user + '@' + s.name) + ' ~ % ';
     return '<b class="pg">' + esc(s.user + '@' + s.name) + '</b>:<b class="pb">~</b>' + (s.user === 'root' ? '#' : '$') + ' ';
   }
-  function neofetch(s) {
-    var art = D.art[s.os] || [], col = D.color[s.os] || 'nf-r', w = Math.max.apply(null, art.map(function (l) { return l.length; }).concat([10])) + 4;
-    var mem = s.mem[0] + 'MiB / ' + s.mem[1] + 'MiB';
-    var info = ['<b class="nf-k ' + col + '">' + esc(s.user) + '</b>@<b class="nf-k ' + col + '">' + esc(s.name) + '</b>', '-------------',
-      ['OS', s.osname], ['Host', s.host], ['Kernel', s.kernel], ['Uptime', s.up], ['Shell', s.shell], ['CPU', s.cpu], ['Memory', mem],
-      ['Disk (/)', s.disk[1] + ' / ' + s.disk[0] + ' (' + s.disk[3] + ')'], ['Local IP', s.ip], '', 'C1', 'C2'];
-    var out = [];
-    for (var k = 0; k < Math.max(art.length, info.length); k++) {
-      var a = art[k] || '', v = info[k] === undefined ? '' : info[k];
-      if (v === 'C1' || v === 'C2') { var h = ''; for (var c = v === 'C1' ? 0 : 8, e = c + 8; c < e; c++) h += '<i class="nf-c c' + c + '"></i>'; v = h; }
-      else if (Array.isArray(v)) v = '<b class="nf-k ' + col + '">' + esc(v[0]) + '</b>: ' + esc(v[1]);
-      var pad = a; while (pad.length < w) pad += ' ';
-      out.push('<div class="tl nf"><span class="nf-a ' + col + '">' + esc(pad) + '</span>' + v + '</div>');
-    }
-    return out.join('');
-  }
+  function fastfetch(s) { return s.local ? D.localfetch : s.fetch; }   // the whole output at once, as fastfetch prints
   function run(s, cmd) {
     var c = cmd.trim(), w = c.split(/\s+/), lines = [];
     var L = function (t, raw) { lines.push('<div class="tl">' + (raw ? t : esc(t)) + '</div>'); };
@@ -44,7 +29,7 @@
     if (c === 'help') L(T.help);
     else if (c === 'clear' || c === 'reset') return { clear: true };
     else if (c === 'exit' || c === 'logout') { L(fmt(T.closed, s.name)); return { html: lines.join(''), exit: true }; }
-    else if (w[0] === 'neofetch' || w[0] === 'fastfetch') return { html: neofetch(s) };
+    else if (w[0] === 'neofetch' || w[0] === 'fastfetch') return { html: fastfetch(s) };
     else if (c === 'whoami') L(s.user);
     else if (c === 'hostname') L(s.name);
     else if (c === 'pwd') L(s.os === 'macos' ? '/Users/' + s.user : s.user === 'root' ? '/root' : '/home/' + s.user);
@@ -103,7 +88,7 @@
       tab.ok = true; tab.since = Date.now();
       if (s.motd && s.os !== 'macos') addLine(tab, '<div class="tl">' + esc(s.motd.replace('{h}', s.name)) + '</div>');
       addLine(tab, '<div class="tl">' + esc(fmt(T.lastlogin.replace('{t}', '{}').replace('{ip}', '{}'), '15:01:52', s.via.length ? '10.20.0.5' : '192.168.1.20')) + '</div>');
-      addLine(tab, '<div class="tl">' + prompt(s) + 'neofetch</div>' + neofetch(s));
+      addLine(tab, '<div class="tl">' + prompt(s) + 'fastfetch</div>' + fastfetch(s));
       newPrompt(tab); render();
       if (cur === tab) focusIn();
     });
