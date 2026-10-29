@@ -272,7 +272,35 @@
         tl.at(1700, function () { cam.ringOn(true); });
       },
       function (app, tl, cam) { tl.at(1150, function () { cam.ringOn(true); }); },
-      function (app, tl, cam) { tl.at(1150, function () { cam.ringOn(true); }); },
+      // asked in words: the agent looks around, canvas_show opens the tab, the scene plays step by step
+      function (app, tl, cam) {
+        var bar = app.querySelector('.js-cvbar'), S = JSON.parse(bar.dataset.steps), wk = app.querySelector('.js-wk');
+        function step(k) {
+          $$(app, '[data-s]').forEach(function (n) {
+            var s = +n.dataset.s;
+            n.classList.toggle('cs-in', s <= k);
+            n.classList.toggle('cs-hl', s === k || (n.dataset.h || '') === String(k));
+          });
+          wk.classList.toggle('warn', k === S.length);
+          if (!k) return;
+          // a phone can't read the whole canvas: its camera rides from step to step, like the app's does
+          if (PHONE.matches) cam.look('.cv-n.cs-hl', '.cv-n.cs-hl');
+          app.querySelector('.js-cvk').textContent = bar.dataset.of.replace('{}', k);
+          app.querySelector('.js-cvt').textContent = S[k - 1][0]; app.querySelector('.js-cvd').textContent = S[k - 1][1];
+        }
+        app.classList.add('play'); app.classList.remove('shown');
+        $$(app, '.js-step, .js-ans').forEach(function (x) { x.classList.remove('in'); });
+        step(0);
+        tl.at(600, function () { cam.ringOn(true); });
+        var t = reveal($$(app, '.js-step'), tl, 650, 1300);
+        tl.at(t + 200, function () {
+          app.classList.add('shown'); step(1);
+          cam.ringOn(false); if (!PHONE.matches) cam.look(null, '.js-cvk, .js-cvt, .js-cvd');
+        });
+        tl.at(t + 700, function () { cam.ringOn(true); });
+        for (var k = 2; k <= S.length; k++) (function (k) { tl.at(t + 200 + (k - 1) * 1250, function () { step(k); }); })(k);
+        tl.at(t + 200 + (S.length - 1) * 1250 + 400, function () { app.querySelector('.js-ans').classList.add('in'); });
+      },
       // the slider moves: the formula under it recounts the memory, no new question to the model
       function (app, tl, cam) {
         var th = app.querySelector('.js-wk'), tr = app.querySelector('.js-wt'), n = app.querySelector('.js-wn'), m = app.querySelector('.js-wm');
@@ -299,12 +327,43 @@
       function (app, tl, cam) { app.classList.remove('menu'); tl.at(1150, function () { cam.ringOn(true); }); },
       // the tab's mark opens its sessions menu
       function (app, tl, cam) { app.classList.remove('menu'); tl.at(900, function () { app.classList.add('menu'); }); tl.at(1300, function () { cam.ringOn(true); }); },
-      // the command runs on the group: servers answer one by one
+      // a command is made (name, command), the servers are ticked, then the group runs: four at a time, one by one
       function (app, tl, cam) {
-        var rows = $$(app, '.js-sn');
-        app.classList.add('play'); rows.forEach(function (r) { r.classList.remove('in'); });
-        var t = reveal(rows, tl, 450, 800);
-        tl.at(t, function () { cam.ringOn(true); });
+        var rows = $$(app, '.js-sn'), checks = $$(app, '.js-snc'), code = app.querySelector('.js-sncmd'), text = code.dataset.text;
+        var k = app.querySelector('.js-snk'), n = app.querySelector('.js-snn'), phone = PHONE.matches, done = 0;
+        function phase(p) { app.classList.remove('sn-p-ed', 'sn-p-pk', 'sn-p-run'); if (p) app.classList.add('sn-p-' + p); }
+        function count(c) {
+          var f = n.dataset.of.split('|'), m = c % 10, h = c % 100;
+          n.textContent = (m === 1 && h !== 11 ? f[2] : m >= 2 && m <= 4 && (h < 12 || h > 14) ? f[1] : f[0]).replace('{}', c);
+        }
+        function st(i, v) { rows[i].dataset.st = v; if (v !== 'w' && v !== 'c') { done++; k.textContent = k.dataset.of.replace('{}', done); } }
+        app.classList.add('play', 'sn-going'); app.classList.remove('sn-made', 'sn-typing'); phase(null);
+        $$(app, '.press').forEach(function (b) { b.classList.remove('press'); });
+        checks.forEach(function (c) { c.classList.remove('in'); }); count(0);
+        rows.forEach(function (r) { r.dataset.st = 'w'; }); k.textContent = k.dataset.of.replace('{}', 0);
+        code.textContent = '';
+        // the editor: the command is typed, «Create» puts the node in the tree
+        tl.at(500, function () { phase('ed'); app.classList.add('sn-typing'); cam.look(phone ? '.sn-ed' : null, '.sn-ed'); });
+        tl.at(800, function () { cam.ringOn(true); });
+        var t = 900;
+        for (var i = 1; i <= text.length; i++) (function (c) { tl.at(t + c * 42, function () { code.textContent = text.slice(0, c); }); })(i);
+        t += text.length * 42 + 350;
+        tl.at(t, function () { app.querySelector('.js-snok').classList.add('press'); });
+        tl.at(t + 300, function () { phase(null); app.classList.remove('sn-typing'); app.classList.add('sn-made'); cam.ringOn(false); });
+        // the picker: the servers get ticked, «Run…»
+        tl.at(t + 700, function () { phase('pk'); cam.look(phone ? '.sn-pk' : null, '.sn-pk .snx-ls'); });
+        tl.at(t + 900, function () { cam.ringOn(true); });
+        checks.forEach(function (c, i) { tl.at(t + 1000 + i * 180, function () { c.classList.add('in'); count(i + 1); }); });
+        t += 1000 + checks.length * 180 + 350;
+        tl.at(t, function () { app.querySelector('.js-snrun').classList.add('press'); });
+        // the «Command» tab: four connect at once, the fifth waits for a free slot
+        tl.at(t + 300, function () { phase('run'); cam.ringOn(false); cam.look(phone ? '.sn' : null, null); });
+        tl.at(t + 600, function () { [0, 1, 2, 3].forEach(function (i) { rows[i].dataset.st = 'c'; }); });
+        tl.at(t + 1300, function () { st(3, 'ok'); rows[4].dataset.st = 'c'; });
+        tl.at(t + 1600, function () { st(0, 'ok'); });
+        tl.at(t + 1800, function () { st(1, 'ok'); });
+        tl.at(t + 2100, function () { st(2, 'ok'); });
+        tl.at(t + 3300, function () { st(4, 'bad'); app.classList.remove('sn-going'); cam.ringOn(true); });
       },
       // typed once, run in both panes
       function (app, tl, cam) {
@@ -430,7 +489,7 @@
     var scams = $$(story, '.k-cam').map(function (el) { return el._cam; }), btns = $$(story, '.k-step');
     var path = story.querySelector('.k-hops');
     var tl = new Timeline(), cur = 0, visible = false;
-    var DUR = btns.map(function (b, i) { return id === 'bastions' && i === 1 ? 6000 : id === 'automations' && i === 3 ? 9500 : id === 'databases' && i === 2 ? 8000 : id === 'agent' && (i === 6 || i === 7) ? 7000 : id === 'services' && i === 5 ? 8000 : 5400; });
+    var DUR = btns.map(function (b, i) { return id === 'bastions' && i === 1 ? 6000 : id === 'automations' && i === 3 ? 9500 : id === 'databases' && i === 2 ? 8000 : id === 'terminal' && i === 2 ? 10500 : id === 'agent' && i === 5 ? 10500 : id === 'agent' && (i === 6 || i === 7) ? 7000 : id === 'services' && i === 5 ? 8000 : 5400; });
     function go(i, auto) {
       tl.stop(); cur = i;
       btns.forEach(function (b, k) { b.classList.toggle('on', k === i); b.classList.remove('run'); b.setAttribute('aria-current', k === i ? 'step' : 'false'); });
