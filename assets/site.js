@@ -66,6 +66,11 @@
     if (!k) return null;
     $$(app, sel).forEach(function (n) {
       var b = n.getBoundingClientRect();
+      // a terminal line is as wide as the terminal: frame its text, not the empty rest of the row
+      if (n.classList.contains('tl')) {
+        var rg = document.createRange(); rg.selectNodeContents(n); var t = rg.getBoundingClientRect();
+        if (t.width) b = { left: t.left, right: t.right, top: b.top, bottom: b.bottom, width: t.width, height: b.height };
+      }
       if (!b.width && !b.height) return;
       var x = (b.left - a.left) / k, y = (b.top - a.top) / k, x2 = (b.right - a.left) / k, y2 = (b.bottom - a.top) / k;
       r = r ? { x: Math.min(r.x, x), y: Math.min(r.y, y), x2: Math.max(r.x2, x2), y2: Math.max(r.y2, y2) } : { x: x, y: y, x2: x2, y2: y2 };
@@ -112,11 +117,13 @@
     this.ringShown = !!on;
     var st = this.steps[this.i], sel = this.ringSel || (st && st.ring), R = on && sel && rect(this.app, sel);
     if (!R) { this.ring.classList.remove('on'); return; }
-    var p = 6, g = this.ring;
+    // lines of text sit tight: a ring around some of them keeps clear of the lines above and below
+    var lines = $$(this.app, sel).every(function (n) { return n.classList.contains('tl'); });
+    var p = 6, py = lines ? 1 : p, g = this.ring;
     // a ring that appears doesn't fly in from where it was last time; one that is on follows its target
     if (!g.classList.contains('on')) { g.style.transition = 'opacity .4s ease'; void g.offsetWidth; }
-    this.ring.style.left = (R.x - p) + 'px'; this.ring.style.top = (R.y - p) + 'px';
-    this.ring.style.width = (R.w + 2 * p) + 'px'; this.ring.style.height = (R.h + 2 * p) + 'px';
+    this.ring.style.left = (R.x - p) + 'px'; this.ring.style.top = (R.y - py) + 'px';
+    this.ring.style.width = (R.w + 2 * p) + 'px'; this.ring.style.height = (R.h + 2 * py) + 'px';
     g.classList.add('on');
     if (g.style.transition) { void g.offsetWidth; g.style.transition = ''; }
   };
@@ -127,8 +134,22 @@
     t.classList.remove('go'); void t.offsetWidth; t.classList.add('go');
   };
 
+  // tmux's sessions menu drops down from the tab's «tmux · Session 1» mark, wherever the status text puts it
+  function alignMenus() {
+    $$(document, '.tmx').forEach(function (main) {
+      var k = main.querySelector('.js-tm'), m = main.querySelector('.tm-menu'), app = main.closest('.app');
+      var s = app && app.getBoundingClientRect().width / app.offsetWidth;
+      if (!k || !m || !s) return;
+      var kr = k.getBoundingClientRect(), mr = main.getBoundingClientRect();
+      m.style.left = Math.round((kr.left - mr.left) / s - 12) + 'px';
+      m.style.top = Math.round((kr.bottom - mr.top) / s + 5) + 'px';
+    });
+  }
+  alignMenus();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { alignMenus(); layout(); });
+
   var cams = $$(document, '.k-cam').map(function (el) { var c = new Cam(el); el._cam = c; return c; });
-  function layout() { cams.forEach(function (c) { c.place(false); }); }
+  function layout() { alignMenus(); cams.forEach(function (c) { c.place(false); c.ringOn(c.ringShown); }); }
   layout();
   if ('ResizeObserver' in window) { var ro = new ResizeObserver(layout); cams.forEach(function (c) { ro.observe(c.el); }); }
   else window.addEventListener('resize', layout);
