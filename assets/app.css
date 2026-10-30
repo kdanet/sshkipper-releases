@@ -533,15 +533,19 @@
 .pchips > span.on { background: color-mix(in oklab, var(--blue) 18%, transparent); color: var(--ink); font-weight: 600; }
 .pchips .a-ts { width: 12px; height: 12px; }
 .rt-c { position: relative; height: 556px; }
-.rt-c .mac { position: absolute; left: 50%; top: 56px; transform: translateX(-50%); width: 150px; text-align: center; }
-.rt-c .mac span { display: block; height: 32px; line-height: 30px; border-radius: 7px; border: 1.5px solid color-mix(in oklab, var(--ink) 30%, transparent); background: color-mix(in oklab, var(--ink) 5%, var(--page)); font-weight: 600; font-size: 13px; }
-.rt-c .mac i { display: block; height: 7px; margin: 0 -14px; background: color-mix(in oklab, var(--ink) 22%, var(--page)); clip-path: polygon(0 0, 100% 0, 93% 100%, 7% 100%); }
+.rt-c .mac { position: absolute; left: 50%; top: 40px; transform: translateX(-50%); width: 156px; text-align: center; }
+/* a laptop as the app draws it: a display in a bezel (about 16:10), then a wider deck, rounded at the front, with the notch */
+.rt-c .mac span { display: block; padding: 5px; border-radius: 9px 9px 0 0; border: 1.6px solid color-mix(in oklab, var(--ink) 30%, transparent); border-bottom: 0;
+  background: color-mix(in oklab, var(--ink) 10%, var(--page)); }
+.rt-c .mac span b { display: block; height: 48px; line-height: 48px; border-radius: 3px; background: color-mix(in oklab, var(--ink) 4%, var(--page)); font-weight: 600; font-size: 13px; }
+.rt-c .mac i { position: relative; display: block; height: 8px; margin: 0 -14px; border-radius: 1px 1px 5px 5px; background: color-mix(in oklab, var(--ink) 30%, var(--page)); }
+.rt-c .mac i::after { content: ''; position: absolute; left: 50%; top: 0; width: 28px; height: 2.5px; margin-left: -14px; border-radius: 0 0 2px 2px; background: color-mix(in oklab, var(--ink) 14%, var(--page)); }
 .rl { position: absolute; left: 50%; width: 2px; transform: translateX(-1px); }
 .rl::after { content: ''; position: absolute; left: -4px; bottom: -1px; border: 5px solid transparent; border-top: 7px solid currentColor; border-bottom: 0; }
-.rl.l0 { top: 96px; height: 70px; background: #8e8e93; color: #8e8e93; }
+.rl.l0 { top: 108px; height: 58px; background: #8e8e93; color: #8e8e93; }
 .rl.l1 { top: 262px; height: 40px; background: #55c3db; color: #55c3db; }
 .rl.l2 { top: 398px; height: 40px; background: #55c3db; color: #55c3db; }
-.rdot { position: absolute; left: 50%; top: 96px; width: 9px; height: 9px; margin-left: -4.5px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 0 4px color-mix(in oklab, var(--blue) 25%, transparent); opacity: 0; }
+.rdot { position: absolute; left: 50%; top: 108px; width: 9px; height: 9px; margin-left: -4.5px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 0 4px color-mix(in oklab, var(--blue) 25%, transparent); opacity: 0; }
 .rn { position: absolute; left: 50%; transform: translateX(-50%); width: 300px; display: flex; gap: 10px; padding: 11px 12px; border-radius: 10px; border: 1px solid color-mix(in oklab, var(--ink) 14%, transparent); background: color-mix(in oklab, var(--ink) 2.5%, var(--page)); transition: box-shadow .3s, border-color .3s; }
 .rn.dst { border: 1.5px solid var(--blue); }
 .rn.lit { box-shadow: 0 0 0 4px color-mix(in oklab, var(--blue) 18%, transparent); border-color: var(--blue); }
@@ -1279,3 +1283,45 @@ svg.lgo { fill: var(--lc, currentColor); flex: none; }
 .au-req { position: absolute; left: 50%; bottom: 62px; transform: translateX(-62%); width: 500px; display: flex; align-items: center; gap: 6px;
   font-size: 11.5px; color: var(--ink2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .au-req .ms { font-size: 14px; }
+
+/* Privacy (security story): what stays on this Mac, where each thing goes, and what the developer gets */
+.app.privacy { --page: transparent; background: transparent; box-shadow: none; overflow: visible; }
+.pv-mac { position: absolute; left: 200px; top: 36px; width: 440px; }
+.pv-lid { padding: 9px; border-radius: 16px 16px 0 0; border: 1.6px solid color-mix(in oklab, var(--ink) 28%, transparent); border-bottom: 0;
+  background: color-mix(in oklab, var(--ink) 9%, var(--canvasbg, #fff)); }
+.pv-scr { height: 268px; border-radius: 5px; padding: 26px 26px 0; display: flex; flex-direction: column; gap: 18px;
+  background: color-mix(in oklab, var(--green) 6%, var(--canvasbg, #fff)); }
+.pv-doc { display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-radius: 11px; background: var(--canvasbg, #fff);
+  box-shadow: 0 0 0 1px color-mix(in oklab, var(--green) 40%, transparent); font-size: 15px; }
+.pv-doc .ms { font-size: 20px; color: var(--green); }
+.pv-doc em { margin-left: auto; font-style: normal; font-size: 12px; font-weight: 600; color: var(--green); }
+.pv-in { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.pv-in > span { display: flex; align-items: center; gap: 7px; padding: 8px 10px; border-radius: 9px; font-size: 13px; background: color-mix(in oklab, var(--ink) 5%, transparent); }
+.pv-in .ms { font-size: 16px; color: var(--ink2); }
+.pv-here { display: flex; align-items: center; justify-content: center; gap: 7px; margin-top: auto; padding-bottom: 18px; font-size: 13px; font-weight: 600; color: var(--green); }
+.pv-here .ms { font-size: 17px; }
+.pv-deck { position: relative; display: block; height: 13px; margin: 0 -28px; border-radius: 2px 2px 9px 9px; background: color-mix(in oklab, var(--ink) 26%, var(--canvasbg, #fff)); }
+.pv-deck::after { content: ''; position: absolute; left: 50%; top: 0; width: 60px; height: 4px; margin-left: -30px; border-radius: 0 0 4px 4px; background: color-mix(in oklab, var(--ink) 12%, var(--canvasbg, #fff)); }
+.pv-ln { position: absolute; left: 0; top: 0; width: 1180px; height: 600px; overflow: visible; }
+.pv-ln path { fill: none; stroke: color-mix(in oklab, var(--blue) 70%, transparent); stroke-width: 2.2; }
+.pv-ln path.no { stroke: #e5533d; stroke-dasharray: 5 5; }
+.pv-x { position: absolute; left: 409px; top: 357px; width: 22px; height: 22px; border-radius: 50%; background: #e5533d; color: #fff; display: inline-flex; align-items: center; justify-content: center; }
+.pv-x .ms { font-size: 15px; }
+.pv-ds { position: absolute; left: 770px; top: 56px; width: 330px; display: flex; flex-direction: column; gap: 35px; }
+.pv-d, .pv-dh { display: flex; align-items: center; gap: 12px; }
+.pv-d { height: 80px; padding: 0 16px; border-radius: 14px; background: var(--canvasbg, #fff); box-shadow: 0 0 0 1px color-mix(in oklab, var(--ink) 12%, transparent); }
+.pv-i { width: 38px; height: 38px; flex: none; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center;
+  background: color-mix(in oklab, var(--blue) 14%, transparent); color: var(--blue); }
+.pv-i .ms { font-size: 21px; }
+.pv-d.p .pv-i { background: color-mix(in oklab, var(--purple) 14%, transparent); color: var(--purple); }
+.pv-d b, .pv-dh b { display: block; font-size: 15px; }
+.pv-d span:not(.pv-i):not(.ms), .pv-dh div > span { display: block; font-size: 12.5px; color: var(--ink2); margin-top: 2px; }
+.pv-dev { position: absolute; left: 140px; top: 400px; width: 560px; padding: 14px 16px; border-radius: 14px;
+  background: color-mix(in oklab, var(--ink) 4%, var(--canvasbg, #fff)); box-shadow: 0 0 0 1px color-mix(in oklab, var(--ink) 14%, transparent); }
+.pv-dh .pv-i { background: color-mix(in oklab, #e5533d 14%, transparent); color: #e5533d; }
+.pv-gs { display: flex; gap: 10px; margin-top: 12px; padding-top: 10px; border-top: 1px solid color-mix(in oklab, var(--ink) 10%, transparent); }
+.pv-gs em { flex: none; font-style: normal; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; color: var(--ink3); padding-top: 2px; }
+.pv-g { flex: 1; min-width: 0; font-size: 12px; line-height: 1.4; color: var(--ink2); }
+.pv-g b { display: block; color: var(--ink); font-weight: 600; }
+.app.privacy { --canvasbg: #ffffff; }
+@media (prefers-color-scheme: dark) { .app.privacy { --canvasbg: #1b1d26; } }
