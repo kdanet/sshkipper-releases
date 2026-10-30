@@ -566,7 +566,7 @@
 .lk-t { height: 30px; display: flex; align-items: center; gap: 16px; padding: 0 9px; border-bottom: 1px solid var(--sep2); background: var(--page); }
 @media (prefers-color-scheme: dark) { .lk-t { background: #282a35; } }
 .lk-t b { font-size: 13px; color: var(--ink2); }
-.lk-b { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 104px 60px 0; }
+.lk-b { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 64px 60px 0; }
 .lk-b img { width: 76px; height: 76px; }
 .lk-n { font-size: 22px; font-weight: 700; margin: 26px 0 22px; }
 .lk-f { align-self: stretch; display: flex; align-items: center; gap: 8px; font-size: 13.5px; }
@@ -579,6 +579,11 @@
 .lk-btns { align-self: stretch; display: flex; justify-content: space-between; margin-top: 16px; }
 .lk-btns > span { display: inline-flex; align-items: center; gap: 14px; height: 28px; padding: 0 14px; border-radius: 14px; background: color-mix(in oklab, var(--ink) 7%, var(--page)); font-weight: 500; font-size: 13px; }
 .lk-btns .lk-more {} .lk-btns > .un { color: var(--ink3); padding: 0 14px; }
+/* the site's notes under the lock screen (not part of the app): what the encryption is, when it locks */
+.lk-notes { align-self: stretch; display: flex; flex-direction: column; gap: 8px; margin-top: 22px; }
+.lk-notes > span { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 10px; font-size: 12.5px; color: var(--ink2);
+  border: 1.5px dashed color-mix(in oklab, var(--green) 45%, transparent); }
+.lk-notes .ms { font-size: 16px; color: var(--green); }
 
 @media (prefers-reduced-motion: reduce) {
   .app *, .app { transition: none !important; animation: none !important; }

@@ -288,9 +288,6 @@ body { margin: 0; overflow-x: clip; }
 .k-proofs b { font-size: 15.5px; font-weight: 600; letter-spacing: -.01em; }
 .k-proofs span { font-size: 14.5px; color: var(--ink2); line-height: 1.5; }
 
-/* ---------- The rest: tiles with a close-up each ---------- */
-  background: radial-gradient(120% 100% at 50% 0%, color-mix(in oklab, var(--accent) 9%, var(--bg2)), var(--bg2)); }
-
 /* ---------- Pricing ---------- */
 .k-pricing { max-width: 1080px; margin: 0 auto; padding: 160px var(--gutter) 0; text-align: center; }
 .k-pricing .k-h2-sub { margin-left: auto; margin-right: auto; }
@@ -308,8 +305,9 @@ body { margin: 0; overflow-x: clip; }
 .k-plan .k-btn { margin-top: auto; align-self: stretch; }
 .k-plan.full .k-btn { background: var(--accent); color: #fff !important; }
 .k-small { margin: -6px 0 0; font-size: 13.5px; color: var(--ink3); text-align: center; }
-.k-always { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 22px auto 0; max-width: 760px; font-size: 14.5px; color: var(--ink2); }
-.k-always .ms { font-size: 18px; color: var(--accentInk); }
+.k-always { margin: 22px auto 0; max-width: 760px; font-size: 14.5px; color: var(--ink2); text-wrap: balance; }
+/* inline, so the lock sits before the first line of centred, wrapped text, not at the box's edge */
+.k-always .ms { font-size: 18px; color: var(--accentInk); vertical-align: -4px; margin-right: 6px; }
 
 /* ---------- Questions ---------- */
 .k-faq { max-width: 860px; margin: 0 auto; padding: 160px var(--gutter) 0; }
