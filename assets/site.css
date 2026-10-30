@@ -56,11 +56,6 @@ body { margin: 0; overflow-x: clip; }
 .k-btn.ghost { background: transparent; color: var(--ink) !important; box-shadow: inset 0 0 0 1px var(--line); }
 .k-btn.ghost:hover { opacity: 1; background: var(--bg2); }
 .k-btn .ms { font-size: 18px; color: var(--ink2); }
-/* the SDK, under the hero's buttons: a quieter link to the Modules story */
-.k-dev { display: inline-flex; align-items: center; gap: 7px; margin-top: 18px; padding: 7px 14px; border-radius: 10px; font-size: 15px; font-weight: 550;
-  color: var(--accentInk) !important; box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--accent) 35%, transparent); transition: background .2s; }
-.k-dev:hover { background: color-mix(in oklab, var(--accent) 8%, transparent); }
-.k-dev .ms { font-size: 18px; } .k-dev .ms:last-child { font-size: 16px; transition: transform .2s; } .k-dev:hover .ms:last-child { transform: translateX(3px); }
 .k-sub-col { display: flex; flex-direction: column; gap: 18px; }
 .k-story-cta { display: flex; flex-wrap: wrap; gap: 10px; }
 .k-story-cta .k-btn .ms { color: inherit; }
@@ -398,7 +393,7 @@ body { margin: 0; overflow-x: clip; }
   .js .k-stagecard.rv.in { transform: none; }
   .k-hero > * { animation: k-rise 1s cubic-bezier(.2, .7, .2, 1) both; }
   .k-hero > .k-helm { animation-delay: 0s; } .k-hero > h1 { animation-delay: .08s; } .k-hero > .k-lead { animation-delay: .16s; }
-  .k-hero > .k-ctas { animation-delay: .24s; } .k-hero > .k-dev { animation-delay: .27s; } .k-hero > .k-meta { animation-delay: .3s; } .k-hero > .k-stage { animation-delay: .38s; animation-duration: 1.3s; }
+  .k-hero > .k-ctas { animation-delay: .24s; } .k-hero > .k-meta { animation-delay: .3s; } .k-hero > .k-stage { animation-delay: .38s; animation-duration: 1.3s; }
   .k-hero > .k-chips { animation-delay: .6s; }
   .k-cam.k-float { animation: k-pop .9s cubic-bezier(.2, .9, .3, 1.2) 1.6s both; }
   .k-glow { animation: k-breathe 9s ease-in-out infinite alternate; }
