@@ -35,7 +35,7 @@
 <link rel="preload" href="assets/fonts/3665e1b4b673f4a1.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/fonts.css?v=05429856">
 <link rel="stylesheet" href="assets/app.css?v=d5b5b7ce">
-<link rel="stylesheet" href="assets/site.css?v=d60dd961">
+<link rel="stylesheet" href="assets/site.css?v=b7ec5325">
 <script src="assets/site.js?v=d237fad9" defer></script>
 </head>
 <body class="kpage">
@@ -54,7 +54,7 @@
   <h1>Серверов много,<br>а&nbsp;штурвал один</h1>
   <p class="k-lead">Нативный SSH‑менеджер для macOS. Сам проходит бастионы и 2FA, а терминал, службы, базы, файлы и автоматизации всех ваших серверов держит в одном окне. AI‑агент помогает разобраться и спрашивает, прежде чем что‑то менять. Чего‑то не хватает — допишите модулем: SDK открыт и бесплатен.</p>
   <div class="k-ctas">
-    <a class="k-btn" href="#download"><svg class="apple" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>Скачать для macOS</a>
+    <a class="k-btn" href="#pricing"><svg class="apple" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>Скачать для macOS</a>
     <a class="k-btn ghost" href="#modules"><span class="ms">code</span>SDK для разработчиков</a>
   </div>
   <p class="k-meta">Нативное приложение · macOS 26 и новее · Apple Silicon · нотаризовано Apple</p>
@@ -930,7 +930,9 @@
 </section>
 
 <section id="pricing" class="k-pricing" aria-labelledby="pricing-h">
-  <h2 id="pricing-h" class="k-h2 rv">Бесплатно — до пяти серверов</h2>
+  <div class="k-pr-mark rv"><picture><source srcset="assets/mark-white.svg" media="(prefers-color-scheme: dark)"><img loading="lazy" decoding="async" src="assets/mark.svg" alt="" width="52" height="52"></picture></div>
+  <h2 id="pricing-h" class="k-h2 rv">Встаньте за штурвал</h2>
+  <p class="k-pr-title rv">Бесплатно — до пяти серверов</p>
   <p class="k-h2-sub rv">Один DMG для всех. Без ключа это бесплатная версия: все возможности, но с лимитами. С ключом — полная. Пробного периода нет: бесплатная версия и есть проба.</p>
   <div class="k-plans">
     <article class="k-plan rv">
@@ -963,14 +965,6 @@
     <details class="k-q rv"><summary>Что будет через год?<span class="ms">expand_more</span></summary><p>Купленная версия работает всегда. В цену входит год обновлений; версии, вышедшие позже, — с продлением.</p></details>
     <details class="k-q rv"><summary>Какие нужны Mac и macOS?<span class="ms">expand_more</span></summary><p>Mac на Apple Silicon и macOS 26 или новее. Приложение подписано Developer ID и нотаризовано Apple, поэтому открывается сразу, без обходов защиты macOS.</p></details>
   </div>
-</section>
-
-<section id="download" class="k-end rv" aria-labelledby="end-h">
-  <picture><source srcset="assets/mark-white.svg" media="(prefers-color-scheme: dark)"><img loading="lazy" decoding="async" src="assets/mark.svg" alt="" width="56" height="56"></picture>
-  <h2 id="end-h" class="k-h2">Встаньте за штурвал</h2>
-  <p class="k-h2-sub">Бесплатная версия — без регистрации и пробного срока. Хосты из ~/.ssh/config переносятся за минуту.</p>
-  <div class="k-ctas"><a class="k-btn" href="https://github.com/kdanet/sshkipper-releases/releases/latest/download/SSHKipper.dmg"><svg class="apple" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>Скачать для macOS</a></div>
-  <p class="k-meta">Нативное приложение · macOS 26 и новее · Apple Silicon · нотаризовано Apple</p>
 </section>
 </main>
 
