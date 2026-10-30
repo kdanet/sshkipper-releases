@@ -1331,44 +1331,39 @@ svg.lgo { fill: var(--lc, currentColor); flex: none; }
 .app.privacy { --canvasbg: #ffffff; }
 @media (prefers-color-scheme: dark) { .app.privacy { --canvasbg: #1b1d26; } }
 
-/* How AI works without the secrets (security story): server — this Mac — the AI model, two rows of straight arrows */
+/* How AI works without the secrets (security story): three equal columns, two rows of cells, straight arrows on the rows */
 .app.aisec { --canvasbg: #ffffff; --red: #d4402b; background: transparent; box-shadow: none; overflow: visible; }
 @media (prefers-color-scheme: dark) { .app.aisec { --canvasbg: #1b1d26; --red: #ff7a66; } }
-.sd-zone { position: absolute; left: 870px; right: 0; top: 12px; bottom: 12px; border-radius: 20px; border: 1.5px dashed color-mix(in oklab, var(--purple) 50%, transparent);
-  background: color-mix(in oklab, var(--purple) 5%, transparent); }
-.sd-zone > span { position: absolute; left: 0; right: 0; top: 14px; display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--purple); }
-.sd-zone > span .ms { font-size: 15px; }
 .sd-ln { position: absolute; left: 0; top: 0; width: 1180px; height: 400px; overflow: visible; }
 .sd-ln line { stroke-width: 2.4; } .sd-ln line.r { stroke: var(--red); } .sd-ln line.p { stroke: var(--purple); }
 .sd-ln marker path.r { fill: var(--red); } .sd-ln marker path.p { fill: var(--purple); }
-.sd-node { position: absolute; border-radius: 16px; background: var(--canvasbg); box-shadow: 0 0 0 1px color-mix(in oklab, var(--ink) 14%, transparent), 0 10px 30px -18px rgba(0, 0, 0, .35); }
-.sd-srv { left: 24px; top: 60px; width: 200px; height: 290px; }
-.sd-srv .sd-nh { position: absolute; left: 14px; top: 14px; }
-.sd-row { position: absolute; left: 12px; right: 12px; height: 36px; display: flex; align-items: center; gap: 7px; padding: 0 9px; border-radius: 9px; background: color-mix(in oklab, var(--ink) 5%, transparent); }
-.sd-row .ms { font-size: 15px; color: var(--ink2); }
-.sd-row code { font: 11.5px ui-monospace, 'SF Mono', Menlo, monospace; }
-.sd-ai { left: 906px; top: 120px; width: 230px; height: 210px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-.sd-nh { display: flex; align-items: center; gap: 8px; font-size: 15px; } .sd-nh .ms { font-size: 20px; color: var(--ink2); } .sd-ai .sd-nh .ms { color: var(--purple); }
-.sd-sub { display: block; margin-top: 4px; font-size: 12px; color: var(--ink2); }
-.sd-mac { position: absolute; left: 448px; top: 12px; width: 284px; height: 376px; border-radius: 20px;
-  background: color-mix(in oklab, var(--green) 5%, var(--canvasbg)); box-shadow: 0 0 0 1.5px color-mix(in oklab, var(--green) 40%, transparent), 0 16px 40px -22px rgba(0, 0, 0, .4); }
-.sd-mh { position: absolute; left: 14px; right: 14px; top: 14px; display: flex; align-items: center; gap: 8px; font-size: 15px; }
-.sd-mh .ms { font-size: 20px; color: var(--green); } .sd-mh > span:not(.ms) { margin-left: auto; font-size: 12px; color: var(--ink2); }
-.sd-mod { position: absolute; left: 12px; right: 12px; height: 76px; display: flex; gap: 11px; align-items: center; padding: 0 12px; border-radius: 14px; background: var(--canvasbg);
-  box-shadow: 0 0 0 1px color-mix(in oklab, var(--ink) 12%, transparent); }
-.sd-mi { width: 40px; height: 40px; flex: none; border-radius: 11px; display: inline-flex; align-items: center; justify-content: center; }
-.sd-mi .ms { font-size: 22px; }
-.sd-mi.m1 { background: color-mix(in oklab, var(--purple) 13%, transparent); color: var(--purple); }
-.sd-mi.m2 { background: color-mix(in oklab, #ff3b5c 13%, transparent); color: #ff3b5c; }
-.sd-mod b { display: block; font-size: 14px; } .sd-mod div span { display: block; margin-top: 2px; font-size: 12px; color: var(--ink2); }
-.sd-keep { position: absolute; left: 12px; right: 12px; height: 32px; display: flex; align-items: center; justify-content: center; gap: 6px; border-radius: 10px;
-  border: 1.5px dashed color-mix(in oklab, var(--green) 45%, transparent); font-size: 12px; color: var(--green); }
+.sd-col { position: absolute; border-radius: 18px; background: var(--canvasbg); box-shadow: 0 0 0 1px color-mix(in oklab, var(--ink) 14%, transparent), 0 12px 32px -20px rgba(0, 0, 0, .35); }
+.sd-col.mac { background: color-mix(in oklab, var(--green) 5%, var(--canvasbg)); box-shadow: 0 0 0 1.5px color-mix(in oklab, var(--green) 40%, transparent), 0 12px 32px -20px rgba(0, 0, 0, .35); }
+.sd-col.ai { background: color-mix(in oklab, var(--purple) 5%, var(--canvasbg)); box-shadow: none; outline: 1.5px dashed color-mix(in oklab, var(--purple) 55%, transparent); outline-offset: -1.5px; }
+.sd-ch { position: absolute; left: 14px; right: 14px; top: 14px; height: 24px; display: flex; align-items: center; gap: 8px; font-size: 15px; }
+.sd-ch .ms { font-size: 20px; color: var(--ink2); }
+.sd-col.mac .sd-ch .ms { color: var(--green); } .sd-col.ai .sd-ch .ms { color: var(--purple); }
+.sd-ch > span:not(.ms) { margin-left: auto; font-size: 11.5px; color: var(--ink2); }
+.sd-cell { position: absolute; left: 12px; right: 12px; height: 72px; display: flex; align-items: center; gap: 10px; padding: 0 12px; border-radius: 13px;
+  background: var(--canvasbg); box-shadow: 0 0 0 1px color-mix(in oklab, var(--ink) 11%, transparent); }
+.sd-cell > div { min-width: 0; }
+.sd-cell b { display: block; font-size: 13.5px; white-space: nowrap; }
+.sd-cell div > span { display: block; margin-top: 3px; font-size: 11.5px; color: var(--ink2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sd-cell code { font: 600 11.5px ui-monospace, 'SF Mono', Menlo, monospace; }
+.sd-cell div > span code { font-weight: 600; color: var(--purple); }
+.sd-ic { width: 36px; height: 36px; flex: none; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center;
+  background: color-mix(in oklab, var(--ink) 7%, transparent); color: var(--ink2); }
+.sd-ic .ms { font-size: 20px; }
+.sd-ic.p { background: color-mix(in oklab, var(--purple) 13%, transparent); color: var(--purple); }
+.sd-ic.k { background: color-mix(in oklab, #ff3b5c 13%, transparent); color: #ff3b5c; }
+.sd-keep { position: absolute; left: 12px; right: 12px; height: 30px; display: flex; align-items: center; justify-content: center; gap: 6px; border-radius: 9px;
+  border: 1.5px dashed color-mix(in oklab, var(--green) 45%, transparent); font-size: 11.5px; color: var(--green); }
 .sd-keep .ms { font-size: 15px; }
-.sd-chip { position: absolute; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 4px; height: 66px; text-align: center; }
+.sd-chip { position: absolute; width: 180px; height: 54px; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 4px; }
 .sd-chip em { font-style: normal; font-size: 11.5px; color: var(--ink2); }
-.sd-v { padding: 5px 9px; border-radius: 9px; background: var(--canvasbg); font: 11px/1.45 ui-monospace, 'SF Mono', Menlo, monospace; white-space: nowrap; color: var(--ink); }
+.sd-v { padding: 4px 9px; border-radius: 8px; background: var(--canvasbg); font: 11px/1.4 ui-monospace, 'SF Mono', Menlo, monospace; white-space: nowrap; color: var(--ink); }
 .sd-chip.r .sd-v { box-shadow: 0 0 0 1.5px color-mix(in oklab, var(--red) 55%, transparent); } .sd-chip.r b { color: var(--red); }
 .sd-chip.p .sd-v { box-shadow: 0 0 0 1.5px color-mix(in oklab, var(--purple) 55%, transparent); } .sd-chip.p b { color: var(--purple); }
-.sd-leg { position: absolute; left: 24px; top: 366px; display: flex; gap: 18px; font-size: 12px; color: var(--ink2); }
+.sd-leg { position: absolute; left: 0; right: 0; top: 370px; display: flex; justify-content: center; gap: 22px; font-size: 12px; color: var(--ink2); }
 .sd-leg span { display: inline-flex; align-items: center; gap: 7px; }
 .sd-leg i { width: 18px; height: 3px; border-radius: 2px; } .sd-leg i.r { background: var(--red); } .sd-leg i.p { background: var(--purple); }
