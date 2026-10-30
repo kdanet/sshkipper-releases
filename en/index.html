@@ -31,10 +31,10 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "SSHKipper", "url": "https://sshkipper.com/en/", "description": "A native SSH manager for macOS that gets through bastion chains and fills in 2FA codes for you. A terminal with tmux, an AI agent, server services, databases, files, tunnels and automations — in one window and one encrypted document.", "inLanguage": "en", "applicationCategory": "DeveloperApplication", "operatingSystem": "macOS 26", "processorRequirements": "Apple Silicon", "downloadUrl": "https://github.com/kdanet/sshkipper-releases/releases/latest/download/SSHKipper.dmg", "image": "https://sshkipper.com/assets/og-en.png", "releaseNotes": "https://github.com/kdanet/sshkipper-releases/releases", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "name": "Free"}}</script>
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="preload" href="../assets/fonts/01457da3be39b3d2.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="../assets/fonts/76a4eb0f69010e7b.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/fonts.css?v=b36b2685">
+<link rel="preload" href="../assets/fonts/612737990e977c6b.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/fonts.css?v=5f450adb">
 <link rel="stylesheet" href="../assets/app.css?v=76087f86">
-<link rel="stylesheet" href="../assets/site.css?v=8bd9d745">
+<link rel="stylesheet" href="../assets/site.css?v=f01db6e2">
 <script src="../assets/site.js?v=f0d403e2" defer></script>
 </head>
 <body class="kpage">
@@ -145,36 +145,48 @@
   <h2 id="ba-h" class="k-h2 rv">Sound familiar?</h2>
   <p class="k-h2-sub rv">What you do by hand every day — and how it looks in SSHKipper.</p>
   <div class="k-bas">
-    <a class="k-ba rv" href="#bastions" style="--i:0"><span class="k-ba-i"><span class="ms">key</span></span>
-      <span class="k-was"><em>Before</em>A password and three codes from your phone — every time you go through the bastions</span>
-      <span class="k-to" aria-hidden="true"><span class="ms">arrow_forward</span></span>
-      <span class="k-now"><em>After</em>A double-click, and SSHKipper fills in the keys, passwords and 2FA codes</span>
-      <span class="k-go" aria-hidden="true"><span class="ms">chevron_right</span></span></a>
-    <a class="k-ba rv" href="#agent" style="--i:1"><span class="k-ba-i"><span class="ms">auto_awesome</span></span>
-      <span class="k-was"><em>Before</em>At night, by hand: top, docker stats, logs — and a password pasted into an AI chat</span>
-      <span class="k-to" aria-hidden="true"><span class="ms">arrow_forward</span></span>
-      <span class="k-now"><em>After</em>The agent looks for you, secrets stay masked, and changes wait for your “yes”</span>
-      <span class="k-go" aria-hidden="true"><span class="ms">chevron_right</span></span></a>
-    <a class="k-ba rv" href="#databases" style="--i:2"><span class="k-ba-i"><span class="ms">database</span></span>
-      <span class="k-was"><em>Before</em>ssh -L to a database behind bastions, port numbers on a sticky note and SQL from memory</span>
-      <span class="k-to" aria-hidden="true"><span class="ms">arrow_forward</span></span>
-      <span class="k-now"><em>After</em>The database opens with a double-click, and you can ask for a query in words</span>
-      <span class="k-go" aria-hidden="true"><span class="ms">chevron_right</span></span></a>
-    <a class="k-ba rv" href="#services" style="--i:3"><span class="k-ba-i"><span class="ms">dns</span></span>
-      <span class="k-was"><em>Before</em>Five terminals for docker ps, nginx logs, crontab and supervisorctl</span>
-      <span class="k-to" aria-hidden="true"><span class="ms">arrow_forward</span></span>
-      <span class="k-now"><em>After</em>One tab: dashboard, Docker, Nginx, Cron, Supervisor and security</span>
-      <span class="k-go" aria-hidden="true"><span class="ms">chevron_right</span></span></a>
-    <a class="k-ba rv" href="#tunnels" style="--i:4"><span class="k-ba-i"><span class="ms">swap_horiz</span></span>
-      <span class="k-was"><em>Before</em>ssh -L … -J … in a terminal window you must never close</span>
-      <span class="k-to" aria-hidden="true"><span class="ms">arrow_forward</span></span>
-      <span class="k-now"><em>After</em>A tunnel switches on with a toggle and lives in the menu bar</span>
-      <span class="k-go" aria-hidden="true"><span class="ms">chevron_right</span></span></a>
-    <a class="k-ba rv" href="#automations" style="--i:5"><span class="k-ba-i"><span class="ms">account_tree</span></span>
-      <span class="k-was"><em>Before</em>Scripts in cron and errors in logs nobody reads</span>
-      <span class="k-to" aria-hidden="true"><span class="ms">arrow_forward</span></span>
-      <span class="k-now"><em>After</em>A pipeline of blocks, and every run’s result arrives as a notification or in Telegram</span>
-      <span class="k-go" aria-hidden="true"><span class="ms">chevron_right</span></span></a>
+    <a class="kb-card rv" href="#bastions" style="--i:0">
+      <span class="kb-head"><span class="k-ba-i"><span class="ms">key</span></span><b>Bastions and 2FA</b><span class="kb-more">Learn more<span class="ms">chevron_right</span></span></span>
+      <div class="kb-pair">
+        <div class="kb-side"><div class="kb-pane was" aria-hidden="true"><em>Before</em><div class="kb-term"><p><i>$</i> ssh -J bastion-msk,jump-prod web-01</p><p>Password: ••••••••</p><p>Verification code: 482913</p><p>Verification code: <i class="kb-cur"></i></p></div><span class="kb-badge"><span class="ms">smartphone</span>phone code ×3</span></div><p class="kb-cap">A password and three codes from your phone — every time you go through the bastions</p></div>
+        <span class="kb-to" aria-hidden="true"><span class="ms">arrow_forward</span></span>
+        <div class="kb-side"><div class="kb-pane now" aria-hidden="true"><em>After</em><div class="kb-row sel"><svg class="kb-lg lgo" viewBox="0 0 24 24" style="--lc:#a81d33;--ld:#e85d67" aria-hidden="true"><use href="#lg-debian"/></svg><b>web-01</b><span class="kb-pill">2 bastions</span></div><div class="kb-chain"><span>bastion-msk</span>›<span>jump-prod</span>›<span>web-01</span></div><div class="kb-checks"><span><span class="ms">check</span>key</span><span><span class="ms">check</span>password</span><span><span class="ms">check</span>2FA</span></div><div class="kb-okline"><i></i>Connected in 2 s</div></div><p class="kb-cap now">A double-click, and SSHKipper fills in the keys, passwords and 2FA codes</p></div>
+      </div></a>
+    <a class="kb-card rv" href="#agent" style="--i:1">
+      <span class="kb-head"><span class="k-ba-i"><span class="ms">auto_awesome</span></span><b>AI agent</b><span class="kb-more">Learn more<span class="ms">chevron_right</span></span></span>
+      <div class="kb-pair">
+        <div class="kb-side"><div class="kb-pane was" aria-hidden="true"><em>Before</em><div class="kb-term"><p><i>$</i> top</p><p><i>$</i> docker stats --no-stream</p><p><i>$</i> tail -n 200 nginx/error.log</p></div><div class="kb-bubble">why the 502? here’s .env: DB_PASSWORD=<b>Pr0d!2026</b></div></div><p class="kb-cap">At night, by hand: top, docker stats, logs — and a password pasted into an AI chat</p></div>
+        <span class="kb-to" aria-hidden="true"><span class="ms">arrow_forward</span></span>
+        <div class="kb-side"><div class="kb-pane now" aria-hidden="true"><em>After</em><div class="kb-ah"><span class="ms">auto_awesome</span><b>Agent</b><span>· web-01</span></div><p class="kb-say">worker keeps dying: out of memory</p><div class="kb-mask"><code>DB_PASSWORD=<span>••••••</span></code><span class="ms">lock</span>masked</div><div class="kb-ask"><code>docker restart worker</code><span class="kb-yes">Allow</span></div></div><p class="kb-cap now">The agent looks for you, secrets stay masked, and changes wait for your “yes”</p></div>
+      </div></a>
+    <a class="kb-card rv" href="#databases" style="--i:2">
+      <span class="kb-head"><span class="k-ba-i"><span class="ms">database</span></span><b>Databases</b><span class="kb-more">Learn more<span class="ms">chevron_right</span></span></span>
+      <div class="kb-pair">
+        <div class="kb-side"><div class="kb-pane was" aria-hidden="true"><em>Before</em><div class="kb-term"><p><i>$</i> ssh -N -L 15432:orders-pg:5432 \</p><p>&nbsp;&nbsp;-J bastion-msk,jump-prod web-01</p><p><i>$</i> psql -p 15432 orders</p><p>orders=&gt; <i class="kb-cur"></i></p></div><div class="kb-sticky">15432 — orders<br>15433 — analytics<br>15434 — ???</div></div><p class="kb-cap">ssh -L to a database behind bastions, port numbers on a sticky note and SQL from memory</p></div>
+        <span class="kb-to" aria-hidden="true"><span class="ms">arrow_forward</span></span>
+        <div class="kb-side"><div class="kb-pane now" aria-hidden="true"><em>After</em><div class="kb-ah db"><span class="ms">database</span><b>orders-pg</b><span>· PostgreSQL</span></div><div class="kb-ask in"><span class="ms">auto_awesome</span><span>yesterday’s orders by city</span><i><span class="ms">arrow_upward</span></i></div><div class="kb-sql"><b>SELECT</b> city, count(*) <b>FROM</b> orders<br><b>WHERE</b> created_at &gt;= current_date - 1<br><b>GROUP BY</b> city;</div></div><p class="kb-cap now">The database opens with a double-click, and you can ask for a query in words</p></div>
+      </div></a>
+    <a class="kb-card rv" href="#services" style="--i:3">
+      <span class="kb-head"><span class="k-ba-i"><span class="ms">dns</span></span><b>Server services</b><span class="kb-more">Learn more<span class="ms">chevron_right</span></span></span>
+      <div class="kb-pair">
+        <div class="kb-side"><div class="kb-pane was" aria-hidden="true"><em>Before</em><div class="kb-tabs"><span>docker ps</span><span>tail -f access.log</span><span>crontab -l</span><span>supervisorctl</span><span>ufw status</span></div><div class="kb-term"><p><i>$</i> supervisorctl status</p><p class="r">mailer-queue&nbsp;&nbsp;FATAL&nbsp;&nbsp;Exited too quickly</p><p>worker_00&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RUNNING&nbsp;&nbsp;pid 2231</p><p>scheduler&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RUNNING&nbsp;&nbsp;pid 2240</p></div></div><p class="kb-cap">Five terminals for docker ps, nginx logs, crontab and supervisorctl</p></div>
+        <span class="kb-to" aria-hidden="true"><span class="ms">arrow_forward</span></span>
+        <div class="kb-side"><div class="kb-pane now" aria-hidden="true"><em>After</em><div class="kb-ah"><span class="ms">dns</span><b>web-01</b><span>· Dashboard</span></div><div class="kb-tiles"><span class="kb-tile"><em>Containers</em><b>7 / 7</b></span><span class="kb-tile bad"><em>Nginx 5xx</em><b>5.6%</b></span><span class="kb-tile"><em>Cron</em><b>03:30 backup</b></span><span class="kb-tile bad"><em>Supervisor</em><b>1 FATAL</b></span></div></div><p class="kb-cap now">One tab: dashboard, Docker, Nginx, Cron, Supervisor and security</p></div>
+      </div></a>
+    <a class="kb-card rv" href="#tunnels" style="--i:4">
+      <span class="kb-head"><span class="k-ba-i"><span class="ms">swap_horiz</span></span><b>Tunnels</b><span class="kb-more">Learn more<span class="ms">chevron_right</span></span></span>
+      <div class="kb-pair">
+        <div class="kb-side"><div class="kb-pane was" aria-hidden="true"><em>Before</em><div class="kb-term"><p><i>$</i> ssh -N -L 3000:grafana:3000 \</p><p>&nbsp;&nbsp;-J bastion-msk web-01</p><p><i class="kb-cur"></i></p></div><span class="kb-badge"><span class="ms">warning</span>don’t close this window</span></div><p class="kb-cap">ssh -L … -J … in a terminal window you must never close</p></div>
+        <span class="kb-to" aria-hidden="true"><span class="ms">arrow_forward</span></span>
+        <div class="kb-side"><div class="kb-pane now" aria-hidden="true"><em>After</em><div class="kb-ah"><span class="ms">swap_horiz</span><b>Tunnels</b><span>· 2 on</span></div><div class="kb-tun"><b>Grafana</b><span>localhost:3000</span><span class="kb-tg on"><i></i></span></div><div class="kb-tun"><b>orders-pg</b><span>localhost:15432</span><span class="kb-tg on"><i></i></span></div><div class="kb-tun"><b>Kibana</b><span>localhost:5601</span><span class="kb-tg"><i></i></span></div></div><p class="kb-cap now">A tunnel switches on with a toggle and lives in the menu bar</p></div>
+      </div></a>
+    <a class="kb-card rv" href="#automations" style="--i:5">
+      <span class="kb-head"><span class="k-ba-i"><span class="ms">account_tree</span></span><b>Automations</b><span class="kb-more">Learn more<span class="ms">chevron_right</span></span></span>
+      <div class="kb-pair">
+        <div class="kb-side"><div class="kb-pane was" aria-hidden="true"><em>Before</em><div class="kb-term"><p><i>$</i> crontab -l</p><p>0 3 * * * /opt/backup.sh &gt;&gt; backup.log 2&gt;&amp;1</p><p><i>$</i> tail -1 backup.log</p><p class="r">mysqldump: Got error: 1045: Access denied</p><p class="d"># last success — 19 days ago</p></div></div><p class="kb-cap">Scripts in cron and errors in logs nobody reads</p></div>
+        <span class="kb-to" aria-hidden="true"><span class="ms">arrow_forward</span></span>
+        <div class="kb-side"><div class="kb-pane now" aria-hidden="true"><em>After</em><div class="kb-flow"><span class="kb-blk"><span class="ms">database</span>MySQL dump</span><i></i><span class="kb-blk"><span class="ms">archive</span>zstd</span><i></i><span class="kb-blk"><span class="ms">cloud_upload</span>S3</span></div><div class="kb-note"><span class="ms">check_circle</span><span><b>MySQL backups</b>2.1 GB · 3 min · 03:04</span></div><div class="kb-note tg"><span class="ms">send</span><span><b>Telegram</b>“MySQL backups: done”</span></div></div><p class="kb-cap now">A pipeline of blocks, and every run’s result arrives as a notification or in Telegram</p></div>
+      </div></a>
   </div>
 </section>
 
@@ -184,7 +196,7 @@
       <h2 id="bastions-h">A server behind two bastions — in one double-click</h2></div>
     <p class="k-sub">Normally that’s <code>ssh -J</code>, a password and a code from your phone at every hop. In SSHKipper, keys, passwords and 2FA secrets live in an encrypted document, and the app answers every hop itself.</p>
   </div>
-  <ul class="k-engines"><li class="rv" style="--i:0"><span class="lg"><span class="ms">account_tree</span></span><b>Bastion through bastion</b><span>A chain of any length opens with a double-click.</span></li><li class="rv" style="--i:1"><span class="lg"><span class="ms">swap_horiz</span></span><b>SOCKS5 and HTTP proxies</b><span>When the first bastion is reachable only through a proxy.</span></li><li class="rv" style="--i:2"><span class="lg"><span class="ms">verified_user</span></span><b>TOTP from anything</b><span>A base32 secret, an otpauth:// link, a Google Authenticator export or a QR code.</span></li><li class="rv" style="--i:3"><span class="lg"><span class="ms">description</span></span><b>Import ~/.ssh/config</b><span>ProxyJump turns into bastions, port forwards into tunnels.</span></li><li class="rv" style="--i:4"><span class="lg"><img loading="lazy" decoding="async" class="" src="../assets/icons/tailscale.svg" alt="" width="28" height="28"></span><b>Tailscale and Bonjour</b><span>Machines on your network appear in the tree on their own.</span></li><li class="rv" style="--i:5"><span class="lg"><span class="ms">lan</span></span><b>Route profiles</b><span>Tailscale, an office address or another bastion — when the main way is down.</span></li></ul>
+  <ul class="k-engines"><li class="rv" style="--i:0"><span class="lg"><span class="ms">account_tree</span></span><b>Bastion through bastion</b><span>A chain of any length opens with a double-click.</span></li><li class="rv" style="--i:1"><span class="lg"><span class="ms">swap_horiz</span></span><b>SOCKS5 and HTTP proxies</b><span>When the first bastion is reachable only through a proxy.</span></li><li class="rv" style="--i:2"><span class="lg"><span class="ms">verified_user</span></span><b>TOTP from anything</b><span>A base32 secret, an otpauth:// link, a Google Authenticator export or a QR code.</span></li><li class="rv" style="--i:3"><span class="lg"><span class="ms">description</span></span><b>Import ~/.ssh/config</b><span>ProxyJump turns into bastions, port forwards into tunnels.</span></li><li class="rv" style="--i:4"><span class="lg"><img loading="lazy" decoding="async" class="mono" src="../assets/icons/tailscale.svg" alt="" width="28" height="28"></span><b>Tailscale and Bonjour</b><span>Machines on your network appear in the tree on their own.</span></li><li class="rv" style="--i:5"><span class="lg"><span class="ms">lan</span></span><b>Route profiles</b><span>Tailscale, an office address or another bastion — when the main way is down.</span></li></ul>
   <div class="k-stagecard rv">
     <div class="k-story-vis"><div class="k-screen"><div class="k-cam on" data-w="1180" data-h="600" data-steps="[{&quot;focus&quot;: &quot;.w-side, .w-main&quot;, &quot;ring&quot;: &quot;.a-row.sel&quot;, &quot;mzoom&quot;: 330, &quot;max&quot;: 0, &quot;tap&quot;: 1}, {&quot;focus&quot;: &quot;.w-status, .w-term .tl:nth-child(-n+4)&quot;, &quot;ring&quot;: &quot;.w-term .tl:nth-child(n+2):nth-child(-n+4)&quot;, &quot;ax&quot;: 262, &quot;mzoom&quot;: 440, &quot;max&quot;: 262}, {&quot;focus&quot;: &quot;.w-status, .w-term&quot;, &quot;mfocus&quot;: &quot;.w-status, .w-term .tl:nth-child(-n+12)&quot;, &quot;ring&quot;: &quot;.w-status .st-ok, .w-status .chain&quot;, &quot;ax&quot;: 262, &quot;mzoom&quot;: 520, &quot;max&quot;: 262}]" aria-hidden="true"><div class="app win" style="width:1180px;height:600px">
 <div class="w-side">

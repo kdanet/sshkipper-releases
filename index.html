@@ -32,10 +32,10 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preload" href="assets/fonts/f949284da9de4c19.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/01457da3be39b3d2.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/76a4eb0f69010e7b.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/fonts.css?v=b36b2685">
+<link rel="preload" href="assets/fonts/612737990e977c6b.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts.css?v=5f450adb">
 <link rel="stylesheet" href="assets/app.css?v=76087f86">
-<link rel="stylesheet" href="assets/site.css?v=8bd9d745">
+<link rel="stylesheet" href="assets/site.css?v=f01db6e2">
 <script src="assets/site.js?v=f0d403e2" defer></script>
 </head>
 <body class="kpage">
@@ -146,36 +146,48 @@
   <h2 id="ba-h" class="k-h2 rv">Знакомо?</h2>
   <p class="k-h2-sub rv">Что приходится делать руками каждый день — и как это выглядит в SSHKipper.</p>
   <div class="k-bas">
-    <a class="k-ba rv" href="#bastions" style="--i:0"><span class="k-ba-i"><span class="ms">key</span></span>
-      <span class="k-was"><em>Было</em>Пароль и три кода с телефона — на каждый вход через бастионы</span>
-      <span class="k-to" aria-hidden="true"><span class="ms">arrow_forward</span></span>
-      <span class="k-now"><em>Стало</em>Двойной щелчок, и SSHKipper сам подставит ключи, пароли и коды 2FA</span>
-      <span class="k-go" aria-hidden="true"><span class="ms">chevron_right</span></span></a>
-    <a class="k-ba rv" href="#agent" style="--i:1"><span class="k-ba-i"><span class="ms">auto_awesome</span></span>
-      <span class="k-was"><em>Было</em>Ночью вручную: top, docker stats, логи — и пароль, случайно вставленный в AI-чат</span>
-      <span class="k-to" aria-hidden="true"><span class="ms">arrow_forward</span></span>
-      <span class="k-now"><em>Стало</em>Агент смотрит сам, секреты скрыты, а изменения ждут вашего «да»</span>
-      <span class="k-go" aria-hidden="true"><span class="ms">chevron_right</span></span></a>
-    <a class="k-ba rv" href="#databases" style="--i:2"><span class="k-ba-i"><span class="ms">database</span></span>
-      <span class="k-was"><em>Было</em>ssh -L к базе за бастионами, номера портов на стикере и SQL по памяти</span>
-      <span class="k-to" aria-hidden="true"><span class="ms">arrow_forward</span></span>
-      <span class="k-now"><em>Стало</em>База открывается двойным щелчком, а запрос можно попросить словами</span>
-      <span class="k-go" aria-hidden="true"><span class="ms">chevron_right</span></span></a>
-    <a class="k-ba rv" href="#services" style="--i:3"><span class="k-ba-i"><span class="ms">dns</span></span>
-      <span class="k-was"><em>Было</em>Пять терминалов ради docker ps, логов nginx, crontab и supervisorctl</span>
-      <span class="k-to" aria-hidden="true"><span class="ms">arrow_forward</span></span>
-      <span class="k-now"><em>Стало</em>Одна вкладка: дашборд, Docker, Nginx, Cron, Supervisor и безопасность</span>
-      <span class="k-go" aria-hidden="true"><span class="ms">chevron_right</span></span></a>
-    <a class="k-ba rv" href="#tunnels" style="--i:4"><span class="k-ba-i"><span class="ms">swap_horiz</span></span>
-      <span class="k-was"><em>Было</em>ssh -L … -J … в окне терминала, которое нельзя закрывать</span>
-      <span class="k-to" aria-hidden="true"><span class="ms">arrow_forward</span></span>
-      <span class="k-now"><em>Стало</em>Туннель включается переключателем и живёт в строке меню</span>
-      <span class="k-go" aria-hidden="true"><span class="ms">chevron_right</span></span></a>
-    <a class="k-ba rv" href="#automations" style="--i:5"><span class="k-ba-i"><span class="ms">account_tree</span></span>
-      <span class="k-was"><em>Было</em>Скрипты в cron и ошибки в логах, которые никто не читает</span>
-      <span class="k-to" aria-hidden="true"><span class="ms">arrow_forward</span></span>
-      <span class="k-now"><em>Стало</em>Конвейер из блоков, и итог каждого запуска приходит уведомлением или в Telegram</span>
-      <span class="k-go" aria-hidden="true"><span class="ms">chevron_right</span></span></a>
+    <a class="kb-card rv" href="#bastions" style="--i:0">
+      <span class="kb-head"><span class="k-ba-i"><span class="ms">key</span></span><b>Бастионы и 2FA</b><span class="kb-more">Подробнее<span class="ms">chevron_right</span></span></span>
+      <div class="kb-pair">
+        <div class="kb-side"><div class="kb-pane was" aria-hidden="true"><em>Было</em><div class="kb-term"><p><i>$</i> ssh -J bastion-msk,jump-prod web-01</p><p>Password: ••••••••</p><p>Verification code: 482913</p><p>Verification code: <i class="kb-cur"></i></p></div><span class="kb-badge"><span class="ms">smartphone</span>код с телефона ×3</span></div><p class="kb-cap">Пароль и три кода с телефона — на каждый вход через бастионы</p></div>
+        <span class="kb-to" aria-hidden="true"><span class="ms">arrow_forward</span></span>
+        <div class="kb-side"><div class="kb-pane now" aria-hidden="true"><em>Стало</em><div class="kb-row sel"><svg class="kb-lg lgo" viewBox="0 0 24 24" style="--lc:#a81d33;--ld:#e85d67" aria-hidden="true"><use href="#lg-debian"/></svg><b>web-01</b><span class="kb-pill">2 бастиона</span></div><div class="kb-chain"><span>bastion-msk</span>›<span>jump-prod</span>›<span>web-01</span></div><div class="kb-checks"><span><span class="ms">check</span>ключ</span><span><span class="ms">check</span>пароль</span><span><span class="ms">check</span>2FA</span></div><div class="kb-okline"><i></i>Подключено за 2 с</div></div><p class="kb-cap now">Двойной щелчок, и SSHKipper сам подставит ключи, пароли и коды 2FA</p></div>
+      </div></a>
+    <a class="kb-card rv" href="#agent" style="--i:1">
+      <span class="kb-head"><span class="k-ba-i"><span class="ms">auto_awesome</span></span><b>AI-агент</b><span class="kb-more">Подробнее<span class="ms">chevron_right</span></span></span>
+      <div class="kb-pair">
+        <div class="kb-side"><div class="kb-pane was" aria-hidden="true"><em>Было</em><div class="kb-term"><p><i>$</i> top</p><p><i>$</i> docker stats --no-stream</p><p><i>$</i> tail -n 200 nginx/error.log</p></div><div class="kb-bubble">почему 502? вот .env: DB_PASSWORD=<b>Pr0d!2026</b></div></div><p class="kb-cap">Ночью вручную: top, docker stats, логи — и пароль, случайно вставленный в AI-чат</p></div>
+        <span class="kb-to" aria-hidden="true"><span class="ms">arrow_forward</span></span>
+        <div class="kb-side"><div class="kb-pane now" aria-hidden="true"><em>Стало</em><div class="kb-ah"><span class="ms">auto_awesome</span><b>Агент</b><span>· web-01</span></div><p class="kb-say">worker падает: кончается память</p><div class="kb-mask"><code>DB_PASSWORD=<span>••••••</span></code><span class="ms">lock</span>скрыт</div><div class="kb-ask"><code>docker restart worker</code><span class="kb-yes">Разрешить</span></div></div><p class="kb-cap now">Агент смотрит сам, секреты скрыты, а изменения ждут вашего «да»</p></div>
+      </div></a>
+    <a class="kb-card rv" href="#databases" style="--i:2">
+      <span class="kb-head"><span class="k-ba-i"><span class="ms">database</span></span><b>Базы данных</b><span class="kb-more">Подробнее<span class="ms">chevron_right</span></span></span>
+      <div class="kb-pair">
+        <div class="kb-side"><div class="kb-pane was" aria-hidden="true"><em>Было</em><div class="kb-term"><p><i>$</i> ssh -N -L 15432:orders-pg:5432 \</p><p>&nbsp;&nbsp;-J bastion-msk,jump-prod web-01</p><p><i>$</i> psql -p 15432 orders</p><p>orders=&gt; <i class="kb-cur"></i></p></div><div class="kb-sticky">15432 — orders<br>15433 — analytics<br>15434 — ???</div></div><p class="kb-cap">ssh -L к базе за бастионами, номера портов на стикере и SQL по памяти</p></div>
+        <span class="kb-to" aria-hidden="true"><span class="ms">arrow_forward</span></span>
+        <div class="kb-side"><div class="kb-pane now" aria-hidden="true"><em>Стало</em><div class="kb-ah db"><span class="ms">database</span><b>orders-pg</b><span>· PostgreSQL</span></div><div class="kb-ask in"><span class="ms">auto_awesome</span><span>заказы за вчера по городам</span><i><span class="ms">arrow_upward</span></i></div><div class="kb-sql"><b>SELECT</b> city, count(*) <b>FROM</b> orders<br><b>WHERE</b> created_at &gt;= current_date - 1<br><b>GROUP BY</b> city;</div></div><p class="kb-cap now">База открывается двойным щелчком, а запрос можно попросить словами</p></div>
+      </div></a>
+    <a class="kb-card rv" href="#services" style="--i:3">
+      <span class="kb-head"><span class="k-ba-i"><span class="ms">dns</span></span><b>Службы сервера</b><span class="kb-more">Подробнее<span class="ms">chevron_right</span></span></span>
+      <div class="kb-pair">
+        <div class="kb-side"><div class="kb-pane was" aria-hidden="true"><em>Было</em><div class="kb-tabs"><span>docker ps</span><span>tail -f access.log</span><span>crontab -l</span><span>supervisorctl</span><span>ufw status</span></div><div class="kb-term"><p><i>$</i> supervisorctl status</p><p class="r">mailer-queue&nbsp;&nbsp;FATAL&nbsp;&nbsp;Exited too quickly</p><p>worker_00&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RUNNING&nbsp;&nbsp;pid 2231</p><p>scheduler&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RUNNING&nbsp;&nbsp;pid 2240</p></div></div><p class="kb-cap">Пять терминалов ради docker ps, логов nginx, crontab и supervisorctl</p></div>
+        <span class="kb-to" aria-hidden="true"><span class="ms">arrow_forward</span></span>
+        <div class="kb-side"><div class="kb-pane now" aria-hidden="true"><em>Стало</em><div class="kb-ah"><span class="ms">dns</span><b>web-01</b><span>· Дашборд</span></div><div class="kb-tiles"><span class="kb-tile"><em>Контейнеры</em><b>7 / 7</b></span><span class="kb-tile bad"><em>Nginx 5xx</em><b>5,6 %</b></span><span class="kb-tile"><em>Cron</em><b>03:30 бэкап</b></span><span class="kb-tile bad"><em>Supervisor</em><b>1 FATAL</b></span></div></div><p class="kb-cap now">Одна вкладка: дашборд, Docker, Nginx, Cron, Supervisor и безопасность</p></div>
+      </div></a>
+    <a class="kb-card rv" href="#tunnels" style="--i:4">
+      <span class="kb-head"><span class="k-ba-i"><span class="ms">swap_horiz</span></span><b>Туннели</b><span class="kb-more">Подробнее<span class="ms">chevron_right</span></span></span>
+      <div class="kb-pair">
+        <div class="kb-side"><div class="kb-pane was" aria-hidden="true"><em>Было</em><div class="kb-term"><p><i>$</i> ssh -N -L 3000:grafana:3000 \</p><p>&nbsp;&nbsp;-J bastion-msk web-01</p><p><i class="kb-cur"></i></p></div><span class="kb-badge"><span class="ms">warning</span>не закрывайте это окно</span></div><p class="kb-cap">ssh -L … -J … в окне терминала, которое нельзя закрывать</p></div>
+        <span class="kb-to" aria-hidden="true"><span class="ms">arrow_forward</span></span>
+        <div class="kb-side"><div class="kb-pane now" aria-hidden="true"><em>Стало</em><div class="kb-ah"><span class="ms">swap_horiz</span><b>Туннели</b><span>· 2 включены</span></div><div class="kb-tun"><b>Grafana</b><span>localhost:3000</span><span class="kb-tg on"><i></i></span></div><div class="kb-tun"><b>orders-pg</b><span>localhost:15432</span><span class="kb-tg on"><i></i></span></div><div class="kb-tun"><b>Kibana</b><span>localhost:5601</span><span class="kb-tg"><i></i></span></div></div><p class="kb-cap now">Туннель включается переключателем и живёт в строке меню</p></div>
+      </div></a>
+    <a class="kb-card rv" href="#automations" style="--i:5">
+      <span class="kb-head"><span class="k-ba-i"><span class="ms">account_tree</span></span><b>Автоматизации</b><span class="kb-more">Подробнее<span class="ms">chevron_right</span></span></span>
+      <div class="kb-pair">
+        <div class="kb-side"><div class="kb-pane was" aria-hidden="true"><em>Было</em><div class="kb-term"><p><i>$</i> crontab -l</p><p>0 3 * * * /opt/backup.sh &gt;&gt; backup.log 2&gt;&amp;1</p><p><i>$</i> tail -1 backup.log</p><p class="r">mysqldump: Got error: 1045: Access denied</p><p class="d"># последний удачный — 19 дней назад</p></div></div><p class="kb-cap">Скрипты в cron и ошибки в логах, которые никто не читает</p></div>
+        <span class="kb-to" aria-hidden="true"><span class="ms">arrow_forward</span></span>
+        <div class="kb-side"><div class="kb-pane now" aria-hidden="true"><em>Стало</em><div class="kb-flow"><span class="kb-blk"><span class="ms">database</span>Дамп MySQL</span><i></i><span class="kb-blk"><span class="ms">archive</span>zstd</span><i></i><span class="kb-blk"><span class="ms">cloud_upload</span>S3</span></div><div class="kb-note"><span class="ms">check_circle</span><span><b>Бэкапы MySQL</b>2,1 ГБ · 3 мин · 03:04</span></div><div class="kb-note tg"><span class="ms">send</span><span><b>Telegram</b>«Бэкапы MySQL: готово»</span></div></div><p class="kb-cap now">Конвейер из блоков, и итог каждого запуска приходит уведомлением или в Telegram</p></div>
+      </div></a>
   </div>
 </section>
 
@@ -185,7 +197,7 @@
       <h2 id="bastions-h">Сервер за двумя бастионами — одним двойным щелчком</h2></div>
     <p class="k-sub">Обычно это <code>ssh -J</code>, пароль и по коду с телефона на каждом звене. В SSHKipper ключи, пароли и секреты 2FA лежат в зашифрованном документе, и на каждом звене приложение отвечает само.</p>
   </div>
-  <ul class="k-engines"><li class="rv" style="--i:0"><span class="lg"><span class="ms">account_tree</span></span><b>Бастион через бастион</b><span>Цепочка любой длины открывается двойным щелчком.</span></li><li class="rv" style="--i:1"><span class="lg"><span class="ms">swap_horiz</span></span><b>SOCKS5 и HTTP-прокси</b><span>Когда до первого бастиона можно дойти только через прокси.</span></li><li class="rv" style="--i:2"><span class="lg"><span class="ms">verified_user</span></span><b>TOTP из чего угодно</b><span>Секрет base32, ссылка otpauth://, экспорт Google Authenticator или QR-код.</span></li><li class="rv" style="--i:3"><span class="lg"><span class="ms">description</span></span><b>Импорт ~/.ssh/config</b><span>ProxyJump превращается в бастионы, пробросы портов — в туннели.</span></li><li class="rv" style="--i:4"><span class="lg"><img loading="lazy" decoding="async" class="" src="assets/icons/tailscale.svg" alt="" width="28" height="28"></span><b>Tailscale и Bonjour</b><span>Машины из вашей сети появляются в дереве сами.</span></li><li class="rv" style="--i:5"><span class="lg"><span class="ms">lan</span></span><b>Профили маршрута</b><span>Tailscale, офисный адрес или другой бастион — если основной путь лёг.</span></li></ul>
+  <ul class="k-engines"><li class="rv" style="--i:0"><span class="lg"><span class="ms">account_tree</span></span><b>Бастион через бастион</b><span>Цепочка любой длины открывается двойным щелчком.</span></li><li class="rv" style="--i:1"><span class="lg"><span class="ms">swap_horiz</span></span><b>SOCKS5 и HTTP-прокси</b><span>Когда до первого бастиона можно дойти только через прокси.</span></li><li class="rv" style="--i:2"><span class="lg"><span class="ms">verified_user</span></span><b>TOTP из чего угодно</b><span>Секрет base32, ссылка otpauth://, экспорт Google Authenticator или QR-код.</span></li><li class="rv" style="--i:3"><span class="lg"><span class="ms">description</span></span><b>Импорт ~/.ssh/config</b><span>ProxyJump превращается в бастионы, пробросы портов — в туннели.</span></li><li class="rv" style="--i:4"><span class="lg"><img loading="lazy" decoding="async" class="mono" src="assets/icons/tailscale.svg" alt="" width="28" height="28"></span><b>Tailscale и Bonjour</b><span>Машины из вашей сети появляются в дереве сами.</span></li><li class="rv" style="--i:5"><span class="lg"><span class="ms">lan</span></span><b>Профили маршрута</b><span>Tailscale, офисный адрес или другой бастион — если основной путь лёг.</span></li></ul>
   <div class="k-stagecard rv">
     <div class="k-story-vis"><div class="k-screen"><div class="k-cam on" data-w="1180" data-h="600" data-steps="[{&quot;focus&quot;: &quot;.w-side, .w-main&quot;, &quot;ring&quot;: &quot;.a-row.sel&quot;, &quot;mzoom&quot;: 330, &quot;max&quot;: 0, &quot;tap&quot;: 1}, {&quot;focus&quot;: &quot;.w-status, .w-term .tl:nth-child(-n+4)&quot;, &quot;ring&quot;: &quot;.w-term .tl:nth-child(n+2):nth-child(-n+4)&quot;, &quot;ax&quot;: 262, &quot;mzoom&quot;: 440, &quot;max&quot;: 262}, {&quot;focus&quot;: &quot;.w-status, .w-term&quot;, &quot;mfocus&quot;: &quot;.w-status, .w-term .tl:nth-child(-n+12)&quot;, &quot;ring&quot;: &quot;.w-status .st-ok, .w-status .chain&quot;, &quot;ax&quot;: 262, &quot;mzoom&quot;: 520, &quot;max&quot;: 262}]" aria-hidden="true"><div class="app win" style="width:1180px;height:600px">
 <div class="w-side">
