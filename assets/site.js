@@ -439,6 +439,8 @@
         $$(app, '.js-ac').forEach(function (c) { c.classList.remove('ok'); });
         tl.at(1150, function () { cam.ringOn(true); });
       },
+      // the AI draft (its own camera): a still screen with the ring
+      null,
       // the morning check runs: the server, the three checks at once, AI, the summary
       function (app, tl, cam) {
         var cards = $$(app, '.js-ac');
@@ -465,8 +467,10 @@
           var sel = '.js-ac[data-n="' + i + '"]';
           tl.at(t, function () {
             c.classList.add('ok'); chips.forEach(function (ch) { if (+ch.dataset.at === i) ch.classList.add('in'); });
-            cam.look(sel, sel); cam.ringOn(true);
+            cam.look(sel, sel);
           });
+          // the card grows to show its result (.35 s): the ring comes once it has, so it wraps the card whole
+          tl.at(t + 380, function () { cam.ringOn(true); });
           t += 1000;
         });
         tl.at(t + 200, function () { app.classList.add('done'); cam.look(null, null); });
@@ -489,7 +493,7 @@
     var scams = $$(story, '.k-cam').map(function (el) { return el._cam; }), btns = $$(story, '.k-step');
     var path = story.querySelector('.k-hops');
     var tl = new Timeline(), cur = 0, visible = false;
-    var DUR = btns.map(function (b, i) { return id === 'bastions' && i === 1 ? 6000 : id === 'automations' && i === 3 ? 9500 : id === 'databases' && i === 2 ? 8000 : id === 'terminal' && i === 2 ? 10500 : id === 'agent' && i === 5 ? 10500 : id === 'agent' && (i === 6 || i === 7) ? 7000 : id === 'services' && i === 5 ? 8000 : 5400; });
+    var DUR = btns.map(function (b, i) { return id === 'bastions' && i === 1 ? 6000 : id === 'automations' && i === 4 ? 9500 : id === 'databases' && i === 2 ? 8000 : id === 'terminal' && i === 2 ? 10500 : id === 'agent' && i === 5 ? 10500 : id === 'agent' && (i === 6 || i === 7) ? 7000 : id === 'services' && i === 5 ? 8000 : 5400; });
     function go(i, auto) {
       tl.stop(); cur = i;
       btns.forEach(function (b, k) { b.classList.toggle('on', k === i); b.classList.remove('run'); b.setAttribute('aria-current', k === i ? 'step' : 'false'); });
