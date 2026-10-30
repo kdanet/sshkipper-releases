@@ -31,9 +31,9 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "SSHKipper", "url": "https://sshkipper.com/en/", "description": "A native SSH manager for macOS that gets through bastion chains and fills in 2FA codes for you. A terminal with tmux, an AI agent, server services, databases, files, tunnels and automations — in one window and one encrypted document.", "inLanguage": "en", "applicationCategory": "DeveloperApplication", "operatingSystem": "macOS 26", "processorRequirements": "Apple Silicon", "downloadUrl": "https://github.com/kdanet/sshkipper-releases/releases/latest/download/SSHKipper.dmg", "image": "https://sshkipper.com/assets/og-en.png", "releaseNotes": "https://github.com/kdanet/sshkipper-releases/releases", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "name": "Free"}}</script>
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="preload" href="../assets/fonts/01457da3be39b3d2.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="../assets/fonts/e12cf4735cce3191.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/fonts.css?v=5acfb58c">
-<link rel="stylesheet" href="../assets/app.css?v=9ab09b98">
+<link rel="preload" href="../assets/fonts/3665e1b4b673f4a1.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/fonts.css?v=05429856">
+<link rel="stylesheet" href="../assets/app.css?v=d5b5b7ce">
 <link rel="stylesheet" href="../assets/site.css?v=6a98d004">
 <script src="../assets/site.js?v=d237fad9" defer></script>
 </head>
@@ -42,7 +42,7 @@
 <a class="k-skip" href="#main">Skip to content</a>
 <header class="k-nav">
   <a class="k-brand" href="#top"><picture><source srcset="../assets/mark-white.svg" media="(prefers-color-scheme: dark)"><img src="../assets/mark.svg" alt="" width="22" height="22"></picture>SSHKipper</a>
-  <nav aria-label="Page sections"><a href="#features">Features</a><a href="#bastions">Bastions</a><a href="#terminal">Terminal</a><a href="#agent">AI agent</a><a href="#databases">Databases</a><a href="#services">Services</a><a href="#files">Files</a><a href="#tunnels">Tunnels</a><a href="#automations">Automations</a><a href="#security">Security</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a></nav>
+  <nav aria-label="Page sections"><a href="#features">Features</a><a href="#modules">Modules</a><a href="#bastions">Bastions</a><a href="#terminal">Terminal</a><a href="#agent">AI agent</a><a href="#databases">Databases</a><a href="#services">Services</a><a href="#files">Files</a><a href="#tunnels">Tunnels</a><a href="#automations">Automations</a><a href="#security">Security</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a></nav>
   <a class="k-lang" href="../" hreflang="ru" lang="ru" title="Русская версия">RU<span class="k-vh"> — Русская версия</span></a>
   <a class="k-btn sm" href="https://github.com/kdanet/sshkipper-releases/releases/latest/download/SSHKipper.dmg">Download</a>
 </header>
@@ -51,7 +51,7 @@
 <section id="top" class="k-hero">
   <div id="helm" class="k-helm"><picture><source srcset="../assets/mark-white.svg" media="(prefers-color-scheme: dark)"><img src="../assets/mark.svg" alt="" class="k-helm-static" width="96" height="96"></picture></div>
   <h1>Many servers.<br>One&nbsp;helm.</h1>
-  <p class="k-lead">A native SSH manager for macOS. It gets through bastions and 2FA on its own and keeps the terminal, services, databases, files and automations of all your servers in one window. The AI agent helps you dig in — and asks before it changes anything.</p>
+  <p class="k-lead">A native SSH manager for macOS. It gets through bastions and 2FA on its own and keeps the terminal, services, databases, files and automations of all your servers in one window. The AI agent helps you dig in — and asks before it changes anything. Missing something? Add it as a module: the SDK is open and free.</p>
   <div class="k-ctas">
     <a class="k-btn" href="https://github.com/kdanet/sshkipper-releases/releases/latest/download/SSHKipper.dmg"><svg class="apple" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>Download for macOS</a>
     <a class="k-btn ghost" href="#pricing">Free for up to 5 servers<span class="ms">arrow_forward</span></a>
@@ -138,7 +138,7 @@
   </div>
   <p class="k-live"><span class="ms">touch_app</span>The window is live: open a server or a folder in the tree, press Files or the lock, or type help in the terminal.</p>
 
-  <nav id="features" class="k-chips" aria-label="Page sections"><a class="k-chip" href="#bastions"><span class="ms">key</span><span>Bastions and 2FA</span></a><a class="k-chip" href="#agent"><span class="ms">auto_awesome</span><span>AI agent</span></a><a class="k-chip" href="#databases"><span class="ms">database</span><span>Databases</span></a><a class="k-chip" href="#services"><span class="ms">dns</span><span>Services</span></a><a class="k-chip" href="#automations"><span class="ms">account_tree</span><span>Automations</span></a><a class="k-chip" href="#files"><span class="ms">folder_open</span><span>SFTP, S3, WebDAV</span></a><a class="k-chip" href="#tunnels"><span class="ms">swap_horiz</span><span>Tunnels</span></a><a class="k-chip" href="#terminal"><span class="ms">terminal</span><span>Terminal and tmux</span></a><a class="k-chip" href="#security"><span class="ms">lock</span><span>Encryption</span></a></nav>
+  <nav id="features" class="k-chips" aria-label="Page sections"><a class="k-chip" href="#modules"><span class="ms">extension</span><span>Your own modules</span></a><a class="k-chip" href="#bastions"><span class="ms">key</span><span>Bastions and 2FA</span></a><a class="k-chip" href="#agent"><span class="ms">auto_awesome</span><span>AI agent</span></a><a class="k-chip" href="#databases"><span class="ms">database</span><span>Databases</span></a><a class="k-chip" href="#services"><span class="ms">dns</span><span>Services</span></a><a class="k-chip" href="#automations"><span class="ms">account_tree</span><span>Automations</span></a><a class="k-chip" href="#files"><span class="ms">folder_open</span><span>SFTP, S3, WebDAV</span></a><a class="k-chip" href="#tunnels"><span class="ms">swap_horiz</span><span>Tunnels</span></a><a class="k-chip" href="#terminal"><span class="ms">terminal</span><span>Terminal and tmux</span></a><a class="k-chip" href="#security"><span class="ms">lock</span><span>Encryption</span></a></nav>
 </section>
 
 <section class="k-ba-wrap" aria-labelledby="ba-h">
@@ -190,9 +190,69 @@
   </div>
 </section>
 
+<section id="modules" class="k-story k-block" data-story="modules" aria-labelledby="modules-h" style="--c:4;--tc:2;--ec:4">
+  <div class="k-story-head rv">
+    <div><p class="k-eyebrow"><span class="k-num">01</span><span class="ms">extension</span>Modules and SDK</p>
+      <h2 id="modules-h">Need a feature? Ask your agent to build it for you</h2></div>
+    <p class="k-sub">SSHKipper grows with modules — and anyone can write one. An open, free SDK: a module adds a section to your servers, native pages, actions, AI tools and automation blocks. Write it yourself or hand it to Claude Code or Codex, then share it with the community.</p>
+  </div>
+  <ul class="k-engines"><li class="rv" style="--i:0"><span class="lg"><span class="ms">deployed_code</span></span><b>Kubernetes</b><span>Pods, logs and deployment restarts? No problem.</span></li><li class="rv" style="--i:1"><span class="lg"><span class="ms">thermostat</span></span><b>A seedling greenhouse</b><span>Sensors on a Raspberry Pi and watering at a click? No problem.</span></li><li class="rv" style="--i:2"><span class="lg"><span class="ms">sports_esports</span></span><b>A Minecraft server</b><span>Players online, a world backup and a restart? No problem.</span></li><li class="rv" style="--i:3"><span class="lg"><span class="ms">auto_awesome</span></span><b>Your agent writes it</b><span>The SDK ships an MCP server: guides, scaffolds, validation.</span></li><li class="rv" style="--i:4"><span class="lg"><span class="ms">code</span></span><b>Any language</b><span>An sh script on the server or a program on this Mac — TypeScript, Python, Go.</span></li><li class="rv" style="--i:5"><span class="lg"><span class="ms">account_tree</span></span><b>Automation blocks</b><span>A module becomes a block in your pipelines.</span></li><li class="rv" style="--i:6"><span class="lg"><span class="ms">dashboard_customize</span></span><b>Native look</b><span>Pages made of the app’s blocks — no HTML, no WebView.</span></li><li class="rv" style="--i:7"><span class="lg"><span class="ms">public</span></span><b>Open and free</b><span>The SDK is MIT. Your module can go open source too.</span></li></ul>
+  <div class="k-stagecard rv">
+    <div class="k-story-vis"><div class="k-screen"><div class="k-cam on" data-w="1180" data-h="600" data-steps="[{&quot;focus&quot;: &quot;.mx-term, .mx-pkg&quot;, &quot;mfocus&quot;: &quot;.mx-term&quot;, &quot;ring&quot;: &quot;.mx-l.done&quot;, &quot;mzoom&quot;: 660}, null, null, null]" aria-hidden="true"><div class="app modag" style="width:1180px;height:600px">
+<div class="mx-term">
+  <div class="mx-tt"><span class="a-lights"><i></i><i></i><i></i></span><img loading="lazy" decoding="async" width="32" height="32" src="../assets/icons/ai-claudecode.svg?v=0499963a" alt=""><b>Claude Code</b><span>~/modules</span></div>
+  <div class="mx-tb">
+    <div class="mx-l me">&gt; Make an SSHKipper module for Kubernetes: pods, logs and restarting a deployment</div>
+    <div class="mx-l"><i class="dot"></i><span class="t">sshkipper-module</span> · guide</div><div class="mx-l"><i class="dot"></i><span class="t">sshkipper-module</span> · scaffold <em>k8s</em></div>
+    <div class="mx-l"><i class="dot"></i>Writing <em>scripts/pods.sh</em>, <em>views/main.json</em></div>
+    <div class="mx-l"><i class="dot"></i><span class="t">sshkipper-module</span> · validate <em>k8s</em> <b>✓ no issues</b></div><div class="mx-l"><i class="dot"></i><span class="t">sshkipper-module</span> · preview <em>main</em></div>
+    <div class="mx-l done">Done: the “Kubernetes” module is in ~/modules/k8s. Link the folder in Settings → Extensions → Modules.</div>
+    <div class="mx-l"><i class="mx-cur"></i></div>
+  </div>
+</div>
+<div class="mx-arrow"><span class="ms">arrow_forward</span></div>
+<div class="mx-pkg"><div class="mx-ph"><span class="ms">extension</span><div><b>k8s</b><span>module · SDK 1</span></div></div>
+  <div class="mx-tree"><div class="mx-f"><span class="ms">description</span><span>sshkipper-module.json</span></div><div class="mx-f"><span class="ms">folder</span><span>scripts/</span></div><div class="mx-f in"><span class="ms">terminal</span><span>detect.sh</span></div><div class="mx-f in"><span class="ms">terminal</span><span>summary.sh</span></div><div class="mx-f in"><span class="ms">terminal</span><span>pods.sh</span></div><div class="mx-f in"><span class="ms">terminal</span><span>logs.sh</span></div><div class="mx-f in"><span class="ms">terminal</span><span>restart.sh</span></div><div class="mx-f"><span class="ms">folder</span><span>views/</span></div><div class="mx-f in"><span class="ms">table</span><span>main.json</span></div><div class="mx-f in"><span class="ms">table</span><span>pod.json</span></div></div>
+  <div class="mx-chips"><span>server</span><span>exec</span><span>MIT</span></div></div><i class="k-ring"></i><i class="k-tap"></i></div></div><div class="k-cam " data-w="1180" data-h="600" data-steps="[null, {&quot;focus&quot;: &quot;.mx-side, .mx-main&quot;, &quot;mfocus&quot;: &quot;.mx-main&quot;, &quot;ring&quot;: &quot;.mx-side .sel, .mx-mh&quot;, &quot;mzoom&quot;: 620, &quot;max&quot;: 230}, null, null]" aria-hidden="true"><div class="app modapp" style="width:1180px;height:600px">
+<div class="mx-wt"><span class="a-lights"><i></i><i></i><i></i></span><b>web-01</b></div>
+<div class="mx-wb">
+  <div class="mx-side"><div class="mx-sr " style="padding-left:10px"><span class="ms">folder</span><span>Production</span></div><div class="mx-sr " style="padding-left:26px"><span class="ms">dns</span><span>web-01</span></div><div class="mx-sr " style="padding-left:42px"><span class="ms">inventory_2</span><span>Docker</span></div><div class="mx-sr " style="padding-left:42px"><span class="ms">public</span><span>Nginx</span></div><div class="mx-sr sel" style="padding-left:42px"><span class="ms">deployed_code</span><span>Kubernetes</span><em>module</em></div></div>
+  <div class="mx-main">
+    <div class="mx-mh"><span class="mx-tile"><span class="ms">deployed_code</span></span><div><b>Kubernetes</b><span>module · kubectl on web-01</span></div>
+      <span class="sp"></span><span class="btn"><span class="ms sm">refresh</span>Refresh</span></div>
+    <div class="mx-ch"><span class="">Pods 16</span><span class="ok">Running 14</span><span class="warn">Pending 1</span><span class="bad">Failing 1</span></div>
+    <div class="mx-r hd"><span>Pod</span><span>Namespace</span><span>Status</span><span class="c">Restarts</span><span class="c">Age</span></div>
+    <div class="mx-r"><span class="n"><i class="ok"></i>api-7d9f6c</span><span>prod</span><span class="st ok">Running</span><span class="c">0</span><span class="c">3d</span></div><div class="mx-r sel"><span class="n"><i class="bad"></i>worker-5c8d9</span><span>prod</span><span class="st bad">CrashLoopBackOff</span><span class="c">12</span><span class="c">2h</span></div><div class="mx-r"><span class="n"><i class="ok"></i>web-6b4f2a</span><span>prod</span><span class="st ok">Running</span><span class="c">0</span><span class="c">3d</span></div><div class="mx-r"><span class="n"><i class="ok"></i>redis-0</span><span>prod</span><span class="st ok">Running</span><span class="c">0</span><span class="c">9d</span></div><div class="mx-r"><span class="n"><i class="warn"></i>cron-sync-2x7</span><span>ops</span><span class="st warn">Pending</span><span class="c">0</span><span class="c">1m</span></div><div class="mx-r"><span class="n"><i class="ok"></i>grafana-7f9</span><span>monitoring</span><span class="st ok">Running</span><span class="c">1</span><span class="c">5d</span></div>
+    <div class="mx-log"><div class="mx-lh"><b>worker-5c8d9</b><span>last lines</span><span class="sp"></span>
+      <span class="btn">Logs</span><span class="btn red">Restart deployment…</span></div>
+      <code>Error: connect ECONNREFUSED 10.0.4.12:5432</code><code>queue: retrying in 30s (attempt 12)</code></div>
+  </div>
+</div><i class="k-ring"></i><i class="k-tap"></i></div></div><div class="k-cam " data-w="1180" data-h="600" data-steps="[null, null, {&quot;focus&quot;: &quot;.mx-g&quot;, &quot;mfocus&quot;: &quot;.mx-g:nth-child(2)&quot;, &quot;mzoom&quot;: 420, &quot;max&quot;: 400}, null]" aria-hidden="true"><div class="app modgal" style="width:1180px;height:600px"><div class="mx-g"><div class="mx-ask">Need Kubernetes? <b>No problem.</b></div><div class="mx-gc"><div class="mx-gh"><span class="mx-tile blue"><span class="ms">deployed_code</span></span><div><b>Kubernetes</b><span>web-01</span></div><em>module</em></div><div class="mx-ms"><div class="mx-m ok"><span>Running</span><b>14 / 16</b></div><div class="mx-m bad"><span>Failing</span><b>1</b></div></div><div class="mx-bar "><span>CPU</span><i><i style="width:46%"></i></i><b>46 %</b></div><div class="mx-bar "><span>Memory</span><i><i style="width:71%"></i></i><b>71 %</b></div><div class="mx-bt"><span class="btn">Restart…</span></div></div></div><div class="mx-g"><div class="mx-ask">Watch your seedlings? <b>No problem.</b></div><div class="mx-gc"><div class="mx-gh"><span class="mx-tile green"><span class="ms">thermostat</span></span><div><b>Greenhouse</b><span>raspberrypi</span></div><em>module</em></div><div class="mx-ms"><div class="mx-m "><span>Air</span><b>24.5 °C</b></div><div class="mx-m "><span>Humidity</span><b>61 %</b></div></div><div class="mx-bar "><span>Tray 1 · tomatoes</span><i><i style="width:72%"></i></i><b>72 %</b></div><div class="mx-bar warn"><span>Tray 2 · peppers</span><i><i style="width:38%"></i></i><b>38 %</b></div><div class="mx-bar "><span>Tray 3 · basil</span><i><i style="width:66%"></i></i><b>66 %</b></div><div class="mx-bt"><span class="btn"><span class="ms sm">water_drop</span>Water tray 2</span></div></div></div><div class="mx-g"><div class="mx-ask">A server for friends? <b>No problem.</b></div><div class="mx-gc"><div class="mx-gh"><span class="mx-tile orange"><span class="ms">sports_esports</span></span><div><b>Minecraft</b><span>mc.home</span></div><em>module</em></div><div class="mx-ms"><div class="mx-m "><span>Players</span><b>3 / 20</b></div><div class="mx-m ok"><span>TPS</span><b>19.9</b></div></div><div class="mx-pl"><span><i></i>steve</span><span><i></i>alex</span><span><i></i>creeper_42</span></div><div class="mx-bt"><span class="btn">Back up world</span><span class="btn">Restart</span></div></div></div><i class="k-ring"></i><i class="k-tap"></i></div></div><div class="k-cam " data-w="1180" data-h="600" data-steps="[null, null, null, {&quot;focus&quot;: &quot;.mx-code, .mx-pack, .mx-dlg&quot;, &quot;mfocus&quot;: &quot;.mx-dlg&quot;, &quot;ring&quot;: &quot;.mx-file&quot;, &quot;mzoom&quot;: 480, &quot;max&quot;: 690}]" aria-hidden="true"><div class="app modsh" style="width:1180px;height:600px">
+<div class="mx-code"><div class="mx-tt"><span class="a-lights"><i></i><i></i><i></i></span><b>sshkipper-module.json</b></div><div class="mx-cb">{<br>&nbsp;&nbsp;<span class="k">"id"</span>: <span class="v">"dev.you.k8s"</span>,<br>&nbsp;&nbsp;<span class="k">"title"</span>: <span class="v">"Kubernetes"</span>,<br>&nbsp;&nbsp;<span class="k">"license"</span>: <span class="v">"MIT"</span>,<br>&nbsp;&nbsp;<span class="k">"runtime"</span>: { <span class="k">"kind"</span>: <span class="v">"server"</span> },<br>&nbsp;&nbsp;<span class="k">"permissions"</span>: [<span class="v">"exec"</span>],<br>&nbsp;&nbsp;<span class="k">"service"</span>: { <span class="k">"detect"</span>: <span class="v">"detect"</span>, <span class="k">"page"</span>: <span class="v">"main"</span> },<br>&nbsp;&nbsp;<span class="k">"pages"</span>: [ { <span class="k">"id"</span>: <span class="v">"main"</span>, <span class="k">"view"</span>: <span class="v">"views/main.json"</span> } ]<br>}</div></div>
+<div class="mx-pack"><code>$ sshkipper-module pack k8s</code><i></i><div class="mx-file"><span class="ms">extension</span><b>k8s.sshkmod</b><span>one file to share</span></div>
+  <div class="mx-oss"><span class="ms">code</span><span>or an open repository for the community</span></div></div>
+<div class="mx-dlg"><img loading="lazy" decoding="async" width="32" height="32" src="../assets/icon-192.png" alt=""><div>
+  <b>Install the “Kubernetes” 1.0.0 module?</b>
+  <p>Pods, logs and restarting a deployment.</p>
+  <p>Author: you · MIT</p>
+  <p>The module gets the settings and secrets you give it and can run commands on the servers where you turn it on.</p>
+  <div class="mx-db"><span class="btn">Cancel</span><span class="btn blue">Install</span></div></div></div><i class="k-ring"></i><i class="k-tap"></i></div></div></div></div>
+    <ol class="k-steps">
+        <li class="r0 t0"><button type="button" class="k-step on" data-i="0"><span class="k-n">1</span>
+          <span class="k-st"><b>Ask your agent</b><span>Claude Code or Codex write the module with the SDK and check it themselves.</span></span><i class="k-bar"><i></i></i></button></li>
+        <li class=""><button type="button" class="k-step" data-i="1"><span class="k-n">2</span>
+          <span class="k-st"><b>Its own section</b><span>Next to Docker and nginx: pages, statuses, logs and actions.</span></span><i class="k-bar"><i></i></i></button></li>
+        <li class="t0 t2"><button type="button" class="k-step" data-i="2"><span class="k-n">3</span>
+          <span class="k-st"><b>Anything</b><span>Kubernetes, a greenhouse, Minecraft — no problem.</span></span><i class="k-bar"><i></i></i></button></li>
+        <li class="t2"><button type="button" class="k-step" data-i="3"><span class="k-n">4</span>
+          <span class="k-st"><b>Share it</b><span>One .sshkmod file or an open repository.</span></span><i class="k-bar"><i></i></i></button></li>
+    </ol>
+  </div>
+  <ul class="k-proofs"><li class="rv" style="--i:0"><span class="ms">lock</span><b>Apart from the app</b><span>A module’s code never loads into SSHKipper: a script on the server or its own program. Its permissions show at install.</span></li><li class="rv" style="--i:1"><span class="ms">auto_awesome</span><b>AI uses it too</b><span>A module’s actions become the agent’s tools — with the same modes and confirmations.</span></li><li class="rv" style="--i:2"><span class="ms">public</span><b>For the community</b><span>Share modules as a file or a repository — and take others’.</span></li></ul>
+</section>
 <section id="bastions" class="k-story k-block" data-story="bastions" aria-labelledby="bastions-h" style="--c:4;--tc:2;--ec:6">
   <div class="k-story-head rv">
-    <div><p class="k-eyebrow"><span class="k-num">01</span><span class="ms">key</span>Bastions and 2FA</p>
+    <div><p class="k-eyebrow"><span class="k-num">02</span><span class="ms">key</span>Bastions and 2FA</p>
       <h2 id="bastions-h">A server behind two bastions — in one double-click</h2></div>
     <p class="k-sub">Normally that’s <code>ssh -J</code>, a password and a code from your phone at every hop. In SSHKipper, keys, passwords and 2FA secrets live in an encrypted document, and the app answers every hop itself.</p>
   </div>
@@ -256,7 +316,7 @@
 </section>
 <section id="terminal" class="k-story k-block" data-story="terminal" aria-labelledby="terminal-h" style="--c:4;--tc:2;--ec:6">
   <div class="k-story-head rv">
-    <div><p class="k-eyebrow"><span class="k-num">02</span><span class="ms">terminal</span>Terminal</p>
+    <div><p class="k-eyebrow"><span class="k-num">03</span><span class="ms">terminal</span>Terminal</p>
       <h2 id="terminal-h">A terminal that doesn’t lose your work</h2></div>
     <p class="k-sub">Ghostty under the hood. Tabs and splits, tmux on the server, one command on many servers at once and typing into every tab together.</p>
   </div>
@@ -307,7 +367,7 @@
 </section>
 <section id="agent" class="k-story k-block" data-story="agent" aria-labelledby="agent-h" style="--c:4;--tc:2;--ec:4">
   <div class="k-story-head rv">
-    <div><p class="k-eyebrow"><span class="k-num">03</span><span class="ms">auto_awesome</span>AI agent</p>
+    <div><p class="k-eyebrow"><span class="k-num">04</span><span class="ms">auto_awesome</span>AI agent</p>
       <h2 id="agent-h">The agent digs into the server itself — and asks before it changes anything</h2></div>
     <p class="k-sub">It reads logs, load and containers on its own, yet never gets passwords, keys or addresses. What it may do without asking is up to you — per server and folder. So is the model.</p>
   </div>
@@ -479,7 +539,7 @@
 </section>
 <section id="databases" class="k-story k-block" data-story="databases" aria-labelledby="databases-h" style="--c:5;--tc:3;--ec:6">
   <div class="k-story-head rv">
-    <div><p class="k-eyebrow"><span class="k-num">04</span><span class="ms">database</span>Databases</p>
+    <div><p class="k-eyebrow"><span class="k-num">05</span><span class="ms">database</span>Databases</p>
       <h2 id="databases-h">A database client — right behind your bastions</h2></div>
     <p class="k-sub">Six engines, editable tables, a query editor and AI that turns words into SQL. Databases open through the same chain as the terminal — no <code>ssh -L</code>, no manual tunnels.</p>
   </div>
@@ -562,7 +622,7 @@
 </section>
 <section id="services" class="k-story k-block" data-story="services" aria-labelledby="services-h" style="--c:3;--tc:3;--ec:6">
   <div class="k-story-head rv">
-    <div><p class="k-eyebrow"><span class="k-num">05</span><span class="ms">dns</span>Server services</p>
+    <div><p class="k-eyebrow"><span class="k-num">06</span><span class="ms">dns</span>Server services</p>
       <h2 id="services-h">Everything about a server — in one tab</h2></div>
     <p class="k-sub">Dashboard, Docker, Nginx, Cron, Supervisor and security — over the same SSH and the same bastions. No extra terminals, no agents on the server, and every change waits for your confirmation.</p>
   </div>
@@ -611,7 +671,7 @@
 </section>
 <section id="files" class="k-story k-block" data-story="files" aria-labelledby="files-h" style="--c:4;--tc:2;--ec:6">
   <div class="k-story-head rv">
-    <div><p class="k-eyebrow"><span class="k-num">06</span><span class="ms">folder_open</span>Files and storage</p>
+    <div><p class="k-eyebrow"><span class="k-num">07</span><span class="ms">folder_open</span>Files and storage</p>
       <h2 id="files-h">Server, Mac and cloud files — in one window</h2></div>
     <p class="k-sub">SFTP, S3 and WebDAV live in the same tree as your servers and go through the same bastions. Drag and drop both ways and one transfer queue for everything.</p>
   </div>
@@ -678,7 +738,7 @@
 </section>
 <section id="tunnels" class="k-story k-block" data-story="tunnels" aria-labelledby="tunnels-h" style="--c:3;--tc:3;--ec:6">
   <div class="k-story-head rv">
-    <div><p class="k-eyebrow"><span class="k-num">07</span><span class="ms">swap_horiz</span>Tunnels</p>
+    <div><p class="k-eyebrow"><span class="k-num">08</span><span class="ms">swap_horiz</span>Tunnels</p>
       <h2 id="tunnels-h">An internal service — as if it were next to you</h2></div>
     <p class="k-sub">Grafana, a database admin or an S3 console on the inner network open right on this Mac. The tunnel knows the bastion chain and enters the 2FA codes itself.</p>
   </div>
@@ -735,7 +795,7 @@
 </section>
 <section id="automations" class="k-story k-block" data-story="automations" aria-labelledby="automations-h" style="--c:5;--tc:3;--ec:6">
   <div class="k-story-head rv">
-    <div><p class="k-eyebrow"><span class="k-num">08</span><span class="ms">account_tree</span>Automations</p>
+    <div><p class="k-eyebrow"><span class="k-num">09</span><span class="ms">account_tree</span>Automations</p>
       <h2 id="automations-h">Turn routine into a pipeline of blocks</h2></div>
     <p class="k-sub">Check sites and disks, get an AI summary, clean old files, make a backup — from ready-made modules and your own commands. Every run’s result is right there, not in a log nobody reads.</p>
   </div>
@@ -796,7 +856,7 @@
 </section>
 <section id="security" class="k-story k-block" data-story="security" aria-labelledby="security-h" style="--c:5;--tc:3;--ec:4">
   <div class="k-story-head rv">
-    <div><p class="k-eyebrow"><span class="k-num">09</span><span class="ms">shield</span>Security</p>
+    <div><p class="k-eyebrow"><span class="k-num">10</span><span class="ms">shield</span>Security</p>
       <h2 id="security-h">Your keys stay yours</h2></div>
     <p class="k-sub">Passwords, keys and 2FA secrets live in one encrypted file on this Mac. The developer has no copy, no account and no telemetry: SSH goes to your servers, AI straight to the provider, and the document locks itself.</p>
   </div>

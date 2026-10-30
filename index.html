@@ -32,9 +32,9 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preload" href="assets/fonts/f949284da9de4c19.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/01457da3be39b3d2.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/e12cf4735cce3191.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/fonts.css?v=5acfb58c">
-<link rel="stylesheet" href="assets/app.css?v=9ab09b98">
+<link rel="preload" href="assets/fonts/3665e1b4b673f4a1.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts.css?v=05429856">
+<link rel="stylesheet" href="assets/app.css?v=d5b5b7ce">
 <link rel="stylesheet" href="assets/site.css?v=6a98d004">
 <script src="assets/site.js?v=d237fad9" defer></script>
 </head>
@@ -43,7 +43,7 @@
 <a class="k-skip" href="#main">К содержимому</a>
 <header class="k-nav">
   <a class="k-brand" href="#top"><picture><source srcset="assets/mark-white.svg" media="(prefers-color-scheme: dark)"><img src="assets/mark.svg" alt="" width="22" height="22"></picture>SSHKipper</a>
-  <nav aria-label="Разделы страницы"><a href="#features">Возможности</a><a href="#bastions">Бастионы</a><a href="#terminal">Терминал</a><a href="#agent">AI-агент</a><a href="#databases">Базы</a><a href="#services">Службы</a><a href="#files">Файлы</a><a href="#tunnels">Туннели</a><a href="#automations">Автоматизации</a><a href="#security">Безопасность</a><a href="#pricing">Цены</a><a href="#faq">Вопросы</a></nav>
+  <nav aria-label="Разделы страницы"><a href="#features">Возможности</a><a href="#modules">Модули</a><a href="#bastions">Бастионы</a><a href="#terminal">Терминал</a><a href="#agent">AI-агент</a><a href="#databases">Базы</a><a href="#services">Службы</a><a href="#files">Файлы</a><a href="#tunnels">Туннели</a><a href="#automations">Автоматизации</a><a href="#security">Безопасность</a><a href="#pricing">Цены</a><a href="#faq">Вопросы</a></nav>
   <a class="k-lang" href="en/" hreflang="en" lang="en" title="English version">EN<span class="k-vh"> — English version</span></a>
   <a class="k-btn sm" href="https://github.com/kdanet/sshkipper-releases/releases/latest/download/SSHKipper.dmg">Скачать</a>
 </header>
@@ -52,7 +52,7 @@
 <section id="top" class="k-hero">
   <div id="helm" class="k-helm"><picture><source srcset="assets/mark-white.svg" media="(prefers-color-scheme: dark)"><img src="assets/mark.svg" alt="" class="k-helm-static" width="96" height="96"></picture></div>
   <h1>Серверов много,<br>а&nbsp;штурвал один</h1>
-  <p class="k-lead">Нативный SSH‑менеджер для macOS. Сам проходит бастионы и 2FA, а терминал, службы, базы, файлы и автоматизации всех ваших серверов держит в одном окне. AI‑агент помогает разобраться и спрашивает, прежде чем что‑то менять.</p>
+  <p class="k-lead">Нативный SSH‑менеджер для macOS. Сам проходит бастионы и 2FA, а терминал, службы, базы, файлы и автоматизации всех ваших серверов держит в одном окне. AI‑агент помогает разобраться и спрашивает, прежде чем что‑то менять. Чего‑то не хватает — допишите модулем: SDK открыт и бесплатен.</p>
   <div class="k-ctas">
     <a class="k-btn" href="https://github.com/kdanet/sshkipper-releases/releases/latest/download/SSHKipper.dmg"><svg class="apple" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>Скачать для macOS</a>
     <a class="k-btn ghost" href="#pricing">Бесплатно до 5 серверов<span class="ms">arrow_forward</span></a>
@@ -139,7 +139,7 @@
   </div>
   <p class="k-live"><span class="ms">touch_app</span>Окно живое: откройте сервер или папку в дереве, нажмите «Файлы», замок или наберите help в терминале.</p>
 
-  <nav id="features" class="k-chips" aria-label="Разделы страницы"><a class="k-chip" href="#bastions"><span class="ms">key</span><span>Бастионы и 2FA</span></a><a class="k-chip" href="#agent"><span class="ms">auto_awesome</span><span>AI-агент</span></a><a class="k-chip" href="#databases"><span class="ms">database</span><span>Базы данных</span></a><a class="k-chip" href="#services"><span class="ms">dns</span><span>Службы</span></a><a class="k-chip" href="#automations"><span class="ms">account_tree</span><span>Автоматизации</span></a><a class="k-chip" href="#files"><span class="ms">folder_open</span><span>SFTP, S3, WebDAV</span></a><a class="k-chip" href="#tunnels"><span class="ms">swap_horiz</span><span>Туннели</span></a><a class="k-chip" href="#terminal"><span class="ms">terminal</span><span>Терминал и tmux</span></a><a class="k-chip" href="#security"><span class="ms">lock</span><span>Шифрование</span></a></nav>
+  <nav id="features" class="k-chips" aria-label="Разделы страницы"><a class="k-chip" href="#modules"><span class="ms">extension</span><span>Свои модули</span></a><a class="k-chip" href="#bastions"><span class="ms">key</span><span>Бастионы и 2FA</span></a><a class="k-chip" href="#agent"><span class="ms">auto_awesome</span><span>AI-агент</span></a><a class="k-chip" href="#databases"><span class="ms">database</span><span>Базы данных</span></a><a class="k-chip" href="#services"><span class="ms">dns</span><span>Службы</span></a><a class="k-chip" href="#automations"><span class="ms">account_tree</span><span>Автоматизации</span></a><a class="k-chip" href="#files"><span class="ms">folder_open</span><span>SFTP, S3, WebDAV</span></a><a class="k-chip" href="#tunnels"><span class="ms">swap_horiz</span><span>Туннели</span></a><a class="k-chip" href="#terminal"><span class="ms">terminal</span><span>Терминал и tmux</span></a><a class="k-chip" href="#security"><span class="ms">lock</span><span>Шифрование</span></a></nav>
 </section>
 
 <section class="k-ba-wrap" aria-labelledby="ba-h">
@@ -191,9 +191,69 @@
   </div>
 </section>
 
+<section id="modules" class="k-story k-block" data-story="modules" aria-labelledby="modules-h" style="--c:4;--tc:2;--ec:4">
+  <div class="k-story-head rv">
+    <div><p class="k-eyebrow"><span class="k-num">01</span><span class="ms">extension</span>Модули и SDK</p>
+      <h2 id="modules-h">Нужна новая функция? Попросите агента сделать её для вас</h2></div>
+    <p class="k-sub">SSHKipper расширяется модулями — и написать свой может каждый. Открытый бесплатный SDK: модуль добавляет раздел на сервере, нативные страницы, действия, инструменты для AI и блоки автоматизаций. Напишите сами или поручите Claude Code и Codex, а готовым поделитесь с сообществом.</p>
+  </div>
+  <ul class="k-engines"><li class="rv" style="--i:0"><span class="lg"><span class="ms">deployed_code</span></span><b>Kubernetes</b><span>Поды, логи и перезапуск деплоймента? Без проблем.</span></li><li class="rv" style="--i:1"><span class="lg"><span class="ms">thermostat</span></span><b>Теплица с рассадой</b><span>Датчики на Raspberry Pi и полив кнопкой? Без проблем.</span></li><li class="rv" style="--i:2"><span class="lg"><span class="ms">sports_esports</span></span><b>Сервер Minecraft</b><span>Игроки онлайн, бэкап мира и рестарт? Без проблем.</span></li><li class="rv" style="--i:3"><span class="lg"><span class="ms">auto_awesome</span></span><b>Агент пишет за вас</b><span>В SDK есть MCP-сервер: руководства, заготовки, проверка.</span></li><li class="rv" style="--i:4"><span class="lg"><span class="ms">code</span></span><b>Любой язык</b><span>Скрипт sh на сервере или программа на этом Mac — TypeScript, Python, Go.</span></li><li class="rv" style="--i:5"><span class="lg"><span class="ms">account_tree</span></span><b>Блоки автоматизаций</b><span>Модуль становится блоком в конвейерах.</span></li><li class="rv" style="--i:6"><span class="lg"><span class="ms">dashboard_customize</span></span><b>Нативный вид</b><span>Страницы из блоков приложения — без HTML и WebView.</span></li><li class="rv" style="--i:7"><span class="lg"><span class="ms">public</span></span><b>Открыто и бесплатно</b><span>SDK под MIT. Свой модуль можно выложить в open source.</span></li></ul>
+  <div class="k-stagecard rv">
+    <div class="k-story-vis"><div class="k-screen"><div class="k-cam on" data-w="1180" data-h="600" data-steps="[{&quot;focus&quot;: &quot;.mx-term, .mx-pkg&quot;, &quot;mfocus&quot;: &quot;.mx-term&quot;, &quot;ring&quot;: &quot;.mx-l.done&quot;, &quot;mzoom&quot;: 660}, null, null, null]" aria-hidden="true"><div class="app modag" style="width:1180px;height:600px">
+<div class="mx-term">
+  <div class="mx-tt"><span class="a-lights"><i></i><i></i><i></i></span><img loading="lazy" decoding="async" width="32" height="32" src="assets/icons/ai-claudecode.svg?v=0499963a" alt=""><b>Claude Code</b><span>~/modules</span></div>
+  <div class="mx-tb">
+    <div class="mx-l me">&gt; Сделай модуль SSHKipper для Kubernetes: поды, логи и перезапуск деплоймента</div>
+    <div class="mx-l"><i class="dot"></i><span class="t">sshkipper-module</span> · guide</div><div class="mx-l"><i class="dot"></i><span class="t">sshkipper-module</span> · scaffold <em>k8s</em></div>
+    <div class="mx-l"><i class="dot"></i>Пишу <em>scripts/pods.sh</em>, <em>views/main.json</em></div>
+    <div class="mx-l"><i class="dot"></i><span class="t">sshkipper-module</span> · validate <em>k8s</em> <b>✓ без ошибок</b></div><div class="mx-l"><i class="dot"></i><span class="t">sshkipper-module</span> · preview <em>main</em></div>
+    <div class="mx-l done">Готово: модуль «Kubernetes» в ~/modules/k8s. Подключите папку в Настройки → Расширения → Модули.</div>
+    <div class="mx-l"><i class="mx-cur"></i></div>
+  </div>
+</div>
+<div class="mx-arrow"><span class="ms">arrow_forward</span></div>
+<div class="mx-pkg"><div class="mx-ph"><span class="ms">extension</span><div><b>k8s</b><span>модуль · SDK 1</span></div></div>
+  <div class="mx-tree"><div class="mx-f"><span class="ms">description</span><span>sshkipper-module.json</span></div><div class="mx-f"><span class="ms">folder</span><span>scripts/</span></div><div class="mx-f in"><span class="ms">terminal</span><span>detect.sh</span></div><div class="mx-f in"><span class="ms">terminal</span><span>summary.sh</span></div><div class="mx-f in"><span class="ms">terminal</span><span>pods.sh</span></div><div class="mx-f in"><span class="ms">terminal</span><span>logs.sh</span></div><div class="mx-f in"><span class="ms">terminal</span><span>restart.sh</span></div><div class="mx-f"><span class="ms">folder</span><span>views/</span></div><div class="mx-f in"><span class="ms">table</span><span>main.json</span></div><div class="mx-f in"><span class="ms">table</span><span>pod.json</span></div></div>
+  <div class="mx-chips"><span>server</span><span>exec</span><span>MIT</span></div></div><i class="k-ring"></i><i class="k-tap"></i></div></div><div class="k-cam " data-w="1180" data-h="600" data-steps="[null, {&quot;focus&quot;: &quot;.mx-side, .mx-main&quot;, &quot;mfocus&quot;: &quot;.mx-main&quot;, &quot;ring&quot;: &quot;.mx-side .sel, .mx-mh&quot;, &quot;mzoom&quot;: 620, &quot;max&quot;: 230}, null, null]" aria-hidden="true"><div class="app modapp" style="width:1180px;height:600px">
+<div class="mx-wt"><span class="a-lights"><i></i><i></i><i></i></span><b>web-01</b></div>
+<div class="mx-wb">
+  <div class="mx-side"><div class="mx-sr " style="padding-left:10px"><span class="ms">folder</span><span>Production</span></div><div class="mx-sr " style="padding-left:26px"><span class="ms">dns</span><span>web-01</span></div><div class="mx-sr " style="padding-left:42px"><span class="ms">inventory_2</span><span>Docker</span></div><div class="mx-sr " style="padding-left:42px"><span class="ms">public</span><span>Nginx</span></div><div class="mx-sr sel" style="padding-left:42px"><span class="ms">deployed_code</span><span>Kubernetes</span><em>модуль</em></div></div>
+  <div class="mx-main">
+    <div class="mx-mh"><span class="mx-tile"><span class="ms">deployed_code</span></span><div><b>Kubernetes</b><span>модуль · kubectl на web-01</span></div>
+      <span class="sp"></span><span class="btn"><span class="ms sm">refresh</span>Обновить</span></div>
+    <div class="mx-ch"><span class="">Поды 16</span><span class="ok">Работают 14</span><span class="warn">Ожидает 1</span><span class="bad">Падает 1</span></div>
+    <div class="mx-r hd"><span>Под</span><span>Namespace</span><span>Состояние</span><span class="c">Рестарты</span><span class="c">Возраст</span></div>
+    <div class="mx-r"><span class="n"><i class="ok"></i>api-7d9f6c</span><span>prod</span><span class="st ok">Running</span><span class="c">0</span><span class="c">3 д</span></div><div class="mx-r sel"><span class="n"><i class="bad"></i>worker-5c8d9</span><span>prod</span><span class="st bad">CrashLoopBackOff</span><span class="c">12</span><span class="c">2 ч</span></div><div class="mx-r"><span class="n"><i class="ok"></i>web-6b4f2a</span><span>prod</span><span class="st ok">Running</span><span class="c">0</span><span class="c">3 д</span></div><div class="mx-r"><span class="n"><i class="ok"></i>redis-0</span><span>prod</span><span class="st ok">Running</span><span class="c">0</span><span class="c">9 д</span></div><div class="mx-r"><span class="n"><i class="warn"></i>cron-sync-2x7</span><span>ops</span><span class="st warn">Pending</span><span class="c">0</span><span class="c">1 мин</span></div><div class="mx-r"><span class="n"><i class="ok"></i>grafana-7f9</span><span>monitoring</span><span class="st ok">Running</span><span class="c">1</span><span class="c">5 д</span></div>
+    <div class="mx-log"><div class="mx-lh"><b>worker-5c8d9</b><span>последние строки</span><span class="sp"></span>
+      <span class="btn">Логи</span><span class="btn red">Перезапустить деплоймент…</span></div>
+      <code>Error: connect ECONNREFUSED 10.0.4.12:5432</code><code>queue: retrying in 30s (attempt 12)</code></div>
+  </div>
+</div><i class="k-ring"></i><i class="k-tap"></i></div></div><div class="k-cam " data-w="1180" data-h="600" data-steps="[null, null, {&quot;focus&quot;: &quot;.mx-g&quot;, &quot;mfocus&quot;: &quot;.mx-g:nth-child(2)&quot;, &quot;mzoom&quot;: 420, &quot;max&quot;: 400}, null]" aria-hidden="true"><div class="app modgal" style="width:1180px;height:600px"><div class="mx-g"><div class="mx-ask">Нужен Kubernetes? <b>Без проблем.</b></div><div class="mx-gc"><div class="mx-gh"><span class="mx-tile blue"><span class="ms">deployed_code</span></span><div><b>Kubernetes</b><span>web-01</span></div><em>модуль</em></div><div class="mx-ms"><div class="mx-m ok"><span>Работают</span><b>14 / 16</b></div><div class="mx-m bad"><span>Падает</span><b>1</b></div></div><div class="mx-bar "><span>CPU</span><i><i style="width:46%"></i></i><b>46 %</b></div><div class="mx-bar "><span>Память</span><i><i style="width:71%"></i></i><b>71 %</b></div><div class="mx-bt"><span class="btn">Перезапустить…</span></div></div></div><div class="mx-g"><div class="mx-ask">Следить за рассадой? <b>Без проблем.</b></div><div class="mx-gc"><div class="mx-gh"><span class="mx-tile green"><span class="ms">thermostat</span></span><div><b>Теплица</b><span>raspberrypi</span></div><em>модуль</em></div><div class="mx-ms"><div class="mx-m "><span>Воздух</span><b>24,5 °C</b></div><div class="mx-m "><span>Влажность</span><b>61 %</b></div></div><div class="mx-bar "><span>Лоток 1 · томаты</span><i><i style="width:72%"></i></i><b>72 %</b></div><div class="mx-bar warn"><span>Лоток 2 · перец</span><i><i style="width:38%"></i></i><b>38 %</b></div><div class="mx-bar "><span>Лоток 3 · базилик</span><i><i style="width:66%"></i></i><b>66 %</b></div><div class="mx-bt"><span class="btn"><span class="ms sm">water_drop</span>Полить лоток 2</span></div></div></div><div class="mx-g"><div class="mx-ask">Сервер для друзей? <b>Без проблем.</b></div><div class="mx-gc"><div class="mx-gh"><span class="mx-tile orange"><span class="ms">sports_esports</span></span><div><b>Minecraft</b><span>mc.home</span></div><em>модуль</em></div><div class="mx-ms"><div class="mx-m "><span>Игроки</span><b>3 / 20</b></div><div class="mx-m ok"><span>TPS</span><b>19,9</b></div></div><div class="mx-pl"><span><i></i>steve</span><span><i></i>alex</span><span><i></i>creeper_42</span></div><div class="mx-bt"><span class="btn">Бэкап мира</span><span class="btn">Перезапустить</span></div></div></div><i class="k-ring"></i><i class="k-tap"></i></div></div><div class="k-cam " data-w="1180" data-h="600" data-steps="[null, null, null, {&quot;focus&quot;: &quot;.mx-code, .mx-pack, .mx-dlg&quot;, &quot;mfocus&quot;: &quot;.mx-dlg&quot;, &quot;ring&quot;: &quot;.mx-file&quot;, &quot;mzoom&quot;: 480, &quot;max&quot;: 690}]" aria-hidden="true"><div class="app modsh" style="width:1180px;height:600px">
+<div class="mx-code"><div class="mx-tt"><span class="a-lights"><i></i><i></i><i></i></span><b>sshkipper-module.json</b></div><div class="mx-cb">{<br>&nbsp;&nbsp;<span class="k">"id"</span>: <span class="v">"dev.you.k8s"</span>,<br>&nbsp;&nbsp;<span class="k">"title"</span>: <span class="v">"Kubernetes"</span>,<br>&nbsp;&nbsp;<span class="k">"license"</span>: <span class="v">"MIT"</span>,<br>&nbsp;&nbsp;<span class="k">"runtime"</span>: { <span class="k">"kind"</span>: <span class="v">"server"</span> },<br>&nbsp;&nbsp;<span class="k">"permissions"</span>: [<span class="v">"exec"</span>],<br>&nbsp;&nbsp;<span class="k">"service"</span>: { <span class="k">"detect"</span>: <span class="v">"detect"</span>, <span class="k">"page"</span>: <span class="v">"main"</span> },<br>&nbsp;&nbsp;<span class="k">"pages"</span>: [ { <span class="k">"id"</span>: <span class="v">"main"</span>, <span class="k">"view"</span>: <span class="v">"views/main.json"</span> } ]<br>}</div></div>
+<div class="mx-pack"><code>$ sshkipper-module pack k8s</code><i></i><div class="mx-file"><span class="ms">extension</span><b>k8s.sshkmod</b><span>один файл — делитесь</span></div>
+  <div class="mx-oss"><span class="ms">code</span><span>или открытый репозиторий для сообщества</span></div></div>
+<div class="mx-dlg"><img loading="lazy" decoding="async" width="32" height="32" src="assets/icon-192.png" alt=""><div>
+  <b>Установить модуль «Kubernetes» 1.0.0?</b>
+  <p>Поды, логи и перезапуск деплоймента.</p>
+  <p>Автор: you · MIT</p>
+  <p>Модуль получит настройки и секреты, которые вы ему дадите, и сможет выполнять команды на серверах, где вы его включите.</p>
+  <div class="mx-db"><span class="btn">Отмена</span><span class="btn blue">Установить</span></div></div></div><i class="k-ring"></i><i class="k-tap"></i></div></div></div></div>
+    <ol class="k-steps">
+        <li class="r0 t0"><button type="button" class="k-step on" data-i="0"><span class="k-n">1</span>
+          <span class="k-st"><b>Попросите агента</b><span>Claude Code или Codex пишут модуль по SDK и сами его проверяют.</span></span><i class="k-bar"><i></i></i></button></li>
+        <li class=""><button type="button" class="k-step" data-i="1"><span class="k-n">2</span>
+          <span class="k-st"><b>Свой раздел</b><span>Рядом с Docker и nginx: страницы, статусы, логи и действия.</span></span><i class="k-bar"><i></i></i></button></li>
+        <li class="t0 t2"><button type="button" class="k-step" data-i="2"><span class="k-n">3</span>
+          <span class="k-st"><b>Что угодно</b><span>Kubernetes, теплица, Minecraft — без проблем.</span></span><i class="k-bar"><i></i></i></button></li>
+        <li class="t2"><button type="button" class="k-step" data-i="3"><span class="k-n">4</span>
+          <span class="k-st"><b>Поделитесь</b><span>Один файл .sshkmod или открытый репозиторий.</span></span><i class="k-bar"><i></i></i></button></li>
+    </ol>
+  </div>
+  <ul class="k-proofs"><li class="rv" style="--i:0"><span class="ms">lock</span><b>Отдельно от приложения</b><span>Код модуля не загружается в SSHKipper: скрипт на сервере или своя программа. Права видны при установке.</span></li><li class="rv" style="--i:1"><span class="ms">auto_awesome</span><b>AI тоже пользуется</b><span>Действия модуля становятся инструментами агента — с теми же режимами и подтверждениями.</span></li><li class="rv" style="--i:2"><span class="ms">public</span><b>Для сообщества</b><span>Делитесь модулями файлом или репозиторием — и берите чужие.</span></li></ul>
+</section>
 <section id="bastions" class="k-story k-block" data-story="bastions" aria-labelledby="bastions-h" style="--c:4;--tc:2;--ec:6">
   <div class="k-story-head rv">
-    <div><p class="k-eyebrow"><span class="k-num">01</span><span class="ms">key</span>Бастионы и 2FA</p>
+    <div><p class="k-eyebrow"><span class="k-num">02</span><span class="ms">key</span>Бастионы и 2FA</p>
       <h2 id="bastions-h">Сервер за двумя бастионами — одним двойным щелчком</h2></div>
     <p class="k-sub">Обычно это <code>ssh -J</code>, пароль и по коду с телефона на каждом звене. В SSHKipper ключи, пароли и секреты 2FA лежат в зашифрованном документе, и на каждом звене приложение отвечает само.</p>
   </div>
@@ -257,7 +317,7 @@
 </section>
 <section id="terminal" class="k-story k-block" data-story="terminal" aria-labelledby="terminal-h" style="--c:4;--tc:2;--ec:6">
   <div class="k-story-head rv">
-    <div><p class="k-eyebrow"><span class="k-num">02</span><span class="ms">terminal</span>Терминал</p>
+    <div><p class="k-eyebrow"><span class="k-num">03</span><span class="ms">terminal</span>Терминал</p>
       <h2 id="terminal-h">Терминал, который не теряет работу</h2></div>
     <p class="k-sub">Под капотом — движок Ghostty. Вкладки и сплиты, tmux на сервере, одна команда сразу на многих серверах и ввод во все вкладки разом.</p>
   </div>
@@ -308,7 +368,7 @@
 </section>
 <section id="agent" class="k-story k-block" data-story="agent" aria-labelledby="agent-h" style="--c:4;--tc:2;--ec:4">
   <div class="k-story-head rv">
-    <div><p class="k-eyebrow"><span class="k-num">03</span><span class="ms">auto_awesome</span>AI-агент</p>
+    <div><p class="k-eyebrow"><span class="k-num">04</span><span class="ms">auto_awesome</span>AI-агент</p>
       <h2 id="agent-h">Агент сам разбирается в сервере — и спрашивает, прежде чем менять</h2></div>
     <p class="k-sub">Логи, нагрузку и контейнеры он смотрит без вас, но паролей, ключей и адресов не получает. Что можно делать без вопроса, решаете вы — для каждого сервера и папки. Модель выбираете тоже вы.</p>
   </div>
@@ -480,7 +540,7 @@
 </section>
 <section id="databases" class="k-story k-block" data-story="databases" aria-labelledby="databases-h" style="--c:5;--tc:3;--ec:6">
   <div class="k-story-head rv">
-    <div><p class="k-eyebrow"><span class="k-num">04</span><span class="ms">database</span>Базы данных</p>
+    <div><p class="k-eyebrow"><span class="k-num">05</span><span class="ms">database</span>Базы данных</p>
       <h2 id="databases-h">Клиент баз данных — прямо за бастионами</h2></div>
     <p class="k-sub">Шесть движков, таблицы с правкой, редактор запросов и AI, который переводит слова в SQL. Базы открываются по той же цепочке, что и терминал, — без <code>ssh -L</code> и ручных туннелей.</p>
   </div>
@@ -563,7 +623,7 @@
 </section>
 <section id="services" class="k-story k-block" data-story="services" aria-labelledby="services-h" style="--c:3;--tc:3;--ec:6">
   <div class="k-story-head rv">
-    <div><p class="k-eyebrow"><span class="k-num">05</span><span class="ms">dns</span>Службы сервера</p>
+    <div><p class="k-eyebrow"><span class="k-num">06</span><span class="ms">dns</span>Службы сервера</p>
       <h2 id="services-h">Всё о сервере — на одной вкладке</h2></div>
     <p class="k-sub">Дашборд, Docker, Nginx, Cron, Supervisor и безопасность — через тот же SSH и те же бастионы. Ни лишних терминалов, ни агентов на сервере, а любое изменение — только после подтверждения.</p>
   </div>
@@ -612,7 +672,7 @@
 </section>
 <section id="files" class="k-story k-block" data-story="files" aria-labelledby="files-h" style="--c:4;--tc:2;--ec:6">
   <div class="k-story-head rv">
-    <div><p class="k-eyebrow"><span class="k-num">06</span><span class="ms">folder_open</span>Файлы и хранилища</p>
+    <div><p class="k-eyebrow"><span class="k-num">07</span><span class="ms">folder_open</span>Файлы и хранилища</p>
       <h2 id="files-h">Файлы сервера, Mac и облака — в одном окне</h2></div>
     <p class="k-sub">SFTP, S3 и WebDAV живут в том же дереве, что и серверы, и ходят через те же бастионы. Перетаскивание в обе стороны и одна очередь передач на всё.</p>
   </div>
@@ -679,7 +739,7 @@
 </section>
 <section id="tunnels" class="k-story k-block" data-story="tunnels" aria-labelledby="tunnels-h" style="--c:3;--tc:3;--ec:6">
   <div class="k-story-head rv">
-    <div><p class="k-eyebrow"><span class="k-num">07</span><span class="ms">swap_horiz</span>Туннели</p>
+    <div><p class="k-eyebrow"><span class="k-num">08</span><span class="ms">swap_horiz</span>Туннели</p>
       <h2 id="tunnels-h">Внутренний сервис — как будто он рядом</h2></div>
     <p class="k-sub">Grafana, админка базы или консоль S3 во внутренней сети открываются прямо на этом Mac. Туннель знает цепочку бастионов и сам вводит коды 2FA.</p>
   </div>
@@ -736,7 +796,7 @@
 </section>
 <section id="automations" class="k-story k-block" data-story="automations" aria-labelledby="automations-h" style="--c:5;--tc:3;--ec:6">
   <div class="k-story-head rv">
-    <div><p class="k-eyebrow"><span class="k-num">08</span><span class="ms">account_tree</span>Автоматизации</p>
+    <div><p class="k-eyebrow"><span class="k-num">09</span><span class="ms">account_tree</span>Автоматизации</p>
       <h2 id="automations-h">Рутину — в конвейер из блоков</h2></div>
     <p class="k-sub">Проверить сайты и диски, собрать сводку с AI, почистить старые файлы, сделать бэкап — из готовых модулей и своих команд. Итог каждого запуска виден сразу, а не в логе, который никто не читает.</p>
   </div>
@@ -797,7 +857,7 @@
 </section>
 <section id="security" class="k-story k-block" data-story="security" aria-labelledby="security-h" style="--c:5;--tc:3;--ec:4">
   <div class="k-story-head rv">
-    <div><p class="k-eyebrow"><span class="k-num">09</span><span class="ms">shield</span>Безопасность</p>
+    <div><p class="k-eyebrow"><span class="k-num">10</span><span class="ms">shield</span>Безопасность</p>
       <h2 id="security-h">Ваши ключи остаются у вас</h2></div>
     <p class="k-sub">Пароли, ключи и секреты 2FA лежат в одном зашифрованном файле на этом Mac. У разработчика нет ни копии, ни аккаунта, ни телеметрии: SSH идёт на ваши серверы, AI — прямо к провайдеру, а документ закрывается сам.</p>
   </div>
