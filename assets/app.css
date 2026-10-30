@@ -1331,45 +1331,44 @@ svg.lgo { fill: var(--lc, currentColor); flex: none; }
 .app.privacy { --canvasbg: #ffffff; }
 @media (prefers-color-scheme: dark) { .app.privacy { --canvasbg: #1b1d26; } }
 
-/* How AI works without the secrets (security story): server — this Mac — the AI model, two flows across the boundary */
+/* How AI works without the secrets (security story): server — this Mac — the AI model, two rows of straight arrows */
 .app.aisec { --canvasbg: #ffffff; --red: #d4402b; background: transparent; box-shadow: none; overflow: visible; }
 @media (prefers-color-scheme: dark) { .app.aisec { --canvasbg: #1b1d26; --red: #ff7a66; } }
-.sd-zone { position: absolute; left: 880px; right: 0; top: 20px; bottom: 60px; border-radius: 22px; border: 1.5px dashed color-mix(in oklab, var(--purple) 50%, transparent);
+.sd-zone { position: absolute; left: 870px; right: 0; top: 12px; bottom: 12px; border-radius: 20px; border: 1.5px dashed color-mix(in oklab, var(--purple) 50%, transparent);
   background: color-mix(in oklab, var(--purple) 5%, transparent); }
-.sd-zone > span { position: absolute; left: 0; right: 0; top: 16px; display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--purple); }
+.sd-zone > span { position: absolute; left: 0; right: 0; top: 14px; display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--purple); }
 .sd-zone > span .ms { font-size: 15px; }
-.sd-ln { position: absolute; left: 0; top: 0; width: 1180px; height: 600px; overflow: visible; }
-.sd-ln path { fill: none; stroke-width: 2.4; } .sd-ln path.r { stroke: var(--red); } .sd-ln path.p { stroke: var(--purple); }
-.sd-ln marker path.r { fill: var(--red); stroke: none; } .sd-ln marker path.p { fill: var(--purple); stroke: none; }
-.sd-node { position: absolute; padding: 14px; border-radius: 16px; background: var(--canvasbg); box-shadow: 0 0 0 1px color-mix(in oklab, var(--ink) 14%, transparent), 0 10px 30px -18px rgba(0, 0, 0, .35); }
-.sd-srv { left: 20px; top: 214px; width: 192px; }
-.sd-ai { left: 912px; top: 236px; width: 236px; text-align: center; }
-.sd-nh { display: flex; align-items: center; gap: 8px; font-size: 15px; }
-.sd-ai .sd-nh { justify-content: center; } .sd-nh .ms { font-size: 20px; color: var(--ink2); } .sd-ai .sd-nh .ms { color: var(--purple); }
-.sd-sub { display: block; margin-top: 4px; font-size: 12px; color: var(--ink2); }
-.sd-row { display: flex; align-items: center; gap: 7px; margin-top: 10px; padding: 6px 8px; border-radius: 8px; background: color-mix(in oklab, var(--ink) 5%, transparent); }
+.sd-ln { position: absolute; left: 0; top: 0; width: 1180px; height: 400px; overflow: visible; }
+.sd-ln line { stroke-width: 2.4; } .sd-ln line.r { stroke: var(--red); } .sd-ln line.p { stroke: var(--purple); }
+.sd-ln marker path.r { fill: var(--red); } .sd-ln marker path.p { fill: var(--purple); }
+.sd-node { position: absolute; border-radius: 16px; background: var(--canvasbg); box-shadow: 0 0 0 1px color-mix(in oklab, var(--ink) 14%, transparent), 0 10px 30px -18px rgba(0, 0, 0, .35); }
+.sd-srv { left: 24px; top: 60px; width: 200px; height: 290px; }
+.sd-srv .sd-nh { position: absolute; left: 14px; top: 14px; }
+.sd-row { position: absolute; left: 12px; right: 12px; height: 36px; display: flex; align-items: center; gap: 7px; padding: 0 9px; border-radius: 9px; background: color-mix(in oklab, var(--ink) 5%, transparent); }
 .sd-row .ms { font-size: 15px; color: var(--ink2); }
 .sd-row code { font: 11.5px ui-monospace, 'SF Mono', Menlo, monospace; }
-.sd-mac { position: absolute; left: 446px; top: 70px; width: 288px; height: 460px; padding: 14px; border-radius: 20px;
+.sd-ai { left: 906px; top: 120px; width: 230px; height: 210px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.sd-nh { display: flex; align-items: center; gap: 8px; font-size: 15px; } .sd-nh .ms { font-size: 20px; color: var(--ink2); } .sd-ai .sd-nh .ms { color: var(--purple); }
+.sd-sub { display: block; margin-top: 4px; font-size: 12px; color: var(--ink2); }
+.sd-mac { position: absolute; left: 448px; top: 12px; width: 284px; height: 376px; border-radius: 20px;
   background: color-mix(in oklab, var(--green) 5%, var(--canvasbg)); box-shadow: 0 0 0 1.5px color-mix(in oklab, var(--green) 40%, transparent), 0 16px 40px -22px rgba(0, 0, 0, .4); }
-.sd-mh { display: flex; align-items: center; gap: 8px; font-size: 15px; } .sd-mh .ms { font-size: 20px; color: var(--green); }
-.sd-mh > span:not(.ms) { margin-left: auto; font-size: 12px; color: var(--ink2); }
-.sd-mod { position: absolute; left: 14px; right: 14px; display: flex; gap: 11px; align-items: center; padding: 14px; border-radius: 14px; background: var(--canvasbg);
+.sd-mh { position: absolute; left: 14px; right: 14px; top: 14px; display: flex; align-items: center; gap: 8px; font-size: 15px; }
+.sd-mh .ms { font-size: 20px; color: var(--green); } .sd-mh > span:not(.ms) { margin-left: auto; font-size: 12px; color: var(--ink2); }
+.sd-mod { position: absolute; left: 12px; right: 12px; height: 76px; display: flex; gap: 11px; align-items: center; padding: 0 12px; border-radius: 14px; background: var(--canvasbg);
   box-shadow: 0 0 0 1px color-mix(in oklab, var(--ink) 12%, transparent); }
-.sd-mod.m1 { top: 82px; } .sd-mod.m2 { top: 290px; }
 .sd-mi { width: 40px; height: 40px; flex: none; border-radius: 11px; display: inline-flex; align-items: center; justify-content: center; }
 .sd-mi .ms { font-size: 22px; }
-.m1 .sd-mi { background: color-mix(in oklab, var(--purple) 13%, transparent); color: var(--purple); }
-.m2 .sd-mi { background: color-mix(in oklab, #ff3b5c 13%, transparent); color: #ff3b5c; }
-.sd-mod b { display: block; font-size: 14px; } .sd-mod div span { display: block; margin-top: 2px; font-size: 11.5px; line-height: 1.4; color: var(--ink2); }
-.sd-chip { position: absolute; display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; }
+.sd-mi.m1 { background: color-mix(in oklab, var(--purple) 13%, transparent); color: var(--purple); }
+.sd-mi.m2 { background: color-mix(in oklab, #ff3b5c 13%, transparent); color: #ff3b5c; }
+.sd-mod b { display: block; font-size: 14px; } .sd-mod div span { display: block; margin-top: 2px; font-size: 12px; color: var(--ink2); }
+.sd-keep { position: absolute; left: 12px; right: 12px; height: 32px; display: flex; align-items: center; justify-content: center; gap: 6px; border-radius: 10px;
+  border: 1.5px dashed color-mix(in oklab, var(--green) 45%, transparent); font-size: 12px; color: var(--green); }
+.sd-keep .ms { font-size: 15px; }
+.sd-chip { position: absolute; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 4px; height: 66px; text-align: center; }
 .sd-chip em { font-style: normal; font-size: 11.5px; color: var(--ink2); }
-.sd-v { display: block; padding: 6px 9px; border-radius: 9px; background: var(--canvasbg); font: 11px/1.45 ui-monospace, 'SF Mono', Menlo, monospace; white-space: nowrap; }
+.sd-v { padding: 5px 9px; border-radius: 9px; background: var(--canvasbg); font: 11px/1.45 ui-monospace, 'SF Mono', Menlo, monospace; white-space: nowrap; color: var(--ink); }
 .sd-chip.r .sd-v { box-shadow: 0 0 0 1.5px color-mix(in oklab, var(--red) 55%, transparent); } .sd-chip.r b { color: var(--red); }
 .sd-chip.p .sd-v { box-shadow: 0 0 0 1.5px color-mix(in oklab, var(--purple) 55%, transparent); } .sd-chip.p b { color: var(--purple); }
-.sd-keep { position: absolute; left: 14px; right: 14px; top: 212px; height: 52px; display: flex; align-items: center; justify-content: center; gap: 8px;
-  border-radius: 12px; border: 1.5px dashed color-mix(in oklab, var(--green) 45%, transparent); font-size: 12px; line-height: 1.35; color: var(--green); padding: 0 14px; }
-.sd-keep .ms { font-size: 18px; flex: none; }
-.sd-leg { position: absolute; left: 20px; right: 0; top: 562px; display: flex; gap: 22px; font-size: 12px; color: var(--ink2); }
+.sd-leg { position: absolute; left: 24px; top: 366px; display: flex; gap: 18px; font-size: 12px; color: var(--ink2); }
 .sd-leg span { display: inline-flex; align-items: center; gap: 7px; }
 .sd-leg i { width: 18px; height: 3px; border-radius: 2px; } .sd-leg i.r { background: var(--red); } .sd-leg i.p { background: var(--purple); }
