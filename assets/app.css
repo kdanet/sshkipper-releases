@@ -1326,35 +1326,31 @@ svg.lgo { fill: var(--lc, currentColor); flex: none; }
 .app.privacy { --canvasbg: #ffffff; }
 @media (prefers-color-scheme: dark) { .app.privacy { --canvasbg: #1b1d26; } }
 
-/* How AI works without the secrets (security story): one password as a sequence across the boundary */
-.app.aisec { --canvasbg: #ffffff; background: transparent; box-shadow: none; overflow: visible; }
+/* How AI works without the secrets (security story): a saved password and a .env, three steps each */
+.app.aisec { --canvasbg: #ffffff; background: transparent; box-shadow: none; overflow: visible; display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+  padding: 30px 20px; align-items: start; align-content: center; }
 @media (prefers-color-scheme: dark) { .app.aisec { --canvasbg: #1b1d26; } }
-.sq-zone { position: absolute; left: 790px; right: 0; top: 0; bottom: 0; border-radius: 18px; border: 1.5px dashed color-mix(in oklab, var(--purple) 50%, transparent);
-  background: color-mix(in oklab, var(--purple) 5%, transparent); }
-.sq-zone span { position: absolute; left: 0; right: 0; bottom: 16px; text-align: center; font-size: 11.5px; color: var(--purple); padding: 0 20px; }
-.sq-mine { position: absolute; left: 20px; top: 548px; font-size: 11.5px; color: var(--ink2); }
-.sq-h { position: absolute; top: 18px; width: 180px; display: flex; align-items: center; justify-content: center; gap: 7px; height: 40px; border-radius: 11px;
-  background: var(--canvasbg); box-shadow: 0 0 0 1px color-mix(in oklab, var(--ink) 14%, transparent); font-size: 14px; z-index: 1; }
-.sq-h .ms { font-size: 19px; color: var(--ink2); } .sq-h.ai .ms { color: var(--purple); }
-.sq-life { position: absolute; top: 58px; height: 480px; width: 0; border-left: 1.5px dashed color-mix(in oklab, var(--ink) 22%, transparent); }
-.sq-m { position: absolute; height: 54px; }
-.sq-m code { position: absolute; left: 0; right: 0; top: 0; text-align: center; font: 12px ui-monospace, 'SF Mono', Menlo, monospace; white-space: nowrap; }
-.sq-m i { position: absolute; left: 0; right: 0; top: 24px; height: 2px; background: color-mix(in oklab, var(--ink) 55%, transparent); }
-.sq-m i::after { content: ''; position: absolute; right: -1px; top: -5px; border: 6px solid transparent; border-left: 9px solid color-mix(in oklab, var(--ink) 55%, transparent); border-right: 0; }
-.sq-m.back i::after { right: auto; left: -1px; border-left: 0; border-right: 9px solid color-mix(in oklab, var(--ink) 55%, transparent); }
-.sq-m.out i { background: var(--purple); } .sq-m.out i::after { border-left-color: var(--purple); } .sq-m.out.back i::after { border-left-color: transparent; border-right-color: var(--purple); }
-.sq-m em { position: absolute; left: 0; right: 0; top: 32px; text-align: center; font-style: normal; font-size: 11.5px; color: var(--ink2); }
-.sq-k { position: absolute; left: -32px; top: 14px; width: 22px; height: 22px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;
-  font-size: 11.5px; font-weight: 700; background: color-mix(in oklab, var(--ink) 10%, var(--canvasbg)); }
-.sq-m.back .sq-k { left: auto; right: -32px; }
-.sq-r { font-weight: 600; color: #d4402b; background: color-mix(in oklab, #e5533d 14%, transparent); padding: 0 4px; border-radius: 4px; }
-@media (prefers-color-scheme: dark) { .sq-r { color: #ff7a66; } }
-.sq-p { font-weight: 600; color: var(--purple); background: color-mix(in oklab, var(--purple) 13%, transparent); padding: 0 4px; border-radius: 4px; }
-.sq-self { position: absolute; width: 300px; display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 12px; z-index: 1;
-  background: color-mix(in oklab, var(--green) 8%, var(--canvasbg)); box-shadow: 0 0 0 1px color-mix(in oklab, var(--green) 35%, transparent); }
-.sq-self .sq-k { position: static; flex: none; }
-.sq-fp { width: 34px; height: 34px; flex: none; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; background: color-mix(in oklab, #ff3b5c 14%, transparent); color: #ff3b5c; }
-.sq-fp .ms { font-size: 21px; }
-.sq-self b { display: block; font-size: 12.5px; } .sq-self div span { display: block; font-size: 11px; color: var(--ink2); }
-.sq-note { position: absolute; left: 20px; top: 568px; display: flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 600; color: var(--green); }
-.sq-note .ms { font-size: 18px; }
+.sx-card { padding: 18px 18px 16px; border-radius: 18px; background: var(--canvasbg); box-shadow: 0 0 0 1px color-mix(in oklab, var(--ink) 13%, transparent);
+  display: flex; flex-direction: column; gap: 14px; }
+.sx-h { display: flex; align-items: center; gap: 12px; }
+.sx-h > .ms { width: 38px; height: 38px; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center; font-size: 21px;
+  background: color-mix(in oklab, var(--blue) 14%, transparent); color: var(--blue); }
+.sx-h b { display: block; font-size: 16px; } .sx-h div span { font-size: 12px; color: var(--ink2); }
+.sx-r { display: grid; grid-template-columns: 22px 86px minmax(0, 1fr); gap: 10px; align-items: start; }
+.sx-n { width: 22px; height: 22px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 11.5px; font-weight: 700;
+  background: color-mix(in oklab, var(--ink) 9%, var(--canvasbg)); margin-top: 1px; }
+.sx-w { display: inline-flex; align-items: center; gap: 5px; height: 24px; padding: 0 8px; border-radius: 12px; font-size: 12px; font-weight: 600; justify-self: start; }
+.sx-w .ms { font-size: 15px; }
+.sx-w.sx-ai { color: var(--purple); background: color-mix(in oklab, var(--purple) 12%, transparent); }
+.sx-w.sx-you { color: #d23a59; background: color-mix(in oklab, #ff3b5c 12%, transparent); }
+.sx-w.sx-mac { color: var(--ink); background: color-mix(in oklab, var(--ink) 8%, transparent); }
+.sx-b { display: flex; flex-direction: column; gap: 6px; font-size: 13px; line-height: 1.4; padding-top: 3px; min-width: 0; }
+.sx-c { display: block; padding: 8px 10px; border-radius: 8px; background: color-mix(in oklab, var(--ink) 5%, var(--canvasbg));
+  font: 11.5px/1.6 ui-monospace, 'SF Mono', Menlo, monospace; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sx-ok { display: inline-flex; align-items: center; gap: 6px; } .sx-ok .ms { font-size: 17px; color: #ff3b5c; }
+.sx-red { font-weight: 600; color: #d4402b; background: color-mix(in oklab, #e5533d 14%, transparent); padding: 0 4px; border-radius: 4px; }
+@media (prefers-color-scheme: dark) { .sx-red { color: #ff7a66; } }
+.sx-mask { font-weight: 600; color: var(--purple); background: color-mix(in oklab, var(--purple) 13%, transparent); padding: 0 4px; border-radius: 4px; }
+.sx-sees { display: flex; align-items: center; gap: 8px; margin-top: 2px; padding: 10px 12px; border-radius: 10px; font-size: 12.5px;
+  color: var(--purple); background: color-mix(in oklab, var(--purple) 7%, transparent); }
+.sx-sees .ms { font-size: 17px; }
