@@ -94,10 +94,15 @@
     this.app.style.clipPath = this.app.style.maskImage = this.app.style.webkitMaskImage = ''; if (this.frame) this.frame.classList.remove('on');
     // mfocus — what a phone frames instead, when the whole focus is too tall for its short screen
     var R = rect(this.app, this.focus || (phone && st.mfocus) || st.focus) || { x: 0, y: 0, w: this.W, h: this.H };
-    var cw = el.clientWidth, zoom, auto = false;
+    var cw = el.clientWidth, zoom, auto = false, whole = !(this.focus || st.focus);
     if (phone && st.mzoom) zoom = st.mzoom;
     else if (st.zoom) zoom = st.zoom;
-    else {
+    else if (whole) {
+      // the whole replica: a window fills the stage (it has the story's proportions), a smaller panel gets a margin
+      var g = this.W >= 1000 ? 0 : 24;
+      zoom = Math.max(this.W + 2 * g, (this.H + 2 * g) * cw / el.clientHeight);
+      auto = true;
+    } else {
       // The frame fits the whole focus with a margin, but never enlarges the screen past a readable size.
       var pad = phone ? 10 : (st.pad != null ? st.pad : 28), ar = cw / el.clientHeight;
       zoom = Math.max(R.w + 2 * pad, (R.h + 2 * pad) * ar, cw / (phone ? 1 : (st.ms || 1.5)));
@@ -113,11 +118,14 @@
     }
     var s = cw / zoom;
     if (st.fit) { var p0 = (zoom - R.w) / 2; el.style.aspectRatio = 'auto'; el.style.height = Math.round((R.h + 2 * p0) * s) + 'px'; }
-    var vh = el.clientHeight / s, edge = auto ? 0 : 10;
+    // at an edge of the replica the stage keeps a margin past it, instead of cutting the window flush
+    var vh = el.clientHeight / s, edge = auto ? 16 / s : 10, gap = 16 / s;
     // ax — the left edge in replica points (lines of text read from their start, not from their middle)
     var ax = phone && st.max != null ? st.max : st.ax;
     var tx = zoom >= this.W ? (this.W - zoom) / 2 : clamp(ax != null ? ax : R.x + R.w / 2 - zoom / 2, -edge, this.W - zoom + edge);
-    var ty = vh >= this.H ? (this.H - vh) / 2 : clamp(R.y + R.h / 2 - vh / 2, 0, this.H - vh);
+    var ty = vh >= this.H ? (this.H - vh) / 2 : clamp(R.y + R.h / 2 - vh / 2, -gap, this.H - vh + gap);
+    // the top of what the step shows is never cut, and close to the window's top the frame takes the window's edge too
+    if (vh < this.H) { ty = Math.min(ty, R.y - gap); if (ty < 3 * gap) ty = -gap; }
     el.classList.toggle('moving', !!animate && !REDUCE);
     this.app.style.transform = 'scale(' + s.toFixed(4) + ') translate(' + (-tx).toFixed(1) + 'px,' + (-ty).toFixed(1) + 'px)';
     this.ringOn(this.ringShown);
@@ -292,6 +300,22 @@
   if (PHONE.addEventListener) PHONE.addEventListener('change', layout);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(layout);
 
+  // The theme button: dark by default, light kept for the next visit (the head script applies it before the CSS).
+  $$(document, '.k-theme').forEach(function (b) {
+    var sync = function () {
+      var light = document.documentElement.classList.contains('light');
+      b.setAttribute('aria-pressed', light ? 'true' : 'false');
+      b.title = b.dataset[light ? 'dark' : 'light']; b.setAttribute('aria-label', b.title);
+      var m = document.querySelector('meta[name=theme-color]'); if (m) m.setAttribute('content', light ? '#fbfbfa' : '#0a0b10');
+    };
+    b.addEventListener('click', function () {
+      var light = document.documentElement.classList.toggle('light');
+      try { if (light) localStorage.setItem('theme', 'light'); else localStorage.removeItem('theme'); } catch (e) {}
+      sync(); minis.forEach(function (m) { m.copy(); });
+    });
+    sync();
+  });
+
   // The navigation gets its hairline once the page scrolls.
   var nav = document.querySelector('.k-nav');
   if (nav) {
@@ -419,8 +443,8 @@
           });
           wk.classList.toggle('warn', k === S.length);
           if (!k) return;
-          // a phone's card rides from node to node (the miniature above shows the whole diagram)
-          if (PHONE.matches) cam.look('.cv-n.cs-hl', '.cv-n.cs-hl');
+          // the camera rides from node to node, like the app's does (a phone's miniature shows the whole diagram)
+          cam.look('.cv-n.cs-hl', '.cv-n.cs-hl');
           app.querySelector('.js-cvk').textContent = bar.dataset.of.replace('{}', k);
           app.querySelector('.js-cvt').textContent = S[k - 1][0]; app.querySelector('.js-cvd').textContent = S[k - 1][1];
         }
@@ -431,7 +455,7 @@
         var t = reveal($$(app, '.js-step'), tl, 650, 1300);
         tl.at(t + 200, function () {
           app.classList.add('shown'); step(1);
-          cam.ringOn(false); if (!PHONE.matches) cam.look(null, '.js-cvk, .js-cvt, .js-cvd');
+          cam.ringOn(false);
         });
         tl.at(t + 700, function () { cam.ringOn(true); });
         for (var k = 2; k <= S.length; k++) (function (k) { tl.at(t + 200 + (k - 1) * 1250, function () { step(k); }); })(k);
