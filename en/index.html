@@ -34,7 +34,7 @@
 <link rel="preload" href="../assets/fonts/8a4e0308909e08db.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../assets/fonts.css?v=9b037f69">
 <link rel="stylesheet" href="../assets/app.css?v=480cb6c8">
-<link rel="stylesheet" href="../assets/site.css?v=b427c1a7">
+<link rel="stylesheet" href="../assets/site.css?v=74d09255">
 <script src="../assets/site.js?v=fd1657ae" defer></script>
 </head>
 <body class="kpage">
@@ -934,7 +934,7 @@
   <div class="k-pr-mark rv"><img loading="lazy" decoding="async" class="th-d" src="../assets/mark-white.svg" alt="" width="52" height="52"><img loading="lazy" decoding="async" class="th-l" src="../assets/mark.svg" alt="" width="52" height="52"></div>
   <h2 id="pricing-h" class="k-h2 rv">Take the helm</h2>
   <p class="k-pr-title rv">Free for up to five servers</p>
-  <p class="k-h2-sub rv">One DMG for everyone. Without a key it’s the free version: every feature, with limits. With a key it’s the full version. There’s no trial — the free version is the trial.</p>
+  <p class="k-h2-sub rv">One DMG for everyone. Without a key it’s the free version: every feature, with limits. With a key it’s the full version — by subscription or for good. There’s no trial — the free version is the trial.</p>
   <div class="k-plans">
     <article class="k-plan rv">
       <h3>Free</h3>
@@ -942,15 +942,23 @@
       <ul><li><span class="ms">check</span>5 connections</li><li><span class="ms">check</span>1 open document and 1 terminal</li><li><span class="ms">check</span>1 automation, run by hand</li><li><span class="ms">check</span>5 AI messages per chat (a new chat gets 5 more)</li><li><span class="ms">check</span>1 tunnel, 1 database, 1 storage</li></ul>
       <a class="k-btn ghost" href="https://github.com/kdanet/sshkipper-releases/releases/latest/download/SSHKipper.dmg"><svg class="apple" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>Download</a>
     </article>
-    <article class="k-plan full rv" style="--i:1">
-      <h3>Full</h3>
-      <!-- PRICE: replace the text below when the price is decided -->
-      <p class="k-price"><strong id="price">Price — coming soon</strong><span>perpetual license + a year of updates</span></p>
-      <ul><li><span class="ms">check</span>No limits</li><li><span class="ms">check</span>Schedules, events and on-server runs</li><li><span class="ms">check</span>AI without a message limit</li><li><span class="ms">check</span>One key for 2 Macs</li><li><span class="ms">check</span>Your version works forever</li></ul>
-      <span class="k-btn off" role="link" aria-disabled="true">Buying — coming soon</span>
-      <p class="k-small">Payment opens together with the price. Until then, the free version has every feature.</p>
+
+    <article class="k-plan sub rv" style="--i:1">
+      <h3>Subscription</h3>
+      <p class="k-price"><strong>$5</strong><span>per month</span></p>
+      <ul><li><span class="ms">check</span>No limits</li><li><span class="ms">check</span>Schedules, events and on-server runs</li><li><span class="ms">check</span>AI without a message limit</li><li><span class="ms">check</span>One key for 2 Macs</li><li><span class="ms">check</span>Every update while subscribed</li></ul>
+      <span class="k-btn off" role="link" aria-disabled="true" title="Payment opens soon. Until then, the free version has every feature.">Payment — coming soon</span>
+      <p class="k-small">Cancel any time — the app goes back to the free version, your documents stay.</p>
+    </article>
+    <article class="k-plan full rv" style="--i:2">
+      <h3>Lifetime<span class="k-plan-badge">Best value</span></h3>
+      <p class="k-price"><strong>$100</strong><span>once</span></p>
+      <ul><li><span class="ms">check</span>Everything in the subscription</li><li><span class="ms">check</span>Every future update — forever</li><li><span class="ms">check</span>One payment, no renewals</li><li><span class="ms">check</span>One key for 2 Macs</li></ul>
+      <span class="k-btn off" role="link" aria-disabled="true" title="Payment opens soon. Until then, the free version has every feature.">Payment — coming soon</span>
+      <p class="k-small">Pays for itself in 20 months of subscription.</p>
     </article>
   </div>
+  <p class="k-pay-note">Payment opens soon. Until then, the free version has every feature.</p>
   <p class="k-always"><span class="ms">lock</span>Free in every version: document encryption, Touch ID, host key checks, secret masking, export and backups.</p>
 </section>
 
@@ -963,7 +971,7 @@
     <details class="k-q rv"><summary>How do I bring my hosts over?<span class="ms">expand_more</span></summary><p>File → “Import from ~/.ssh/config…”: hosts, ProxyJump and port forwards become connections, bastions and tunnels.</p></details>
     <details class="k-q rv"><summary>What’s in the free version?<span class="ms">expand_more</span></summary><p>Everything, with limits: 5 connections, 1 open document and 1 terminal, 1 automation run by hand, 5 AI messages per chat, one tunnel, one database and one storage. A document over the limits opens read-only.</p></details>
     <details class="k-q rv"><summary>How many Macs does a key cover?<span class="ms">expand_more</span></summary><p>Two. You can unlink an old Mac yourself in the License window.</p></details>
-    <details class="k-q rv"><summary>What happens after a year?<span class="ms">expand_more</span></summary><p>The version you bought keeps working forever. The price includes a year of updates; later versions come with a renewal.</p></details>
+    <details class="k-q rv"><summary>Subscription or lifetime — what’s the difference?<span class="ms">expand_more</span></summary><p>The same features: no limits, a key for 2 Macs. The subscription is $5 a month and the full version works while it’s paid; cancel and the app goes back to the free version, your documents stay. Lifetime is $100 once, with every future update.</p></details>
     <details class="k-q rv"><summary>Which Mac and macOS do I need?<span class="ms">expand_more</span></summary><p>A Mac with Apple Silicon and macOS 26 or later. The app is signed with Developer ID and notarized by Apple, so it opens right away, no security workarounds.</p></details>
   </div>
 </section>
