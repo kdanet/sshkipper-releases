@@ -9,7 +9,7 @@
   var T = D.t, S = D.servers, app = hero.querySelector('.app');
   var $ = function (r, s) { return r.querySelector(s); }, $$ = function (r, s) { return Array.prototype.slice.call(r.querySelectorAll(s)); };
   var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
-  var ms = function (n, c) { return '<span class="ms' + (c ? ' ' + c : '') + '">' + n + '</span>'; };
+  var ms = function (n, c) { return '<span class="ms' + (c ? ' ' + c : '') + '" aria-hidden="true">' + n + '</span>'; };
   var fmt = function (s) { var a = arguments, i = 1; return s.replace(/\{\}/g, function () { return a[i++]; }); };
   var tree = $(app, '.w-tree'), main = $(app, '.w-main'), bar = $(app, '.w-tabs'), status = $(app, '.w-status');
   var tabs = [], cur = null, seq = 0, aiOn = false, timers = [];

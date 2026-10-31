@@ -131,6 +131,7 @@ html.light .th-l { display: inline-block !important; }
 .kb-nav { display: none; }
 .js .kb-nav { display: flex; gap: 6px; margin: 32px -4px 0; padding: 4px; overflow-x: auto; scrollbar-width: none; }
 .js .kb-nav::-webkit-scrollbar { display: none; }
+.kb-tabs { display: contents; }
 .kb-tab { -webkit-appearance: none; appearance: none; position: relative; overflow: hidden; flex: none; display: inline-flex; align-items: center; gap: 8px;
   height: 40px; margin: 0; padding: 0 16px 0 12px; border: 0; border-radius: 12px; background: none; font: inherit; font-size: 15px; font-weight: 560;
   color: var(--ink2); cursor: pointer; box-shadow: inset 0 0 0 1px var(--line); transition: color .2s, background .2s; }
@@ -612,7 +613,8 @@ html.light .th-l { display: inline-block !important; }
 @media (prefers-reduced-motion: reduce) {
   .k-cam.moving > .app, .k-ring, .k-step.on.run .k-bar i, .k-screen > .k-cam, .k-hops { transition: none !important; }
   .k-tap.go, .kb-cur { animation: none; }
-  .js .k-bas .kb-a, .js .k-bas .kb-card.play * { opacity: 1 !important; animation: none !important; }
+  /* scenes jump to their last frame: what fades out stays gone (the expired code, the flash over the error) */
+  .js .k-bas .kb-card.play * { animation-duration: 1ms !important; animation-delay: 0s !important; animation-iteration-count: 1 !important; }
 }
 
 /* ---------- Motion: things come in as you reach them ---------- */

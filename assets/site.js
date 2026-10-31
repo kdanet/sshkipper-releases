@@ -271,7 +271,8 @@
     var cam = this.cam; if (!cam || !PHONE.matches) return;
     var c = cam.app.cloneNode(true);
     $$(c, '.k-ring, .k-tap').forEach(function (n) { n.remove(); });
-    c.style.transform = 'scale(' + this.k + ')'; c.style.clipPath = '';
+    // the whole window: the card's clip and fade are the piece's, not the miniature's
+    c.style.transform = 'scale(' + this.k + ')'; c.style.clipPath = c.style.maskImage = c.style.webkitMaskImage = '';
     this.win.replaceChildren(c);
   };
   Mini.prototype.show = function (cam, piece, card) {
@@ -305,7 +306,7 @@
     var tabs = $$(nav, '.kb-tab'), cards = $$(nav.parentElement, '.k-bas .kb-card'), cur = 0, id = 0, auto = !REDUCE, seen = false, DUR = 7000;
     function show(i, run) {
       clearTimeout(id); cur = i;
-      tabs.forEach(function (t, k) { t.classList.toggle('on', k === i); t.classList.remove('run'); t.setAttribute('aria-selected', k === i ? 'true' : 'false'); });
+      tabs.forEach(function (t, k) { t.classList.toggle('on', k === i); t.classList.remove('run'); t.setAttribute('aria-selected', k === i ? 'true' : 'false'); t.tabIndex = k === i ? 0 : -1; });
       // the picked card plays its scenes from the start
       cards[i].classList.remove('play'); void cards[i].offsetWidth; cards[i].classList.add('play');
       cards.forEach(function (c, k) { c.classList.toggle('on', k === i); c.setAttribute('aria-hidden', k === i ? 'false' : 'true'); if (k !== i) c.setAttribute('tabindex', '-1'); else c.removeAttribute('tabindex'); });
@@ -317,6 +318,12 @@
       id = setTimeout(function () { show((i + 1) % tabs.length, true); }, DUR);
     }
     tabs.forEach(function (t, k) { t.addEventListener('click', function () { auto = false; show(k, false); }); });
+    // arrows, Home and End move between the topics, as tabs do
+    nav.addEventListener('keydown', function (ev) {
+      var n = tabs.length, to = { ArrowRight: cur + 1, ArrowLeft: cur - 1 + n, Home: 0, End: n - 1 }[ev.key];
+      if (to === undefined || !ev.target.classList.contains('kb-tab')) return;
+      ev.preventDefault(); auto = false; show(to % n, false); tabs[to % n].focus();
+    });
     show(0, false);
     if (!auto || !('IntersectionObserver' in window)) return;
     new IntersectionObserver(function (es) {
@@ -331,7 +338,6 @@
   $$(document, '.k-theme').forEach(function (b) {
     var sync = function () {
       var light = document.documentElement.classList.contains('light');
-      b.setAttribute('aria-pressed', light ? 'true' : 'false');
       b.title = b.dataset[light ? 'dark' : 'light']; b.setAttribute('aria-label', b.title);
       b.querySelector('.ms').textContent = light ? 'dark_mode' : 'light_mode';
       var m = document.querySelector('meta[name=theme-color]'); if (m) m.setAttribute('content', light ? '#fbfbfa' : '#0a0b10');
