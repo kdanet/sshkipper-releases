@@ -300,6 +300,31 @@
   if (PHONE.addEventListener) PHONE.addEventListener('change', layout);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(layout);
 
+  // «Sound familiar?»: one card at a time; the topics take turns while the section is on screen, a click stops them.
+  $$(document, '.kb-nav').forEach(function (nav) {
+    var tabs = $$(nav, '.kb-tab'), cards = $$(nav.parentElement, '.k-bas .kb-card'), cur = 0, id = 0, auto = !REDUCE, seen = false, DUR = 7000;
+    function show(i, run) {
+      clearTimeout(id); cur = i;
+      tabs.forEach(function (t, k) { t.classList.toggle('on', k === i); t.classList.remove('run'); t.setAttribute('aria-selected', k === i ? 'true' : 'false'); });
+      cards.forEach(function (c, k) { c.classList.toggle('on', k === i); c.setAttribute('aria-hidden', k === i ? 'false' : 'true'); if (k !== i) c.setAttribute('tabindex', '-1'); else c.removeAttribute('tabindex'); });
+      var t = tabs[i], go = nav.querySelector('.kb-go');
+      if (go) go.setAttribute('href', cards[i].getAttribute('href'));
+      if (nav.scrollWidth > nav.clientWidth + 1) nav.scrollTo({ left: Math.max(0, t.offsetLeft - nav.offsetLeft - 16), behavior: REDUCE ? 'auto' : 'smooth' });
+      if (!run) return;
+      t.style.setProperty('--dur', DUR + 'ms'); void t.offsetWidth; t.classList.add('run');
+      id = setTimeout(function () { show((i + 1) % tabs.length, true); }, DUR);
+    }
+    tabs.forEach(function (t, k) { t.addEventListener('click', function () { auto = false; show(k, false); }); });
+    show(0, false);
+    if (!auto || !('IntersectionObserver' in window)) return;
+    new IntersectionObserver(function (es) {
+      var v = es[0].isIntersecting;
+      if (v && !seen && auto) show(cur, true);
+      else if (!v) { clearTimeout(id); tabs.forEach(function (t) { t.classList.remove('run'); }); }
+      seen = v;
+    }, { threshold: 0.5 }).observe(nav.parentElement.querySelector('.k-bas'));
+  });
+
   // The theme button: dark by default, light kept for the next visit (the head script applies it before the CSS).
   $$(document, '.k-theme').forEach(function (b) {
     var sync = function () {
