@@ -306,6 +306,7 @@
       var light = document.documentElement.classList.contains('light');
       b.setAttribute('aria-pressed', light ? 'true' : 'false');
       b.title = b.dataset[light ? 'dark' : 'light']; b.setAttribute('aria-label', b.title);
+      b.querySelector('.ms').textContent = light ? 'dark_mode' : 'light_mode';
       var m = document.querySelector('meta[name=theme-color]'); if (m) m.setAttribute('content', light ? '#fbfbfa' : '#0a0b10');
     };
     b.addEventListener('click', function () {
