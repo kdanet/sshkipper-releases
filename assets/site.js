@@ -59,12 +59,12 @@
   })();
 
   /* ---------- Camera ---------- */
-  // A rectangle in replica points (the union of the matches). The app's own scale right now — also in the middle of a
+  // A rectangle in replica points (the union of the matches of a selector, or of a list of elements). The app's own scale right now — also in the middle of a
   // camera move — comes from its drawn width, so inner transforms (a canvas at 60 %) are counted as drawn.
   function rect(app, sel) {
     var a = app.getBoundingClientRect(), k = a.width / app.offsetWidth, r = null;
     if (!k) return null;
-    $$(app, sel).forEach(function (n) {
+    (Array.isArray(sel) ? sel : sel ? $$(app, sel) : []).forEach(function (n) {
       var b = n.getBoundingClientRect();
       // a terminal line is as wide as the terminal: frame its text, not the empty rest of the row
       if (n.classList.contains('tl')) {
@@ -89,6 +89,9 @@
   Cam.prototype.place = function (animate) {
     var st = this.steps[this.i], el = this.el, phone = PHONE.matches;
     if (!st || !el.clientWidth) return;
+    if (phone && this.mini) return this.card(st, animate);
+    cancelAnimationFrame(this.raf); this.cur = null;
+    this.app.style.clipPath = this.app.style.maskImage = this.app.style.webkitMaskImage = ''; if (this.frame) this.frame.classList.remove('on');
     // mfocus — what a phone frames instead, when the whole focus is too tall for its short screen
     var R = rect(this.app, this.focus || (phone && st.mfocus) || st.focus) || { x: 0, y: 0, w: this.W, h: this.H };
     var cw = el.clientWidth, zoom, auto = false;
@@ -119,8 +122,79 @@
     this.app.style.transform = 'scale(' + s.toFixed(4) + ') translate(' + (-tx).toFixed(1) + 'px,' + (-ty).toFixed(1) + 'px)';
     this.ringOn(this.ringShown);
   };
+  // A phone: the step's piece of the screen lifted out whole as a card (nothing cut at its edges), and above it the whole
+  // window in miniature with that piece marked — the story's Mini draws it.
+  var MIN = 0.5;   // the smallest scale a card is still read at
+  // The piece a phone's card shows, in replica points: mfocus as given; else the focus, or — when that wouldn't read on a
+  // phone — the biggest whole element around what the step rings that still does.
+  Cam.prototype.piece = function (st, cw, ch) {
+    var app = this.app, W = this.W, H = this.H, m = 14, fw = (cw - 2 * m) / MIN, fh = (ch - 2 * m) / MIN;
+    if (st.mrect && !this.focus) return { x: st.mrect[0], y: st.mrect[1], w: st.mrect[2], h: st.mrect[3], fade: st.mfade };
+    var sel = this.focus || st.mfocus || st.focus, R = rect(app, sel) || { x: 0, y: 0, w: W, h: H };
+    R.one = !!sel && $$(app, sel).length === 1;
+    var ringSel = this.ringSel || st.ring;
+    if (!st.mfocus && ringSel && (R.w > fw || R.h > fh)) {
+      var nodes = $$(app, ringSel), best = null;
+      if (nodes.length) {
+        for (var a = nodes[0]; a && a !== app; a = a.parentElement) {
+          if (!nodes.every(function (n) { return a.contains(n); })) continue;
+          var r = rect(app, [a]);
+          if (!r) continue;
+          if (r.w > fw || r.h > fh) break;
+          best = r; best.one = true;
+        }
+        if (best) R = best;
+      }
+    }
+    // a margin around a union of bits; a whole element (a sheet, a panel) is the card itself
+    var p = st.mpad != null ? st.mpad : R.one ? 0 : 8, x = Math.max(0, R.x - p), y = Math.max(0, R.y - p);
+    var x2 = Math.min(W, R.x + R.w + p), y2 = Math.min(H, R.y + R.h + p);
+    return { x: x, y: y, w: x2 - x, h: y2 - y };
+  };
+  Cam.prototype.card = function (st, animate) {
+    var el = this.el, cw = el.clientWidth, ch = el.clientHeight, m = 14;
+    var P = this.piece(st, cw, ch);
+    var s = Math.min((cw - 2 * m) / P.w, (ch - 2 * m) / P.h, st.mmax || 1.2);
+    // a shorter card than the story's tallest sits a little above the middle: the beam stays short, no empty band below
+    var to = { x: P.x, y: P.y, w: P.w, h: P.h, bx: (cw - P.w * s) / 2, by: m + (ch - 2 * m - P.h * s) * 0.4, bw: P.w * s, fade: P.fade };
+    // The card moves frame by frame: its box, the piece and the scale stay in step on every frame (CSS would ease the
+    // replica's scale and its clip separately, and the neighbours would show through on the way).
+    var me = this, from = this.cur;
+    cancelAnimationFrame(this.raf);
+    el.classList.remove('moving');
+    if (!animate || REDUCE || !from) { this.draw(to); return; }
+    var t0 = performance.now(), D = 800;
+    var step = function (now) {
+      var k = Math.min(1, (now - t0) / D), e = k < .5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2, q = {};
+      ['x', 'y', 'w', 'h', 'bx', 'by', 'bw'].forEach(function (n) { q[n] = from[n] + (to[n] - from[n]) * e; });
+      q.fade = to.fade;
+      me.draw(q, k < 1);
+      if (k < 1) me.raf = requestAnimationFrame(step);
+    };
+    this.raf = requestAnimationFrame(step);
+  };
+  // One frame of a phone's card: the piece (replica points) shown in the box (stage points).
+  Cam.prototype.draw = function (q, moving) {
+    var W = this.W, H = this.H, x = q.x, y = q.y, w = q.w, h = q.h, s = q.bw / w;
+    this.cur = q;
+    this.app.style.transform = 'translate(' + (q.bx - x * s).toFixed(2) + 'px,' + (q.by - y * s).toFixed(2) + 'px) scale(' + s.toFixed(5) + ')';
+    this.app.style.clipPath = 'inset(' + y.toFixed(1) + 'px ' + (W - x - w).toFixed(1) + 'px ' + (H - y - h).toFixed(1) + 'px ' + x.toFixed(1) + 'px round ' + (10 / s).toFixed(1) + 'px)';
+    // a piece whose right edge cuts lines of text fades out there instead
+    var fade = q.fade ? 'linear-gradient(90deg, #000 ' + (x + w - 44).toFixed(1) + 'px, transparent ' + (x + w - 4).toFixed(1) + 'px)' : '';
+    this.app.style.webkitMaskImage = this.app.style.maskImage = fade;
+    var f = this.frame || (this.frame = this.el.insertBefore(document.createElement('i'), this.app));
+    f.className = 'k-card on';
+    f.style.left = q.bx + 'px'; f.style.top = q.by + 'px'; f.style.width = q.bw + 'px'; f.style.height = h * s + 'px';
+    if (!moving) this.ringOn(this.ringShown);
+    if (this.el.classList.contains('on')) this.mini.show(this, q, { x: q.bx, y: q.by, w: q.bw, h: h * s });
+  };
   // A scene may point the camera somewhere else within its step (focus and ring selectors); null — back to the step's.
-  Cam.prototype.look = function (focus, ring) { this.focus = focus; this.ringSel = ring; this.place(true); };
+  Cam.prototype.look = function (focus, ring) {
+    this.focus = focus; this.ringSel = ring; this.place(true);
+    // what it looks at may still be coming in (a sheet sliding down): frame it again once it's there
+    var me = this; clearTimeout(this.again);
+    this.again = setTimeout(function () { if (me.focus === focus && me.ringSel === ring) me.place(true); }, 450);
+  };
   Cam.prototype.ringOn = function (on) {
     this.ringShown = !!on;
     var st = this.steps[this.i], sel = this.ringSel || (st && st.ring), R = on && sel && rect(this.app, sel);
@@ -156,8 +230,62 @@
   alignMenus();
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { alignMenus(); layout(); });
 
+  // The whole window in miniature over a phone's card: a copy of the replica on screen (refreshed as its scene changes
+  // it), a frame around the piece the card shows, and a beam from the frame down to the card.
+  function Mini(vis) {
+    this.vis = vis; this.screen = vis.querySelector('.k-screen');
+    vis.insertAdjacentHTML('afterbegin', '<div class="k-mini" aria-hidden="true"><div class="k-mini-win"></div><i class="k-view"></i></div><i class="k-beam" aria-hidden="true"></i>');
+    this.box = vis.querySelector('.k-mini'); this.win = vis.querySelector('.k-mini-win'); this.view = vis.querySelector('.k-view'); this.beam = vis.querySelector('.k-beam');
+    var me = this, due = 0;
+    this.mo = 'MutationObserver' in window && new MutationObserver(function (ms) {
+      var cam = me.cam;
+      if (!cam || !ms.some(function (x) { var t = x.target.nodeType === 1 ? x.target : x.target.parentNode; return t !== cam.app && !(t.classList && (t.classList.contains('k-ring') || t.classList.contains('k-tap'))); })) return;
+      if (!due) due = setTimeout(function () { due = 0; me.copy(); }, 450);
+    });
+  }
+  // The card area as tall as the story's tallest card (up to the CSS height): no empty band between the beam and a card.
+  Mini.prototype.fit = function () {
+    var sc = this.screen;
+    sc.style.removeProperty('--mh');
+    if (!PHONE.matches) return;
+    var cw = sc.clientWidth, ch = sc.clientHeight, need = 0, m = 14;
+    $$(sc, '.k-cam').forEach(function (el) {
+      var cam = el._cam;
+      cam.steps.forEach(function (st) {
+        if (!st) return;
+        var P = cam.piece(st, cw, ch), s = Math.min((cw - 2 * m) / P.w, (ch - 2 * m) / P.h, st.mmax || 1.2);
+        need = Math.max(need, P.h * s + 2 * m);
+      });
+    });
+    if (need && need < ch) sc.style.setProperty('--mh', Math.ceil(need) + 'px');
+  };
+  Mini.prototype.copy = function () {
+    var cam = this.cam; if (!cam || !PHONE.matches) return;
+    var c = cam.app.cloneNode(true);
+    $$(c, '.k-ring, .k-tap').forEach(function (n) { n.remove(); });
+    c.style.transform = 'scale(' + this.k + ')'; c.style.clipPath = '';
+    this.win.replaceChildren(c);
+  };
+  Mini.prototype.show = function (cam, piece, card) {
+    var bw = this.box.clientWidth, bh = this.box.clientHeight; if (!bw) return;
+    var k = Math.min(bw / cam.W, bh / cam.H), ww = cam.W * k, wh = cam.H * k, wx = (bw - ww) / 2, wy = (bh - wh) / 2;
+    var fresh = cam !== this.cam || k !== this.k;
+    if (cam !== this.cam && this.mo) { this.mo.disconnect(); this.mo.observe(cam.app, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ['class', 'style'] }); }
+    this.cam = cam; this.k = k;
+    var ws = this.win.style; ws.left = wx + 'px'; ws.top = wy + 'px'; ws.width = ww + 'px'; ws.height = wh + 'px';
+    if (fresh) this.copy();
+    var vx = wx + piece.x * k, vy = wy + piece.y * k, vw = piece.w * k, vh = piece.h * k, v = this.view.style;
+    v.left = vx + 'px'; v.top = vy + 'px'; v.width = vw + 'px'; v.height = vh + 'px';
+    // the beam: from the frame's bottom edge to the card's top edge, in the story picture's points
+    var by = this.box.offsetTop + vy + vh, sy = this.screen.offsetTop + card.y, ox = this.box.offsetLeft, sx = this.screen.offsetLeft;
+    var pt = function (a, b) { return a.toFixed(1) + 'px ' + b.toFixed(1) + 'px'; };
+    this.beam.style.clipPath = 'polygon(' + [pt(ox + vx, by), pt(ox + vx + vw, by), pt(sx + card.x + card.w, sy), pt(sx + card.x, sy)].join(',') + ')';
+  };
+
   var cams = $$(document, '.k-cam').map(function (el) { var c = new Cam(el); el._cam = c; return c; });
-  function layout() { alignMenus(); cams.forEach(function (c) { c.place(false); c.ringOn(c.ringShown); }); }
+  var minis = [];
+  $$(document, '.k-stagecard .k-story-vis').forEach(function (vis) { var m = new Mini(vis); minis.push(m); $$(vis, '.k-cam').forEach(function (el) { el._cam.mini = m; }); });
+  function layout() { alignMenus(); minis.forEach(function (m) { m.fit(); }); cams.forEach(function (c) { c.place(false); c.ringOn(c.ringShown); }); }
   layout();
   if ('ResizeObserver' in window) { var ro = new ResizeObserver(layout); cams.forEach(function (c) { ro.observe(c.el); }); }
   else window.addEventListener('resize', layout);
@@ -291,7 +419,7 @@
           });
           wk.classList.toggle('warn', k === S.length);
           if (!k) return;
-          // a phone can't read the whole canvas: its camera rides from step to step, like the app's does
+          // a phone's card rides from node to node (the miniature above shows the whole diagram)
           if (PHONE.matches) cam.look('.cv-n.cs-hl', '.cv-n.cs-hl');
           app.querySelector('.js-cvk').textContent = bar.dataset.of.replace('{}', k);
           app.querySelector('.js-cvt').textContent = S[k - 1][0]; app.querySelector('.js-cvd').textContent = S[k - 1][1];
@@ -357,7 +485,8 @@
         for (var i = 1; i <= text.length; i++) (function (c) { tl.at(t + c * 42, function () { code.textContent = text.slice(0, c); }); })(i);
         t += text.length * 42 + 350;
         tl.at(t, function () { app.querySelector('.js-snok').classList.add('press'); });
-        tl.at(t + 300, function () { phase(null); app.classList.remove('sn-typing'); app.classList.add('sn-made'); cam.ringOn(false); });
+        // a phone's card stays on the editor until the picker takes its place (between them it would frame the bare terminal)
+        tl.at(t + 300, function () { if (!phone) phase(null); app.classList.remove('sn-typing'); app.classList.add('sn-made'); cam.ringOn(false); });
         // the picker: the servers get ticked, «Run…»
         tl.at(t + 700, function () { phase('pk'); cam.look(phone ? '.sn-pk' : null, '.sn-pk .snx-ls'); });
         tl.at(t + 900, function () { cam.ringOn(true); });
@@ -365,7 +494,7 @@
         t += 1000 + checks.length * 180 + 350;
         tl.at(t, function () { app.querySelector('.js-snrun').classList.add('press'); });
         // the «Command» tab: four connect at once, the fifth waits for a free slot
-        tl.at(t + 300, function () { phase('run'); cam.ringOn(false); cam.look(phone ? '.sn' : null, null); });
+        tl.at(t + 300, function () { phase('run'); cam.ringOn(false); cam.look(null, null); });
         tl.at(t + 600, function () { [0, 1, 2, 3].forEach(function (i) { rows[i].dataset.st = 'c'; }); });
         tl.at(t + 1300, function () { st(3, 'ok'); rows[4].dataset.st = 'c'; });
         tl.at(t + 1600, function () { st(0, 'ok'); });
@@ -401,8 +530,11 @@
         seg(app, v);
         if (v === 'sec') {
           tl.at(1150, function () { cam.ringOn(true); });
-          tl.at(3000, function () { cam.ringOn(false); cam.look('.v-sec .fwh.f2, .v-sec .fpc, .v-sec .fpw', '.v-sec .fpath'); });
-          tl.at(3700, function () { cam.ringOn(true); });
+          // the new connection's path below the table (a phone keeps its card on the table: the path is too wide)
+          if (!PHONE.matches) {
+            tl.at(3000, function () { cam.ringOn(false); cam.look('.v-sec .fwh.f2, .v-sec .fpc, .v-sec .fpw', '.v-sec .fpath'); });
+            tl.at(3700, function () { cam.ringOn(true); });
+          }
         } else tl.at(1150, function () { cam.ringOn(true); });
       };
     }),

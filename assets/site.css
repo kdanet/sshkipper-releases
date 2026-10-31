@@ -205,6 +205,21 @@ body { margin: 0; overflow-x: clip; }
 .k-cam { position: relative; overflow: hidden; aspect-ratio: var(--ar, 4 / 3); background: var(--bg2); }
 .k-cam > .app { position: absolute; left: 0; top: 0; transform-origin: 0 0; box-shadow: none; border-radius: 0; }
 .k-cam.moving > .app { transition: transform 1.1s cubic-bezier(.65, 0, .35, 1); }
+/* A phone's card (site.js Cam.card, moved frame by frame): the piece of the replica lifted out, its shadow drawn behind the clipped replica */
+.k-card { position: absolute; z-index: 0; display: none; border-radius: 10px; pointer-events: none;
+  box-shadow: 0 0 0 1px var(--line), 0 22px 44px -22px rgba(10, 20, 45, .45); }
+.k-card.on { display: block; }
+.k-cam > .app { z-index: 1; }
+/* …and the whole window in miniature above it, with the piece framed and a beam down to the card */
+.k-mini, .k-beam { display: none; }
+.k-mini-win { position: absolute; overflow: hidden; border-radius: 5px; background: var(--card);
+  box-shadow: 0 0 0 1px var(--line), 0 10px 24px -14px rgba(10, 20, 45, .4); }
+.k-mini-win > .app { position: absolute; left: 0; top: 0; transform-origin: 0 0; box-shadow: none; border-radius: 0; pointer-events: none; }
+.k-mini-win * { animation: none !important; transition: none !important; }
+.k-view { position: absolute; border-radius: 3px; box-shadow: 0 0 0 1.5px var(--ring), 0 0 0 4px color-mix(in oklab, var(--ring) 25%, transparent);
+  background: color-mix(in oklab, var(--ring) 10%, transparent); }
+.k-beam { position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background: linear-gradient(180deg, color-mix(in oklab, var(--ring) 16%, transparent), color-mix(in oklab, var(--ring) 4%, transparent)); }
 .k-screen { position: relative; overflow: hidden; aspect-ratio: var(--ar, 4 / 3); border-radius: 22px; background: var(--bg2); box-shadow: var(--lift); }
 .k-screen > .k-cam { position: absolute; inset: 0; aspect-ratio: auto; opacity: 0; transition: opacity .5s ease; }
 .k-screen > .k-cam.on { opacity: 1; z-index: 1; }
@@ -382,7 +397,13 @@ body { margin: 0; overflow-x: clip; }
   .kb-card { padding: 16px 14px 18px; }
   .kb-pair { grid-template-columns: minmax(0, 1fr); }
   .kb-to { height: 30px; } .kb-to .ms { transform: rotate(90deg); } .kb-card:hover .kb-to .ms { transform: rotate(90deg); }
-  .k-stagecard { border-radius: 18px; } .k-stagecard .k-screen { --ar: 4 / 5; max-height: max(260px, calc(100svh - 300px)); }
+  .k-stagecard { border-radius: 18px; }
+  /* the picture: the window in miniature, then the step's piece as a card (site.js) */
+  .k-stagecard .k-story-vis { background: var(--bg2); padding-top: 16px; }
+  .k-mini { display: block; position: relative; z-index: 1; height: clamp(84px, 14svh, 112px); margin: 0 16px; }
+  .k-beam { display: block; }
+  .k-stagecard .k-screen { z-index: 1; margin-top: 14px; aspect-ratio: auto; max-height: none; height: var(--mh, clamp(240px, calc(100svh - 430px), 470px)); background: transparent; }
+  .k-stagecard .k-screen > .k-cam { background: transparent; }
   .k-hops { bottom: 12px; padding: 10px 8px; max-width: calc(100% - 20px); }
   .k-hop { flex-direction: column; gap: 5px; padding: 0 2px; } .k-hop b { font-size: 11px; }
   .k-ok { left: calc(50% + 6px); top: -4px; } .k-link { flex: 1 1 6px; min-width: 4px; margin-bottom: 18px; }
