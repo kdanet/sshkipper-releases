@@ -306,6 +306,8 @@
     function show(i, run) {
       clearTimeout(id); cur = i;
       tabs.forEach(function (t, k) { t.classList.toggle('on', k === i); t.classList.remove('run'); t.setAttribute('aria-selected', k === i ? 'true' : 'false'); });
+      // the picked card plays its scenes from the start
+      cards[i].classList.remove('play'); void cards[i].offsetWidth; cards[i].classList.add('play');
       cards.forEach(function (c, k) { c.classList.toggle('on', k === i); c.setAttribute('aria-hidden', k === i ? 'false' : 'true'); if (k !== i) c.setAttribute('tabindex', '-1'); else c.removeAttribute('tabindex'); });
       var t = tabs[i], go = nav.querySelector('.kb-go');
       if (go) go.setAttribute('href', cards[i].getAttribute('href'));
