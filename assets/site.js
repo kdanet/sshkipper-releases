@@ -99,6 +99,14 @@
       var pad = phone ? 10 : (st.pad != null ? st.pad : 28), ar = cw / el.clientHeight;
       zoom = Math.max(R.w + 2 * pad, (R.h + 2 * pad) * ar, cw / (phone ? 1 : (st.ms || 1.5)));
       auto = true;
+      // A short stage (a laptop screen) would shrink a tall focus past reading: keep the text readable and crop top and
+      // bottom instead, around what the step rings (or the focus' middle), as long as the focus' width still fits.
+      // the bar: 0.78 of real size on a laptop, 0.72 on a tablet (its stage is narrower than the replicas)
+      var bar = cw < 820 ? 0.72 : 0.78;
+      if (!phone && cw / zoom < bar) {
+        var readable = Math.max(R.w + 2 * pad, cw / bar);
+        if (readable < zoom) { zoom = readable; var Rr = rect(this.app, this.ringSel || st.ring); if (Rr) R = { x: R.x, w: R.w, y: Rr.y, h: Rr.h }; }
+      }
     }
     var s = cw / zoom;
     if (st.fit) { var p0 = (zoom - R.w) / 2; el.style.aspectRatio = 'auto'; el.style.height = Math.round((R.h + 2 * p0) * s) + 'px'; }
@@ -497,6 +505,9 @@
     function go(i, auto) {
       tl.stop(); cur = i;
       btns.forEach(function (b, k) { b.classList.toggle('on', k === i); b.classList.remove('run'); b.setAttribute('aria-current', k === i ? 'step' : 'false'); });
+      // a row of steps that scrolls sideways (tablets, phones): the current one comes into view, the page doesn't move
+      var row = btns[i].closest('.k-steps'), li = btns[i].parentElement;
+      if (row && row.scrollWidth > row.clientWidth + 1) row.scrollTo({ left: Math.max(0, li.offsetLeft - row.offsetLeft - 16), behavior: REDUCE ? 'auto' : 'smooth' });
       var cam = scams.filter(function (c) { return c.steps[i]; })[0];
       scams.forEach(function (c) { c.el.classList.toggle('on', c === cam); c.focus = c.ringSel = null; c.ringOn(false); });
       if (path) { path.classList.toggle('on', i === 1); $$(path, '.k-hop').forEach(function (h) { h.classList.toggle('lit', REDUCE); }); }
@@ -510,6 +521,10 @@
       tl.at(DUR[i], function () { go((i + 1) % btns.length, true); });
     }
     btns.forEach(function (b, k) { b.addEventListener('click', function () { go(k, visible); }); });
+    // the sideways row: a fade at the right edge while steps are hidden past it
+    var row = story.querySelector('.k-steps');
+    function edge() { row.classList.toggle('more', row.scrollWidth > row.clientWidth + 1 && row.scrollLeft + row.clientWidth < row.scrollWidth - 4); }
+    if (row) { row.addEventListener('scroll', edge, { passive: true }); window.addEventListener('resize', edge); edge(); }
     go(0, false);
     if (REDUCE || !('IntersectionObserver' in window)) return;
     new IntersectionObserver(function (es) {
