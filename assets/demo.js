@@ -109,7 +109,7 @@
   // ---------- drawing ----------
   function render() {
     bar.innerHTML = tabs.map(function (t) {
-      return '<span class="w-tab' + (t === cur ? ' sel' : '') + '" data-tab="' + t.id + '">' + ms(t.s.local ? 'laptop_mac' : 'terminal', 't-teal') +
+      return '<span class="w-tab' + (t === cur ? ' sel' : '') + '" data-tab="' + t.id + '">' + tabIcon(t) +
         '<span>' + esc(t.s.local ? T.local : t.s.name) + '</span>' + ms('close', 'x') + '</span>';
     }).join('') + '<span class="w-plus">' + ms('add') + '</span>';
     tabs.forEach(function (t) { t.body.style.display = t === cur ? '' : 'none'; t.panes.className = 'd-panes' + (t.split ? ' ' + t.split : ''); });
@@ -125,6 +125,12 @@
     if (cur && !cur.s.local) selectRow(cur.s.name);
     $(app, '.w-title').textContent = cur ? (cur.s.local ? T.local : cur.s.name) : 'SSHKipper';
   }
+  // a tab's icon: the server's own (its row's logo) with the status dot, as the app's tab bar draws it
+  function tabIcon(t) {
+    var r = t.s.local ? null : $(tree, '.a-row[data-id="' + t.s.name + '"] .a-ic');
+    return '<span class="w-ti">' + (r ? r.outerHTML : ms(t.s.local ? 'laptop_mac' : 'terminal', 'a-ic t-teal f')) +
+      '<i class="a-dot ' + (t.ok ? 'g' : 'o') + '"></i></span>';
+  }
   function renderStatus() {
     status.style.visibility = cur ? '' : 'hidden';
     if (!cur) return;
@@ -134,7 +140,7 @@
     status.innerHTML = '<span class="d-state">' + st + '</span><span class="chain">' + chain + '</span>' +
       '<span class="st-r"><span class="d-ai' + (aiOn ? ' ai-pill' : '') + '">' + ms('auto_awesome') + esc(aiOn ? T.ai_on : T.ai_off) + '</span>' +
       '<span class="d-files' + (cur.files ? ' pill-on' : '') + '">' + ms('folder') + esc(T.files) + '</span><i class="vs"></i>' +
-      '<span class="d-sr' + (cur.split === 'sr' ? ' on' : '') + '">' + ms('splitscreen_right') + '</span><span class="d-sb' + (cur.split === 'sb' ? ' on' : '') + '">' + ms('splitscreen_bottom') + '</span>' + ms('more_horiz') + '</span>';
+      ms('key', 'kh') + '<span class="d-sr' + (cur.split === 'sr' ? ' on' : '') + '">' + ms('splitscreen_right') + '</span><span class="d-sb' + (cur.split === 'sb' ? ' on' : '') + '">' + ms('splitscreen_bottom') + '</span>' + ms('pending') + '</span>';
   }
   function filesPane(tab) {
     var s = tab.s, home = s.os === 'macos' ? ['Users', s.user] : s.user === 'root' ? ['root'] : ['home', s.user];
