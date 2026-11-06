@@ -390,6 +390,15 @@
   $$(document, '.app.page').forEach(function (app) { seg(app, 'dash'); });
 
   function lines(app) { return $$(app, '.w-term .tl'); }
+  // the 2FA scene: one of its three terminals, from the start of the step
+  function otp(app, v) {
+    app.classList.remove('v1', 'v2', 'v3', 'ot-dl', 'ot-on', 'ot-sv', 'done'); app.classList.add('play', v);
+    var s = app.querySelector('.ot-s.s' + v.slice(1));
+    $$(s, '.tl').forEach(function (l) { l.classList.remove('in'); });
+    $$(s, '.ot-p').forEach(function (p) { p.classList.remove('in', 'gone', 'wt'); });
+    $$(s, '.js-nc').forEach(function (n) { n.textContent = 3; });
+    return s;
+  }
   // Adds a class to each element in turn; returns when the last one happens.
   function reveal(list, tl, gap, t0, cls) {
     var t = t0 || 0;
@@ -434,6 +443,49 @@
         lines(app).forEach(function (l, i) { if (i < 4) l.classList.add('in'); });
         reveal(lines(app).slice(4), tl, 60, 300);
         tl.at(1150, function () { cam.ringOn(true); });
+      },
+      undefined,
+      // a script runs ssh: the plate under the question, the button (or ⌘⏎) types the code; the second server's prompt
+      // in the same 30 s waits for the next code («new code in N s») and then goes in
+      function (app, tl, cam) {
+        var s = otp(app, 'v1'), L = $$(s, '.tl'), p1 = s.querySelector('.p1'), p2 = s.querySelector('.p2');
+        var t = reveal(L.slice(0, 3), tl, 500, 300);
+        tl.at(t + 300, function () { p1.classList.add('in'); });
+        tl.at(t + 700, function () { cam.ringOn(true); });
+        tl.at(t + 1500, function () { cam.tapAt('.s1 .p1 .js-ob'); });
+        tl.at(t + 1800, function () { p1.classList.add('gone'); cam.ringOn(false); });
+        t = reveal(L.slice(3, 6), tl, 450, t + 2100);
+        tl.at(t + 200, function () { p2.classList.add('in'); });
+        tl.at(t + 900, function () { cam.tapAt('.s1 .p2 .js-ob'); });
+        tl.at(t + 1200, function () { p2.classList.add('wt'); });
+        [2, 1].forEach(function (n, k) { tl.at(t + 2200 + k * 1000, function () { p2.querySelector('.js-nc').textContent = n; }); });
+        tl.at(t + 4200, function () { p2.classList.add('gone'); });
+        reveal(L.slice(6), tl, 350, t + 4400);
+      },
+      // the key's passphrase: «Save…» once (checked against the key file), next time «Insert passphrase»
+      function (app, tl, cam) {
+        var s = otp(app, 'v2'), L = $$(s, '.tl'), p1 = s.querySelector('.p1'), p2 = s.querySelector('.p2'), d = app.querySelector('.js-dots');
+        var t = reveal(L.slice(0, 2), tl, 500, 300);
+        tl.at(t + 300, function () { p1.classList.add('in'); });
+        tl.at(t + 1100, function () { cam.tapAt('.s2 .p1 .js-ob'); });
+        tl.at(t + 1400, function () { d.dataset.d = ''; app.classList.add('ot-dl'); cam.ringOn(true); });
+        for (var k = 1; k <= 11; k++) (function (k) { tl.at(t + 1700 + k * 110, function () { d.dataset.d = new Array(k + 1).join('●'); }); })(k);
+        tl.at(t + 3400, function () { cam.tapAt('.ot-dlg .js-save'); });
+        tl.at(t + 3700, function () { app.classList.remove('ot-dl'); app.classList.add('ot-sv'); p1.classList.add('gone'); cam.ringOn(false); });
+        t = reveal(L.slice(2, 5), tl, 500, t + 4000);
+        tl.at(t + 200, function () { p2.classList.add('in'); });
+        tl.at(t + 1000, function () { cam.tapAt('.s2 .p2 .js-ob'); });
+        tl.at(t + 1300, function () { p2.classList.add('gone'); });
+        reveal(L.slice(5), tl, 350, t + 1500);
+      },
+      // ⌘\ or the key button: every code, password and passphrase of the open documents, searched, ↑↓ and ⏎
+      function (app, tl, cam) {
+        var s = otp(app, 'v3'), L = $$(s, '.tl'), R = $$(app, '.ot-r');
+        R.forEach(function (r, k) { r.classList.toggle('sel', k === 0); });
+        reveal(L, tl, 250, 200);
+        tl.at(1100, function () { cam.tapAt('.ot-key'); });
+        tl.at(1400, function () { app.classList.add('ot-on'); cam.ringOn(true); });
+        [1, 3, 0].forEach(function (n, k) { tl.at(2600 + k * 700, function () { R.forEach(function (r, j) { r.classList.toggle('sel', j === n); }); }); });
       }
     ],
     agent: [
@@ -677,7 +729,10 @@
   };
   // With reduced motion each step shows its final state.
   var FINAL = {
-    bastions: function (app, i) { app.classList.toggle('done', i === 2); app.classList.toggle('play', i === 0); lines(app).forEach(function (l) { l.classList.add('in'); }); },
+    bastions: function (app, i) {
+      if (app.classList.contains('otp')) { app.classList.remove('play', 'v1', 'v2', 'v3', 'ot-dl', 'ot-on', 'ot-sv'); app.classList.add('v' + (i - 3)); lines(app).forEach(function (l) { l.classList.add('in'); }); return; }
+      app.classList.toggle('done', i === 2); app.classList.toggle('play', i === 0); lines(app).forEach(function (l) { l.classList.add('in'); });
+    },
     agent: function (app) { app.classList.remove('play'); $$(app, '.js-rv').forEach(function (x) { x.classList.add('in'); }); },
     services: function (app, i) { seg(app, VIEWS[i]); },
     databases: function (app) { app.classList.remove('play'); },
@@ -691,7 +746,7 @@
     var scams = $$(story, '.k-cam').map(function (el) { return el._cam; }), btns = $$(story, '.k-step');
     var path = story.querySelector('.k-hops');
     var tl = new Timeline(), cur = 0, visible = false;
-    var DUR = btns.map(function (b, i) { return id === 'bastions' && i === 1 ? 6000 : id === 'automations' && i === 4 ? 9500 : id === 'databases' && i === 2 ? 8000 : id === 'terminal' && i === 2 ? 10500 : id === 'agent' && i === 5 ? 10500 : id === 'agent' && (i === 6 || i === 7) ? 7000 : id === 'services' && i === 5 ? 8000 : 5400; });
+    var DUR = btns.map(function (b, i) { return id === 'bastions' && i === 1 ? 6000 : id === 'bastions' && i === 4 ? 10500 : id === 'bastions' && i === 5 ? 10000 : id === 'bastions' && i === 6 ? 6500 : id === 'automations' && i === 4 ? 9500 : id === 'databases' && i === 2 ? 8000 : id === 'terminal' && i === 2 ? 10500 : id === 'agent' && i === 5 ? 10500 : id === 'agent' && (i === 6 || i === 7) ? 7000 : id === 'services' && i === 5 ? 8000 : 5400; });
     function go(i, auto) {
       tl.stop(); cur = i;
       btns.forEach(function (b, k) { b.classList.toggle('on', k === i); b.classList.remove('run'); b.setAttribute('aria-current', k === i ? 'step' : 'false'); });

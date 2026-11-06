@@ -712,3 +712,12 @@ html.light .th-l { display: inline-block !important; }
 .k-live { display: none; margin: 70px auto -24px; font-size: 13.5px; color: var(--ink2); align-items: center; justify-content: center; gap: 7px; }
 .k-live .ms { font-size: 18px; color: var(--accent); }
 @media (hover: hover) and (pointer: fine) and (min-width: 861px) { .js .k-live { display: flex; } }
+
+/* «Before → after»: the plate under a code prompt (TerminalCodePlate), in the card's terms */
+.kb-pl { display: inline-flex; align-items: center; gap: 10px; margin: 4px 0 6px; padding: 6px 6px 6px 10px; border-radius: 10px;
+  background: var(--card); box-shadow: inset 0 0 0 1px var(--line), 0 2px 8px rgba(0, 0, 0, .18); font-family: Inter, system-ui, sans-serif; white-space: nowrap; }
+.kb-pli .ms { font-size: 17px; color: #6e6ad8; transform: scaleX(-1); display: inline-block; }
+.kb-plt b { display: block; font-size: 12px; font-weight: 600; color: var(--ink); } .kb-plt em { font-style: normal; font-size: 10.5px; color: var(--ink2); }
+.kb-plb { display: inline-flex; align-items: center; gap: 5px; height: 22px; padding: 0 10px; border-radius: 11px; background: #3b82f7; color: #fff; font-size: 11.5px; font-weight: 600; }
+.kb-plb i { font-style: normal; opacity: .65; font-weight: 500; color: #fff !important; }
+.kb-term .g { color: var(--green, #34c759); }

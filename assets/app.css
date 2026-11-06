@@ -1621,3 +1621,61 @@ svg.lgo { fill: var(--lc, currentColor); flex: none; }
 
 /* point.3.connected.trianglepath.dotted: Material «share» turned so two nodes sit on top and one below */
 .ms.r90 { transform: rotate(-90deg); }
+
+/* ---------- 2FA, passwords and key passphrases for an ssh the app didn't start (TerminalCodePlate, TerminalAutofillView) ---------- */
+.w-main.otm { position: relative; }
+.a-dot.bl { background: var(--blue); }
+.ms.flipx { transform: scaleX(-1); }
+.ot-st { display: inline-flex; align-items: center; gap: 7px; }
+.t-indigo { color: #5e5ce6; }
+.otp .ot-s { display: none; }
+.otp:not(.v2):not(.v3) .ot-s.s1, .otp.v2 .ot-s.s2, .otp.v3 .ot-s.s3 { display: block; }
+.ot-p { display: inline-flex; align-items: center; gap: 10px; margin: 3px 0 5px; padding: 7px 6px 7px 12px; border-radius: 10px;
+  background: color-mix(in oklab, var(--page) 88%, var(--ink) 4%); box-shadow: inset 0 0 0 1px var(--sep), 0 2px 8px rgba(0, 0, 0, .18);
+  font-family: Inter, system-ui, sans-serif; white-space: nowrap; color: var(--ink); }
+.ot-p > .ms:first-child { font-size: 17px; }
+.ot-pt b { display: block; font-size: 12.5px; font-weight: 600; } .ot-pt span { font-size: 11px; color: var(--ink2); }
+.ot-b { margin-left: 8px; display: inline-flex; align-items: center; gap: 6px; height: 24px; padding: 0 11px; border-radius: 12px; background: var(--blue); color: #fff; font-size: 12px; font-weight: 600; }
+.ot-b i { font-style: normal; font-weight: 500; opacity: .6; font-size: 11px; }
+.ot-w { display: none; margin-left: 8px; font-size: 11.5px; color: var(--ink2); font-variant-numeric: tabular-nums; }
+.ot-p.wt .ot-b { display: none; } .ot-p.wt .ot-w { display: inline; }
+.ot-x { font-size: 17px; color: var(--ink2); margin-left: 4px; }
+.otp.play .ot-p:not(.in), .ot-p.gone { display: none; }
+/* without the animation (final frames, reduced motion): each part at its telling moment */
+.otp:not(.play) .s1 .p1, .otp:not(.play) .s1 .a2,
+.otp:not(.play) .s2 .a1, .otp:not(.play) .s2 .a2, .otp:not(.play) .s2 .p2 { display: none; }
+.ot-dlg { position: absolute; left: 50%; top: 150px; transform: translateX(-50%); width: 430px; display: none; gap: 14px; padding: 18px 18px 16px;
+  border-radius: 14px; background: var(--page); box-shadow: 0 0 0 1px var(--sep), 0 16px 44px rgba(0, 0, 0, .28); z-index: 3; }
+.otp.v2:not(.play) .ot-dlg, .otp.ot-dl .ot-dlg { display: flex; }
+.ot-dlg > img { width: 46px; height: 46px; flex: none; border-radius: 10px; }
+.ot-dlg b { display: block; font-size: 13.5px; } .ot-dlg p { margin: 6px 0 10px; font-size: 12px; line-height: 1.45; color: var(--ink2); }
+.ot-f { display: flex; align-items: center; height: 26px; padding: 0 8px; border-radius: 6px; box-shadow: inset 0 0 0 1px var(--sep); background: var(--page); }
+.ot-f i { font-style: normal; letter-spacing: 1px; font-size: 13px; } .ot-f i::after { content: '●●●●●●●●●●●'; }
+.otp.play .ot-f i::after { content: attr(data-d); }
+.ot-f u { width: 1px; height: 15px; background: var(--ink); margin-left: 1px; }
+.ot-db { display: flex; justify-content: flex-end; gap: 8px; margin-top: 14px; }
+.ot-db span { padding: 5px 14px; border-radius: 13px; background: var(--btn); font-size: 12.5px; font-weight: 500; box-shadow: 0 0 0 .5px var(--sep); }
+.ot-pop { position: absolute; top: 116px; right: 52px; width: 372px; display: none; flex-direction: column; border-radius: 12px; background: var(--page);
+  box-shadow: 0 0 0 1px var(--sep), 0 14px 40px rgba(0, 0, 0, .26); z-index: 3; font-size: 12px; }
+.ot-pop::before { content: ''; position: absolute; top: -7px; right: 42px; width: 14px; height: 14px; background: var(--page); transform: rotate(45deg);
+  box-shadow: -1px -1px 0 0 var(--sep); }
+.otp.v3:not(.play) .ot-pop, .otp.ot-on .ot-pop { display: flex; }
+.otp.v3:not(.play) .ot-key, .otp.ot-on .ot-key { color: var(--blue); }
+.ot-q { display: flex; align-items: center; gap: 7px; padding: 12px 14px 6px; color: var(--ink3); font-size: 13.5px; } .ot-q .ms { font-size: 17px; color: var(--ink2); }
+.ot-ask { display: flex; align-items: center; gap: 6px; padding: 2px 14px 9px; color: var(--ink2); font-size: 11.5px; border-bottom: 1px solid var(--sep2); white-space: nowrap; }
+.ot-tc { color: var(--blue); font-size: 12px; display: inline-flex; align-items: center; } .ot-tc i { width: 1px; height: 12px; background: currentColor; margin-left: 1px; }
+.ot-ls { padding: 2px 8px 6px; }
+.ot-h { font-size: 10.5px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--ink3); padding: 8px 6px 4px; }
+.ot-r { display: flex; align-items: center; gap: 10px; padding: 5px 8px; border-radius: 7px; transition: background .25s; }
+.ot-r.sel { background: color-mix(in oklab, var(--blue) 13%, transparent); }
+.ot-i { width: 26px; height: 26px; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; flex: none; }
+.ot-i .ms { font-size: 15px; }
+.ot-i.ot-ind { color: #5e5ce6; background: rgba(94, 92, 230, .13); } .ot-i.ot-or { color: #e8810a; background: rgba(232, 129, 10, .13); } .ot-i.ot-gr { color: var(--green); background: color-mix(in oklab, var(--green) 13%, transparent); }
+.ot-r > div { flex: 1; min-width: 0; } .ot-r b { display: block; font-size: 12.5px; font-weight: 500; } .ot-r > div span { font-size: 11px; color: var(--ink2); }
+.ot-r em { font-style: normal; font-size: 11px; color: var(--ink2); font-variant-numeric: tabular-nums; } .ot-r > i { font-style: normal; font-size: 11px; color: var(--ink2); visibility: hidden; }
+.ot-r.sel > i { visibility: visible; }
+.ot-ft { display: flex; gap: 14px; padding: 8px 12px; border-top: 1px solid var(--sep2); color: var(--ink2); font-size: 11.5px; }
+.ot-ft i { font-style: normal; padding: 1px 6px; border-radius: 4px; background: var(--sep2); margin-right: 5px; }
+.otp .a-row.ot-new { display: none; }
+.otp.v3 .a-row.ot-new, .otp.ot-sv .a-row.ot-new { display: flex; }
+.otp .w-term .tl.ok { color: var(--green); }
