@@ -367,7 +367,7 @@
   } else rvs.forEach(function (x) { x.classList.add('in'); });
 
   // The navigation marks the section you are reading.
-  var links = $$(document, '.k-nav nav a'), spy = links.map(function (l) { return document.querySelector(l.getAttribute('href')); });
+  var links = $$(document, '.k-nav nav a'), spy = links.map(function (l) { var h = l.getAttribute('href'); return h.charAt(0) === '#' ? document.querySelector(h) : null; });
   if (links.length) {
     var spyRaf = 0;
     var mark = function () {
