@@ -1618,3 +1618,6 @@ svg.lgo { fill: var(--lc, currentColor); flex: none; }
 .au-h:has(.au-bc) .rb { margin: 0 1px; }
 .app.aipanel:not(.aip) .ai-card code.c-c { padding: 3px 8px; }
 .ai-m:has(.ai-cap) { padding-top: 1px; padding-bottom: 6px; }
+
+/* point.3.connected.trianglepath.dotted: Material «share» turned so two nodes sit on top and one below */
+.ms.r90 { transform: rotate(-90deg); }

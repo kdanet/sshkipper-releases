@@ -140,7 +140,7 @@
     status.innerHTML = '<span class="d-state">' + st + '</span><span class="chain">' + chain + '</span>' +
       '<span class="st-r"><span class="d-ai' + (aiOn ? ' ai-pill' : '') + '">' + ms('auto_awesome') + esc(aiOn ? T.ai_on : T.ai_off) + '</span>' +
       '<span class="d-files' + (cur.files ? ' pill-on' : '') + '">' + ms('folder') + esc(T.files) + '</span><i class="vs"></i>' +
-      ms('key', 'kh') + '<span class="d-sr' + (cur.split === 'sr' ? ' on' : '') + '">' + ms('splitscreen_right') + '</span><span class="d-sb' + (cur.split === 'sb' ? ' on' : '') + '">' + ms('splitscreen_bottom') + '</span>' + ms('pending') + '</span>';
+      ms('key', 'kh') + '<span class="d-sr' + (cur.split === 'sr' ? ' on' : '') + '">' + ms('view_column_2') + '</span><span class="d-sb' + (cur.split === 'sb' ? ' on' : '') + '">' + ms('splitscreen') + '</span>' + ms('pending') + '</span>';
   }
   function filesPane(tab) {
     var s = tab.s, home = s.os === 'macos' ? ['Users', s.user] : s.user === 'root' ? ['root'] : ['home', s.user];
@@ -274,7 +274,7 @@
     if (tabEl) { var tb = tabs.filter(function (x) { return x.id === tabEl.dataset.tab; })[0]; if (t.closest('.x')) close(tb); else if (tb) select(tb); return; }
     if (t.closest('.w-plus') || t.closest('.w-tl .w2')) { open(local); return; }
     if (t.closest('.d-files') || t.closest('.a-grp') && t.textContent === 'folder') { toggleFiles(); return; }
-    if (t.closest('.d-sr') || t.closest('.a-grp') && t.textContent === 'splitscreen_right') { split('sr'); return; }
+    if (t.closest('.d-sr') || t.closest('.a-grp') && t.textContent === 'view_column_2') { split('sr'); return; }
     if (t.closest('.d-sb')) { split('sb'); return; }
     if (t.closest('.a-grp') && t.textContent === 'lock') { lock(); return; }
     if (t.closest('.d-unlock')) { var lk = $(app, '.d-lock'); lk.classList.add('ok'); later(650, function () { lk.remove(); focusIn(); }); return; }
@@ -303,7 +303,7 @@
   // ---------- start: the hero's own tab becomes the first live tab ----------
   var first = $(main, '.w-term');
   app.classList.add('demo');
-  $(app, '.w-bar').insertAdjacentHTML('afterbegin', '<span class="d-side-l">' + $(app, '.a-lights').outerHTML + '</span><span class="a-rb d-sbtn">' + ms('view_sidebar') + '</span>');
+  $(app, '.w-bar').insertAdjacentHTML('afterbegin', '<span class="d-side-l">' + $(app, '.a-lights').outerHTML + '</span><span class="a-rb d-sbtn">' + ms('dock_to_right') + '</span>');
   var t0 = makeTab(S['web-01'], first);
   t0.ok = true; t0.since = Date.now() - 60000;
   function finishIntro() {
