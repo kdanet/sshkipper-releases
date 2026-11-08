@@ -4,7 +4,7 @@
   --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
   --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
   --bg: #fbfbfa; --bg2: #f3f3f1; --card: #ffffff;
-  --ink: #0f1320; --ink2: #5b6170; --ink3: #6e7381; --line: rgba(15, 19, 32, .1);
+  --ink: #0f1320; --ink2: #5b6170; --ink3: #646977; --line: rgba(15, 19, 32, .1);
   --accent: #3D8BFF; --accentInk: #1f6ee8; --ring: #3D8BFF; --ok: #2fa84f;
   --gutter: 28px;
   --lift: 0 0 0 1px var(--line), 0 40px 80px -40px rgba(10, 20, 45, .35);
@@ -643,9 +643,12 @@ html.light .th-l { display: inline-block !important; }
   .k-proofs { grid-template-columns: minmax(0, 1fr); margin-top: 32px; gap: 18px; }
 }
 @media (max-width: 640px) {
-  .k-nav { gap: 14px; }
-  .k-nav nav { display: none !important; }
-  .k-theme { margin-left: auto; }
+  /* a phone keeps two section links; the header download goes — a Mac DMG is no use here, the hero and pricing still offer it */
+  .k-nav { gap: 10px; }
+  .k-nav nav { justify-content: flex-end; font-size: 13.5px; }
+  .k-nav nav a { padding: 6px 7px; }
+  .k-nav nav a[href$="#security"], .k-nav nav a[href$="#faq"] { display: none; }
+  .k-nav > .k-btn.sm { display: none; }
   .k-hero { padding-top: 28px; }
   .k-stage { margin-top: 44px; }
   .k-hero-win { --ar: 4 / 3; }

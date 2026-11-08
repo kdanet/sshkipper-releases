@@ -2,8 +2,8 @@
 <rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
   <channel>
     <title>SSHKipper</title>
-    <link>https://kdanet.github.io/SSHkipper/appcast.xml</link>
-    <description>Обновления SSHKipper</description>
-    <language>ru</language>
+    <link>https://sshkipper.com/</link>
+    <description>SSHKipper updates</description>
+    <language>en</language>
   </channel>
 </rss>
