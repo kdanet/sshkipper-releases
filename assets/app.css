@@ -127,6 +127,29 @@
 .win.play .w-term .tl { visibility: hidden; }
 .win.play .w-term .tl.in { visibility: visible; }
 
+/* window: the login route over the terminal while it signs in (LoginRouteOverlay) */
+.win .w-main:has(> .w-lr) { position: relative; }
+.w-lr { position: absolute; left: 50%; bottom: 16%; transform: translateX(-50%); display: flex; align-items: flex-start; padding: 12px 16px 10px;
+  border-radius: 16px; background: color-mix(in oklab, var(--page) 74%, transparent); backdrop-filter: blur(16px) saturate(1.5);
+  -webkit-backdrop-filter: blur(16px) saturate(1.5); border: 1px solid var(--sep); box-shadow: 0 10px 30px rgb(0 0 0 / .22);
+  font-family: var(--sans, inherit); color: var(--ink); pointer-events: none; transition: opacity .4s ease, transform .4s ease; }
+.win.done .w-lr { opacity: 0; transform: translateX(-50%) translateY(6px); }
+.lr-h { display: flex; flex-direction: column; align-items: center; gap: 4px; width: 86px; text-align: center; }
+.lr-h b { font-size: 11.5px; font-weight: 600; white-space: nowrap; }
+.lr-h small { font-size: 10.5px; color: var(--ink2); white-space: nowrap; }
+.lr-d { position: relative; width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--sep); display: grid; place-items: center; color: var(--ink2); }
+.lr-d .ms { font-size: 15px; }
+.lr-h.ok .lr-d { border-color: var(--green); color: var(--green); }
+.lr-h.now .lr-d { border-color: color-mix(in oklab, var(--orange) 28%, transparent); color: var(--orange); }
+.lr-h.now .lr-d::after { content: ""; position: absolute; inset: -2px; border-radius: 50%; border: 2px solid transparent; border-top-color: var(--orange); animation: lr-spin 1s linear infinite; }
+.lr-l { flex: none; width: 26px; height: 2px; margin-top: 14px; background: var(--green); }
+.lr-l.run { background: repeating-linear-gradient(90deg, var(--orange) 0 5px, transparent 5px 9px); background-size: 9px 2px; animation: lr-run .7s linear infinite; }
+.lr-l.off { background: var(--sep); }
+@keyframes lr-spin { to { transform: rotate(360deg); } }
+@keyframes lr-run { to { background-position: 9px 0; } }
+@media (prefers-reduced-motion: reduce) { .lr-h.now .lr-d::after, .lr-l.run { animation: none; } }
+@media (max-width: 640px) { .w-lr { display: none; } }
+
 /* AI: terminal + agent commands + AI panel */
 .app.aiwin { display: flex; flex-direction: column; background: var(--term); }
 .ai-body { flex: 1; min-height: 0; display: grid; grid-template-columns: minmax(0, 1fr) 368px; }
