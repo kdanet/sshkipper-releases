@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SSHKipper — many servers, one helm. An SSH manager for macOS</title>
-<meta name="description" content="SSH through bastions and 2FA in one double-click: a native SSH manager for macOS that fills in the TOTP codes for you. A terminal with tmux, an AI agent, server services, databases, files, tunnels, remote desktops and automations — in one window and one encrypted document.">
+<meta name="description" content="SSH through bastions (jump hosts) and 2FA in one double-click: a native SSH manager for macOS that fills in the TOTP codes for you. A terminal with tmux, an AI agent, server services, databases, files, tunnels, remote desktops and automations — in one window and one encrypted document.">
 <meta name="theme-color" content="#0a0b10">
 <script>try{if(localStorage.getItem('theme')==='light'){document.documentElement.classList.add('light');document.querySelector('meta[name=theme-color]')&&document.querySelector('meta[name=theme-color]').setAttribute('content','#fbfbfa')}}catch(e){}</script>
 <link rel="canonical" href="https://sshkipper.com/">
@@ -24,13 +24,13 @@
 <meta name="twitter:image" content="https://sshkipper.com/assets/og-en.png">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/icon-192.png" type="image/png" sizes="192x192">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "SSHKipper", "url": "https://sshkipper.com/", "description": "SSH through bastions and 2FA in one double-click: a native SSH manager for macOS that fills in the TOTP codes for you. A terminal with tmux, an AI agent, server services, databases, files, tunnels, remote desktops and automations — in one window and one encrypted document.", "inLanguage": "en", "applicationCategory": "DeveloperApplication", "operatingSystem": "macOS 26 or later", "processorRequirements": "Apple Silicon", "downloadUrl": "https://github.com/kdanet/sshkipper-releases/releases/latest/download/SSHKipper.dmg", "image": "https://sshkipper.com/assets/og-en.png", "releaseNotes": "https://github.com/kdanet/sshkipper-releases/releases", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "name": "Free"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "SSHKipper", "url": "https://sshkipper.com/", "description": "SSH through bastions (jump hosts) and 2FA in one double-click: a native SSH manager for macOS that fills in the TOTP codes for you. A terminal with tmux, an AI agent, server services, databases, files, tunnels, remote desktops and automations — in one window and one encrypted document.", "inLanguage": "en", "applicationCategory": "DeveloperApplication", "operatingSystem": "macOS 26 or later", "processorRequirements": "Apple Silicon", "downloadUrl": "https://github.com/kdanet/sshkipper-releases/releases/latest/download/SSHKipper.dmg", "image": "https://sshkipper.com/assets/og-en.png", "releaseNotes": "https://github.com/kdanet/sshkipper-releases/releases", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "name": "Free"}}</script>
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preload" href="assets/fonts/01457da3be39b3d2.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/9b41bc7e36d8e5ee.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/fonts.css?v=5d3e302c">
 <link rel="stylesheet" href="assets/app.css?v=15f6c4bc">
-<link rel="stylesheet" href="assets/site.css?v=fd220f0a">
+<link rel="stylesheet" href="assets/site.css?v=b4efe5b3">
 <script src="assets/site.js?v=ca34114b" defer></script>
 </head>
 <body class="kpage">
@@ -156,7 +156,7 @@
       <div class="kb-pair">
         <div class="kb-side"><div class="kb-pane was" aria-hidden="true"><em>Before</em><div class="kb-split"><div class="kb-term"><p class="kb-a" style="--d:0ms"><i>$</i> ./scripts/release.sh 2.4.1</p><p class="kb-a d" style="--d:300ms">→ web-01: pulling northwind/web:2.4.1</p><p class="kb-a" style="--d:700ms">(deploy@web-01) Verification code: <b class="kb-a kb-ch" style="--d:1500ms">4</b><b class="kb-a kb-ch" style="--d:1920ms">8</b><b class="kb-a kb-ch" style="--d:2340ms">2</b><b class="kb-a kb-ch" style="--d:2760ms">9</b></p><p class="kb-a r" style="--d:3600ms">Permission denied (keyboard-interactive).</p><p class="kb-a r" style="--d:3900ms">release failed: web-01</p></div><div class="kb-phone"><div class="kb-ph-h"><span class="ms" aria-hidden="true">verified_user</span>Authenticator</div><div class="kb-otp hot"><span>web-01</span><b class="kb-old" style="--d:3300ms">482 913</b><b class="kb-new" style="--d:3300ms">771 204</b><i class="kb-timer" style="--d:600ms"></i></div><div class="kb-otp"><span>web-02</span><b>309 571</b></div></div></div><span class="kb-a kb-badge" style="--d:4200ms"><span class="ms" aria-hidden="true">timer</span>the script waited while you found your phone</span></div><p class="kb-cap">Your script runs ssh and stops at a code prompt — and your phone is in the other room</p></div>
         <span class="kb-to" aria-hidden="true"><span class="ms" aria-hidden="true">arrow_forward</span></span>
-        <div class="kb-side"><div class="kb-pane now" aria-hidden="true"><em>After</em><div class="kb-term"><p class="kb-a" style="--d:0ms"><i>$</i> ./scripts/release.sh 2.4.1</p><p class="kb-a d" style="--d:300ms">→ web-01: pulling northwind/web:2.4.1</p><p class="kb-a" style="--d:600ms">(deploy@web-01) Verification code:</p><div class="kb-a kb-pl" style="--d:1000ms"><span class="kb-pli"><span class="ms" aria-hidden="true">lock_reset</span></span><span class="kb-plt"><b>2FA code for “web-01”</b><em>deploy@web-01 · 17 s left</em></span><span class="kb-plb">Insert code<i>⌘⏎</i></span></div><p class="kb-a" style="--d:2300ms">→ web-01: 2.4.1 is up (12 s)</p><p class="kb-a" style="--d:2800ms">→ web-02: 2.4.1 is up (11 s)</p><p class="kb-a g" style="--d:3300ms">✓ released 2.4.1 to 2 servers</p></div><div class="kb-a kb-okline" style="--d:3700ms"><i></i>The code went straight into the terminal — not via the clipboard</div></div><p class="kb-cap now">A plate right under the prompt: “Insert code ⌘⏎” — the code goes into the terminal only when you press it</p></div>
+        <div class="kb-side"><div class="kb-pane now" aria-hidden="true"><em>After</em><div class="kb-term"><p class="kb-a" style="--d:0ms"><i>$</i> ./scripts/release.sh 2.4.1</p><p class="kb-a d" style="--d:300ms">→ web-01: pulling northwind/web:2.4.1</p><p class="kb-a" style="--d:600ms">(deploy@web-01) Verification code:</p><div class="kb-a kb-pl" style="--d:1000ms"><span class="kb-pli"><span class="ms" aria-hidden="true">lock_reset</span></span><span class="kb-plt"><b>2FA code for “web-01”</b><em>deploy@web-01 · 17 s left</em></span><span class="kb-plb">Insert code<i>⌘⏎</i></span></div><p class="kb-a" style="--d:2300ms">→ web-01: 2.4.1 is up (12 s)</p><p class="kb-a" style="--d:2800ms">→ web-02: 2.4.1 is up (11 s)</p><p class="kb-a g" style="--d:3300ms">✓ released 2.4.1 to 2 servers</p></div><div class="kb-a kb-okline" style="--d:3700ms"><i></i>The code went straight into the terminal — not via the clipboard</div></div><p class="kb-cap now">A plate right under the prompt: “Insert code ⌘⏎” — one key press, and the code is in the terminal</p></div>
       </div></a>
     <a class="kb-card rv" id="kb-c2" href="#agent" style="--i:2">
       <span class="kb-head"><span class="k-ba-i"><span class="ms" aria-hidden="true">auto_awesome</span></span><b>AI agent</b><span class="kb-more">Learn more<span class="ms" aria-hidden="true">chevron_right</span></span></span>
@@ -285,14 +285,14 @@
           <span class="k-st"><b>Everything at ⌘\</b><span>Codes, passwords and passphrases: search, ↑↓ and ⏎.</span></span><i class="k-bar"><i></i></i></button></li>
     </ol>
   </div>
-  <ul class="k-proofs"><li class="rv" style="--i:0"><span class="ms" aria-hidden="true">lan</span><b>One sign-in per server</b><span>Tabs, splits, files, Docker and databases of a server share one connection.</span></li><li class="rv" style="--i:1"><span class="ms" aria-hidden="true">touch_app</span><b>Only when you press</b><span>Nothing is typed by itself: “Insert” or ⌘⏎ — and the code goes straight into the terminal, not via the clipboard.</span></li><li class="rv" style="--i:2"><span class="ms" aria-hidden="true">key</span><b>Host keys under control</b><span>Its own known_hosts: if a host key changes, you get a warning, not a silent sign-in.</span></li></ul>
+  <ul class="k-proofs"><li class="rv" style="--i:0"><span class="ms" aria-hidden="true">lan</span><b>One sign-in per server — and per bastion</b><span>Tabs, splits, files, Docker and databases of a server share one connection, and servers behind one bastion share its connection — its 2FA comes once.</span></li><li class="rv" style="--i:1"><span class="ms" aria-hidden="true">touch_app</span><b>When you press</b><span>By default nothing is typed by itself: “Insert code” or ⌘⏎ puts the code straight into the terminal, not via the clipboard. For a server you trust, turn on “Type by itself after checking ssh”.</span></li><li class="rv" style="--i:2"><span class="ms" aria-hidden="true">key</span><b>Host keys under control</b><span>Its own known_hosts: if a host key changes, you get a warning, not a silent sign-in.</span></li></ul>
   <a class="k-allf rv" href="features/#bastions">All features<span class="ms" aria-hidden="true">chevron_right</span></a>
 </section>
 <section id="terminal" class="k-story k-block" data-story="terminal" aria-labelledby="terminal-h" style="--c:4;--tc:2;--ec:6">
   <div class="k-story-head rv">
     <div><p class="k-eyebrow"><span class="k-num">02</span><span class="ms" aria-hidden="true">terminal</span>Terminal</p>
       <h2 id="terminal-h">A terminal that doesn’t lose your work</h2></div>
-    <p class="k-sub">Ghostty under the hood, tmux sessions that survive a dropped connection (tmux on the server), and one command on many servers at once.</p>
+    <p class="k-sub">Ghostty under the hood, tmux sessions on the server that survive a dropped connection, and one command on many servers at once.</p>
   </div>
   
   <div class="k-stagecard rv">
@@ -337,7 +337,7 @@
           <span class="k-st"><b>Input to all tabs</b><span>Type once — it goes to every chosen tab.</span></span><i class="k-bar"><i></i></i></button></li>
     </ol>
   </div>
-  <ul class="k-proofs"><li class="rv" style="--i:0"><span class="ms" aria-hidden="true">laptop_mac</span><b>The local terminal is an item too</b><span>This Mac’s terminal lives in the tree next to servers, with its folder and command.</span></li><li class="rv" style="--i:1"><span class="ms" aria-hidden="true">content_copy</span><b>Clipboard from the server</b><span>A server can put text on your clipboard — only with your permission.</span></li><li class="rv" style="--i:2"><span class="ms" aria-hidden="true">play_arrow</span><b>A command after sign-in</b><span>cd into a project, tail the logs or anything else — right after connecting.</span></li></ul>
+  <ul class="k-proofs"><li class="rv" style="--i:0"><span class="ms" aria-hidden="true">laptop_mac</span><b>The local terminal is an item too</b><span>This Mac’s terminal lives in the tree next to servers, with its folder and command — and ⌥⌘T opens one even with no document unlocked.</span></li><li class="rv" style="--i:1"><span class="ms" aria-hidden="true">content_copy</span><b>Clipboard from the server</b><span>A server can put text on your clipboard — only with your permission.</span></li><li class="rv" style="--i:2"><span class="ms" aria-hidden="true">play_arrow</span><b>A command after sign-in</b><span>cd into a project, tail the logs or anything else — right after connecting.</span></li></ul>
   <a class="k-allf rv" href="features/#terminal">All features<span class="ms" aria-hidden="true">chevron_right</span></a>
 </section>
 <section id="agent" class="k-story k-block" data-story="agent" aria-labelledby="agent-h" style="--c:4;--tc:2;--ec:4">
@@ -716,7 +716,7 @@
   <ul class="k-proofs"><li class="rv" style="--i:0"><span class="ms" aria-hidden="true">folder</span><b>Permissions and Quick Look</b><span>Permissions for many files at once; Space for a preview, as in Finder.</span></li><li class="rv" style="--i:1"><span class="ms" aria-hidden="true">cloud</span><b>Download and public links</b><span>An S3 link for an hour, a day or a week; a Nextcloud or Yandex Disk public link — from the file’s menu.</span></li><li class="rv" style="--i:2"><span class="ms" aria-hidden="true">swap_horiz</span><b>Not through your connection</b><span>Copies from a server to its bastion, and uploads to S3, WebDAV or Yandex Disk, go directly — your home connection stays free.</span></li></ul>
   <a class="k-allf rv" href="features/#files">All features<span class="ms" aria-hidden="true">chevron_right</span></a>
 </section>
-<section id="tunnels" class="k-story k-block" data-story="tunnels" aria-labelledby="tunnels-h" style="--c:3;--tc:3;--ec:4">
+<section id="tunnels" class="k-story k-block" data-story="tunnels" aria-labelledby="tunnels-h" style="--c:3;--tc:3;--ec:6">
   <div class="k-story-head rv">
     <div><p class="k-eyebrow"><span class="k-num">07</span><span class="ms" aria-hidden="true">swap_horiz</span>Tunnels and desktops</p>
       <h2 id="tunnels-h">An internal service — as if it were next to you</h2></div>
@@ -771,7 +771,7 @@
           <span class="k-st"><b>Open it on your Mac</b><span>localhost:13000 — as if Grafana were next door.</span></span><i class="k-bar"><i></i></i></button></li>
     </ol>
   </div>
-  <ul class="k-proofs"><li class="rv" style="--i:0"><span class="ms" aria-hidden="true">view_quilt</span><b>Remote desktops</b><span>Through the server’s SSH, with its bastions and 2FA; the password never goes into an address or an .rdp file, and the port closes after 5 idle minutes.</span></li><li class="rv" style="--i:1"><span class="ms" aria-hidden="true">lock</span><b>For this Mac only</b><span>The port listens on 127.0.0.1 — nobody on the network sees it.</span></li><li class="rv" style="--i:2"><span class="ms" aria-hidden="true">swap_horiz</span><b>Port taken? No problem</b><span>The “Use :NNNN” button picks a free one.</span></li></ul>
+  <ul class="k-proofs"><li class="rv" style="--i:0"><span class="ms" aria-hidden="true">language</span><b>Web pages in a tab</b><span>Proxmox, a router or Grafana through the server’s SSH: its inner network and its localhost, no VPN; a self-signed certificate is asked about once, with its fingerprint.</span></li><li class="rv" style="--i:1"><span class="ms" aria-hidden="true">view_quilt</span><b>Remote desktops</b><span>Through the server’s SSH, with its bastions and 2FA. For Screen Sharing and Windows App the password never goes into an address or an .rdp file, and the port closes after 5 idle minutes.</span></li><li class="rv" style="--i:2"><span class="ms" aria-hidden="true">lock</span><b>For this Mac only</b><span>The port listens on 127.0.0.1 — nobody on the network sees it.</span></li></ul>
   <a class="k-allf rv" href="features/#tunnels">All features<span class="ms" aria-hidden="true">chevron_right</span></a>
 </section>
 <section id="automations" class="k-story k-block" data-story="automations" aria-labelledby="automations-h" style="--c:5;--tc:3;--ec:6">
@@ -840,7 +840,7 @@
   <div class="k-story-head rv">
     <div><p class="k-eyebrow"><span class="k-num">09</span><span class="ms" aria-hidden="true">extension</span>Extensions and modules</p>
       <h2 id="extensions-h">Need a feature? Ask your agent to build it for you</h2></div>
-    <div class="k-sub-col"><p class="k-sub">Modules and extensions add what the app doesn’t have — a service page, a database, a storage, screens of your own. The SDK is free (MIT) — public soon. Kubernetes, DuckDB, the greenhouse and Minecraft below are illustrations; the SDK’s examples include SQLite, Hetzner Cloud and Site checks.</p><div class="k-story-cta"><a class="k-btn sm" href="https://github.com/kdanet/sshkipper-sdk"><span class="ms" aria-hidden="true">code</span>SDK repository</a><a class="k-btn sm ghost" href="https://github.com/kdanet/sshkipper-sdk/tree/main/docs/en"><span class="ms" aria-hidden="true">menu_book</span>Documentation</a></div></div>
+    <div class="k-sub-col"><p class="k-sub">Modules and extensions add what the app doesn’t have — a service page, a database, a storage, screens of your own. The SDK is free (MIT) — public soon. Kubernetes, DuckDB, the greenhouse and Minecraft below are illustrations; the SDK’s examples include SQLite, Hetzner Cloud and “Site checks”.</p><div class="k-story-cta"><a class="k-btn sm" href="https://github.com/kdanet/sshkipper-sdk"><span class="ms" aria-hidden="true">code</span>SDK repository</a><a class="k-btn sm ghost" href="https://github.com/kdanet/sshkipper-sdk/tree/main/docs/en"><span class="ms" aria-hidden="true">menu_book</span>Documentation</a></div></div>
   </div>
   
   <div class="k-stagecard rv">

@@ -1,6 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /buy/
-Disallow: /en/buy/
 
 Sitemap: https://sshkipper.com/sitemap.xml
