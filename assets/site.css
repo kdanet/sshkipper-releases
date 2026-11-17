@@ -77,8 +77,10 @@ html.light .th-l { display: inline-block !important; }
 .k-helm pre { margin: 0; font-family: var(--mono); font-size: clamp(3.8px, .44vw, 6.2px); line-height: 1; letter-spacing: 0; white-space: pre; font-weight: 600; }
 .k-helm .blue { color: #3D8BFF; position: absolute; inset: 0; }
 .k-helm .sea { color: var(--accent); opacity: .55; margin-top: .6em; }
-.k-hero h1 { margin: 0 auto; max-width: 1040px; font-size: clamp(36px, 5.4vw, 68px); line-height: 1.02; letter-spacing: -.045em; font-weight: 700; }
+.k-hero .k-h1 { margin: 0 auto; max-width: 1040px; font-size: clamp(36px, 5.4vw, 68px); line-height: 1.02; letter-spacing: -.045em; font-weight: 700; }
 .k-lead { max-width: 700px; text-wrap: pretty; margin: 22px auto 0; font-size: clamp(17px, 1.7vw, 20px); line-height: 1.5; color: var(--ink2); }
+/* the hero's h1 is the sentence under the motto (search engines read what the product is); it looks like the lead */
+.k-hero h1.k-lead { font-weight: 400; letter-spacing: normal; text-wrap: pretty; }
 .k-ctas { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
 .k-meta { margin: 16px 0 0; font-size: 13.5px; color: var(--ink3); }
 .k-req { margin: 8px 0 0; font-size: 12.5px; color: var(--ink3); }
@@ -107,7 +109,7 @@ html.light .th-l { display: inline-block !important; }
 .k-h2-sub { margin: 14px 0 0; max-width: 680px; font-size: 18px; color: var(--ink2); }
 
 /* ---------- Before → after ---------- */
-.k-ba-wrap { max-width: 1280px; margin: 0 auto; padding: 140px var(--gutter) 0; }
+.k-ba-wrap { max-width: 1240px; margin: 0 auto; padding: 160px var(--gutter) 0; }
 .k-bas { margin-top: 40px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
 .kb-card { display: flex; flex-direction: column; gap: 16px; padding: 18px 20px 22px; border-radius: 20px; background: var(--card);
   box-shadow: 0 0 0 1px var(--line); transition: box-shadow .25s, transform .25s; }
@@ -460,7 +462,7 @@ html.light .th-l { display: inline-block !important; }
 .k-step.on.run .k-bar i { width: 0; animation: k-fill var(--dur, 5s) linear forwards; }
 @keyframes k-fill { to { width: 100%; } }
 /* A block of its own (databases): a tinted panel, the engines it speaks */
-.k-story.k-block { padding-top: 110px; margin-top: 110px; border-top: 1px solid var(--line); }
+.k-story.k-block { padding-top: 80px; margin-top: 80px; border-top: 1px solid var(--line); }
 .k-story.k-block:first-of-type { border-top: 0; }
 .k-engines { list-style: none; margin: 36px 0 0; padding: 0; display: grid; grid-template-columns: repeat(var(--ec, 6), minmax(0, 1fr)); gap: 26px 28px; }
 .k-engines li { display: flex; flex-direction: column; gap: 4px; }
@@ -472,11 +474,11 @@ html.light .th-l { display: inline-block !important; }
 /* a window floats with rounded corners: at its edges the camera leaves a margin past it */
 .k-stagecard .k-cam > .app { border-radius: 12px; box-shadow: 0 0 0 1px var(--line); }
 .k-story .k-cam > .app.modes, .k-story .k-cam > .app.aipanel, .k-story .k-cam > .app.frag, .k-story .k-cam > .app.sheet { border-radius: 12px; box-shadow: 0 0 0 1px var(--line), 0 12px 32px -20px rgba(10, 20, 45, .35); }
-.k-engines b { font-size: 15.5px; font-weight: 600; letter-spacing: -.01em; }
+.k-engines h3 { margin: 0; font-size: 15.5px; font-weight: 600; letter-spacing: -.01em; }
 .k-engines span { font-size: 13.5px; line-height: 1.45; color: var(--ink2); }
 :where(html:not(.light)) .k-engines img[src$="sqlite.svg"], :where(html:not(.light)) .k-engines img[src$="mysql.svg"] { filter: brightness(1.9) saturate(.8); }
 @media (max-width: 1100px) { .k-engines { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-@media (max-width: 960px) { .k-story.k-block { padding-top: 80px; margin-top: 80px; } }
+@media (max-width: 960px) { .k-story.k-block { padding-top: 55px; margin-top: 55px; } }
 @media (max-width: 640px) { .k-engines { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
 .k-sub b { color: var(--ink); font-weight: 600; }
@@ -560,7 +562,7 @@ html.light .th-l { display: inline-block !important; }
 .k-proofs { list-style: none; margin: 40px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
 .k-proofs li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 4px 12px; align-items: baseline; align-content: start; }
 .k-proofs .ms { grid-row: span 2; font-size: 21px; color: var(--accentInk); align-self: start; margin-top: 1px; }
-.k-proofs b { font-size: 15.5px; font-weight: 600; letter-spacing: -.01em; }
+.k-proofs h3 { margin: 0; font-size: 15.5px; font-weight: 600; letter-spacing: -.01em; }
 .k-proofs span { font-size: 14.5px; color: var(--ink2); line-height: 1.5; }
 
 /* ---------- Pricing ---------- */
@@ -609,6 +611,7 @@ html.light .th-l { display: inline-block !important; }
 /* ---------- Footer ---------- */
 .k-foot { max-width: 1200px; margin: 0 auto; padding: 56px var(--gutter) 48px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; font-size: 14px; color: var(--ink2); }
 .k-foot a:hover { color: var(--ink); }
+@media (max-width: 640px) { .k-foot a { padding: 11px 0; } }   /* a 44-point tap target */
 .k-foot .k-brand { color: var(--ink); margin-right: auto; }
 .k-foot p { flex-basis: 100%; margin: 8px 0 0; font-size: 13px; color: var(--ink3); }
 
@@ -686,7 +689,7 @@ html.light .th-l { display: inline-block !important; }
   .js .k-stagecard.rv { transform: translateY(36px) scale(.985); }
   .js .k-stagecard.rv.in { transform: none; }
   .k-hero > * { animation: k-rise 1s cubic-bezier(.2, .7, .2, 1) both; }
-  .k-hero > .k-helm { animation-delay: 0s; } .k-hero > h1 { animation-delay: .08s; } .k-hero > .k-lead { animation-delay: .16s; }
+  .k-hero > .k-helm { animation-delay: 0s; } .k-hero > .k-h1 { animation-delay: .08s; } .k-hero > .k-lead { animation-delay: .16s; }
   .k-hero > .k-req { animation-delay: .32s; }
   .k-hero > .k-ctas { animation-delay: .24s; } .k-hero > .k-meta { animation-delay: .3s; } .k-hero > .k-stage { animation-delay: .38s; animation-duration: 1.3s; }
   .k-hero > .k-chips { animation-delay: .6s; }
