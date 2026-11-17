@@ -380,6 +380,29 @@
     mark();
   }
 
+  // The section bar: on from the first section to the prices, the section on screen marked and scrolled into view.
+  var bar = document.querySelector('.k-secbar');
+  if (bar) {
+    var barIn = bar.firstElementChild, barLinks = $$(bar, 'a'), barSecs = barLinks.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+    var barEnd = document.getElementById('pricing'), barRaf = 0, barCur = -1;
+    var barMark = function () {
+      barRaf = 0;
+      var y = window.innerHeight * 0.35, on = barSecs[0].getBoundingClientRect().top < 140 && (!barEnd || barEnd.getBoundingClientRect().top > y);
+      bar.classList.toggle('on', on);
+      document.documentElement.classList.toggle('secbar-on', on);
+      var cur = -1;
+      barSecs.forEach(function (sec, i) { var r = sec.getBoundingClientRect(); if (r.top < y && r.bottom > y) cur = i; });
+      barLinks.forEach(function (a, i) { a.classList.toggle('cur', i === cur); });
+      if (cur >= 0 && cur !== barCur && barIn.scrollWidth > barIn.clientWidth + 1) {
+        var a = barLinks[cur];
+        barIn.scrollTo({ left: Math.max(0, a.offsetLeft - (barIn.clientWidth - a.offsetWidth) / 2), behavior: REDUCE ? 'auto' : 'smooth' });
+      }
+      barCur = cur;
+    };
+    window.addEventListener('scroll', function () { if (!barRaf) barRaf = requestAnimationFrame(barMark); }, { passive: true });
+    barMark();
+  }
+
   // The services page's segmented control: the pill slides under the section shown.
   var VIEWS = ['dash', 'nginx', 'docker', 'sup', 'cron', 'sec'];
   function seg(app, key) {

@@ -764,3 +764,22 @@ html.light .th-l { display: inline-block !important; }
   .k-pv { grid-template-columns: minmax(0, 1fr); padding: 22px 20px; gap: 8px; }
   .k-fsec { padding-top: 80px; }
 }
+
+/* The section bar (2026-11-18): under the header while you read the sections, the one on screen marked; site.js shows it */
+.k-secbar { position: fixed; top: 60px; left: 0; right: 0; z-index: 49; display: flex; justify-content: center; height: 46px;
+  background: color-mix(in oklab, var(--bg) 80%, transparent); -webkit-backdrop-filter: saturate(1.4) blur(16px); backdrop-filter: saturate(1.4) blur(16px);
+  border-bottom: 1px solid var(--line); opacity: 0; transform: translateY(-8px); pointer-events: none; visibility: hidden;
+  transition: opacity .25s, transform .25s, visibility 0s .25s; }
+.k-secbar.on { opacity: 1; transform: none; pointer-events: auto; visibility: visible; transition: opacity .25s, transform .25s; }
+.k-secbar-in { display: flex; align-items: center; gap: 2px; max-width: 100%; padding: 0 var(--gutter); overflow-x: auto; scrollbar-width: none; }
+.k-secbar-in::-webkit-scrollbar { display: none; }
+.k-secbar a { display: inline-flex; align-items: center; gap: 6px; flex: none; padding: 6px 11px; border-radius: 99px; font-size: 13.5px;
+  color: var(--ink2); white-space: nowrap; transition: color .2s, background .2s; }
+.k-secbar a .ms { font-size: 17px; color: var(--ink3); transition: color .2s; }
+.k-secbar a:hover { color: var(--ink); }
+.k-secbar a.cur { color: var(--ink); background: color-mix(in oklab, var(--ink) 7%, transparent); }
+.k-secbar a.cur .ms { color: var(--accentInk); }
+.secbar-on .k-nav.stuck { border-bottom-color: transparent; }
+html.secbar-on { scroll-padding-top: 122px; }
+@media (max-width: 640px) { .k-secbar { height: 44px; } .k-secbar a { padding: 6px 10px; font-size: 13px; } }
+@media (prefers-reduced-motion: reduce) { .k-secbar, .k-secbar.on { transition: none; } }
