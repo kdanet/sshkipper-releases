@@ -80,10 +80,7 @@ html.light .th-l { display: inline-block !important; }
 .k-hero h1 { margin: 0 auto; max-width: 1040px; font-size: clamp(36px, 5.4vw, 68px); line-height: 1.02; letter-spacing: -.045em; font-weight: 700; }
 .k-lead { max-width: 700px; text-wrap: pretty; margin: 22px auto 0; font-size: clamp(17px, 1.7vw, 20px); line-height: 1.5; color: var(--ink2); }
 .k-ctas { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
-.k-motto { margin: 0 0 14px; font-size: clamp(15px, 1.4vw, 17px); font-weight: 650; letter-spacing: .01em; color: var(--accentInk); }
-.k-meta { margin: 18px 0 0; display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 20px; font-size: 15px; font-weight: 550; color: var(--ink); }
-.k-meta span { display: inline-flex; align-items: center; gap: 6px; }
-.k-meta .ms { font-size: 18px; color: var(--ok); }
+.k-meta { margin: 16px 0 0; font-size: 13.5px; color: var(--ink3); }
 .k-req { margin: 8px 0 0; font-size: 12.5px; color: var(--ink3); }
 
 .k-stage { position: relative; z-index: 2; margin: 60px auto 0; max-width: 1180px; }
@@ -627,15 +624,18 @@ html.light .th-l { display: inline-block !important; }
   .k-steps.more { -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 56px), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 56px), transparent); }
 }
 @media (max-width: 640px) { .k-steps li, .k-steps li.r0, .k-steps li.r2, .k-steps li.t0, .k-steps li.t2 { flex-basis: 86%; } }
+/* The first link («Features») stands in for the section links once they no longer fit */
+.k-nav nav a:first-child { display: none; }
+/* below ~1600 px the thirteen links don't fit: «Features», «Extensions», «Security», «Pricing», «FAQ» stay */
+@media (max-width: 1600px) { .k-nav nav a:nth-child(n+3):nth-child(-n+10) { display: none; } .k-nav nav a:first-child { display: inline-flex; } }
 @media (max-width: 1100px) {
   .k-steps { grid-template-columns: repeat(var(--tc, 3), minmax(0, 1fr)); }
   .k-steps li, .k-steps li.r0, .k-steps li.r2 { border-left: 1px solid var(--line); border-top: 0; }
   .k-steps li.t0 { border-left: 0; } .k-steps li.t2 { border-top: 1px solid var(--line); }
   .k-nav nav a { padding: 6px 8px; }
 }
-/* four links (2026-11-06): on a narrow tablet «FAQ» gives way */
-@media (max-width: 900px) { .k-nav { gap: 14px; } }
-@media (max-width: 760px) { .k-nav nav a[href$="#faq"] { display: none; } }
+/* tablets: «Features» and «Pricing» stay in the bar beside the theme and download */
+@media (max-width: 900px) { .k-nav nav a:not(:first-child):not([href$="#pricing"]) { display: none; } .k-nav { gap: 14px; } }
 @media (max-width: 960px) {
   .k-story { padding-top: 110px; }
   .k-story-head { grid-template-columns: minmax(0, 1fr); }
@@ -691,7 +691,7 @@ html.light .th-l { display: inline-block !important; }
   .js .k-stagecard.rv.in { transform: none; }
   .k-hero > * { animation: k-rise 1s cubic-bezier(.2, .7, .2, 1) both; }
   .k-hero > .k-helm { animation-delay: 0s; } .k-hero > h1 { animation-delay: .08s; } .k-hero > .k-lead { animation-delay: .16s; }
-  .k-hero > .k-motto { animation-delay: .04s; } .k-hero > .k-req { animation-delay: .32s; } .k-hero > .k-live { animation-delay: .36s; }
+  .k-hero > .k-req { animation-delay: .32s; }
   .k-hero > .k-ctas { animation-delay: .24s; } .k-hero > .k-meta { animation-delay: .3s; } .k-hero > .k-stage { animation-delay: .38s; animation-duration: 1.3s; }
   .k-hero > .k-chips { animation-delay: .6s; }
   .k-cam.k-float { animation: k-pop .9s cubic-bezier(.2, .9, .3, 1.2) 1.6s both; }
@@ -715,17 +715,10 @@ html.light .th-l { display: inline-block !important; }
 .k-404 .k-btn { margin-top: 12px; }
 .k-404 section { margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--line); }
 
-/* The live hero: a call above the window and the hero's second button, only where demo.js runs */
-.k-live { display: none; width: fit-content; margin: 44px auto -28px; padding: 10px 20px 10px 14px; border-radius: 99px; align-items: center; gap: 10px;
-  font-size: 15px; color: var(--ink2); background: color-mix(in oklab, var(--accent) 12%, transparent);
-  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--accent) 40%, transparent); position: relative; z-index: 3; }
-.k-live b { color: var(--ink); font-weight: 650; font-size: 16px; }
-.k-live .ms { font-size: 20px; color: var(--accent); }
-.k-try-btn { display: none !important; }
-@media (hover: hover) and (pointer: fine) and (min-width: 861px) { .js .k-live { display: flex; } .js .k-try-btn { display: inline-flex !important; } }
-@media (prefers-reduced-motion: no-preference) { .k-live .ms { animation: k-nudge 1.6s ease-in-out infinite; } }
-@keyframes k-nudge { 50% { transform: translateY(3px); } }
-#live { scroll-margin-top: 150px; }
+/* The live hero: a hint under the window (only where demo.js runs) */
+.k-live { display: none; margin: 70px auto -24px; font-size: 13.5px; color: var(--ink2); align-items: center; justify-content: center; gap: 7px; }
+.k-live .ms { font-size: 18px; color: var(--accent); }
+@media (hover: hover) and (pointer: fine) and (min-width: 861px) { .js .k-live { display: flex; } }
 
 /* «Before → after»: the plate under a code prompt (TerminalCodePlate), in the card's terms */
 .kb-pl { display: inline-flex; align-items: center; gap: 10px; margin: 4px 0 6px; padding: 6px 6px 6px 10px; border-radius: 10px;
@@ -737,59 +730,6 @@ html.light .th-l { display: inline-block !important; }
 .kb-term .g { color: var(--green, #34c759); }
 
 /* ---------- Marketing pass (2026-11-06) ---------- */
-/* a story's engines on the home page: logos and names in one row (the lines are on /features/) */
-.k-logos { list-style: none; margin: 30px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px 26px; }
-.k-logos li { display: inline-flex; align-items: center; gap: 9px; font-size: 14.5px; }
-.k-logos .lg { display: inline-flex; gap: 5px; }
-.k-logos img { width: 22px; height: 22px; }
-.k-logos .lg .ms { font-size: 21px; color: var(--accentInk); }
-.k-logos b { font-weight: 600; color: var(--ink2); }
-:where(html:not(.light)) .k-logos img.mono { filter: invert(1); }
-:where(html:not(.light)) .k-logos img[src$="sqlite.svg"], :where(html:not(.light)) .k-logos img[src$="mysql.svg"] { filter: brightness(1.9) saturate(.8); }
-.k-allf { align-self: flex-start; display: inline-flex; align-items: center; gap: 2px; margin-top: 26px; font-size: 14.5px; font-weight: 600; color: var(--accentInk) !important; }
-.k-allf .ms { font-size: 18px; transition: transform .2s; } .k-allf:hover .ms { transform: translateX(3px); }
-.k-feats { scroll-margin-top: -60px; }
-
-/* a note from the author */
-.k-author { max-width: 860px; margin: 0 auto; padding: 120px var(--gutter) 0; }
-.k-author figure { margin: 0; padding: 34px 38px; border-radius: 22px; background: var(--card); box-shadow: inset 0 0 0 1px var(--line); }
-.k-author .k-eyebrow { margin-bottom: 12px; }
-.k-author blockquote { margin: 0; }
-.k-author blockquote p { margin: 0; font-size: clamp(19px, 2vw, 23px); line-height: 1.45; letter-spacing: -.01em; font-weight: 500; color: var(--ink); }
-.k-author figcaption { display: flex; align-items: center; gap: 10px; margin-top: 18px; font-size: 14.5px; color: var(--ink2); }
-
-/* «Coming from …?» */
-.k-cmp-wrap { max-width: 1100px; margin: 0 auto; padding: 160px var(--gutter) 0; text-align: center; }
-.k-cmp-wrap .k-h2-sub { margin-left: auto; margin-right: auto; }
-.k-cmp { margin-top: 40px; text-align: left; border-radius: 20px; background: var(--card); box-shadow: inset 0 0 0 1px var(--line); overflow: hidden; }
-.k-cr { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1fr) minmax(0, 1.15fr); gap: 0 24px; padding: 16px 26px; border-top: 1px solid var(--line); align-items: center; }
-.k-cr.hd { border-top: 0; padding-top: 14px; padding-bottom: 14px; font-size: 13px; font-weight: 600; color: var(--ink3); background: var(--bg2); }
-.k-cr.hd span:last-child { display: inline-flex; align-items: center; gap: 8px; color: var(--ink); font-size: 14px; }
-.k-cr b { display: flex; align-items: center; gap: 10px; font-size: 15.5px; font-weight: 600; letter-spacing: -.01em; }
-.k-cr b .ms { font-size: 20px; color: var(--accentInk); flex: none; }
-.k-cr .was { font-size: 15px; color: var(--ink3); }
-.k-cr .now { display: flex; gap: 8px; align-items: flex-start; font-size: 15px; color: var(--ink); }
-.k-cr .now .ms { font-size: 19px; color: var(--ok); margin-top: 1px; flex: none; }
-.k-cmp-note { display: flex; justify-content: center; align-items: center; gap: 8px; margin: 20px auto 0; font-size: 14.5px; color: var(--ink2); }
-.k-cmp-note .ms { font-size: 18px; color: var(--accentInk); }
-@media (max-width: 760px) {
-  .k-cr { grid-template-columns: minmax(0, 1fr); gap: 6px; padding: 16px 18px; }
-  .k-cr.hd { display: none; }
-  .k-cr:nth-child(2) { border-top: 0; }
-  .k-cr .was::before, .k-cr .now::before { content: attr(data-l) ' · '; font-size: 12px; font-weight: 600; color: var(--ink3); }
-  .k-cr .now { display: block; } .k-cr .now .ms { display: none; }
-  .k-cmp-note { align-items: flex-start; text-align: left; }
-}
-
-/* pricing: «Start free» and the notice on GitHub */
-.k-pr-cta { margin-top: 28px; }
-.k-pr-cta .k-btn { min-width: 220px; background: var(--accentFill); color: #fff !important; }
-.k-pr-cta .k-btn .apple { fill: #fff; }
-.k-notify { display: inline-flex; align-items: center; gap: 5px; color: var(--accentInk) !important; font-weight: 600; white-space: nowrap; }
-.k-notify .ms { font-size: 17px; }
-.k-notify:hover { text-decoration: underline; }
-.k-pay-note span { white-space: nowrap; }
-
 /* the end: one more call after the questions */
 .k-final { max-width: 1200px; margin: 0 auto; padding: 140px var(--gutter) 0; }
 .k-final-in { padding: 56px 28px 50px; border-radius: 26px; text-align: center;
@@ -819,8 +759,7 @@ html.light .th-l { display: inline-block !important; }
 .k-pv-more { margin: 18px 0 0; text-align: center; font-size: 14.5px; color: var(--ink2); }
 .k-pv-more a, .k-q p a { color: var(--accentInk) !important; text-decoration: underline; text-underline-offset: 3px; }
 @media (max-width: 640px) {
-  .k-author, .k-cmp-wrap, .k-final { padding-top: 100px; }
-  .k-author figure { padding: 24px 20px; }
+  .k-final { padding-top: 100px; }
   .k-final-in { padding: 40px 18px 36px; }
   .k-final .k-btn { width: 100%; }
   .k-pv { grid-template-columns: minmax(0, 1fr); padding: 22px 20px; gap: 8px; }

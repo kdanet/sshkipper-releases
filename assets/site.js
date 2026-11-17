@@ -489,7 +489,7 @@
       }
     ],
     agent: [
-      // the panel: the question, then the agent's steps one by one
+      // the window: the question, then the agent's steps one by one
       function (app, tl, cam) {
         app.classList.add('play');
         $$(app, '.in').forEach(function (x) { x.classList.remove('in'); });
@@ -505,7 +505,7 @@
       },
       function (app, tl, cam) {
         app.classList.add('play');
-        $$(app, '.js-step').forEach(function (x) { x.classList.add('in'); });
+        $$(app, '.js-step, .js-cmd').forEach(function (x) { x.classList.add('in'); });
         $$(app, '.js-card, .js-wait').forEach(function (x) { x.classList.remove('in'); });
         reveal($$(app, '.js-card, .js-wait'), tl, 0, 1100);
         tl.at(1400, function () { cam.ringOn(true); });
