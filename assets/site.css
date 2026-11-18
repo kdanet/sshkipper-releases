@@ -777,3 +777,22 @@ html.light .th-l { display: inline-block !important; }
 html.secbar-on { scroll-padding-top: 122px; }
 @media (max-width: 640px) { .k-secbar { height: 44px; } .k-secbar a { padding: 6px 10px; font-size: 13px; } }
 @media (prefers-reduced-motion: reduce) { .k-secbar, .k-secbar.on { transition: none; } }
+
+/* Phones (2026-11-18, the user): no window replicas — at this width they are too small to read. The hero keeps its
+   text and buttons, «Sound familiar?» its two captions, each section its text, its steps as a numbered list and its points. */
+@media (max-width: 640px) {
+  .k-stage, .k-live, .k-story-vis, .kb-pane, .kb-to { display: none !important; }
+  .k-hero .k-chips { margin-top: 36px; }
+  .kb-pair { gap: 14px; }
+  .kb-cap::before { content: attr(data-l); display: block; margin-bottom: 4px; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #e5534b; }
+  .kb-cap.now::before { color: var(--ok); }
+  .k-stagecard { margin-top: 26px; background: none; box-shadow: none; border-radius: 0; overflow: visible; }
+  .k-steps { display: block; border-top: 0; -webkit-mask-image: none !important; mask-image: none !important; }
+  .k-steps li, .k-steps li.r0, .k-steps li.r2, .k-steps li.t0, .k-steps li.t2 { border: 0; }
+  .k-step { cursor: default; pointer-events: none; padding: 9px 0; }
+  .k-step .k-bar { display: none; }
+  .k-step.on { background: none; }
+  .k-step.on .k-n { background: none; color: var(--ink3); box-shadow: inset 0 0 0 1px var(--line); }
+  .k-step .k-st b { color: var(--ink); }
+  .k-step .k-st span { color: var(--ink2); }
+}

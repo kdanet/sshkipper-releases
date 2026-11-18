@@ -431,7 +431,7 @@
 
   /* ---------- Hero: the main window connects through two bastions, once ---------- */
   var hero = document.querySelector('.k-hero-win');
-  if (hero && !REDUCE) {
+  if (hero && !REDUCE && !PHONE.matches) {
     var happ = hero.querySelector('.app'), htl = new Timeline();
     happ.classList.add('play');
     var ht = reveal(lines(happ), htl, function (i) { return i < 4 ? 650 : 60; }, 700);
@@ -780,6 +780,7 @@
   };
 
   $$(document, '.k-story').forEach(function (story) {
+    if (PHONE.matches) return;   // a phone shows no window replicas (site.css): the steps are a plain list there
     var id = story.dataset.story, scenes = SCENES[id] || [];
     var scams = $$(story, '.k-cam').map(function (el) { return el._cam; }), btns = $$(story, '.k-step');
     var path = story.querySelector('.k-hops');
