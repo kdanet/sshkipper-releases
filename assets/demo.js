@@ -287,19 +287,6 @@
     if (t.closest('.w-main') && !t.closest('.d-fp')) focusIn();
   });
 
-  // ---------- the agent's card beside the window ----------
-  var card = document.querySelector('.k-float .ai-card');
-  if (card) {
-    var keep = card.innerHTML;
-    card.addEventListener('click', function (ev) {
-      if (ev.target.closest('.d-again')) { card.innerHTML = keep; card.className = card.className.replace(/ d-\w+/g, ''); return; }
-      var b = ev.target.closest('.c-b > span'); if (!b) return;
-      var body = function (cls, html) { card.querySelector('.c-n').outerHTML = '<div class="c-n d-res ' + cls + '">' + html + '</div>'; var cb = card.querySelector('.c-b'); cb.innerHTML = '<span class="d-again">' + esc(T.again) + '</span>'; };
-      if (b.classList.contains('r')) { card.classList.add('d-run'); body('', esc(T.running)); later(1200, function () { card.classList.remove('d-run'); card.classList.add('d-done'); var n = card.querySelector('.d-res'); if (n) n.textContent = T.done; }); }
-      else { card.classList.add('d-off'); body('', esc(T.declined)); }
-    });
-  }
-
   // ---------- start: the hero's own tab becomes the first live tab ----------
   var first = $(main, '.w-term');
   app.classList.add('demo');

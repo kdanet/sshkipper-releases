@@ -1089,7 +1089,15 @@ html[lang="en"] .frag .side .f-head, html[lang="en"] .frag .side .f-row { grid-t
 .tm-i > .ms, .tm-i > i { width: 16px; font-size: 14px; flex: none; } .tm-i b { font-weight: 400; } .tm-i > span:not(.ms) { margin-left: auto; color: var(--ink2); font-size: 12px; }
 .tm-i.on { background: var(--blue); color: #fff; } .tm-i.on > span:not(.ms) { color: rgba(255, 255, 255, .8); }
 .tm-s { height: 1px; background: var(--sep); margin: 5px 8px; }
-.tmx .w-term .tl.dim { color: var(--orange); }
+.tmx .w-term .tl.dim { color: var(--tdim); }
+/* tmux survives a drop: running → lost → back in the same session, which redraws the finished release */
+.tmx .tx-ok { color: var(--tg); } .tmx .tx-run { color: var(--orange); } .tmx .tx-red { color: var(--red); }
+.tmx .tx-d { color: var(--tdim); margin-left: 2ch; } .tmx .tx-bar { color: var(--tb); letter-spacing: -.5px; }
+.tmx .tx-b, .tmx .tx-lost, .win.done .w-status .st-ok.tx-off { display: none; }
+.app.tx-back .tmx .tx-a { display: none; } .app.tx-back .tmx .tx-b { display: block; }
+.app.tx-lost .tmx .tx-lost { display: block; }
+.app.tx-lost .w-status .st-ok.tx-on { display: none; } .app.tx-lost .w-status .st-ok.tx-off { display: inline-flex; }
+.app.tx-lost .w-status .tm-mark { opacity: .45; }
 
 /* A command on several servers: one row per server */
 .w-main.snm { background: var(--page); }
@@ -1236,7 +1244,7 @@ svg.lgo { fill: var(--lc, currentColor); flex: none; }
 
 /* The live hero window (demo.js) */
 .app.demo .a-row, .app.demo .w-tab, .app.demo .w-plus, .app.demo .st-r > span, .app.demo .a-rb, .app.demo .a-grp .ms,
-.app.demo .w-pal, .app.demo .w-search, .k-float .ai-card .c-b > span, .app.demo .d-unlock { cursor: pointer; }
+.app.demo .w-pal, .app.demo .w-search, .app.demo .d-unlock { cursor: pointer; }
 .app.demo .w-term { cursor: text; }
 .app.demo .a-row:hover:not(.sel) { background: color-mix(in oklab, var(--ink) 5%, transparent); }
 .app.demo .w-tab:not(.sel):hover { background: color-mix(in oklab, var(--ink) 6%, transparent); }

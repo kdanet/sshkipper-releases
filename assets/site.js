@@ -593,9 +593,24 @@
       }
     ],
     terminal: [
-      function (app, tl, cam) { app.classList.remove('menu'); tl.at(1150, function () { cam.ringOn(true); }); },
+      // a release runs in tmux, the connection drops, the tab comes back to the same session: the release finished meanwhile
+      function (app, tl, cam) {
+        var bar = app.querySelector('.js-txbar'), pct = app.querySelector('.js-txpct'), rows = app.querySelector('.js-txrows');
+        var sep = /,/.test(rows.textContent) ? ',' : '\u00a0';
+        function draw(p) {
+          var n = Math.round(30 * p / 100);
+          bar.textContent = new Array(n + 1).join('\u2588') + new Array(31 - n).join('\u2591');
+          pct.textContent = p + '%';
+          rows.textContent = String(Math.round(3800000 * p / 100)).replace(/\B(?=(\d{3})+(?!\d))/g, sep === ',' ? ',' : ' ');
+        }
+        app.classList.remove('menu', 'tx-lost', 'tx-back'); draw(34);
+        [35, 36, 37, 38].forEach(function (p, k) { tl.at(350 + k * 350, function () { draw(p); }); });
+        tl.at(1900, function () { app.classList.add('tx-lost'); });
+        tl.at(4300, function () { app.classList.remove('tx-lost'); app.classList.add('tx-back'); });
+        tl.at(4800, function () { cam.ringOn(true); });
+      },
       // the tab's mark opens its sessions menu
-      function (app, tl, cam) { app.classList.remove('menu'); tl.at(900, function () { app.classList.add('menu'); }); tl.at(1300, function () { cam.ringOn(true); }); },
+      function (app, tl, cam) { app.classList.remove('menu', 'tx-lost'); app.classList.add('tx-back'); tl.at(900, function () { app.classList.add('menu'); }); tl.at(1300, function () { cam.ringOn(true); }); },
       // a command is made (name, command), the servers are ticked, then the group runs: four at a time, one by one
       function (app, tl, cam) {
         var rows = $$(app, '.js-sn'), checks = $$(app, '.js-snc'), code = app.querySelector('.js-sncmd'), text = code.dataset.text;
@@ -759,7 +774,7 @@
     agent: function (app) { app.classList.remove('play'); $$(app, '.js-rv').forEach(function (x) { x.classList.add('in'); }); },
     services: function (app, i) { seg(app, VIEWS[i]); },
     databases: function (app) { app.classList.remove('play'); },
-    terminal: function (app, i) { if (!app.classList.contains('win')) app.classList.remove('play'); app.classList.toggle('menu', i === 1); },
+    terminal: function (app, i) { if (!app.classList.contains('win')) app.classList.remove('play'); app.classList.toggle('menu', i === 1); app.classList.remove('tx-lost'); app.classList.toggle('tx-back', i <= 1); },
     tunnels: function (app) { app.classList.remove('play'); $$(app, '.js-tw').forEach(function (x) { x.classList.add('on'); }); },
     automations: function (app) { app.classList.remove('play'); }
   };
@@ -769,7 +784,7 @@
     var scams = $$(story, '.k-cam').map(function (el) { return el._cam; }), btns = $$(story, '.k-step');
     var path = story.querySelector('.k-hops');
     var tl = new Timeline(), cur = 0, visible = false;
-    var DUR = btns.map(function (b, i) { return id === 'bastions' && i === 1 ? 6000 : id === 'bastions' && i === 4 ? 10500 : id === 'bastions' && i === 5 ? 10000 : id === 'bastions' && i === 6 ? 6500 : id === 'automations' && i === 4 ? 9500 : id === 'databases' && i === 2 ? 8000 : id === 'terminal' && i === 2 ? 10500 : id === 'agent' && i === 5 ? 10500 : id === 'agent' && (i === 6 || i === 7) ? 7000 : id === 'services' && i === 5 ? 8000 : 5400; });
+    var DUR = btns.map(function (b, i) { return id === 'bastions' && i === 1 ? 6000 : id === 'bastions' && i === 4 ? 10500 : id === 'bastions' && i === 5 ? 10000 : id === 'bastions' && i === 6 ? 6500 : id === 'automations' && i === 4 ? 9500 : id === 'databases' && i === 2 ? 8000 : id === 'terminal' && i === 0 ? 8000 : id === 'terminal' && i === 2 ? 10500 : id === 'agent' && i === 5 ? 10500 : id === 'agent' && (i === 6 || i === 7) ? 7000 : id === 'services' && i === 5 ? 8000 : 5400; });
     function go(i, auto) {
       tl.stop(); cur = i;
       btns.forEach(function (b, k) { b.classList.toggle('on', k === i); b.classList.remove('run'); b.setAttribute('aria-current', k === i ? 'step' : 'false'); });

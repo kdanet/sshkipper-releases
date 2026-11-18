@@ -93,10 +93,6 @@ html.light .th-l { display: inline-block !important; }
 .k-hero-win { --ar: 1180 / 600; position: relative; z-index: 1; border-radius: 14px;
   box-shadow: 0 0 0 1px var(--line), 0 50px 100px -40px rgba(10, 20, 45, .45), 0 18px 40px -24px rgba(10, 20, 45, .3); }
 :where(html:not(.light)) .k-hero-win { box-shadow: 0 0 0 1px rgba(255, 255, 255, .1), 0 60px 120px -40px rgba(0, 0, 0, .95); }
-.k-cam.k-float { position: absolute; z-index: 2; right: -52px; bottom: -44px; width: 340px; border-radius: 14px;
-  box-shadow: 0 0 0 1px var(--line), 0 30px 60px -20px rgba(10, 20, 45, .45); }
-@media (max-width: 1320px) { .k-cam.k-float { right: -12px; } }
-@media (max-width: 860px) { .k-cam.k-float { display: none; } }
 
 .k-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 72px auto 0; max-width: 1100px; scroll-margin-top: 90px; }
 .k-chip { display: inline-flex; align-items: center; gap: 7px; padding: 8px 14px 8px 11px; border-radius: 99px; font-size: 14.5px;
@@ -693,13 +689,11 @@ html.light .th-l { display: inline-block !important; }
   .k-hero > .k-req { animation-delay: .32s; }
   .k-hero > .k-ctas { animation-delay: .24s; } .k-hero > .k-meta { animation-delay: .3s; } .k-hero > .k-stage { animation-delay: .38s; animation-duration: 1.3s; }
   .k-hero > .k-chips { animation-delay: .6s; }
-  .k-cam.k-float { animation: k-pop .9s cubic-bezier(.2, .9, .3, 1.2) 1.6s both; }
   .k-glow { animation: k-breathe 9s ease-in-out infinite alternate; }
   .k-screen > .k-cam { transition: opacity .55s ease, transform .7s cubic-bezier(.2, .7, .2, 1); transform: scale(.975); }
   .k-screen > .k-cam.on { transform: none; }
 }
 @keyframes k-rise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
-@keyframes k-pop { from { opacity: 0; transform: translateY(24px) scale(.94); } to { opacity: 1; transform: none; } }
 @keyframes k-breathe { from { transform: scale(1) translateY(0); opacity: .45; } to { transform: scale(1.06) translateY(-12px); opacity: .6; } }
 
 /* Visually hidden, read by screen readers */
