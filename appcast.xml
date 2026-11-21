@@ -7,6 +7,29 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <description>SSHKipper updates</description>
     <language>en</language>
     <item>
+      <title>0.2.0</title>
+      <pubDate>Sat, 21 Nov 2026 13:34:03 GMT</pubDate>
+      <sparkle:version>3183</sparkle:version>
+      <sparkle:shortVersionString>0.2.0</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
+      <sparkle:phasedRolloutInterval>86400</sparkle:phasedRolloutInterval>
+      <description xml:lang="en"><![CDATA[<h3>Databases</h3>
+<ul><li>The SQL editor now supports formatting, <code>:name</code> parameters, saved queries, and history for each database. Query tabs reopen after restarting the app.</li><li>Run long MySQL or PostgreSQL scripts on the server. SSHKipper shows the job log and lets you stop the job. For MySQL routines that use <code>DELIMITER</code>, use the option to run the entire script on the server.</li><li>Explore query plans in a tree and ask AI to explain them.</li><li>Edit table structure, import CSV, TSV, JSON, and NDJSON, and manage users and privileges. MySQL, MariaDB, and PostgreSQL backups and restores are available from the database tab.</li><li>SSHKipper shows the commands and warnings before running destructive changes. Production database changes that prompt for confirmation also require Mac owner authentication by default.</li></ul>
+<h3>Connections and web pages</h3>
+<ul><li>Sign-in settings are now on the Login page. Choose an account, key, and 2FA method, test the connection, and save the settings.</li><li>Web tabs restore their address and history after a restart. SSHKipper can offer to save credentials after a successful sign-in. Agent access to web pages is configured per site.</li></ul>
+<h3>MCP</h3>
+<ul><li>After you quit SSHKipper, an MCP client trying to reconnect no longer reopens the app automatically.</li></ul>
+<p><b>Requirements</b> — macOS 26 or later and a Mac with Apple Silicon.</p>]]></description>
+      <description xml:lang="ru"><![CDATA[<h3>Базы данных</h3>
+<ul><li>В редакторе SQL появились форматирование, параметры <code>:имя</code>, сохранённые запросы и история для каждой базы. Вкладки запросов восстанавливаются после перезапуска.</li><li>Долгий SQL-скрипт для MySQL или PostgreSQL можно выполнить на сервере через «На сервере». Приложение показывает журнал и позволяет остановить задачу. Для процедур MySQL с <code>DELIMITER</code> используйте «Выполнить весь текст на сервере».</li><li>Планы запросов отображаются деревом. Их можно передать AI для объяснения.</li><li>Можно менять структуру таблиц, импортировать CSV, TSV, JSON и NDJSON, управлять пользователями и правами. Из вкладки базы доступны резервное копирование и восстановление MySQL, MariaDB и PostgreSQL.</li><li>Перед запуском опасных изменений приложение показывает команды и предупреждения. Для подтверждаемых изменений Production-баз по умолчанию требуется подтверждение владельца Mac.</li></ul>
+<h3>Подключения и веб-страницы</h3>
+<ul><li>Настройки входа собраны на странице «Вход». На ней можно выбрать учётную запись, ключ и 2FA, проверить подключение и сохранить подходящие настройки.</li><li>Веб-вкладки восстанавливают адрес и историю после перезапуска. Приложение может предложить сохранить данные после успешного входа. Доступ агента к веб-страницам настраивается для каждого сайта.</li></ul>
+<h3>MCP</h3>
+<ul><li>Если закрыть SSHKipper вручную, попытка MCP-клиента переподключиться больше не запускает приложение сама.</li></ul>
+<p><b>Требования</b> — macOS 26 или новее и Mac с Apple Silicon.</p>]]></description>
+      <enclosure url="https://github.com/kdanet/sshkipper-releases/releases/download/v0.2.0/SSHKipper.dmg" length="47079395" type="application/octet-stream" sparkle:edSignature="daluIAj9w0szrJ+zpXivIR5DwYVLka0PePqgZEqnFJtQaZWDoTbUfbl1hxE36BZD5D3aSUXWJfDaC1hat0+eCQ=="/>
+    </item>
+    <item>
       <title>0.1.0</title>
       <pubDate>Tue, 17 Nov 2026 22:27:52 GMT</pubDate>
       <sparkle:version>3044</sparkle:version>
@@ -25,6 +48,6 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     </item>
   </channel>
 </rss><!-- sparkle-signatures:
-edSignature: TOSvWDlMR3on9K25FYndMZ7OIsTqMUmei5P34bHG5y/JQpN32eRYLfzwpsJua2P/AyKjYyNQVu92PCazcraXAg==
-length: 8935
+edSignature: L/fh4Tlz87JgW3qO8fh5HVkK8Ii6TQswXVIOR13Jd6kzOdGg/wYdIgfIaYS1Fb/lGtAz/1pPaOj+6TJh0QLwCA==
+length: 13723
 -->
