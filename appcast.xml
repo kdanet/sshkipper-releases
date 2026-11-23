@@ -7,6 +7,33 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <description>SSHKipper updates</description>
     <language>en</language>
     <item>
+      <title>0.2.1</title>
+      <pubDate>Mon, 23 Nov 2026 08:32:25 GMT</pubDate>
+      <sparkle:version>3194</sparkle:version>
+      <sparkle:shortVersionString>0.2.1</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
+      <sparkle:phasedRolloutInterval>86400</sparkle:phasedRolloutInterval>
+      <description xml:lang="en"><![CDATA[<h3>Dashboard</h3>
+<ul><li>Expand an SSH connection to find its Dashboard. It appears first by default. Drag the row or use its context menu to move it. This Mac remembers its position.</li></ul>
+<h3>Databases</h3>
+<ul><li>Locking a document saves query drafts and recent SQL history. Database tabs close and are unavailable until you unlock the document.</li><li>Cancelling an import stops further steps. If the database cannot confirm a rollback, SSHKipper reports it. A late response from a system prompt can no longer approve a cancelled change to a Production database.</li><li>In a narrow SQL results pane, a menu lists result tabs and an icon shows whether the results are editable. The sidebar updates the status of open databases even when their folder is collapsed.</li></ul>
+<h3>Web tabs and file panes</h3>
+<ul><li>Agent permission to read a web page is scoped to the site and the SSH profile actually in use. The offer to save a password is dismissed when the tab moves to a different site.</li><li>Web status indicators in the sidebar and search reflect load failures. In narrow SFTP panes, the filter stays visible and the remaining actions are available in the More menu.</li></ul>
+<h3>Component updates</h3>
+<ul><li>Updated Sparkle, Ghostty, FreeRDP, and OpenSSL to include published security fixes.</li></ul>
+<p><b>Requirements</b> — macOS 26 or later and a Mac with Apple Silicon.</p>]]></description>
+      <description xml:lang="ru"><![CDATA[<h3>Дашборд</h3>
+<ul><li>Под раскрытым SSH-подключением появился узел «Дашборд». По умолчанию он первый. Его можно переместить перетаскиванием или через контекстное меню. Положение запоминается на этом Mac.</li></ul>
+<h3>Базы данных</h3>
+<ul><li>При блокировке документа сохраняются черновики и свежие записи истории SQL. Вкладки закрываются и становятся недоступны до разблокировки.</li><li>Отмена импорта останавливает дальнейшие шаги. Если база не подтвердила откат, приложение сообщает об этом. Запоздалый ответ системного диалога больше не может подтвердить уже отменённое изменение Production-базы.</li><li>В узкой области результатов SQL есть меню вкладок и компактный индикатор редактируемости. В дереве обновляется статус открытых БД, даже если их папка свёрнута.</li></ul>
+<h3>Веб-вкладки и файловые панели</h3>
+<ul><li>Разрешение агенту на чтение веб-страницы учитывает сайт и фактический SSH-профиль. Предложение сохранить пароль снимается, если вкладка переходит на другой сайт.</li><li>Индикаторы веб-вкладок в дереве и поиске показывают ошибки загрузки. В узких панелях SFTP фильтр остаётся видимым, а остальные действия доступны в меню «Ещё».</li></ul>
+<h3>Обновления компонентов</h3>
+<ul><li>Обновлены Sparkle, Ghostty, FreeRDP и OpenSSL. В обновления вошли опубликованные исправления безопасности.</li></ul>
+<p><b>Требования</b> — macOS 26 или новее и Mac с Apple Silicon.</p>]]></description>
+      <enclosure url="https://github.com/kdanet/sshkipper-releases/releases/download/v0.2.1/SSHKipper.dmg" length="47276622" type="application/octet-stream" sparkle:edSignature="t28xozutdzPRU+8pmRZ4pJapiwmmruGjdgMKHxc6SYjlgxEIGCe6TvyVtysJYo0uduRxTCMEcobvNp1gkPOnAA=="/>
+    </item>
+    <item>
       <title>0.2.0</title>
       <pubDate>Sat, 21 Nov 2026 13:34:03 GMT</pubDate>
       <sparkle:version>3183</sparkle:version>
@@ -48,6 +75,6 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     </item>
   </channel>
 </rss><!-- sparkle-signatures:
-edSignature: L/fh4Tlz87JgW3qO8fh5HVkK8Ii6TQswXVIOR13Jd6kzOdGg/wYdIgfIaYS1Fb/lGtAz/1pPaOj+6TJh0QLwCA==
-length: 13723
+edSignature: 2UVttA5j9RvVh1Aw2ewdTZODzZdVtPAHOE5NIrLhchuXO6kFAI476ZVvtUsaGzCzOYAzr+DMs/yNIcdCCiikCg==
+length: 18256
 -->
