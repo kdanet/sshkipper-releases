@@ -7,6 +7,37 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <description>SSHKipper updates</description>
     <language>en</language>
     <item>
+      <title>0.2.2</title>
+      <pubDate>Tue, 24 Nov 2026 11:48:26 GMT</pubDate>
+      <sparkle:version>3282</sparkle:version>
+      <sparkle:shortVersionString>0.2.2</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
+      <sparkle:phasedRolloutInterval>86400</sparkle:phasedRolloutInterval>
+      <description xml:lang="en"><![CDATA[<h3>Dashboard and sidebar</h3>
+<ul><li>The Dashboard row keeps its place when nearby nodes are deleted, duplicated, or created. You can hide it from the sidebar and bring it back with Show in tree.</li><li>Sidebar and shelf selection survives a sidebar rebuild. A node dropped on a shelf row whose server is collapsed lands after the target.</li><li>Pressing Return in the palette runs the row for the current query, even while ranking is still in progress. The close button closes its own tab, not a neighboring one.</li></ul>
+<h3>Agent and automations</h3>
+<ul><li>Agent command rules are stricter. Joined config options for <code>apt-get</code> and <code>dnf</code>, <code>sudo snap install --classic</code>, <code>pip install -U</code>, and <code>npm install -g</code> now ask first. Writing shell and editor startup files (<code>~/.tmux.conf</code>, <code>~/.vimrc</code>, and similar) also asks for confirmation.</li><li>Agent answers about services are more honest. A <code>supervisorctl</code> refusal, a failed container listing, and a partial cron, service, or dashboard snapshot are no longer reported as success.</li><li>An automation step stopped at its time limit counts as an error. Reading server results again no longer imports the same runs twice.</li></ul>
+<h3>Databases</h3>
+<ul><li>Production databases ask for confirmation before user functions named like built-ins and PostgreSQL maintenance functions that change server state.</li><li>Run on server scripts recognize <code>\gexec</code>, <code>\gset</code>, <code>\c</code>, and commands after <code>\;</code> in psql, and delimiter changes in mysql.</li><li>Exporting a MySQL table with ENUM or SET in its primary key no longer drops rows. Table names and Redis values are escaped in exports.</li><li>Editing a MongoDB field with a dot in its name keeps its type. Editing a MySQL TIMESTAMP respects the session time zone.</li></ul>
+<h3>Files and storage</h3>
+<ul><li>Downloading a folder and uploading to WebDAV, Yandex.Disk, and Dropbox no longer overwrites files whose names differ only in case.</li><li>Download again in the editor reports an interrupted download and does not upload a truncated file. Copying on this Mac verifies that the whole file was copied.</li><li>Nextcloud browser sign-in saves the app password only for the server you signed in to.</li></ul>
+<h3>Reliability and security</h3>
+<ul><li>SSHKipper no longer crashes on unexpected numbers from servers and providers: tmux activity times, systemd timer delays, AI token counts, storage object sizes, and Live frame times.</li><li>The document file is read less often on the main thread: on save conflicts, on the lock screen, and when importing a passphrase-protected key. Prompts, agent permissions, and Screen Sharing connections no longer outlive a document lock.</li><li>Copy as curl escapes the HTTP method. Public link passwords are copied as secrets. Release builds no longer write bastion names or extension error text to the system log.</li></ul>
+<p><b>Requirements</b> — macOS 26 or later and a Mac with Apple Silicon.</p>]]></description>
+      <description xml:lang="ru"><![CDATA[<h3>Дашборд и дерево</h3>
+<ul><li>Узел «Дашборд» держит своё место, когда рядом удаляют, дублируют или создают узлы. Его можно скрыть из дерева и вернуть через «Показывать в дереве».</li><li>Выделение в дереве и полке сохраняется после перестройки дерева. Узел, брошенный на строку полки со свёрнутым сервером, встаёт после цели.</li><li>Палитра по ↵ выполняет строку текущего запроса, даже если ранжирование ещё идёт. Закрывается вкладка, на которой нажали крестик, а не соседняя.</li></ul>
+<h3>Агент и автоматизации</h3>
+<ul><li>Правила команд агента стали точнее. Без вопроса не пройдут склеенные опции конфига у <code>apt-get</code> и <code>dnf</code>, <code>sudo snap install --classic</code>, <code>pip install -U</code> и <code>npm install -g</code>. Запись в файлы настроек оболочки и редакторов (<code>~/.tmux.conf</code>, <code>~/.vimrc</code> и подобные) тоже спрашивает подтверждение.</li><li>Ответы агента о службах честнее. Отказ <code>supervisorctl</code>, неудачное чтение списка контейнеров и обрезанный снимок cron, служб и дашборда больше не выдаются за успех.</li><li>Шаг автоматизации, остановленный по сроку, считается ошибкой. При повторном чтении результатов с сервера запуски не дублируются.</li></ul>
+<h3>Базы данных</h3>
+<ul><li>Production-база спрашивает подтверждение для пользовательских функций с именами, похожими на встроенные, и для служебных функций PostgreSQL, меняющих состояние сервера.</li><li>Скрипт «Выполнить на сервере» распознаёт <code>\gexec</code>, <code>\gset</code>, <code>\c</code> и команды после <code>\;</code> в psql, а также смену разделителя в mysql.</li><li>Экспорт таблицы MySQL с ENUM или SET в первичном ключе больше не теряет строки. Имена таблиц и значения Redis в экспорте экранируются.</li><li>Правка поля MongoDB с точкой в имени сохраняет тип. Правка TIMESTAMP в MySQL учитывает часовой пояс сессии.</li></ul>
+<h3>Файлы и хранилища</h3>
+<ul><li>При скачивании папки и загрузке в WebDAV, Яндекс.Диск и Dropbox файлы, чьи имена отличаются только регистром, больше не затирают друг друга.</li><li>«Скачать заново» в редакторе сообщает об оборванной загрузке и не отправляет обрезанный файл на сервер. Копирование на этом Mac проверяет, что файл скопирован целиком.</li><li>Вход Nextcloud через браузер сохраняет пароль только для того сервера, на котором входили.</li></ul>
+<h3>Надёжность и безопасность</h3>
+<ul><li>Приложение больше не падает на неожиданных числах от серверов и провайдеров: время активности tmux, задержки таймеров systemd, счётчики токенов AI, размеры объектов в хранилищах, время кадров Live.</li><li>Документ меньше читается на главном потоке: при конфликте сохранения, на экране блокировки, при импорте ключа с паролем. Вопросы, разрешения агента и подключения «Общего экрана» не переживают блокировку документа.</li><li>«Как curl» экранирует HTTP-метод. Пароль ссылки в интернет копируется как секрет. Релизная сборка не пишет в системный журнал имена бастионов и тексты ошибок расширений.</li></ul>
+<p><b>Требования</b> — macOS 26 или новее и Mac с Apple Silicon.</p>]]></description>
+      <enclosure url="https://github.com/kdanet/sshkipper-releases/releases/download/v0.2.2/SSHKipper.dmg" length="47434566" type="application/octet-stream" sparkle:edSignature="/UtEWs2+Pk+rfEJJVAVOMiswOAu53c06aJ69oYYxUcC9G5C7n94OJUBeHOK90oOyaFcqvyk+gajajiD8XEEpCg=="/>
+    </item>
+    <item>
       <title>0.2.1</title>
       <pubDate>Mon, 23 Nov 2026 08:32:25 GMT</pubDate>
       <sparkle:version>3194</sparkle:version>
@@ -75,6 +106,6 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     </item>
   </channel>
 </rss><!-- sparkle-signatures:
-edSignature: 2UVttA5j9RvVh1Aw2ewdTZODzZdVtPAHOE5NIrLhchuXO6kFAI476ZVvtUsaGzCzOYAzr+DMs/yNIcdCCiikCg==
-length: 18256
+edSignature: xt4ccXdLJX3Y7ZoElJRFYXenbk/GnzqXa18py7tYy7L86V9qxggBzrWBZxWUyew2g2Q4/2dgdQ+AhbZT59mZCQ==
+length: 27113
 -->
