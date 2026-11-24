@@ -7,6 +7,25 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <description>SSHKipper updates</description>
     <language>en</language>
     <item>
+      <title>0.2.4</title>
+      <pubDate>Tue, 24 Nov 2026 22:54:53 GMT</pubDate>
+      <sparkle:version>3310</sparkle:version>
+      <sparkle:shortVersionString>0.2.4</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
+      <sparkle:phasedRolloutInterval>86400</sparkle:phasedRolloutInterval>
+      <description xml:lang="en"><![CDATA[<h3>Services in containers</h3>
+<ul><li>The Nginx page and other services in a Docker container no longer leave behind processes for the container's PID 1 to reap: nginx's log no longer gets an <code>unknown process … exited on signal 15</code> line on every page refresh.</li><li>Nginx in a container without <code>ps</code> (the official Debian-based image) is no longer shown as "nginx isn’t running": the process list is read from <code>/proc</code>. When it can't be read at all, the state is unknown rather than stopped — on the page, the tab, the quick launcher, and for the agent.</li></ul>
+<h3>Interface</h3>
+<ul><li>Automations now use a bolt icon: in the toolbar switch, the sidebar, tabs, and menus. Quick connect ("Connect to user@host") shows an arrow instead of the bolt.</li></ul>
+<p><b>Requirements</b> — macOS 26 or later and a Mac with Apple Silicon.</p>]]></description>
+      <description xml:lang="ru"><![CDATA[<h3>Службы в контейнерах</h3>
+<ul><li>Страница Nginx и другие службы в Docker-контейнере больше не оставляют процессов, которые завершает PID 1 контейнера: в журнале nginx перестали появляться строки <code>unknown process … exited on signal 15</code> при каждом обновлении страницы.</li><li>Nginx в контейнере без <code>ps</code> (официальный образ на Debian) больше не показывается как «не запущен»: список процессов читается из <code>/proc</code>. Если его нельзя прочитать совсем, состояние считается неизвестным, а не остановленным — на странице, во вкладке, в быстром запуске и у агента.</li></ul>
+<h3>Интерфейс</h3>
+<ul><li>Значок «Автоматизаций» — молния: в переключателе панели инструментов, в дереве, во вкладках и меню. У быстрого подключения «Подключиться к user@host» вместо молнии стрелка.</li></ul>
+<p><b>Требования</b> — macOS 26 или новее и Mac с Apple Silicon.</p>]]></description>
+      <enclosure url="https://github.com/kdanet/sshkipper-releases/releases/download/v0.2.4/SSHKipper.dmg" length="47565080" type="application/octet-stream" sparkle:edSignature="dCNpdUWCt5bZpr3/I2zWXKSyfuUxroSBBXeGIaACJmCIdh6T8xjxTN4U6BWB1UaT5Ziw8xQi8Vw1VNn9rmR1CQ=="/>
+    </item>
+    <item>
       <title>0.2.3</title>
       <pubDate>Tue, 24 Nov 2026 21:27:41 GMT</pubDate>
       <sparkle:version>3305</sparkle:version>
@@ -137,6 +156,6 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     </item>
   </channel>
 </rss><!-- sparkle-signatures:
-edSignature: NYEaA0r7L0IC4/NjTLkE2ICu0jOvTDIav3JZ8KByZvjupYPH4hMp3hykGnXS1+DhHQd9eIgIakP/u3EgdkP6Bg==
-length: 34158
+edSignature: IrXTkRtRIPrJw0oc1c9UgUXepKoU5KQpQ65TPExwucfR9CkOnOq+modopxh3kvCFJZA+reZdvZCbV1aQj8IeAg==
+length: 37217
 -->
