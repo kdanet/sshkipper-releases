@@ -7,6 +7,37 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <description>SSHKipper updates</description>
     <language>en</language>
     <item>
+      <title>0.2.3</title>
+      <pubDate>Tue, 24 Nov 2026 21:27:41 GMT</pubDate>
+      <sparkle:version>3305</sparkle:version>
+      <sparkle:shortVersionString>0.2.3</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
+      <sparkle:phasedRolloutInterval>86400</sparkle:phasedRolloutInterval>
+      <description xml:lang="en"><![CDATA[<h3>Sidebar</h3>
+<ul><li>The sidebar no longer shifts under the pointer when a new connection opens or a section appears above it.</li><li>Open now and Recent in the quick launcher show only what you opened. Bastions in a chain are marked with a ring in the sidebar, and the server says "via bastion1 › bastion2".</li><li>Credentials use a neutral icon. Database logos in the sidebar are always at full strength, and MySQL and PostgreSQL are lighter in the dark appearance.</li></ul>
+<h3>Sign-in</h3>
+<ul><li>When sign-in fails, the route stays on screen: the server shows what ssh said and what the server accepts, with Edit sign-in… and Retry.</li><li>A new server's key is asked about in the route, above that server.</li><li>"Connecting to…" and "2FA code entered" lines are no longer written into the terminal.</li></ul>
+<h3>Services and files</h3>
+<ul><li>The services tab has a single heading, "no sudo" is a mark next to the server name, and problems are buttons that lead to their row. Rare actions are in "⋯". When the server can't be reached, the tab shows the route with the failure and Edit connection….</li><li>Files panes open at equal width. Source, navigation, and filter share one row. The transfer list appears while a transfer runs and then folds into a "Transfers · N" chip.</li></ul>
+<h3>Window, databases, AI</h3>
+<ul><li>The tab bar has the same background as the status bar. Automations has a flowchart icon, and the lock stands on its own.</li><li>The quick launcher shows a server and its open tab as one row.</li><li>Databases: "· N more" next to the database name, column types in gray, and no Explain or CSV · JSON links before a query has run.</li><li>The AI panel names the model ("Opus 5.5"), and the status bar says "Agent off" or "Agent · mode".</li><li>A diagram opens in a tab named after it, and its view switches between Simple and Detailed.</li></ul>
+<h3>Fixes</h3>
+<ul><li>Icons first drawn after the terminal starts are no longer blank.</li><li>The password and 2FA plate and the agent read the terminal screen off the main thread and only once it has settled. The server's next question after Return is no longer lost.</li><li>The button that dismisses hints now reads "Got it" instead of "Plain".</li></ul>
+<p><b>Requirements</b> — macOS 26 or later and a Mac with Apple Silicon.</p>]]></description>
+      <description xml:lang="ru"><![CDATA[<h3>Дерево</h3>
+<ul><li>Дерево больше не сдвигается под курсором, когда открывается новое соединение или появляется раздел сверху.</li><li>«Открыто сейчас» и «Недавние» в быстром запуске показывают только то, что открыли вы. Бастионы цепочки отмечены в дереве кольцом, а у сервера написано «через bastion1 › bastion2».</li><li>Учётные записи нарисованы нейтральным значком. Логотипы баз в дереве всегда полной яркости, MySQL и PostgreSQL на тёмной теме светлее.</li></ul>
+<h3>Вход</h3>
+<ul><li>Если вход не удался, маршрут остаётся на экране: у сервера видно, что ответил ssh и что сервер принимает, и кнопки «Изменить вход…» и «Повторить».</li><li>Вопрос о ключе нового сервера задаётся в маршруте, над этим сервером.</li><li>Строки «Подключение к…» и «Код 2FA подставлен» больше не пишутся в терминал.</li></ul>
+<h3>Службы и файлы</h3>
+<ul><li>У вкладки служб один заголовок, «без sudo» стал меткой у имени сервера, проблемы — кнопками, которые ведут к своей строке. Редкие действия убраны в «⋯». Если сервер недоступен, вкладка показывает маршрут с отказом и «Изменить подключение…».</li><li>Панели «Файлов» открываются поровну. Источник, переходы и фильтр стоят одним рядом. Список передач появляется, пока идёт передача, а потом сворачивается в метку «Передачи · N».</li></ul>
+<h3>Окно, базы, AI</h3>
+<ul><li>Полоса вкладок того же фона, что строка состояния. У «Автоматизаций» значок блок-схемы, замок стоит отдельно.</li><li>Быстрый запуск показывает сервер и его открытую вкладку одной строкой.</li><li>База: у имени — «· ещё N баз», типы колонок серым, до запуска запроса нет ссылок «Объяснить» и «CSV · JSON».</li><li>AI-панель называет модель («Opus 5.5»), строка состояния — «Агент выкл» или «Агент · режим».</li><li>Схема открывается вкладкой с именем схемы, вид переключается «Просто | Подробно». Вкладка настроек «Ключи серверов» называется «Ключи».</li></ul>
+<h3>Исправления</h3>
+<ul><li>Значки, которые впервые рисовались после запуска терминала, больше не бывают пустыми.</li><li>Табличка ввода пароля и 2FA и агент читают экран терминала вне главного потока и только устоявшимся. Вопрос сервера после Return больше не теряется.</li><li>В английском интерфейсе кнопка, закрывающая подсказки, называется «Got it», а не «Plain».</li></ul>
+<p><b>Требования</b> — macOS 26 или новее и Mac с Apple Silicon.</p>]]></description>
+      <enclosure url="https://github.com/kdanet/sshkipper-releases/releases/download/v0.2.3/SSHKipper.dmg" length="47565109" type="application/octet-stream" sparkle:edSignature="se/ynjXWZme5tztKQdLPvOw1Bl3L0RSWL8s4uTAIwcbqmHc/OZThe8dh6LZwzKy/jx81D+iTMBdI7UgNpaPJDg=="/>
+    </item>
+    <item>
       <title>0.2.2</title>
       <pubDate>Tue, 24 Nov 2026 11:48:26 GMT</pubDate>
       <sparkle:version>3282</sparkle:version>
@@ -106,6 +137,6 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     </item>
   </channel>
 </rss><!-- sparkle-signatures:
-edSignature: xt4ccXdLJX3Y7ZoElJRFYXenbk/GnzqXa18py7tYy7L86V9qxggBzrWBZxWUyew2g2Q4/2dgdQ+AhbZT59mZCQ==
-length: 27113
+edSignature: NYEaA0r7L0IC4/NjTLkE2ICu0jOvTDIav3JZ8KByZvjupYPH4hMp3hykGnXS1+DhHQd9eIgIakP/u3EgdkP6Bg==
+length: 34158
 -->
